@@ -1,21 +1,23 @@
 *{
     padding: 0px;
     margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
 }
 
 header{
     flex-direction: column;
     width: 100%;
-    height:60px;
+    height:59px;
     position: fixed;
     background-color: #fff;
-    border-bottom:1px #000 solid ;
 }
 
 #header_in{
+    padding: auto 60px;
     margin: auto 40px;
     align-items: center;
     height: 100%;
+
 }
 
 .flexbetween{
@@ -47,6 +49,8 @@ header{
 }
 
 .icon_modeling{
+    width: 20px;
+    height: 20px;
     background-color: #fff;
     padding: 5px;
     border-radius: 100%;
@@ -62,27 +66,32 @@ header{
 }
 
 #content{
-    padding-top:200px;
+    padding-top:180px;
     width: 100%;
 }
 
 #divnav ul a{
+    width: 100px;
     text-decoration: none;
     color: #000;
+    text-align: center;
 }
 #divnav ul{
     list-style: none;
-    border-bottom:1px #d8d8d8 inset ;
 }
+
 #divnav{
+    border-top:1px #000 solid ;
+    border-bottom:1px #d8d8d8 inset ;
+    background-color: #fff;
     width: 100%;
     overflow-x:scroll;
     position: fixed;
 }
 
 .navbtn{
-    margin:10px;
     padding: 5px;
+    margin:10px;
     text-align: center;
     background-color: #fff;
 }
@@ -104,22 +113,49 @@ header{
     flex-direction: column;
 }
 .Housing_Profile{
-    margin: 0px 40px;
-
+    padding: 10px 20px ;
+    width: 250px;
 }
 
 .Houseimg{
-    width: 200px;
+    width: 100%;
     border-radius: 10%;
     overflow: hidden;
 }
 
-.Housetext{
-
-}
 
 #content_in{
     display: flex;
     flex-wrap: wrap;
+    justify-content: left;
 }
 
+.text1{
+    width: 250px;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text2{
+    font-weight: bolder;
+    font-size: 14px;
+    text-align: justify;
+
+}
+
+.text3{
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.text4{
+    font-weight: bolder;
+    font-size:20px;
+}
+
+.Housing_Profile span{
+    line-height: 1.7rem;
+    margin-left:10px;
+}
