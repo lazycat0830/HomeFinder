@@ -1,0 +1,201 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+.flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexcenter{
+    display: flex;
+    justify-content: center;
+}
+
+#content{
+    padding-top: 70px;
+    width: 100%;
+    height: 1400px;
+    
+}
+
+
+.img1-8 div img{
+    height: 420px;
+    padding: 10px;
+}
+
+.img1-8 div div img{
+    height: 200px;
+    
+}
+
+.img1-8_img1{
+    border-top-left-radius:30px ;
+    border-bottom-left-radius: 30px;
+}
+
+.img1-8_img2{
+    border-top-right-radius:30px ;
+    
+}
+.img1-8_img3{
+    border-bottom-right-radius:30px ;
+}
+
+.puttime{
+    font-size: 12px;
+    width: 100%;
+    padding: 5px 0px;
+    text-align: right;
+}
+
+#housing_information{
+    width: 1000px;
+    margin:0px 40px;
+}
+
+#content_left{
+    width: 60%;
+
+}
+#content_right{
+    width: auto;
+
+}
+
+.house_title{
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.house_label ul{
+    list-style: none;
+}
+.house_label ul li{
+    font-size: 12px;
+    width: auto;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius:5px;
+    border:1px #000 solid;
+}
+
+.house_type ul{
+    list-style: none;
+
+}
+
+.house_type ul li{
+    padding: 0px 5px;
+}
+
+.house_type_border1{
+    border-right: 1px #000 solid;
+}
+.house_amount{
+    padding: 10px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+    color:  #FF0000;
+}
+
+.amount_unit{
+    font-size: 15px;
+    color: #000;
+}
+.address span{
+    font-size: 20px;
+}
+
+.address div div{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.address div div i{
+    font-size: 40px;
+}
+
+.addressborder {
+    align-items: center;
+    border-bottom: 1px #bababa solid;
+}
+
+.address{
+    padding: 10px 0px;
+    margin-right:30%;
+}
+
+.equipment{
+    padding: 10px 0px;
+    font-size:16px;
+}
+.equipment span{
+    font-size: 25px;
+}
+.equipment_label ul{
+    width: 80%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.equipment_label ul li{
+    display: block;
+    padding:10px 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.equipment_label ul li div i{
+    font-size: 40px;
+}
+
+.house_content{
+    padding: 10px 0px;
+    font-size: 25px;
+}
+
+.house_content_text{
+    font-size: 16px;
+    width:500px ;
+    overflow: hidden;
+    flex-wrap: wrap-reverse;
+    text-overflow: ellipsis;
+}
+
+.house_content span a{
+    font-size: 16px;
+    color: #000;
+}
+
+
+.Choose_time_btn ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Choose_time_btn_true{
+    padding: 10px;
+    margin: 5px;
+    background-color: #000;
+    border-radius: 5px;
+    border: 1px #000 solid;
+    color: #fff;
+}
+.Choose_time_btn_false{
+    padding: 10px;
+    margin: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px #000 solid;
+    color: #000000;
+}
+.Choose_title{
+
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bolder;
+}
