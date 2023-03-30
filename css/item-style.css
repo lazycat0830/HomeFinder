@@ -24,7 +24,7 @@
 
 .img1-8 div img{
     height: 420px;
-    padding: 10px;
+    padding: 10px 10px 40px 10px;
 }
 
 .img1-8 div div img{
@@ -46,9 +46,8 @@
 }
 
 .puttime{
+
     font-size: 12px;
-    width: 100%;
-    padding: 5px 0px;
     text-align: right;
 }
 
