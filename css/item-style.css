@@ -62,7 +62,7 @@
 
 }
 #content_right{
-    width: auto;
+    width: 40%;
     text-align: center;
 }
 
@@ -159,6 +159,7 @@
     font-size: 25px;
 }
 
+
 .house_content_text{
     font-size: 16px;
     width:500px ;
@@ -171,17 +172,23 @@
     font-size: 16px;
     color: #000;
 }
+.Choose_time{
+    width: 100%;
+}
 
 
 .Choose_time_btn ul{
-    margin:0px  23%;
+    margin:0px  20%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     text-align:center;
 }
 
-.Choose_time_btn_true{
+
+
+.Choose_time_btn_true:focus{
     padding: 5px;
     margin: 5px ;
     background-color: #000;
@@ -189,7 +196,8 @@
     border: 1px #000 solid;
     color: #fff;
 }
-.Choose_time_btn_false{
+
+.Choose_time_btn_true{
     padding: 5px;
     margin: 5px;
     background-color: #ffffff;
@@ -201,5 +209,35 @@
 
     font-size: 1.5rem;
     text-align: center;
+    font-weight: bolder;
+}
+
+.Choose_time_button input{
+    padding: 5px 10px;
+    background-color: #9BDBFF;
+    color: #000;
+    border-radius: 10px;
+}
+
+.publisher_Information_text{
+    padding-left: 10px;
+    text-align: left;
+    margin: auto 0px;
+    font-size: 18px;
+}
+
+.publisher_Information{
+    padding: 10% 0px;
+    margin: 0px 10%; 
+}
+
+.credit_score{
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #FF7A00;
+}
+
+.subtitle{
     font-weight: bolder;
 }
