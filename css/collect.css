@@ -1,0 +1,81 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei';
+}
+
+#content{
+    padding-top:140px;
+    width: 100%;
+}
+
+#content_in{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+.Housing_Profile{
+    padding: 10px 20px ;
+    width: 250px;
+}
+
+
+.Housing_Profile span{
+    line-height: 1.7rem;
+    margin-left:10px;
+}
+
+.Houseimg{
+    width: 100%;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.relative{
+    position: relative;
+    z-index: 0;
+}
+
+.absolute{
+    position: absolute;
+    z-index: 1;
+}
+
+.Like{
+    right: 40px;
+    top: 25px;
+    font-size: 25px;
+    color: #ff0000;
+}
+
+.flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.text1{
+    width: 250px;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text2{
+    font-weight: bolder;
+    font-size: 14px;
+    text-align: justify;
+
+}
+
+.text3{
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.text4{
+    font-weight: bolder;
+    font-size:20px;
+}
+

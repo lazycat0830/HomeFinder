@@ -58,3 +58,12 @@ header{
     display: flex;
     flex-direction: row;
 }
+
+.collect_header{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
+    border-bottom:1px #000 solid;
+}
