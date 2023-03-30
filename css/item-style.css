@@ -63,7 +63,7 @@
 }
 #content_right{
     width: auto;
-
+    text-align: center;
 }
 
 .house_title{
@@ -129,27 +129,29 @@
 }
 
 .equipment{
-    padding: 10px 0px;
-    font-size:16px;
+    padding: 10px -3px;
 }
 .equipment span{
     font-size: 25px;
 }
 .equipment_label ul{
-    width: 80%;
+    width: 100%;
     display:flex;
     flex-wrap: wrap;
 }
 
 .equipment_label ul li{
     display: block;
-    padding:10px 10px;
+    padding:10px 3px;
     text-align: center;
     justify-content: center;
+    width: 10%;
+    white-space:nowrap;
+    font-size: 14px;
 }
 
 .equipment_label ul li div i{
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .house_content{
@@ -172,21 +174,23 @@
 
 
 .Choose_time_btn ul{
+    margin:0px  23%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    text-align:center;
 }
 
 .Choose_time_btn_true{
-    padding: 10px;
-    margin: 5px;
+    padding: 5px;
+    margin: 5px ;
     background-color: #000;
     border-radius: 5px;
     border: 1px #000 solid;
     color: #fff;
 }
 .Choose_time_btn_false{
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -195,7 +199,7 @@
 }
 .Choose_title{
 
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: bolder;
 }
