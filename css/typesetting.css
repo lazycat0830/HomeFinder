@@ -1,0 +1,28 @@
+.flexcolumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.flexcenter{
+    display: flex;
+    justify-content: center;
+}
+
+.flexbetween{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.flexrow{
+    display: flex;
+    flex-direction: row;
+}
+
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}

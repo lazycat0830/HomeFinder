@@ -4,15 +4,6 @@
     font-family: 'Microsoft JhengHei' ;
 }
 
-.flexcolumn{
-    display: flex;
-    flex-direction: column;
-}
-
-.flexcenter{
-    display: flex;
-    justify-content: center;
-}
 
 #content{
     padding-top: 70px;

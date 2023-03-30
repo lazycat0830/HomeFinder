@@ -21,10 +21,6 @@ header{
 
 }
 
-.flexbetween{
-    display: flex;
-    justify-content: space-between;
-}
 
 .filter{
     width: 400px;
@@ -104,15 +100,7 @@ header{
     white-space: nowrap;
 }
 
-.flexrow{
-    display: flex;
-    flex-direction: row;
-}
 
-.flexcolumn{
-    display: flex;
-    flex-direction: column;
-}
 .Housing_Profile{
     padding: 10px 20px ;
     width: 250px;

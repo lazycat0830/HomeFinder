@@ -23,10 +23,7 @@ header{
 
 }
 
-.flexbetween{
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .filter{
     width: 400px;
@@ -54,10 +51,6 @@ header{
     overflow: hidden;
 }
 
-.flexrow{
-    display: flex;
-    flex-direction: row;
-}
 
 .collect_header{
     font-size: 1.5rem;
