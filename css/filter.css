@@ -28,6 +28,20 @@ body{
     border-bottom: 2px #000 solid;
 }
 
+#body_content_footer{
+    background-color: #fff;
+    width: 100%;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top: 2px #000 solid;
+}
+
+#body_content_footer_content{
+    margin: auto 30px;
+    height: 50px;
+    align-items: center;
+}
+
 #body_content_header_content{
     margin: auto 30px;
     height: 50px;
@@ -42,10 +56,73 @@ body{
 
 #body_content_body{
     background-color: #fff;
-    height: 500px;
 }
 
 #body_content_body_content{
     margin: auto 30px;
 
+}
+
+.Label div ul{
+    list-style: none;
+}
+.Label div ul li{
+    padding: 10px 10px 10px 0px;
+    margin: auto 0px;
+}
+
+.Label div ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+.Label div ul li a:focus{
+    color: #ffa435;
+}
+
+.credit_score ul{
+    list-style: none;
+}
+
+.credit_score ul a{
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    border:1px #000 solid;
+    padding-right: 10px;
+}
+
+.credit_score ul a li{
+    margin: 0px auto;
+}
+
+
+.filter_title{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.location_drop_down{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.drop-down{
+    padding-right: 10px;
+}
+
+.amount{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.Label_title{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.spacing{
+    padding-bottom: 20px;
 }

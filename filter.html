@@ -21,15 +21,158 @@
             </div>
             <div id="body_content_body">
                 <div id="body_content_body_content">
-                    <span>位置</span>
-                    <div class="flexcolumn">
-                        <span>縣市</span>
-                        
+                    <span class="filter_title">位置</span>
+                    <div class="location_drop_down flexrow spacing">
+                        <div id="County" class="drop-down flexcolumn">
+                            <span>縣市</span>
+                            <select>
+                                <option>縣市</option>
+                                <option>基隆市</option>
+                                <option>台北市</option>
+                                <option>新北市</option>
+                                <option>桃園縣</option>
+                                <option>新竹市</option>
+                                <option>新竹縣</option>
+                                <option>苗栗縣</option>
+                                <option>台中市</option>
+                                <option>彰化縣</option>
+                                <option>南投縣</option>
+                                <option>雲林縣</option>
+                                <option>嘉義市</option>
+                                <option>嘉義縣</option>
+                                <option>台南市</option>
+                                <option>高雄市</option>
+                                <option>屏東縣</option>
+                                <option>台東縣</option>
+                                <option>花蓮縣</option>
+                                <option>宜蘭縣</option>
+                                <option>澎湖縣</option>
+                                <option>金門縣</option>
+                                <option>連江縣</option>
+                            </select>
+                        </div>
+                        <div id="Township" class="drop-down flexcolumn">
+                            <span>鄉鎮市區</span>
+                            <select>
+                                <option>-</option>
+                            </select>
+                        </div>
+                        <div id="road" class="drop-down flexcolumn">
+                            <span>路</span>
+                            <select>
+                                <option>-</option>
+                            </select>
+                        </div>
+                        <div id="part" class="drop-down flexcolumn">
+                            <span>段</span>
+                            <select>
+                                <option>-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span class="filter_title">租金範圍</span>
+                    <div class="amount flexrow spacing">
+                        <div id="minimum_amount" class="flexcolumn">
+                            <span>最低價格</span>
+                            <input type="text">
+                        </div>
+                        <span>-</span>
+                        <div id="minimum_amount" class="flexcolumn">
+                            <span>最高價格</span>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <span class="filter_title">想看房時間</span>
+                    <dvi class="flexrow spacing">
+                        <input type="datetime-local">
+                        <span>-</span>
+                        <input type="datetime-local">
+                    </dvi>
+
+                    <span class="filter_title">所有標籤</span>
+                    <div class="Label flexcolumn spacing">
+                        <div>
+                            <ul class="flexrow">
+                                <li class="Label_title">類型</li>
+                                <li><a href="#">整層住家</a></li>
+                                <li><a href="#">獨立套房</a></li>
+                                <li><a href="#">分租套房</a></li>
+                                <li><a href="#">雅房</a></li>
+                                <li><a href="#">其他</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="flexrow">
+                                <li  class="Label_title">格局</li>
+                                <li><a href="#">1房</a></li>
+                                <li><a href="#">2房</a></li>
+                                <li><a href="#">3房</a></li>
+                                <li><a href="#">4房以上</a></li>
+                                <li><a href="#">其他</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="flexrow">
+                                <li  class="Label_title">類型</li>
+                                <li><a href="#">公寓</a></li>
+                                <li><a href="#">電梯大樓</a></li>
+                                <li><a href="#">透天厝</a></li>
+                                <li><a href="#">別墅</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="flexrow">
+                                <li  class="Label_title">設備</li>
+                                <li><a href="#">冷氣</a></li>
+                                <li><a href="#">洗衣機</a></li>
+                                <li><a href="#">冰箱</a></li>
+                                <li><a href="#">雅房</a></li>
+                                <li><a href="#">網路</a></li>
+                                <li><a href="#">熱水器</a></li>
+                                <li><a href="#">天然瓦斯</a></li>
+                                <li><a href="#">床</a></li>
+                                <li><a href="#">衣櫃</a></li>
+                                <li><a href="#">電視</a></li>
+                                <li><a href="#">網路</a></li>
+                                <li><a href="#">第四台</a></li>
+                                <li><a href="#">沙發</a></li>
+                                <li><a href="#">桌椅</a></li>
+                                <li><a href="#">陽台</a></li>
+                                <li><a href="#">電梯</a></li>
+                                <li><a href="#">車位</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="flexrow">
+                                <li  class="Label_title">須知</li>
+                                <li><a href="#">男女皆可</a></li>
+                                <li><a href="#">限男生</a></li>
+                                <li><a href="#">限女生</a></li>
+                                <li><a href="#">排除頂樓加蓋</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="filter_title">信用分數</span>
+                    <div class="credit_score spacing">
+                        <ul class="flexrow">
+                            <a href="#"><li>遞增</li></a>
+                            <a href="#"><li>遞減</li></a>
+                        </ul>
+                    </div>
+                    <span class="filter_title">上架日期</span>
+                    <div class="credit_score spacing">
+                        <ul class="flexrow">
+                            <a href="#"><li>遞增</li></a>
+                            <a href="#"><li>遞減</li></a>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div id="body_content_footer">
-
+            <div id="body_content_footer" >
+                <div id="body_content_footer_content" class="flexbetween">
+                    <a href="#"><input type="button" value="清除"></a>
+                    <a href="#"><input type="button" value="顯示結果"></a>
+                </div>
             </div>
         </div>
     </div>
