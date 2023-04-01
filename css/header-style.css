@@ -12,6 +12,7 @@ header{
     position: fixed;
     background-color: #fff;
     border-bottom: 2px #000 solid;
+    z-index: 2;
 }
 
 #header_in{
@@ -60,3 +61,26 @@ header{
     padding: 15px 0px;
     border-bottom:1px #000 solid;
 }
+
+.collect_header div{
+    margin: auto 40px;
+}
+
+.collect_header div button{
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #000;
+    color:#fff;
+    border-radius: 25px;
+}
+
+#content{
+    padding-top: 150px;
+    z-index: 0;
+}
+
+#content_in{
+    margin: auto 100px;
+}
+
+/*https://tools.wingzero.tw/article/sn/990 */

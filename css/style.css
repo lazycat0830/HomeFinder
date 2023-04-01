@@ -11,6 +11,11 @@ header{
     height:59px;
     position: fixed;
     background-color: #fff;
+    z-index: 2;
+}
+
+body{
+    z-index: 0;
 }
 
 #header_in{
