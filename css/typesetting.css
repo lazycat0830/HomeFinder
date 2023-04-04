@@ -21,8 +21,15 @@
 
 .relative{
     position: relative;
+    z-index: 0;
 }
 
 .absolute{
     position: absolute;
+    z-index: 1;
+}
+
+.flexend{
+    display: flex;
+    align-items: end;
 }

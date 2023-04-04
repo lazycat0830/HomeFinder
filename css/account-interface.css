@@ -1,0 +1,116 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+#content{
+    padding-top: 80px;
+}
+
+
+.Accont_content_100w{
+    width: 100%;
+    border-bottom: 2px #000 solid;
+}
+
+.Accont_content{
+    margin: 0px 100px;
+    padding-bottom: 30px;
+}
+
+.Accountimg{
+    width:300px;
+    overflow: hidden;
+    border: solid;
+    
+}
+
+.Accounttext{
+    margin: auto 0px auto 20px;
+    
+}
+
+.Accounttext span{
+    font-size: 1.5rem;
+    padding: 10px 0px;
+}
+
+.fraction{
+    font-weight: bolder;
+    color: #e48500;
+}
+
+.Updata{
+    font-size: 18px;
+    color: #000;
+}
+
+.report{
+    padding: 2px 3px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.Housing_Profile{
+    padding: 10px 20px ;
+    width: 250px;
+}
+
+.Housing_Profile span{
+    line-height: 1.7rem;
+    margin-left:10px;
+}
+
+.Houseimg{
+    width: 100%;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.Like{
+    right: 40px;
+    top: 25px;
+    font-size: 25px;
+    color: #ff0000;
+}
+
+
+.text1{
+    width: 250px;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text2{
+    font-weight: bolder;
+    font-size: 14px;
+    text-align: justify;
+
+}
+
+.text3{
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.text4{
+    font-weight: bolder;
+    font-size:20px;
+}
+
+.Account_collect_title{
+    font-size: 30px;
+    padding: 20px 0px;
+    font-weight: bolder;
+    margin-left: 60px;
+}
+
+.Account_collect{
+    display: flex;
+    flex-wrap: wrap;
+}

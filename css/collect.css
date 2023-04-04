@@ -32,16 +32,6 @@
     overflow: hidden;
 }
 
-.relative{
-    position: relative;
-    z-index: 0;
-}
-
-.absolute{
-    position: absolute;
-    z-index: 1;
-}
-
 .Like{
     right: 40px;
     top: 25px;
@@ -49,10 +39,6 @@
     color: #ff0000;
 }
 
-.flexcolumn{
-    display: flex;
-    flex-direction: column;
-}
 
 
 .text1{
