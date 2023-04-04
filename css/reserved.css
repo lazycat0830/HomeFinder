@@ -4,6 +4,12 @@
     font-family: 'Microsoft JhengHei' ;
 }
 
+#content{
+    padding-top: 150px;
+    z-index: 0;
+}
+
+
 #content_in{
     margin: auto 200px;
 }
