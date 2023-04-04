@@ -1,0 +1,56 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+#content_in{
+    margin: auto 200px;
+}
+
+.text1{
+    padding: 5px 0px;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.text2{
+    padding: 5px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+    color:#FF7A00;
+}
+
+.text3{
+    padding: 5px 0px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.text4{
+    padding: 5px 0px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.text5{
+    padding: 5px 0px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.item_content {
+    align-items: center;
+}
+
+.cancel_appointment_btn{
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: black;
+    color: #fff;
+}
+
+.item_content_img{
+    width: 230px;
+    overflow: hidden;
+}
