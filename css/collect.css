@@ -16,8 +16,11 @@
     justify-content: left;
 }
 .Housing_Profile{
-    padding: 10px 20px ;
-    width: 250px;
+    width: 20%;
+    z-index: 0;
+}
+.Housing_Profile_content{
+    margin: 10px 10px;
 }
 
 

@@ -20,7 +20,7 @@ header{
     margin: auto 40px;
     align-items: center;
     height: 100%;
-    
+    border-bottom:  1px #000 solid;;
 
 }
 
@@ -60,6 +60,7 @@ header{
     text-align: center;
     padding: 15px 0px;
     border-bottom:1px #000 solid;
+    background-color: #fff;
 }
 
 .collect_header div{

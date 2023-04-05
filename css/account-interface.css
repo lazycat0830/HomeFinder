@@ -55,13 +55,17 @@
 }
 
 .Housing_Profile{
-    padding: 10px 20px ;
-    width: 250px;
+    width: 20%;
+    z-index: 0;
 }
 
 .Housing_Profile span{
     line-height: 1.7rem;
     margin-left:10px;
+}
+
+.Housing_Profile_content{
+    margin: 10px 10px;
 }
 
 .Houseimg{
@@ -74,7 +78,7 @@
     right: 40px;
     top: 25px;
     font-size: 25px;
-    color: #ff0000;
+    color: #757575;
 }
 
 
@@ -113,4 +117,5 @@
 .Account_collect{
     display: flex;
     flex-wrap: wrap;
+    justify-content: left;
 }
