@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/createitem.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/typesetting.css">
+</head>
+<body>
+    <header>
+        <div id="header_in" class="flexbetween">
+            <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
+            <div class="back_home flexrow">
+                <a href="index.html"><i class="fa-solid fa-house"></i></a>
+                <a href="#"><i class="fa-solid fa-right-left"></i></a>
+            </div>
+            <div class="avatar">
+                <a href="#"><img width="30px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a>
+            </div>
+        </div>
+        <div class="collect_header">新增房屋</div>
+    </header>
+    <div id="content">
+        <div id="content_in">
+            <div class="upload_img">
+                <div class="title">上傳照片</div>
+                <div class="upload_img_content">
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                    <button class="upload_img_btn">+</button>
+                </div>
+            </div>
+            <hr>
+            <div class="housing_label">
+                <div class="title">房屋標籤</div>
+                <div class="Label flexcolumn">
+                    <ul class="flexrow">
+                        <li class="Label_title">類型</li>
+                        <li><a href="#">整層住家</a></li>
+                        <li><a href="#">獨立套房</a></li>
+                        <li><a href="#">分租套房</a></li>
+                        <li><a href="#">雅房</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
+                </div>
+                <div class="Label flexcolumn">
+                    <ul class="flexrow">
+                        <li  class="Label_title">格局</li>
+                        <li><a href="#">1房</a></li>
+                        <li><a href="#">2房</a></li>
+                        <li><a href="#">3房</a></li>
+                        <li><a href="#">4房以上</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
+                </div>
+                <div class="Label flexcolumn">
+                    <ul class="flexrow">
+                        <li  class="Label_title">型態</li>
+                        <li><a href="#">公寓</a></li>
+                        <li><a href="#">電梯大樓</a></li>
+                        <li><a href="#">透天厝</a></li>
+                        <li><a href="#">別墅</a></li>
+                    </ul>
+                </div>
+                <div class="Label flexcolumn">
+                    <ul class="flexrow">
+                        <li  class="Label_title">須知</li>
+                        <li><a href="#">男女皆可</a></li>
+                        <li><a href="#">限男生</a></li>
+                        <li><a href="#">限女生</a></li>
+                        <li><a href="#">排除頂樓加蓋</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="housing_information">
+                <div class="title">房屋資訊</div>
+                <div class="housing_information_content">
+                    <label class="housing_information_title" for="title">標題：</label>
+                    <input class="housing_information_text" name="title" type="text">
+                </div>
+                <div class="housing_information_content">
+                    <label class="housing_information_title">地址：</label>
+                    <input class="housing_information_text" type="text" >
+                </div>
+                <div class="housing_information_content">
+                    <label class="housing_information_title">價錢：</label>
+                    <input class="housing_information_text" type="text">/月
+                </div>
+                <div class="flexrow right">
+                    <div class="housing_information_content">
+                        <label class="housing_information_title">水費：</label>
+                        <input class="housing_information_text" type="text">
+                    </div>
+                    <div class="housing_information_content">
+                        <label class="housing_information_title" >電費：</label>
+                        <input class="housing_information_text" type="text">
+                    </div>
+                    <div class="housing_information_content">
+                        <label class="housing_information_title" >管理費：</label>
+                        <input class="housing_information_text" type="text">
+                    </div>
+                </div>
+                <div class="flexrow right">
+                    <div class="housing_information_content">
+                        <label class="housing_information_title" >樓層：</label>
+                        <input class="housing_information_text" type="text" placeholder="例：當前樓層/總樓層">
+                    </div>
+                    <div class="housing_information_content">
+                        <label class="housing_information_title">面積：</label>
+                        <input class="housing_information_text" type="text">
+                    </div>
+                </div>
+                <div class="housing_information_content">
+                    <div style="padding-bottom: 10px;"><label class="housing_information_title">設備：</label></div>
+                    <div class="housing_information_label">
+                        <input id="refrigerator" type="checkbox"><label for="refrigerator">冰箱</label>
+                        <input id="Washing_machine" type="checkbox"><label for="Washing_machine">洗衣機</label>
+                        <input id="TV" type="checkbox"><label for="TV">電視</label>
+                        <input id="air_conditioner" type="checkbox"><label for="air_conditioner">冷氣</label>
+                        <input id="water_heater" type="checkbox"><label for="water_heater">熱水器</label>
+                        <input id="bed" type="checkbox"><label for="bed">床</label>
+                        <input id="clothes" type="checkbox"><label for="clothes">衣</label>
+                        <input id="fourth_unit" type="checkbox"><label for="fourth_unit">第四台</label>
+                        <input id="Network" type="checkbox"><label for="Network">網路</label>
+                        <input id="natural_gas" type="checkbox"><label for="natural_gas">天然瓦斯</label>
+                        <input id="sofa" type="checkbox"><label for="sofa">沙發</label>
+                        <input id="tables_chairs" type="checkbox"><label for="tables_chairs">桌椅</label>
+                        <input id="balcony" type="checkbox"><label for="balcony">陽台</label>
+                        <input id="Elevator" type="checkbox"><label for="Elevator">電梯</label>
+                        <input id="parking_space" type="checkbox"><label for="parking_space">車位</label>
+                    </div>
+                </div>
+                <div class="housing_information_content">
+                    <label class="housing_information_title" for="title">介紹：</label><br>
+                    <textarea></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer_in flexright">
+            <input class="save_off_the_shelf_btn" type="button" value="保存下架">
+            <input class="Review_and_put_shelves_btn" type="button" value="審核並上架">
+            <input class="Cancel" type="button" value="取消">
+        </div>
+    </footer>
+</body>
+</html>

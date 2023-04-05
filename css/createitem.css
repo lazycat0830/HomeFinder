@@ -1,0 +1,131 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei';
+}
+
+#content{
+    padding-top: 100px;
+    width: 100%;
+}
+
+#content_in{
+    margin: 40px 80px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bolder;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.upload_img_content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 100%;
+}
+
+.upload_img_width{
+    margin: 10px;
+}
+
+.upload_img_btn{
+    padding: 2% 3%;
+    font-size: 4rem;
+    margin: 10px;
+    background-color: #fff;
+    border: 3px #000 ;
+    border-style:dashed;
+}
+
+.housing_information_title{
+    font-size: 20px;
+}
+
+.housing_information_text{
+    padding: 5px 2px;
+}
+
+.Label_title{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.Label ul{
+    list-style: none;
+}
+.Label ul li{
+    padding: 10px 10px 10px 0px;
+    margin: auto 0px;
+}
+
+.Label ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
+.Label ul li a:focus{
+    color: #ffa435;
+}
+
+.housing_information_content{
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 10px 0px;
+}
+
+.right div{
+    padding-right: 10px;
+}
+
+.housing_information_label{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.housing_information_label label{
+    padding: 5px 12px 5px 0px;
+    font-size: 18px;
+}
+
+
+.housing_information_content textarea{
+    width: 50%;
+    height: 100px;
+}
+
+footer{
+    border-top: 1px #000 solid;
+    width: 100%;
+}
+
+.footer_in{
+    margin: 10px 80px;
+}
+
+.footer_in input{
+    padding: 5px 10px;
+    margin: 1px 8px;
+    border-radius: 10px;
+    border: 1px #000 solid;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.save_off_the_shelf_btn{
+    background-color: #E7C200;
+    color: #000000;
+}
+
+.Review_and_put_shelves_btn{
+    background-color: #000;
+    color: #fff;
+}
+
+.Cancel{
+    background-color: #ffffff;
+    color: #000000;
+}
