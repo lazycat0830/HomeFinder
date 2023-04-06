@@ -1,0 +1,47 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei';
+}
+
+
+
+
+
+#body_content_body_content div{
+    padding: 10px 0px;
+}
+
+#body_content_body_content a{
+    padding: 5px 0px;
+}
+
+.text1 label{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.text1 input{
+    padding: 3px 0px;
+}
+
+.text2 a{
+    font-size: 12px;
+    color: #000;
+}
+
+.btn1{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    padding: 5px 0px;
+}
+
+.btn2{
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 25px;
+    padding: 5px 0px;
+}
