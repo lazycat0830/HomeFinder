@@ -9,29 +9,23 @@
 
 
 #body_content_body_content div{
-    padding: 10px 0px;
+    padding: 20px auto;
 }
 
 #body_content_body_content a{
     padding: 5px 0px;
+    width: 100%;
 }
 
-.text1 label{
-    font-size: 16px;
+.text1{
+    font-size: 20px;
     font-weight: bolder;
-}
-
-.text1 input{
-    padding: 3px 0px;
-}
-
-.text2 a{
-    font-size: 12px;
-    color: #000;
+    text-align: center;
+    padding: 20px 0px;
 }
 
 .btn1{
-    width: 100%;
+    width: 80%;
     background-color: #000;
     color: #fff;
     border-radius: 25px;
@@ -39,7 +33,7 @@
 }
 
 .btn2{
-    width: 100%;
+    width: 80%;
     background-color: #fff;
     color: #000;
     border-radius: 25px;
@@ -47,6 +41,16 @@
 }
 
 #body_content_body_content{
-    margin: 10% 30px;
+    margin: 10% 20px;
 
+}
+
+.btnwidth{
+    width: 100%;
+}
+
+.btnwidth a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
 }
