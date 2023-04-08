@@ -4,23 +4,189 @@
     font-family: 'Microsoft JhengHei';
 }
 
+#content{
+    padding-top: 140px;
+}
 
 
+.select_date_nav{
+    justify-content: center;
+}
+
+.select_date_nav div a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bolder;
+}
+
+.select_date_nav div{
+    padding: 10px 10px;
+    font-size: 24px;
+}
+
+.selection_period_margin{
+    margin: 0px 200px;
+    padding: 20px 0px;
+}
+
+.year ul,.month ul{
+    list-style: none;
+    border: 1px #000 solid;
+    padding: 2px 0px;
+}
+
+.year ul li,.month ul li{
+    padding: 5px 0px;
+}
+
+.year ul li a,.month ul li a{
+    padding: 5px 5px;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+}
+
+.year ul li a:hover,.month ul li a:hover{
+    background-color: #b9b9b9;
+}
+
+.year ul li a:focus,.month ul li a:focus{
+    background-color: #000;
+    color: #fff;
+    
+}
+
+.title{
+    padding: 10px 0px;
+    margin: 0px 80px;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.title button{
+    padding: 5px 10px;
+    border-radius: 10%;
+    background-color: #000000;
+    color: #fff;
+}
+
+.selection_period_title{
+    text-align: center;
+    font-weight: bolder;
+}
+.calendar{
+    border: 2px #000 solid;
+}
+
+.week{
+    border:2px #000 solid ;
+    border-bottom:none ;
+}
+
+.calendar ul,.week ul{
+    list-style: none;
+    justify-content: space-between;
+}
+.calendar ul li,.week ul li{
+    padding: 5px 7px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.calendar ul li:hover{
+    background-color: #b9b9b9;
+}
 
 
+.calendar ul a{
+    text-decoration: none;
+    color: #000;
 
+}
 
+.calendar ul a:focus{
+    background-color: #000;
+    color: #fff;
+    border-radius: 100%;
 
+}
 
+.day{
+    padding: 0px 40px;
+}
 
+.time {
+    width: 150px;
+    padding: 0px 40px;
+}
 
+.timepadding{
+    padding: 5px 0px;
+}
 
+.timepadding td{
+    text-align: center;
+}
 
+.yearmonth select{
+    padding: 0px 10px ;
+    margin: 0px 5px;
+}
 
+.yearmonth{
+    padding: 10px 0px;
+}
 
+.item_content {
+    align-items: center;
+    padding-top: 20px;
+}
 
+.booked{
+    margin: 20px 80px;
+}
 
+.cancel_appointment_btn{
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: black;
+    color: #fff;
+}
 
+.item_content_img{
+    width: 230px;
+    overflow: hidden;
+}
 
+.text1{
+    padding: 5px 0px;
+    font-size: 24px;
+    font-weight: bolder;
+}
 
+.text2{
+    padding: 5px 0px;
+    font-size: 30px;
+    font-weight: bolder;
+    color:#FF7A00;
+}
 
+.text3{
+    padding: 5px 0px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.text4{
+    padding: 5px 0px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.text5{
+    padding: 5px 0px;
+    font-size: 22px;
+    font-weight: bolder;
+}

@@ -7,135 +7,144 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/typesetting.css">
+    <link rel="stylesheet" href="/css/popup_window_layout.css">
     <title>Homefinder租屋網</title>
 
 </head>
-<body>
+<body class="relative">
     <header>
-        <div id="header_in" class="flexbetween">
-            <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
-            <div class="filter">
-                <a href="/filter.html"><div class="filter_text flexbetween">
-                    <span>位置</span>
-                    <span>|</span>
-                    <span>看房時間</span>
-                    <span>|</span>
-                    <span>篩選其他</span>
-                    <div class="icon_modeling"><i class="fa-solid fa-magnifying-glass"></i></div>
-                </div></a>
+        <div class="relative">
+            <div id="usermenu" class="absolute userfunction">
+                <ul>
+                    <a href="#"><li><button id="btnlogin" type="button">登入</button></li></a>
+                    <a href="/signup.html"><li><button id="btnsign" type="button">註冊</button></li></a>
+                </ul>
             </div>
-            <div class="avatar">
-                <a href="#"><img width="30px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a>
+            <div id="header_in" class="flexbetween">
+                <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
+                <div class="filter">
+                    <a href="/filter.html"><div class="filter_text flexbetween">
+                        <span>位置</span>
+                        <span>|</span>
+                        <span>看房時間</span>
+                        <span>|</span>
+                        <span>篩選其他</span>
+                        <div class="icon_modeling"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    </div></a>
+                </div>
+                
+                <button id="Useravatar"><img width="40px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></button>
+                
             </div>
-        </div>
-        <div id="divnav">
-            <ul class="flexrow">
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>最新上架</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>所有房屋</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>整層住家</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>獨立套房</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>雅房</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>公寓</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>電梯大樓</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>透天厝</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>別墅</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>車位</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>電梯</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>可開伙</span>
-                        </div>
-                    </li>
-                </a>
-                <a href="#">
-                    <li>
-                        <div class="navbtn">
-                            <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
-                            <span>寵物</span>
-                        </div>
-                    </li>
-                </a>
-
-            </ul>
+            <div id="divnav">
+                <ul class="flexrow">
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>最新上架</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>所有房屋</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>整層住家</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>獨立套房</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>雅房</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>公寓</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>電梯大樓</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>透天厝</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>別墅</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>車位</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>電梯</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>可開伙</span>
+                            </div>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <div class="navbtn">
+                                <img width="30px" src="/image/stars_icon-icons.com_54645.ico"><br>
+                                <span>寵物</span>
+                            </div>
+                        </li>
+                    </a>
+    
+                </ul>
+            </div>
         </div>
     </header>
     <div id="content">
@@ -249,14 +258,40 @@
                     <span class="text4">價格： <span style="color: #ff0000;font-weight: bolder;">11000<span style="font-size: 12px;font-weight: bolder;">元/月</span></span></span>
                 </div>
             </div>
-            
-
-
-            
+  
         </div>
     </div>
     <footer>
-
+        <div id="data"></div>
     </footer>
+
+    <div id="box" class="login_Location">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <a id="delete1" href="#"><i class="fa-solid fa-xmark"></i></a>
+                        <span>登入</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="body_content_body_content" class="flexcolumn">
+                        <div class="t1"><label>帳號：</label><input type="text"></div>
+                        <div class="t1"><label>密碼：</label><input type="text"></div>
+                        <div class="flexright t2"><a href="/forgetpassword.html">忘記密碼</a></div>
+                        <a href="#"><button class="btn1">登入</button></a>
+                        <a href="/signup.html"><button class="btn2">註冊</button></a>
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
+
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="javascript/index.js"></script>
 </html>

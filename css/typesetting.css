@@ -1,3 +1,9 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
 .flexcolumn{
     display: flex;
     flex-direction: column;
@@ -37,4 +43,64 @@
 .flexright{
     display: flex;
     justify-content: right;
+}
+
+.userfunction{
+    top: 30px;
+    right: 50px;
+    z-index: 11;
+    display: none;
+}
+
+.userfunction ul{
+    margin: 10px 10px ;
+    padding: 10px 0px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 20px;
+    border: 2px #000 solid;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.userfunction ul a{
+    color: #000;
+    text-decoration: none;
+}
+
+.userfunction ul a li{
+
+}
+
+.userfunction ul a li button{
+    padding: 5px 20px;
+    background-color: #fff;
+    border: 0px;
+}
+
+.userfunction ul a li button:hover{
+    background-color: #b9b9b9;
+}
+
+.mask{
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 99998;
+    background:rgba(0, 0, 0, 0.6);
+}
+
+.htmlMask{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.login_Location{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    z-index: 99999;
 }
