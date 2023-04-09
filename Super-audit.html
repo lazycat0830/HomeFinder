@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/typesetting.css">
+    <link rel="stylesheet" href="/css/BG.css">
+    <title>管理員後台</title>
+</head>
+<body>
+    <header>
+        <div id="header_in" class="flexbetween">
+            <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
+            <div class="back_home flexrow">
+                <a href="index.html"><i class="fa-solid fa-house"></i></a>
+                <a href="#"><i class="fa-solid fa-right-left"></i></a>
+            </div>
+            <div class="avatar">
+                <a href="#"><img width="30px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a>
+            </div>
+        </div>
+        <div class="collect_header">管理員後台</div>
+    </header>
+
+    <div class="content">
+        <div class="content_top">
+            <div id="top-left">
+                <div class="notchoose">
+                    <a href="/Super.html">帳號審核</a></div>
+                <div class="choose">
+                    <a href="/Super-audit.html">房屋審核</a>
+                </div>
+            </div>
+        </div>
+        <div class="content_bottom">
+            <div class="item">
+                <span>編號</span>
+                <span>房屋名稱</span>
+                <span>價錢</span>
+                <span>地址</span>
+                <span>房屋內容</span>
+                <span>出租者</span>
+                <span>審核</span>
+            </div>
+            <div class="room" id="house">
+                <div id="id">1</div>
+                <div id="pic">圖片</div>
+                <div id="money">價錢</div>
+                <div id="location">位置</div>
+                <div id="text"><a href="#">查看</a></div>
+                <div id="rent">出租人</div>
+                <div id="edit">
+                    <a id="pass" href="#">通過</a>
+                    <a id="fall" href="#">不通過</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
