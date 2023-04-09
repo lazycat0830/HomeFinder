@@ -45,11 +45,32 @@
     justify-content: right;
 }
 
-.userfunction{
+#usermenu{
     top: 30px;
     right: 50px;
     z-index: 11;
-    display: none;
+
+}
+
+#rentermenu{
+    top: 30px;
+    right: 120px;
+    z-index: 11;
+
+}
+
+#publishermenu{
+    top: 30px;
+    right:230px;
+    z-index: 11;
+
+}
+
+#adminmenu{
+    top: 30px;
+    right: 330px;
+    z-index: 11;
+
 }
 
 .userfunction ul{
@@ -69,13 +90,16 @@
 }
 
 .userfunction ul a li{
-
+    text-align: center;
+    margin: 0px auto;
 }
 
+
 .userfunction ul a li button{
-    padding: 5px 20px;
+    padding: 8px 25px;
     background-color: #fff;
     border: 0px;
+    width: 100%;
 }
 
 .userfunction ul a li button:hover{
