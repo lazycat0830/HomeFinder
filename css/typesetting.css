@@ -73,6 +73,17 @@
 
 }
 
+.userfunction {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.5s ease-out;
+}
+
+.show {
+    height: 250px;
+}
+
+
 .userfunction ul{
     margin: 10px 10px ;
     padding: 10px 0px;
@@ -80,8 +91,8 @@
     background-color: #fff;
     border-radius: 20px;
     border: 2px #000 solid;
-    overflow: hidden;
     font-size: 14px;
+    overflow: hidden;
 }
 
 .userfunction ul a{

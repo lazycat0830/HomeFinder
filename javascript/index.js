@@ -29,9 +29,16 @@ console.log(box);
 
 let Useravatar=document.getElementById("Useravatar");
 let usermenu=document.getElementById("usermenu");
+let rentermenu=document.getElementById("rentermenu");
+let publishermenu=document.getElementById("publishermenu");
+let adminmenu=document.getElementById("adminmenu");
 console.log(Useravatar);
 console.log(usermenu);
+console.log(rentermenu);
+console.log(publishermenu);
+console.log(adminmenu);
 
+let userfunction=document.getElementsByClassName("userfunction");
 
 let createMask =()=>{
     if(document.getElementById("mask")){
@@ -66,10 +73,17 @@ delete1.onclick=function(){
 }
 
 var a =true;
-Useravatar.onclick=function(){
+Useravatar.addEventListener("click", () => {
     a=!a;
-    a?usermenu.style.display="block":usermenu.style.display="none"
-}
-
-
-
+    if(a){
+        usermenu.classList.add("show");
+        rentermenu.classList.add("show");
+        publishermenu.classList.add("show");
+        adminmenu.classList.add("show");
+    }else{
+        usermenu.classList.remove("show");
+        rentermenu.classList.remove("show");
+        publishermenu.classList.remove("show");
+        adminmenu.classList.remove("show");
+    }
+});

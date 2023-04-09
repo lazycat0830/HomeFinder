@@ -55,6 +55,7 @@ body{
     padding: 5px;
     border-radius: 100%;
     border: 1px #000 inset;
+    text-align: center;
 }
 
 #Useravatar{
