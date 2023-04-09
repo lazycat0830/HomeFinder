@@ -1,0 +1,61 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+
+
+.reviewcentent{
+    border: 1px #000 solid;
+    overflow-y: scroll;
+    margin: 0px auto;
+}
+
+.reviewcentent table{
+    width: 90%;
+}
+
+
+.reviewcentent table tr th{
+    width: auto;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.reviewcentent table tr td{
+    width: auto;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.reviewcentent table tr td button{
+    font-size: 1rem;
+    background-color: #fff;
+    border: 0px;
+    text-decoration:underline;
+}
+
+.rad{
+    color: #ff0000;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.reviewcentent table tr td div input{
+    padding: 5px 10px;
+    margin: 2px 0px;
+    font-size: 14px;
+    border-radius: 20px;
+    font-weight: bolder;
+}
+
+.Ok{
+    color: #000;
+    background-color: #C8F2FF;
+}
+
+.On{
+    color: #000;
+    background-color: #FF7878;
+}

@@ -1,0 +1,50 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+#content{
+    padding-top: 100px;
+}
+
+#content_in{
+    width: 100%;
+    margin: 80px;
+}
+
+
+.nav a button{
+    padding: 0px 20px;
+    border-radius: 20px;
+    width: 100%;
+    height: 80%;
+    background-color: #000;
+    color: #fff;
+
+}
+
+.nav_field a{
+    padding: 5px 10px;
+    margin: 0px 1px;
+    text-decoration: none;
+    border-top-right-radius:10px ;
+    border-top-left-radius:10px ;
+    border-top:1px #000 solid ;
+    border-left:1px #000 solid ;
+    border-right:1px #000 solid ;
+    font-size: 1.5rem;
+}
+
+.off{
+    color: #000;
+    background-color: #fff;
+}
+.off:hover{
+    background-color: #d2d2d2;
+}
+
+.on{
+    color: #fff;
+    background-color: #000;
+}
