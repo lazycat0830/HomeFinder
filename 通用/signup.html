@@ -90,24 +90,43 @@
     </header>
 
 
-    <div class="content">
-        <div class="inner1">
-            <input type="button" value="會員" id="submit1" tabindex="1"/>
-            <input type="button" value="出租者" id="submit2" tabindex="1"/>
-        </div>
-        <div class="inner2">
-            <label for="name"  id="name">姓名：</label><input type="text"/><br>
-            <label for="account" id="account">帳號：</label><input type="text" /><br>
-            <label for="password"  id="password">密碼：</label><input type="password"/><br>
-            <label for="checkpassword" id="checkpassword">確認密碼：</label><input type="password" /><br>
-            <label for="email" id="email">E-Mail：</label><input type="email" /><br>
-            <label for="phonenumber" id="phonenumber">電話：</label><input type="text" /><br>
-        </div>
-        <div class="inner3">
-            <input type="button" value="註冊" id="submit"/><br>
-            <input type="button" value="清除" id="reset"/>
+    <div id="content">
+        <div id="content_in" class="flexcenter">
+            <div class="signup">
+                <div class="inner1 flexcenter">
+                    <input type="button" value="會員" id="btn1" tabindex="1"/>
+                    <input type="button" value="出租者" id="btn1" tabindex="1"/>
+                </div>
+                <div class="inner2 flexcolumn" >
+                    <div><label>姓名：</label><input type="text"/></div>
+                    <div><label>帳號：</label><input type="text"/></div>
+                    <div><label>密碼：</label><input type="text"/></div>
+                    <div><label>確認密碼：</label><input type="text"/></div>
+                    <div><label>電話：</label><input type="text"/></div>
+                </div>
+
+                <div class="inner3">
+                    <input type="button" value="註冊" id="submit"/><br>
+                    <input type="button" value="清除" id="reset"/>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
+
+    
+    <!-- <div class="inner2">
+        <br>
+        <label for="account" id="account"></label><input type="text" /><br>
+        <label for="password"  id="password"></label><input type="password"/><br>
+        <label for="checkpassword" id="checkpassword"></label><input type="password" /><br>
+        <label for="email" id="email">E-Mail：</label><input type="email" /><br>
+        <label for="phonenumber" id="phonenumber"></label><input type="text" /><br>
+    </div> -->
+    
 </body>
 <script src="/javascript/index.js"></script>
 </html>

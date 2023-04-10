@@ -105,3 +105,16 @@ filter_btn.addEventListener("click",function(){
 filter_delete.addEventListener("click",function(){
     deleteMask();
 });
+
+let likebtn=document.getElementById("likebtn");
+let like=document.getElementById("like");
+console.log(likebtn);
+console.log(like);
+
+likebtn.addEventListener("click",function(){
+    if (like.src.match("/image/heart.png")) {
+        like.src = "/image/like.png";
+        } else {
+        like.src = "/image/heart.png";
+        }
+})

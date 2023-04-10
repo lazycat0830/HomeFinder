@@ -31,6 +31,7 @@ body.relative{
     border-radius: 100px;
     border: 1px #000 solid;
     background-color: #F2F2F2;
+    cursor:pointer  ;
 }
 
 .filter a{
@@ -64,6 +65,7 @@ body.relative{
     border-radius: 100%;
     border: 1px #000 inset;
     overflow: hidden;
+    cursor:pointer  ;
 }
 
 
@@ -125,6 +127,7 @@ body.relative{
 
 
 #content_in{
+    margin: 0px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -155,9 +158,7 @@ body.relative{
 }
 
 .Housing_Profile span{
-
     line-height: 1.7rem;
-    margin-left:10px;
 }
 
 .relative{
@@ -171,11 +172,11 @@ body.relative{
 }
 
 .Like{
-    right: 10px;
-    top: 10px;
+    right: 20px;
+    top: 15px;
     font-size: 25px;
-    color: #757575;
     z-index: 3;
+    cursor: pointer;
 }
 
 .collect_header{

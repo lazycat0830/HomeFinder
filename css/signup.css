@@ -5,69 +5,50 @@
 }
 
 
-.content{
-    padding-top: 120px;
-    padding-left: 205px;
-    padding-right: 205px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff   ;
+#content{
+    padding-top: 140px;
+    background-color: #fff;
 }
-.inner1{
-    margin-top: 30px;
+
+#content_in{
+    margin: 0px 80px;
 }
- #submit1{
+
+
+#btn1{
     color: #000;
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    margin: 0px 15px;
     border-radius: 50px;
     font-size: 20px;
 }
-#submit1:focus{
+#btn1:focus{
     color: #fff;
     background-color: #000;
 }
 
- #submit2{
-    color: #000;
-    background-color: #FFF;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 20px;
-}
-#submit2:focus{
-    color: #ffffff;
-    background-color: #000000;
-}
 
 .inner2{
-    margin-top: 32px;
-    margin-bottom: 32px;
     font-size:20px;
+    padding: 20px 0px;
+    margin: 0px;
 }
-.inner2 input{
-    border-style: solid;
-    font-size: 20px;
+
+.inner2 div{
+    display: flex;
+    justify-content: space-between;
 }
-.inner2 #name {
-    padding-right:40px;
+
+.inner2 div label{
+    width: 100px;
+    text-align: right;
 }
-.inner2 #account {
-    padding-right:40px;
+
+.inner2 div input{
+    width: 72%;
 }
-.inner2 #password {
-    padding-right:40px;
-}
-.inner2 #checkpassword {
-    padding-right:1px;
-}
-.inner2 #email {
-    padding-right:24px;
-}
-.inner2 #phonenumber {
-    padding-right:40px;
-}
+
 .inner3{
     margin-bottom: 82px;
     padding-bottom: 20px;

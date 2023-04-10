@@ -11,24 +11,39 @@
 
 
 #content_in{
-    margin: 0px 300px;
+    margin: 0px 80px;
 
 }
 
+#content_left{
+    
+    width: 48%;
+}
+
+#content_right{
+    width:48%;
+}
+
 .notifytitle{
-    padding: 20px 0px;
+    padding: 10px 0px;
     font-size: 32px;
     font-weight: bolder;
 }
 
+.roll{
+    border: 1px #000 solid;
+    height: 500px;
+    overflow-y: scroll;
+}
+
 .Accountnotify{
-    padding-bottom: 40px;
+    padding-bottom: 0px;
 }
 
 .Accountnotify_img{
     border-radius: 100%;
     border: 1px #000 solid;
-    width: 150px;
+    width: 70px;
     overflow: hidden;
     align-items: center;
 }
@@ -47,18 +62,18 @@
 
 .text1{
     padding: 5px 0px;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bolder;
 }
 
 .text2{
     padding: 5px 0px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .text3{
     padding: 5px 0px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .background{
     padding: 20px;

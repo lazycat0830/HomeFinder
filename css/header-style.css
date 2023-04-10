@@ -42,6 +42,7 @@ body.relative{
     border-radius: 100%;
     border: 1px #000 inset;
     overflow: hidden;
+    cursor: pointer;
 }
 
 #login{
@@ -74,8 +75,8 @@ body.relative{
 
 
 .avatar{
-    height:30px;
-    width: 30px;
+    height:50px;
+    width: 50px;
     border-radius: 100%;
     border: 1px #000 inset;
     overflow: hidden;
