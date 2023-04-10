@@ -13,15 +13,15 @@ header{
     z-index: 10;
 }
 
-body{
+body.relative{
     z-index: 0;
+    background-color: #fff;
 }
 
 #header_in{
     margin: 5px 40px;
     align-items: center;
     height: 100%;
-
 }
 
 
@@ -74,7 +74,7 @@ body{
 }
 
 #divnav ul a{
-    width: 100px;
+    width:auto;
     text-decoration: none;
     color: #000;
     text-align: center;
@@ -229,6 +229,17 @@ body{
 
 }
 
-#box{
+#login{
     display: none;
+}
+
+#filter{
+    display: none;
+}
+
+.login_Location{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    z-index: 99999;
 }

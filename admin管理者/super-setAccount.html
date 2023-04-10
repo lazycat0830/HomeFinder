@@ -5,27 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/super-setAccount.css">
     <link rel="stylesheet" href="/css/BG-universal.css">
-
+    <link rel="stylesheet" href="/css/typesetting.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/popup_window_layout.css">
 </head>
-<body>
-    <header>
-        <div id="header_in" class="flexbetween">
-            <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
-            <div class="back_home flexrow">
-                <a href="index.html"><i class="fa-solid fa-house"></i></a>
-                <a href="#"><i class="fa-solid fa-right-left"></i></a>
-            </div>
-            <div class="avatar">
-                <a href="#"><img width="30px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a>
+
+<body  class="relative">
+    <div id="login" class="login_Location">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <a id="delete1" href="#"><i class="fa-solid fa-xmark"></i></a>
+                        <span>登入</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="body_content_body_content" class="flexcolumn">
+                        <div class="t1"><label>帳號：</label><input type="text"></div>
+                        <div class="t1"><label>密碼：</label><input type="text"></div>
+                        <div class="flexright t2"><a href="/通用/forgetpassword.html">忘記密碼</a></div>
+                        <a href="#"><button class="btn1">登入</button></a>
+                        <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="collect_header">管理員後台</div>
+    </div>
+
+<header>
+        <div class="relative">
+            <div id="usermenu" class="absolute userfunction">
+                <ul>
+                    <a href="#"><li><button id="btnlogin" type="button">登入</button></li></a>
+                    <a href="/通用/signup.html"><li><button id="btnsign" type="button">註冊</button></li></a>
+                </ul>
+            </div>
+            <div id="rentermenu" class="absolute userfunction">
+                <ul>
+                    <a href="/通用/notify.html"><li><button id="btnsign" type="button">通知</button></li></a>
+                    <a href="/renter房客/reserved.html"><li><button id="btnsign" type="button">已預約房屋</button></li></a>
+                    <a href="/renter房客/collect.html"><li><button id="btnsign" type="button">已收藏</button></li></a>
+                    <hr>
+                    <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
+                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                </ul>
+            </div>
+            <div id="publishermenu" class="absolute userfunction">
+                <ul>
+                    <a href="/通用/notify.html"><li><button id="btnsign" type="button">通知</button></li></a>
+                    <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
+                    <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
+                    <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
+                    <hr>
+                    <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
+                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                </ul>
+            </div>
+            <div id="adminmenu" class="absolute userfunction">
+                <ul>
+                    <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
+                    <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
+                    <hr>
+                    <a href=""><li><button id="btnsign" type="button">帳號</button></li></a>
+                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                </ul>
+            </div>
+            <div id="header_in" class="flexbetween">
+                <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
+                <div class="back_home flexrow">
+                    <a href="/通用/index.html"><i class="fa-solid fa-house"></i></a>
+                    <a href="#"><i class="fa-solid fa-right-left"></i></a>
+                </div>
+                
+                <button id="Useravatar"><img width="40px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></button>
+           
+            </div>
+        </div>
+	<hr>
+	<div class="collect_header">管理員後台</div>
     </header>
+
+
     <div id="content" class="flexcenter">
         <div id="content_in">
             <div class="nav">
@@ -73,4 +138,5 @@
 
 
 </body>
+<script src="/javascript/index.js"></script>
 </html>

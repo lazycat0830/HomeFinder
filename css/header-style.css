@@ -6,25 +6,54 @@
 
 
 header{
-    flex-direction: column;
+    /* flex-direction: column;
     width: 100%;
     height:59px;
     position: fixed;
-    background-color: #fff;
+    background-color: #fff;*/
     border-bottom: 2px #000 solid;
-    z-index: 2;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    background-color: #fff;
+    z-index: 10;
+}
+
+body.relative{
+    z-index: 0;
+    background-color: #fff;
 }
 
 #header_in{
-    padding: auto 60px;
+    /* padding: auto 60px;
     margin: auto 40px;
     align-items: center;
     height: 100%;
-    border-bottom:  1px #000 solid;;
-
+    border-bottom:  1px #000 solid;; */
+    margin: 5px 40px;
+    align-items: center;
+    height: 100%;
 }
 
 
+#Useravatar{
+    height:40px;
+    width: 40px;
+    border-radius: 100%;
+    border: 1px #000 inset;
+    overflow: hidden;
+}
+
+#login{
+    display: none;
+}
+
+.login_Location{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    z-index: 99999;
+}
 
 .filter{
     width: 400px;
@@ -73,6 +102,50 @@ header{
     background-color: #000;
     color:#fff;
     border-radius: 25px;
+}
+
+
+#body_content_body_content div{
+    padding: 10px 0px;
+}
+
+#body_content_body_content a{
+    padding: 5px 0px;
+}
+
+.t1 label{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.t1 input{
+    padding: 3px 0px;
+}
+
+.t2 a{
+    font-size: 12px;
+    color: #000;
+}
+
+.btn1{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    padding: 5px 0px;
+}
+
+.btn2{
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 25px;
+    padding: 5px 0px;
+}
+
+#body_content_body_content{
+    margin: 10% 30px;
+
 }
 
 

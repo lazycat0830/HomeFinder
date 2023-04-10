@@ -23,22 +23,9 @@
 
 let btnlogin =document.getElementById("btnlogin");
 let delete1 =document.getElementById("delete1");
-let box =document.getElementById("box");
+let login =document.getElementById("login");
 console.log(btnlogin);
-console.log(box);
-
-let Useravatar=document.getElementById("Useravatar");
-let usermenu=document.getElementById("usermenu");
-let rentermenu=document.getElementById("rentermenu");
-let publishermenu=document.getElementById("publishermenu");
-let adminmenu=document.getElementById("adminmenu");
-console.log(Useravatar);
-console.log(usermenu);
-console.log(rentermenu);
-console.log(publishermenu);
-console.log(adminmenu);
-
-let userfunction=document.getElementsByClassName("userfunction");
+console.log(login);
 
 let createMask =()=>{
     if(document.getElementById("mask")){
@@ -59,18 +46,31 @@ let deleteMask =()=>{
         mask.removeEventListener("click",deleteMask);
         mask.parentNode.removeChild(mask);
         document.documentElement.classList.remove("htmlMask");
-        box.style.display="none"
+        login.style.display="none"
+        filter.style.display="none"
     }
 };
 
 btnlogin.addEventListener("click",function(){
     createMask();
-    box.style.display="block"
+    login.style.display="block"
 });
 
 delete1.onclick=function(){
-        deleteMask();
+    deleteMask();
 }
+
+
+let Useravatar=document.getElementById("Useravatar");
+let usermenu=document.getElementById("usermenu");
+let rentermenu=document.getElementById("rentermenu");
+let publishermenu=document.getElementById("publishermenu");
+let adminmenu=document.getElementById("adminmenu");
+console.log(Useravatar);
+console.log(usermenu);
+console.log(rentermenu);
+console.log(publishermenu);
+console.log(adminmenu);
 
 var a =true;
 Useravatar.addEventListener("click", () => {
@@ -86,4 +86,22 @@ Useravatar.addEventListener("click", () => {
         publishermenu.classList.remove("show");
         adminmenu.classList.remove("show");
     }
+});
+
+
+
+let filter=document.getElementById("filter");
+let filter_btn=document.getElementById("filter_btn");
+let filter_delete=document.getElementById("filter_delete")
+console.log(filter);
+console.log(filter_btn);
+console.log(filter_delete);
+
+filter_btn.addEventListener("click",function(){
+    createMask();
+    filter.style.display="block"
+});
+
+filter_delete.addEventListener("click",function(){
+    deleteMask();
 });
