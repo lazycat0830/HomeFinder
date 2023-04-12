@@ -4,36 +4,53 @@
     font-family: 'Microsoft JhengHei';
 }
 
-#body_content_body_content{
+#update_body_content_body_content{
     width: 80%;
     padding: 10px 0px;
 }
 
 
-#body_content_body_content div{
+#update_body_content_body_content div{
     padding: 10px 0px;
+
+    
 }
 
-#body_content_body_content a{
+#update_body_content_body_content a{
     padding: 5px 0px;
 }
 
+.update_text1{
+    display: flex;
+    justify-content: right;
+    margin-right: 60px;
+}
 
-.text1 label{
+
+.update_text1 label{
 
     font-size: 16px;
     font-weight: bolder;
 }
 
-.text1 input{
+.update_text1 input{
     width: 70%;
     padding: 3px 0px;
 }
 
-.btn1{
-    width: 100%;
+.update_btn1{
+    
+    width: 70%;
     background-color: #000;
     color: #fff;
-    border-radius: 25px;
+    border-radius: 30px;
+    margin: 5px 0px;
     padding: 5px 0px;
+    font-size: 14px;
 }
+
+#update_Account{
+    display: none;
+}
+
+

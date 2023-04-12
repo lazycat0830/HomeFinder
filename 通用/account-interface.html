@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/account-interface.css">
     <link rel="stylesheet" href="/css/typesetting.css">
+    <link rel="stylesheet" href="/css/updateAccount.css">
+    <link rel="stylesheet" href="/css/popup_window_layout.css">
+    <link rel="stylesheet" href="/css/Report_interface.css">
+    <link rel="stylesheet" href="/css/forgetpassword.css">
 </head>
 <body  class="relative">
     <div id="login" class="login_Location">
@@ -16,7 +20,7 @@
             <div id="body_content">
                 <div id="body_content_header">
                     <div id="body_content_header_content" class="flexbetween">
-                        <a id="delete1" href="#"><i class="fa-solid fa-xmark"></i></a>
+                        <button id="delete_longinbtn">X</button>
                         <span>登入</span>
                         <div></div>
                     </div>
@@ -25,12 +29,35 @@
                     <div id="body_content_body_content" class="flexcolumn">
                         <div class="t1"><label>帳號：</label><input type="text"></div>
                         <div class="t1"><label>密碼：</label><input type="text"></div>
-                        <div class="flexright t2"><a href="/通用/forgetpassword.html">忘記密碼</a></div>
+                        <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
                         <a href="#"><button class="btn1">登入</button></a>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="forgetpassword" class="forgetpassword">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <button id="delete_forgetbtn">X</button>
+                        <span>忘記密碼</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="forget_body_content_body_content" class="flexcolumn">
+                        <div class="forget_text1"><label>Email：</label><input type="text"></div>
+                        <a href="/通用/changepassword.html"><button class="forget_btn1">送出</button></a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+    
         </div>
     </div>
 
@@ -98,10 +125,10 @@
                         <span>服務區域：台中市</span>
                     </div>
                     <div class="flexend">
-                        <a class="Updata" href="#">修改</a>
+                        <button id="updataAccount_btn">修改</button>
                     </div>
                     <div>
-                        <button class="report">檢舉</button>
+                        <button id="report_btn" class="report_btn">檢舉</button>
                     </div>
                 </div>
             </div>
@@ -109,21 +136,76 @@
             <div class="Account_collect">
                 <div class="Housing_Profile">
                     <div class="Housing_Profile_content flexcolumn">
-                        <a href="/item.html"><div class="Houseimg relative">
+                        <a href="/通用/item.html"><div class="Houseimg relative">
                             <img width="100%" src="/image/1.webp">
-                            <a href="/collect.html"><i class="fa-solid fa-heart absolute Like"></i></a>
+                            <a id="likebtn" class="absolute Like"><img id="like" width="30px" src="/image/heart.png"></a>
                         </div></a>
                         <span class="text1">免仲介費/全新完工/獨洗曬/嚴選房客</span>
-                        <span class="text2">出租者： 顏小姐 <span style="color: #e48500;font-size: 12px;font-weight: bolder;">尚未有信用分數</span></span>
+                        <span class="text2 flexbetween">出租者： 顏小姐 <span style="color: #e48500;font-size: 12px;font-weight: bolder;">尚未有信用分數</span></span>
                         <span class="text3">上架日期： 2023/03/27 | 15:23</span>
                         <span class="text4">價格： <span style="color: #ff0000;font-weight: bolder;">11000<span style="font-size: 12px;font-weight: bolder;">元/月</span></span></span>
                     </div>
                 </div>
                 
                 
+                
             </div>
         </div>
     </div>
+
+
+    <div id="update_Account" class="updateAccount flexcenter">
+        <div id="body_width100" class="flexcenter">
+            <div id="update_body_content">
+                <div id="update_body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <button id="delete_updateAccount">X</button>
+                        <span>修改基本資料</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="update_body_content_body" class="flexcenter">
+                    <div id="update_body_content_body_content" class="flexcolumn">
+                        <div class="update_text1"><label>姓名：</label><input type="text" value="顏小姐"></div>
+                        <div class="update_text1"><label>帳號：</label><input type="text"  value="asd123"></div>
+                        <div class="update_text1"><label>密碼：</label><input type="password" value="123456"></div>
+                        <div class="update_text1"><label>密碼確認：</label><input type="password"  value="123456"></div>
+                        <div class="update_text1"><label>E-mail：</label><input type="email" value="asd123456@gmail.com"></div>
+                        <div class="update_text1"><label>電話：</label><input type="text"  value="0000000000"></div>
+                        <div class="flexcenter"><button class="update_btn1">保存</button></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+        
+
+    </div>
+
+    <div id="report" class="report">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <button id="delete_report">X</button>
+                        <span>檢舉</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="report_body_content_body_content" class="flexcolumn">
+                        <div class="report_text1">是否要檢舉{{Account}}</div>
+                        <div class="flexrow report_btnwidth">
+                            <a href="#"><button class="report_btn1">確認</button></a>
+                            <a href="#"><button class="report_btn2">取消</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
+
 </body>
-<script src="/javascript/index.js"></script>
+<script src="/javascript/account-interface.js"></script>
 </html>

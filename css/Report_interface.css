@@ -8,23 +8,23 @@
 
 
 
-#body_content_body_content div{
+#report_body_content_body_content div{
     padding: 20px auto;
 }
 
-#body_content_body_content a{
+#report_body_content_body_content a{
     padding: 5px 0px;
     width: 100%;
 }
 
-.text1{
+.report_text1{
     font-size: 20px;
     font-weight: bolder;
     text-align: center;
     padding: 20px 0px;
 }
 
-.btn1{
+.report_btn1{
     width: 80%;
     background-color: #000;
     color: #fff;
@@ -32,7 +32,7 @@
     padding: 5px 0px;
 }
 
-.btn2{
+.report_btn2{
     width: 80%;
     background-color: #fff;
     color: #000;
@@ -40,16 +40,16 @@
     padding: 5px 0px;
 }
 
-#body_content_body_content{
+#report_body_content_body_content{
     margin: 10% 20px;
 
 }
 
-.btnwidth{
+.report_btnwidth{
     width: 100%;
 }
 
-.btnwidth a{
+.report_btnwidth a{
     display: flex;
     justify-content: center;
     text-decoration: none;

@@ -1,25 +1,3 @@
-// window.onload = function(){
-//     let data1 =document.getElementById('data');
-
-
-//     axios({
-//         method: 'get',
-//         url: 'https://datacenter.taichung.gov.tw/Swagger/OpenData/817083dc-989b-47e8-a8df-2c37213b9484',
-//         headers:{
-//             "Content-Type": "application/json",
-//             "Accept": "application/json",
-//             // "Authorization": `Bearer ${token}`, 
-//         },
-//         params:{
-//             limit: 2,
-//         },
-//     })
-//     .then(( { data } ) => {
-//         data1.innerHTML = JSON.stringify(data);
-//     })
-//     .catch((error) => console.log(error))
-// }
-
 
 let btnlogin =document.getElementById("btnlogin");
 let delete_longinbtn =document.getElementById("delete_longinbtn");
@@ -37,7 +15,7 @@ let createMask =()=>{
     mask.className="mask";
     document.body.appendChild(mask);
     document.documentElement.classList.add("htmlMask");
-    mask.addEventListener("click",deleteMask);
+    
     
     
 };
@@ -49,7 +27,8 @@ let deleteMask =()=>{
         mask.parentNode.removeChild(mask);
         document.documentElement.classList.remove("htmlMask");
         login.style.display="none";
-        filter.style.display="none";
+        update_Account.style.display="none";
+        report.style.display="none";
         forgetpassword.style.display="none";
     }
 };
@@ -93,22 +72,25 @@ Useravatar.addEventListener("click", () => {
 
 
 
-let filter=document.getElementById("filter");
-let filter_btn=document.getElementById("filter_btn");
-let filter_delete=document.getElementById("filter_delete")
-console.log(filter);
-console.log(filter_btn);
-console.log(filter_delete);
 
-filter_btn.addEventListener("click",function(){
+let update_Account=document.getElementById("update_Account");
+let updataAccount_btn=document.getElementById("updataAccount_btn");
+let delete_updateAccount=document.getElementById("delete_updateAccount");
+
+console.log(update_Account);
+console.log(updataAccount_btn);
+console.log(delete_updateAccount);
+
+updataAccount_btn.addEventListener("click",function(){
     createMask();
-    filter.style.display="block";
+    update_Account.style.display="block";
 });
 
-filter_delete.onclick=function(){
+delete_updateAccount.addEventListener("click",function(){
     deleteMask();
-}
+    update_Account.style.display="none";
 
+});
 
 
 let likebtn=document.getElementById("likebtn");
@@ -122,7 +104,27 @@ likebtn.addEventListener("click",function(){
         } else {
         like.src = "/image/heart.png";
         }
-})
+});
+
+let report=document.getElementById("report");
+let report_btn=document.getElementById("report_btn");
+let delete_report=document.getElementById("delete_report");
+
+console.log(report);
+console.log(report_btn);
+console.log(delete_report);
+
+report_btn.addEventListener("click",function(){
+    createMask();
+    report.style.display="block";
+});
+
+delete_report.addEventListener("click",function(){
+    deleteMask();
+    report.style.display="none";
+
+});
+
 
 
 let forgetpassword=document.getElementById("forgetpassword");

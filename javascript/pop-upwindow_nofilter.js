@@ -1,25 +1,3 @@
-// window.onload = function(){
-//     let data1 =document.getElementById('data');
-
-
-//     axios({
-//         method: 'get',
-//         url: 'https://datacenter.taichung.gov.tw/Swagger/OpenData/817083dc-989b-47e8-a8df-2c37213b9484',
-//         headers:{
-//             "Content-Type": "application/json",
-//             "Accept": "application/json",
-//             // "Authorization": `Bearer ${token}`, 
-//         },
-//         params:{
-//             limit: 2,
-//         },
-//     })
-//     .then(( { data } ) => {
-//         data1.innerHTML = JSON.stringify(data);
-//     })
-//     .catch((error) => console.log(error))
-// }
-
 
 let btnlogin =document.getElementById("btnlogin");
 let delete_longinbtn =document.getElementById("delete_longinbtn");
@@ -37,7 +15,7 @@ let createMask =()=>{
     mask.className="mask";
     document.body.appendChild(mask);
     document.documentElement.classList.add("htmlMask");
-    mask.addEventListener("click",deleteMask);
+    
     
     
 };
@@ -49,7 +27,6 @@ let deleteMask =()=>{
         mask.parentNode.removeChild(mask);
         document.documentElement.classList.remove("htmlMask");
         login.style.display="none";
-        filter.style.display="none";
         forgetpassword.style.display="none";
     }
 };
@@ -91,38 +68,6 @@ Useravatar.addEventListener("click", () => {
     }
 });
 
-
-
-let filter=document.getElementById("filter");
-let filter_btn=document.getElementById("filter_btn");
-let filter_delete=document.getElementById("filter_delete")
-console.log(filter);
-console.log(filter_btn);
-console.log(filter_delete);
-
-filter_btn.addEventListener("click",function(){
-    createMask();
-    filter.style.display="block";
-});
-
-filter_delete.onclick=function(){
-    deleteMask();
-}
-
-
-
-let likebtn=document.getElementById("likebtn");
-let like=document.getElementById("like");
-console.log(likebtn);
-console.log(like);
-
-likebtn.addEventListener("click",function(){
-    if (like.src.match("/image/heart.png")) {
-        like.src = "/image/like.png";
-        } else {
-        like.src = "/image/heart.png";
-        }
-})
 
 
 let forgetpassword=document.getElementById("forgetpassword");

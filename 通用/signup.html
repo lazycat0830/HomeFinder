@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/forgetpassword.css">
     <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/popup_window_layout.css">
@@ -18,7 +19,7 @@
             <div id="body_content">
                 <div id="body_content_header">
                     <div id="body_content_header_content" class="flexbetween">
-                        <a id="delete1" href="#"><i class="fa-solid fa-xmark"></i></a>
+                        <button id="delete_longinbtn">X</button>
                         <span>登入</span>
                         <div></div>
                     </div>
@@ -27,12 +28,35 @@
                     <div id="body_content_body_content" class="flexcolumn">
                         <div class="t1"><label>帳號：</label><input type="text"></div>
                         <div class="t1"><label>密碼：</label><input type="text"></div>
-                        <div class="flexright t2"><a href="/通用/forgetpassword.html">忘記密碼</a></div>
+                        <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
                         <a href="#"><button class="btn1">登入</button></a>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="forgetpassword" class="forgetpassword">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <button id="delete_forgetbtn">X</button>
+                        <span>忘記密碼</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="forget_body_content_body_content" class="flexcolumn">
+                        <div class="forget_text1"><label>Email：</label><input type="text"></div>
+                        <a href="/通用/changepassword.html"><button class="forget_btn1">送出</button></a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+    
         </div>
     </div>
 
@@ -86,7 +110,7 @@
             </div>
         </div>
 	<hr>
-	<div class="collect_header">變更密碼</div>
+	<div class="collect_header">註冊</div>
     </header>
 
 
@@ -98,11 +122,11 @@
                     <input type="button" value="出租者" id="btn1" tabindex="1"/>
                 </div>
                 <div class="inner2 flexcolumn" >
-                    <div><label>姓名：</label><input type="text"/></div>
-                    <div><label>帳號：</label><input type="text"/></div>
-                    <div><label>密碼：</label><input type="text"/></div>
-                    <div><label>確認密碼：</label><input type="text"/></div>
-                    <div><label>電話：</label><input type="text"/></div>
+                    <div class="al"><label>姓名：</label><div><input type="text"/></div></div>
+                    <div class="al"><label>帳號：</label><div><input type="text"/></div></div>
+                    <div class="al"><label>密碼：</label><div><input type="text"/></div></div>
+                    <div class="al"><label>確認密碼：</label><div><input type="text"/></div></div>
+                    <div class="al"><label>電話：</label><div><input type="text"/></div></div>
                 </div>
 
                 <div class="inner3">
@@ -113,20 +137,7 @@
         </div>
     </div>
 
-
-
-
-
-    
-    <!-- <div class="inner2">
-        <br>
-        <label for="account" id="account"></label><input type="text" /><br>
-        <label for="password"  id="password"></label><input type="password"/><br>
-        <label for="checkpassword" id="checkpassword"></label><input type="password" /><br>
-        <label for="email" id="email">E-Mail：</label><input type="email" /><br>
-        <label for="phonenumber" id="phonenumber"></label><input type="text" /><br>
-    </div> -->
     
 </body>
-<script src="/javascript/index.js"></script>
+<script src="/javascript/pop-upwindow_nofilter.js"></script>
 </html>

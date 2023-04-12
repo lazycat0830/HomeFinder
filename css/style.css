@@ -127,7 +127,7 @@ body.relative{
 
 
 #content_in{
-    margin: 0px 20px;
+    margin: 0px 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -186,61 +186,6 @@ body.relative{
 }
 
 
-
-#body_content_body_content div{
-    padding: 10px 0px;
-}
-
-#body_content_body_content a{
-    padding: 5px 0px;
-}
-
-.t1 label{
-    font-size: 16px;
-    font-weight: bolder;
-}
-
-.t1 input{
-    padding: 3px 0px;
-}
-
-.t2 a{
-    font-size: 12px;
-    color: #000;
-}
-
-.btn1{
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    border-radius: 25px;
-    padding: 5px 0px;
-}
-
-.btn2{
-    width: 100%;
-    background-color: #fff;
-    color: #000;
-    border-radius: 25px;
-    padding: 5px 0px;
-}
-
-#body_content_body_content{
-    margin: 10% 30px;
-
-}
-
-#login{
-    display: none;
-}
-
 #filter{
     display: none;
-}
-
-.login_Location{
-    position: absolute;
-    width: 100%;
-    top: 30%;
-    z-index: 99999;
 }

@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/popup_window_layout.css">
     <link rel="stylesheet" href="/css/typesetting.css">
-    <link rel="stylesheet" href="/css/forgetpassword.css">
+    <link rel="stylesheet" href="/css/Report_interface.css">
 </head>
 <body class="relative">
     <div id="body_width100" class="absolute flexcenter">
         <div id="body_content">
             <div id="body_content_header">
                 <div id="body_content_header_content" class="flexbetween">
-                    <a href="#"><i class="fa-solid fa-xmark"></i></a>
-                    <span>忘記密碼</span>
+                    <button id="delete_updateAccount">X</button>
+                    <span>檢舉</span>
                     <div></div>
                 </div>
             </div>
             <div id="body_content_body" class="flexcenter">
-                <div id="body_content_body_content" class="flexcolumn">
-                    <div class="text1"><label>Email：</label><input type="text"></div>
-                    <a href="/index.html"><button class="btn1">登入</button></a>
-                    
+                <div id="report_body_content_body_content" class="flexcolumn">
+                    <div class="report_text1">是否要檢舉{{Account}}</div>
+                    <div class="flexrow report_btnwidth">
+                        <a href="#"><button class="report_btn1">確認</button></a>
+                        <a href="#"><button class="report_btn2">取消</button></a>
+                    </div>
                 </div>
             </div>
         </div>

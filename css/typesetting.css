@@ -129,7 +129,7 @@
     bottom: 0;
     right: 0;
     position: fixed;
-    z-index: 99998;
+    z-index: 90000;
     background:rgba(0, 0, 0, 0.6);
 }
 
@@ -145,4 +145,76 @@
     width: 100%;
     top: 10%;
     z-index: 99999;
+}
+
+.updateAccount{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    z-index: 99999;
+}
+
+.report{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    z-index: 99999;
+    display: none;
+}
+
+#body_content{
+    padding: 20px 0px;
+}
+
+#update_body_content{
+    width: 500px;
+    height: 400px;
+}
+
+#update_body_content_body{
+    border: #000 1px solid;
+    padding-bottom:20px;
+    border-bottom-left-radius:30px ;
+    border-bottom-right-radius:30px ;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#update_body_content_header{
+    width: auto;
+    border:1px #000 solid;
+    background-color: #fff;
+    overflow: hidden;
+    border-top-left-radius:30px ;
+    border-top-right-radius:30px ;
+}
+
+#body_content_header_content button{
+    background-color: #fff;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #000;
+    border: 0px;
+}
+
+#login{
+    display: none;
+}
+
+.login_Location{
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    z-index: 99999;
+}
+
+.forgetpassword{
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    z-index: 99999;
+}
+
+#forgetpassword{
+    display: none;
 }

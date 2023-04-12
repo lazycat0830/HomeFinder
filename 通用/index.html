@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/popup_window_layout.css">
     <link rel="stylesheet" href="/css/filter.css">
+    <link rel="stylesheet" href="/css/forgetpassword.css">
     <title>Homefinder租屋網</title>
 
 </head>
@@ -369,6 +370,7 @@
                     <span class="text4">價格： <span style="color: #ff0000;font-weight: bolder;">11000<span style="font-size: 12px;font-weight: bolder;">元/月</span></span></span>
                 </div>
             </div>
+            
 
 
         </div>
@@ -387,7 +389,7 @@
             <div id="body_content">
                 <div id="body_content_header">
                     <div id="body_content_header_content" class="flexbetween">
-                        <a id="delete1" href="#"><i class="fa-solid fa-xmark"></i></a>
+                        <button id="delete_longinbtn">X</button>
                         <span>登入</span>
                         <div></div>
                     </div>
@@ -396,7 +398,7 @@
                     <div id="body_content_body_content" class="flexcolumn">
                         <div class="t1"><label>帳號：</label><input type="text"></div>
                         <div class="t1"><label>密碼：</label><input type="text"></div>
-                        <div class="flexright t2"><a href="/通用/forgetpassword.html">忘記密碼</a></div>
+                        <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
                         <a href="#"><button class="btn1">登入</button></a>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
                     </div>
@@ -405,12 +407,35 @@
         </div>
     </div>
 
+    <div id="forgetpassword" class="forgetpassword">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <button id="delete_forgetbtn">X</button>
+                        <span>忘記密碼</span>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="forget_body_content_body_content" class="flexcolumn">
+                        <div class="forget_text1"><label>Email：</label><input type="text"></div>
+                        <a href="/通用/changepassword.html"><button class="forget_btn1">送出</button></a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
+
     <div id="filter" class="filter_Location">
         <div id="body_width100" class="flexcenter">
             <div id="filter-body_content">
                 <div id="filter-body_content_header">
                     <div id="filter-body_content_header_content" class="flexbetween">
-                        <a id="filter_delete"><i class="fa-solid fa-xmark"></i></a>
+                        <button id="filter_delete">X</button>
                         <span>篩選條件</span>
                         <div></div>
                     </div>
@@ -567,6 +592,8 @@
             </div>
         </div>
     </div>
+
+    
 
 
 </body>
