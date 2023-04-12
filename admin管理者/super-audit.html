@@ -11,9 +11,37 @@
     <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/popup_window_layout.css">
+    <link rel="stylesheet" href="/css/Review_housing_information_interface.css">
 
 </head>
 <body  class="relative">
+    <div id="check">
+        <div id="body_width100" class="flexcenter">
+            <div id="check_body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <div></div>
+                        <span>房屋資訊審核</span>
+                        <button id="delete_checkbtn">X</button>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="check_body_content_body_content" class="flexcolumn">
+                        <div class="check_text1"><label>房屋名稱：</label><input type="text" value="aaaaa"></div>
+                        <div class="check_text1"><label>地址：</label><input type="text"  value="aaaaa"></div>
+                        <div class="check_text1"><label>價錢：</label><input type="number" value="3000">/月</div>
+                        <div class="check_text1"><label>樓層：</label><input type="text"  value="5/12"></div>
+                        <div class="check_text1"><label>面積：</label><input type="text" value="10">坪</div>
+                        <div class="check_text1"><label>介紹：</label><textarea>............</textarea></div>
+                        <a href="#"><button class="check_btn1">保存</button></a>
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
+
 
 
 <header>
@@ -95,7 +123,7 @@
                         <td>房屋名稱</td>
                         <td ><span class="rad">價錢</span>/月</td>
                         <td><a href="#"><img width="10%" src="/image/圖片2.png"></a></td>
-                        <td><button>查看</button></td>
+                        <td><button id="check_btn1">查看</button></td>
                         <td>Account</td>
                         <td>
                             <div><input class="Ok" type="button" value="通過"></div>
@@ -108,7 +136,7 @@
                     <td>房屋名稱</td>
                     <td ><span class="rad">價錢</span>/月</td>
                     <td><a href="#"><img width="10%" src="/image/圖片2.png"></a></td>
-                    <td><button>查看</button></td>
+                    <td><button id="check_btn2">查看</button></td>
                     <td>Account</td>
                     <td>
                         <div><input class="Ok" type="button" value="通過"></div>
@@ -124,5 +152,5 @@
 
 
 </body>
-<script src="/javascript/loggedin.js"></script>
+<script src="/javascript/super-check.js"></script>
 </html>

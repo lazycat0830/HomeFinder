@@ -57,11 +57,17 @@ body{
     height: 50px;
     align-items: center;
 }
+#filter-body_content_header_content span{
+    font-size: 24px;
+    font-weight: bolder;
+}
 
-#filter-body_content_header_content a{
+#filter-body_content_header_content button{
     text-decoration: none;
     color: #000;
     font-size: 1.5rem;
+    background-color: #fff;
+    border: 0px;
 }
 
 #filter-body_content_body{
