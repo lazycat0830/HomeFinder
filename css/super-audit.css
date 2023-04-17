@@ -36,6 +36,12 @@
     text-decoration:underline;
 }
 
+.reviewcentent table tr td div {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .rad{
     color: #ff0000;
     font-weight: bolder;

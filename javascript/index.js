@@ -141,3 +141,6 @@ forgetpassword_btn.addEventListener("click",function(){
 delete_forgetbtn.onclick=function(){
     deleteMask();
 }
+
+
+let content_in =document.getElementById("content_in");

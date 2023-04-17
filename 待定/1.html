@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>使用axios获取数据并显示在页面上</title>
+</head>
+<body>
+	<h1>用户列表</h1>
+	<ul id="userList">
+		<!-- 用户列表会动态生成 -->
+	</ul>
+
+	<!-- 引入axios -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>
+		// 获取数据
+        axios({
+        method: 'get',
+        url: 'http://localhost:5190/api/Rental/123e4567-e89b-12d3-a456-426655440000',
+        headers:{
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${token}`, 
+        },
+        
+        
+    })
+			.then(response => {
+				// 将数据渲染到页面上
+				const userList = document.querySelector('#userList');
+				response.data.forEach(user => {
+					const li = document.createElement('li');
+					li.textContent = user.name;
+					userList.appendChild(li);
+				});
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	</script>
+</body>
+</html>

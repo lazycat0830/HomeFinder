@@ -32,12 +32,14 @@
 }
 
 .upload_img_btn{
-    padding: 2% 3%;
+    width: 130px;
+    height: 130px;
     font-size: 4rem;
     margin: 10px;
     background-color: #fff;
     border: 3px #000 ;
     border-style:dashed;
+    
 }
 
 .housing_information_title{
