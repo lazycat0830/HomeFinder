@@ -1,24 +1,76 @@
-// window.onload = function(){
-//     let data1 =document.getElementById('data');
+window.onload=function(){
+    let content_in =document.getElementById("content_in");
+    const Housing_Profile_div=document.createElement('div');
+    Housing_Profile_div.classList.add('Housing_Profile');
 
+    const Housing_Profile_content_div=document.createElement('div');
+    Housing_Profile_content_div.classList.add('Housing_Profile_content');
+    Housing_Profile_content_div.classList.add('flexcolumn');
 
-//     axios({
-//         method: 'get',
-//         url: 'https://datacenter.taichung.gov.tw/Swagger/OpenData/817083dc-989b-47e8-a8df-2c37213b9484',
-//         headers:{
-//             "Content-Type": "application/json",
-//             "Accept": "application/json",
-//             // "Authorization": `Bearer ${token}`, 
-//         },
-//         params:{
-//             limit: 2,
-//         },
-//     })
-//     .then(( { data } ) => {
-//         data1.innerHTML = JSON.stringify(data);
-//     })
-//     .catch((error) => console.log(error))
-// }
+    const  Housing_Profile_a=document.createElement('a');
+    Housing_Profile_a.setAttribute('href', '/通用/item.html');
+
+    const Housing_Profile_a_Houseimg=document.createElement('div');
+    Housing_Profile_a_Houseimg.classList.add("Houseimg");
+    Housing_Profile_a_Houseimg.classList.add("relative");
+
+    const Houseimg_img=document.createElement('img');
+    Houseimg_img.setAttribute('width','100%');
+    Houseimg_img.setAttribute('src','/image/1.webp');
+
+    const Houseimg_a=document.createElement('a');
+    Houseimg_a.classList.add("Like");
+    Houseimg_a.classList.add("absolute");
+    Houseimg_a.id="likebtn";
+
+    const Houseimg_a_img=document.createElement('img');
+    Houseimg_a_img.id="like";
+    Houseimg_a_img.setAttribute('width','30px');
+    Houseimg_a_img.setAttribute('src','/image/heart.png');
+
+    const Housing_Profile_text1=document.createElement('a');
+    Housing_Profile_text1.classList.add('text1');
+    Housing_Profile_text1.setAttribute('href', '/通用/item.html');
+    Housing_Profile_text1.textContent='免仲介費/全新完工/獨洗曬/嚴選房客';
+
+    const Housing_Profile_text2=document.createElement('a');
+    Housing_Profile_text2.classList.add('text2');
+    Housing_Profile_text2.classList.add('flexbetween');
+    Housing_Profile_text2.setAttribute('href', '/通用/account-interface.html');
+    Housing_Profile_text2.textContent='出租者：顏小姐';
+    const Housing_Profile_text2_span=document.createElement('span');
+    Housing_Profile_text2_span.classList.add('fraction');
+    Housing_Profile_text2_span.textContent='尚未有信用分數';
+
+    const Housing_Profile_text3=document.createElement('span');
+    Housing_Profile_text3.classList.add('text3');
+    Housing_Profile_text3.textContent='上架日期： 2023/03/27 | 15:23';
+
+    const Housing_Profile_text4=document.createElement('span');
+    Housing_Profile_text4.classList.add('text4');
+    Housing_Profile_text4.textContent='價格：';
+    const Housing_Profile_text4_span=document.createElement('span');
+    Housing_Profile_text4_span.classList.add('price');
+    Housing_Profile_text4_span.textContent='11000';
+    const Housing_Profile_text4_span_span=document.createElement('span');
+    Housing_Profile_text4_span_span.classList.add('unit');
+    Housing_Profile_text4_span_span.textContent='元/月';
+
+    content_in.appendChild(Housing_Profile_div);
+    Housing_Profile_div.appendChild(Housing_Profile_content_div);
+    Housing_Profile_content_div.appendChild(Housing_Profile_a);
+    Housing_Profile_a.appendChild(Housing_Profile_a_Houseimg);
+    Housing_Profile_a_Houseimg.appendChild(Houseimg_img);
+    Housing_Profile_a_Houseimg.appendChild(Houseimg_a);
+    Houseimg_a.appendChild(Houseimg_a_img);
+    Housing_Profile_content_div.appendChild(Housing_Profile_text1);
+    Housing_Profile_content_div.appendChild(Housing_Profile_text2);
+    Housing_Profile_text2.appendChild(Housing_Profile_text2_span);
+    Housing_Profile_content_div.appendChild(Housing_Profile_text3);
+    Housing_Profile_content_div.appendChild(Housing_Profile_text4);
+    Housing_Profile_text4.appendChild(Housing_Profile_text4_span);
+    Housing_Profile_text4_span.appendChild(Housing_Profile_text4_span_span);
+}
 
 
 let btnlogin =document.getElementById("btnlogin");
@@ -143,4 +195,4 @@ delete_forgetbtn.onclick=function(){
 }
 
 
-let content_in =document.getElementById("content_in");
+

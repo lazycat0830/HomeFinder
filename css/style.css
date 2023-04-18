@@ -161,6 +161,12 @@ body.relative{
     line-height: 1.7rem;
 }
 
+.Housing_Profile a{
+    line-height: 1.7rem;
+    color: #000;
+    text-decoration: none;
+}
+
 .relative{
     position: relative;
     z-index: 0;
@@ -185,7 +191,35 @@ body.relative{
     font-weight: bolder;
 }
 
+.fraction{
+    color: #e48500;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.price{
+    color: #ff0000;
+    font-weight: bolder;
+}
+
+.unit{
+    font-size: 12px;
+    font-weight: bolder;
+}
+
 
 #filter{
     display: none;
+}
+
+@media screen and (max-width: 1400px) {
+    /* calc(100% - 24px); */
+}
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 576px) {
 }
