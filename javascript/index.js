@@ -163,23 +163,23 @@ filter_delete.onclick=function(){
 
 
 
-let likebtn=document.getElementById("likebtn");
-let like=document.getElementById("like");
-console.log(likebtn);
-console.log(like);
+// let likebtn=document.getElementById("likebtn");
+// let like=document.getElementById("like");
+// console.log(likebtn);
+// console.log(like);
 
-likebtn.addEventListener("click",function(){
-    if (like.src.match("/image/heart.png")) {
-        like.src = "/image/like.png";
-        } else {
-        like.src = "/image/heart.png";
-        }
-})
+// likebtn.addEventListener("click",function(){
+//     if (like.src.match("/image/heart.png")) {
+//         like.src = "/image/like.png";
+//         } else {
+//         like.src = "/image/heart.png";
+//         }
+// })
 
 
 let forgetpassword=document.getElementById("forgetpassword");
 let forgetpassword_btn=document.getElementById("forgetpassword_btn");
-let delete_forgetbtn=document.getElementById("delete_forgetbtn")
+let delete_forgetbtn=document.getElementById("delete_forgetbtn");
 console.log(forgetpassword);
 console.log(forgetpassword_btn);
 console.log(delete_forgetbtn);

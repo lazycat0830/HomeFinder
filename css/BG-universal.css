@@ -5,7 +5,7 @@
 }
 
 #content{
-    padding-top: 100px;
+    padding-top:80px;
 }
 
 #content_in{
@@ -47,4 +47,13 @@
 .on{
     color: #fff;
     background-color: #000;
+}
+
+.BG_img{
+    width: 100px;
+    margin:auto auto;
+}
+
+.content_td8_divwidth{
+    width: 90px;
 }

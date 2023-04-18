@@ -101,3 +101,10 @@ body{
     margin: 10% 30px;
 
 }
+
+.validatatext{
+    font-size: 12px;
+    font-weight: bolder;
+    color: #ff0000;
+    display: none;
+}

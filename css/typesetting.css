@@ -203,6 +203,7 @@
     font-weight: bolder;
     color: #000;
     border: 0px;
+
 }
 
 #login{
@@ -225,4 +226,14 @@
 
 #forgetpassword{
     display: none;
+}
+
+.updateallbtn{
+    color: #000;
+    background-color: #fff;
+    border: 0px;
+    font-size: 14px;
+    text-decoration: underline;
+    padding: 4px 0px;
+    cursor: pointer;
 }

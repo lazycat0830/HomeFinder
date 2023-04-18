@@ -8,6 +8,7 @@
     border: 1px #000 solid;
     overflow-y: scroll;
     margin: 0px auto;
+
 }
 
 .Accountcentent table{
@@ -19,12 +20,14 @@
     width: auto;
     text-align: center;
     padding: 15px 0px;
+
 }
 
 .Accountcentent table tr td{
     width: auto;
     text-align: center;
     padding: 15px 0px;
+
 }
 
 .Accountcentent table tr td button{
@@ -32,4 +35,5 @@
     background-color: #000;
     border-radius: 20px;
     padding: 5px 10px;
+    cursor: pointer;
 }

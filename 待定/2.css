@@ -1,0 +1,4 @@
+label[for="upload"]::after {
+    content: " (Max size: 10MB)"; /*添加文本*/
+    color: red;
+  }

@@ -14,9 +14,9 @@ axios({
 })
         .then(( { data } ) => {
             
-             data1.innerHTML = JSON.stringify(data.genre);
-             
-         })
+                data1.innerHTML = JSON.stringify(data.genre);
+
+            })
         .catch(error => {
             console.log(error);
         });
