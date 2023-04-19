@@ -55,7 +55,7 @@ axios({
             let content_td5=document.createElement('td');
             content_td5.innerHTML=data.rentalBlock[i].allData.address;
             let content_td6=document.createElement('td');
-            content_td6.innerHTML=data.rentalBlock[i].allData.uploadtime;
+            content_td6.innerHTML=data.rentalBlock[i].allData.uploadtime.replace('T',' | ');
             let content_td7=document.createElement('td');
             let content_td7_div=document.createElement('div');
             content_td7_div.classList.add('flexcolumn');
@@ -71,10 +71,10 @@ axios({
             content_td7_div_input3.setAttribute('type','button');
             content_td7_div_input3.classList.add('updateallbtn');
             content_td7_div_input3.setAttribute('value','刪除');
+            content_td7_div_input3.setAttribute('onclick',"getId(event)")
             content_td7_div_input3.id=data.rentalBlock[i].allData.rental_id+'delete';
             
-            
-
+        
             
 
 
@@ -93,19 +93,7 @@ axios({
             content_td7_div.appendChild(content_td7_div_input2);
             content_td7_div.appendChild(content_td7_div_input3);
     };
-//     let deletbtn1=document.getElementById(data.rentalBlock[0].allData.rental_id+'delete');
-//     console.log(deletbtn1);
 
-//     deletbtn1.onclick=function(){
-//     console.log(data.rentalBlock[1].allData.rental_id);
-//     axios.delete(`/api/items/${data.rentalBlock[0].allData.rental_id}`)
-//     .then(function (response) {
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
-// }
 
 
             
@@ -118,8 +106,22 @@ axios({
 
     }
 
-    
-        
+
+
+    function getId(event) {
+        var element = event.target;
+        var id = element.getAttribute("id");
+        console.log(id);
+
+        axios.delete(`http://localhost:5190/api/Home/${id.replace('delete','')}`)
+        .then(function (response) {
+            console.log(response);
+            location.reload();
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
     
     
     

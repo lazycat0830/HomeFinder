@@ -12,7 +12,7 @@ axios({
 })
         .then(( { data } ) => {
             
-            var all=1;
+            var all=0;
 
             data.idList.forEach(function(currentValue) {
             console.log(currentValue);

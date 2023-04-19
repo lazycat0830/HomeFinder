@@ -42,9 +42,10 @@
     shelfbtn.onclick = function(){
         // const file1 = document.getElementById('file1').files[0]; // 获取文件对象
         // const reader = new FileReader(); // 创建FileReader对象
-        // reader.readAsDataURL(file1); // 将文件读取为Base64编码字符串
+        // const img =reader.readAsDataURL(file1); // 将文件读取为Base64编码字符串
         // reader.onload = function() { // 当读取完成时
-        // const base64String = reader.result.replace(/^data:.+;base64,/, ''); // 获取Base64编码的字符串
+        // const base64String = img.replace(/^data:.+;base64,/, ''); // 获取Base64编码的字符串
+        // console.log(img);
         axios({
             method: 'post',
             url: 'http://localhost:5190/api/Home/InsertRental',
@@ -54,7 +55,7 @@
             // "Authorization": `Bearer ${token}`, 
             },
             data: {
-                img1:'E:\\程式\\圖片\\1.webp',
+                img1:base64String,
                 img2:'E:\\程式\\圖片\\2.webp',
             type: '公寓',
             floor: '2/200',

@@ -16,9 +16,11 @@ let img4 = new FileReader();
 let img5 = new FileReader();
 
 imgbtn1.addEventListener('click', function() {
+    debugger;
     let input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
+    input.id='file1';
     input.onchange = function(event) {
     
         img1.readAsDataURL(event.target.files[0]);
@@ -144,19 +146,18 @@ shelfbtn.onclick = function(){
     //     const reader = new FileReader(); // 创建FileReader对象
     //     reader.readAsDataURL(file1); // 将文件读取为Base64编码字符串
     //     reader.onload = function() { // 当读取完成时
-    console.log(img1.result);
-    console.log(img2.result);
-    console.log(img3.result);
-    console.log(img4.result);
-    console.log(img5.result);
+    // console.log(img1.result);
+    // console.log(img2.result);
+    // console.log(img3.result);
+    // console.log(img4.result);
+    // console.log(img5.result);
+    debugger;
+    const file1 = document.getElementById('file1').files[0]; // 获取文件对象
+    const reader = new FileReader(); // 创建FileReader对象
+    const img1 =reader.readAsDataURL(file1); // 将文件读取为Base64编码字符串
+    reader.onload = function() { // 当读取完成时
     const base64String1 = img1.result.replace(/^data:.+;base64,/, ''); // 获取Base64编码的字符串
-    const base64String2 = img2.result.replace(/^data:.+;base64,/, '');
-    // const formData = new FormData(document.getElementById('form'));
-    // formData.append('avatar', img1.target.files[0]);
-    // formData.get('imgbtn1file'); 
-    // formData.get('imgbtn2file'); 
-//     const formData = new FormData();
-//     formData.append('img1_1', input1.files[0]);
+    console.log(img1);
     
     axios({
         method: 'post',
@@ -170,7 +171,7 @@ shelfbtn.onclick = function(){
         data: { // 提交给服务器的数据
             // 这里可以添加要更新的数据属性和值
             img1_1:base64String1,
-            img1_2:base64String2,
+            // img1_2:base64String2,
             type:'公寓',
             floor:floor,
             genre:'整層住家',
@@ -197,3 +198,4 @@ shelfbtn.onclick = function(){
         });
 
  }
+}

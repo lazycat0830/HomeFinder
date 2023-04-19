@@ -122,11 +122,12 @@
                     <input type="button" value="出租者" id="btn1" tabindex="1"/>
                 </div>
                 <div class="inner2 flexcolumn" >
-                    <div class="al"><label>姓名：</label><div><input type="text"/></div></div>
-                    <div class="al"><label>帳號：</label><div><input type="text"/></div></div>
-                    <div class="al"><label>密碼：</label><div><input type="text"/></div></div>
-                    <div class="al"><label>確認密碼：</label><div><input type="text"/></div></div>
-                    <div class="al"><label>電話：</label><div><input type="text"/></div></div>
+                    <div class="al"><label>姓名：</label><div><input id="name" type="text"/></div></div>
+                    <div class="al"><label>帳號：</label><div><input id="account" type="text"/></div></div>
+                    <div class="al"><label>密碼：</label><div><input id="password" type="password"/></div></div>
+                    <div class="al"><label>確認密碼：</label><div><input id="passwordcheck" type="password"/></div></div>
+                    <div class="al"><label>電話：</label><div><input id="phone" type="text"/></div></div>
+                    <div class="al"><label>Email：</label><div><input id="email" type="email"/></div></div>
                 </div>
 
                 <div class="inner3">
@@ -139,9 +140,7 @@
     <div id="data1"></div>
     
 </body>
-<!-- <script src="/javascript/API/get-rental.js"></script> -->
-<!-- <script src="/javascript/API/get-rentalList.js"></script> -->
-<!-- <script src="/javascript/API/delete-rental.js"></script> -->
+<script src="/javascript/API/post-signup.js"></script>
 <script src="/javascript/pop-upwindow_nofilter.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>
