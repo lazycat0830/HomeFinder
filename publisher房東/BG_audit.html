@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/super-setAccount.css">
     <link rel="stylesheet" href="/css/BG-universal.css"> 
 
-    <title>後台管理-下架</title>
+    <title>後台管理-審核中</title>
 </head>
 
 <body  class="relative">
@@ -76,8 +76,8 @@
                 <div class="nav_field flexrow">
                     
                         <a class="off" href="/publisher房東/BG_up.html">上架</a>
-                        <a class="on" href="/publisher房東/BG_down.html">下架</a>
-                        <a class="off" href="/publisher房東/BG_audit.html">審核中</a>
+                        <a class="off" href="/publisher房東/BG_down.html">下架</a>
+                        <a class="on" href="/publisher房東/BG_audit.html">審核中</a>
                         <a class="off" href="/publisher房東/BG_date.html">設定可預約時間</a>
                     </div>
                     <a href="/publisher房東/createitem.html"><button>新增房屋</button></a>
@@ -92,7 +92,7 @@
                             <th>價錢</th>
                             <th>位置</th>
                             <th>更新時間</th>
-                            <th>修改</th>
+                            <th>狀態</th>
                             
                     </tr>
                     <tr><td colspan="8" style="padding: 0px;"><hr></td></tr>
@@ -108,6 +108,6 @@
 
     </body>
     <script src="/javascript/loggedin.js"></script>
-    <script src="/javascript/BG_audit.js"></script>
+    <script src="/javascript/API/BG_audit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>

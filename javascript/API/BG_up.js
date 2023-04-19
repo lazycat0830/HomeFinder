@@ -1,3 +1,8 @@
+
+let content_td7_div_input3;
+var all=0;
+
+
 window.onload=function(){
     let data1=document.getElementById('data1');
 axios({
@@ -12,17 +17,23 @@ axios({
 })
         .then(( { data } ) => {
             
-            var all=1;
+            
 
             data.idList.forEach(function(currentValue) {
             console.log(currentValue);
                 all++;
+                console.log(all);
             });
             let audittable=document.getElementById("audittable");
-            
+            // for(var j=0;j<=all;j++){
+            //     if(data.rentalBlock[j].allData.check){
+            //         allcheck++;
+            //     }
+            //     console.log(allcheck);
+            // }
 
 
-            for(var i=0;i<all;i++){
+            for(var i=0;i<=all;i++){
 
             // console.log(data.rentalBlock[i].allData);
 
@@ -56,12 +67,13 @@ axios({
             content_td7_div_input2.setAttribute('type','button');
             content_td7_div_input2.classList.add('updateallbtn');
             content_td7_div_input2.setAttribute('value','下架');
-            let content_td7_div_input3=document.createElement('input');
+            content_td7_div_input3=document.createElement('input');
             content_td7_div_input3.setAttribute('type','button');
             content_td7_div_input3.classList.add('updateallbtn');
             content_td7_div_input3.setAttribute('value','刪除');
-            let content_td8=document.createElement('td');
-            content_td8.classList.add("content_td8_divwidth");
+            content_td7_div_input3.id=data.rentalBlock[i].allData.rental_id+'delete';
+            
+            
 
             
 
@@ -80,9 +92,20 @@ axios({
             content_td7_div.appendChild(content_td7_div_input1);
             content_td7_div.appendChild(content_td7_div_input2);
             content_td7_div.appendChild(content_td7_div_input3);
-
-
     };
+//     let deletbtn1=document.getElementById(data.rentalBlock[0].allData.rental_id+'delete');
+//     console.log(deletbtn1);
+
+//     deletbtn1.onclick=function(){
+//     console.log(data.rentalBlock[1].allData.rental_id);
+//     axios.delete(`/api/items/${data.rentalBlock[0].allData.rental_id}`)
+//     .then(function (response) {
+//         console.log(response);
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
+// }
 
 
             
@@ -93,10 +116,10 @@ axios({
         });
 
 
-
-
-
-        
-
     }
+
+    
+        
+    
+    
     
