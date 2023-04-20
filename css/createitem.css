@@ -46,6 +46,9 @@
     border: 3px #000 ;
     border-style:dashed;
     text-align: center;
+    color: #000;
+    text-decoration: none;
+    line-height: 120px;;
 }
 
 .housing_information_title{
@@ -141,4 +144,24 @@ footer{
 #validateimg{
     font-size: 14px;
     margin: 5px 5px 5px 10px;
+}
+
+.change{
+    opacity: 0;
+    position: absolute;
+    overflow: hidden;
+    right: 10px;
+    bottom: 10px;
+    height: 133px;
+    width: 133px;
+}
+
+.upload{
+    position: relative;
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px #000 solid ;
+    text-decoration: none;
+    color:#666;
 }

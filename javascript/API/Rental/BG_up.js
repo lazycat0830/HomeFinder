@@ -71,7 +71,7 @@ axios({
             content_td7_div_input3.setAttribute('type','button');
             content_td7_div_input3.classList.add('updateallbtn');
             content_td7_div_input3.setAttribute('value','刪除');
-            content_td7_div_input3.setAttribute('onclick',"getId(event)")
+            content_td7_div_input3.setAttribute('onclick',"getIdDelete(event)")
             content_td7_div_input3.id=data.rentalBlock[i].allData.rental_id+'delete';
             
         
@@ -93,11 +93,6 @@ axios({
             content_td7_div.appendChild(content_td7_div_input2);
             content_td7_div.appendChild(content_td7_div_input3);
     };
-
-
-
-            
-
             })
         .catch(error => {
             console.log(error);
@@ -108,20 +103,6 @@ axios({
 
 
 
-    function getId(event) {
-        var element = event.target;
-        var id = element.getAttribute("id");
-        console.log(id);
-
-        axios.delete(`http://localhost:5190/api/Home/${id.replace('delete','')}`)
-        .then(function (response) {
-            console.log(response);
-            location.reload();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
     
     
     

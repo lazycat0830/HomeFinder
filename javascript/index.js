@@ -154,21 +154,7 @@ console.log(rentermenu);
 console.log(publishermenu);
 console.log(adminmenu);
 
-var a =true;
-Useravatar.addEventListener("click", () => {
-    a=!a;
-    if(a){
-        usermenu.classList.add("show");
-        rentermenu.classList.add("show");
-        publishermenu.classList.add("show");
-        adminmenu.classList.add("show");
-    }else{
-        usermenu.classList.remove("show");
-        rentermenu.classList.remove("show");
-        publishermenu.classList.remove("show");
-        adminmenu.classList.remove("show");
-    }
-});
+
 
 
 
