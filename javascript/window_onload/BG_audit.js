@@ -1,19 +1,22 @@
-
 let content_td7_div_input3;
 var all=0;
 
+window.onload = function() {
 
-window.onload=function(){
-    let data1=document.getElementById('data1');
-axios({
+    handleLogoutData(LoginData);
+    console.log(LoginData);
+    LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
+
+
+    console.log(LoginData.token);
+    axios({
     method: 'get',
-    url: 'http://localhost:5190/api/Home/RentalIndex',
+    url: 'http://localhost:5190/api/Home/HomeDown',
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
-    
 })
         .then(( { data } ) => {
             
@@ -25,17 +28,12 @@ axios({
                 console.log(all);
             });
             let audittable=document.getElementById("audittable");
-            // for(var j=0;j<=all;j++){
-            //     if(data.rentalBlock[j].allData.check){
-            //         allcheck++;
-            //     }
-            //     console.log(allcheck);
-            // }
+            
 
 
-            for(var i=0;i<=all;i++){
+            for(var i=0;i<all;i++){
 
-            // console.log(data.rentalBlock[i].allData);
+            console.log(data.rentalBlock[i].allData);
 
             let content_tr =document.createElement('tr');
             let content_td1=document.createElement('td');
@@ -55,26 +53,15 @@ axios({
             let content_td5=document.createElement('td');
             content_td5.innerHTML=data.rentalBlock[i].allData.address;
             let content_td6=document.createElement('td');
-            content_td6.innerHTML=data.rentalBlock[i].allData.uploadtime.replace('T',' | ');
+            content_td6.innerHTML=data.rentalBlock[i].allData.uploadtime;
+                
             let content_td7=document.createElement('td');
-            let content_td7_div=document.createElement('div');
-            content_td7_div.classList.add('flexcolumn');
-            let content_td7_div_input1=document.createElement('input');
-            content_td7_div_input1.setAttribute('type','button');
-            content_td7_div_input1.classList.add('updateallbtn');
-            content_td7_div_input1.setAttribute('value','修改');
-            let content_td7_div_input2=document.createElement('input');
-            content_td7_div_input2.setAttribute('type','button');
-            content_td7_div_input2.classList.add('updateallbtn');
-            content_td7_div_input2.setAttribute('value','下架');
-            content_td7_div_input3=document.createElement('input');
-            content_td7_div_input3.setAttribute('type','button');
-            content_td7_div_input3.classList.add('updateallbtn');
-            content_td7_div_input3.setAttribute('value','刪除');
-            content_td7_div_input3.setAttribute('onclick',"getIdDelete(event)")
-            content_td7_div_input3.id=data.rentalBlock[i].allData.rental_id+'delete';
-            
-        
+            if(data.rentalBlock[i].allData.check==0){
+                content_td7.innerHTML="審核中";
+            }else{
+                content_td7.innerHTML="已通過";
+            }
+
             
 
 
@@ -92,17 +79,12 @@ axios({
             content_td7_div.appendChild(content_td7_div_input1);
             content_td7_div.appendChild(content_td7_div_input2);
             content_td7_div.appendChild(content_td7_div_input3);
+
+
     };
             })
         .catch(error => {
             console.log(error);
         });
 
-
-    }
-
-
-
-    
-    
-    
+}

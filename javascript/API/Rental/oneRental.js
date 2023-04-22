@@ -1,9 +1,12 @@
-let oneRentaldata=null;
+let oneRentaldata;
+
 
 function onRental(data,RentalId){
-    oneRentaldata=data;
-    console.log(data);
-    console.log(RentalId);
+    oneRentaldata= JSON.parse(sessionStorage.getItem(data));
+    console.log(JSON.parse(sessionStorage.getItem(data)));
+
+    // console.log(data);
+    // console.log(RentalId);
     
     
 

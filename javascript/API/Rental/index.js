@@ -22,7 +22,7 @@ axios({
             
             var all=0;
             data.idList.forEach(function(currentValue) {
-            console.log(currentValue);
+                console.log(currentValue);
                 all++;
                 console.log(all);
             });

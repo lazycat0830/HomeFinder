@@ -1,10 +1,17 @@
 
-function getIdDelete(event) {
-    var element = event.target;
-    var id = element.getAttribute("id");
+function getIdDelete(id) {
+    
     console.log(id);
 
-    axios.delete(`http://localhost:5190/api/Home/${id.replace('delete','')}`)
+    axios({
+        method: 'delete',
+        url: `http://localhost:5190/api/Home/${id.replace('delete','')}`,
+        headers:{
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    })
     .then(function (response) {
         console.log(response);
         location.reload();
