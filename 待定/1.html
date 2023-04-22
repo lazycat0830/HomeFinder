@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>使用axios获取数据并显示在页面上</title>
-</head>
-<body>
-  <form>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br><br>
-    
-    <label for="passwordCheck">Confirm Password:</label>
-    <input type="password" id="passwordCheck" name="passwordCheck"><br><br>
-  
-    <label for="account">Account:</label>
-    <input type="text" id="account" name="newMember.account"><br><br>
-  
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="newMember.name"><br><br>
-  
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="newMember.email"><br><br>
-  
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="newMember.phone"><br><br>
-  
-    <label for="authcode">Auth Code:</label>
-    <input type="text" id="authcode" name="newMember.authcode"><br><br>
-  
-    <label for="identity">Identity:</label>
-    <input type="text" id="identity" name="newMember.identity"><br><br>
-  
-    <label for="score">Score:</label>
-    <input type="text" id="score" name="newMember.score"><br><br>
-  
-    <label for="img">Image:</label>
-    <input type="file" id="img" name="ProfileImage"><br><br>
-  
-    <button type="button" id="submit">Submit</button>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>GPT Demo</title>
+  </head>
+  <body>
 
-<script src="/javascript/API/Members/register.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      window.onload = function() {
+        axios({
+          method: 'get',
+          url: 'http://localhost:5190/api/HomeAny/HomeAny',
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${token}`, 
+          },
+        })
+        .then(function(response) {
+          // 直接存取回應中的資料陣列
+          const data = response.data;
+          
+          console.log(data.search);
+          console.log(data.idList);
+          console.log(data.rentalBlock);
+          console.log(data.paging);
+          
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      }
+    </script>
 </html>

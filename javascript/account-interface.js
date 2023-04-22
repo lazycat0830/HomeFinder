@@ -73,24 +73,7 @@ Useravatar.addEventListener("click", () => {
 
 
 
-let update_Account=document.getElementById("update_Account");
-let updataAccount_btn=document.getElementById("updataAccount_btn");
-let delete_updateAccount=document.getElementById("delete_updateAccount");
 
-console.log(update_Account);
-console.log(updataAccount_btn);
-console.log(delete_updateAccount);
-
-updataAccount_btn.addEventListener("click",function(){
-    createMask();
-    update_Account.style.display="block";
-});
-
-delete_updateAccount.addEventListener("click",function(){
-    deleteMask();
-    update_Account.style.display="none";
-
-});
 
 
 let likebtn=document.getElementById("likebtn");
@@ -106,24 +89,6 @@ likebtn.addEventListener("click",function(){
         }
 });
 
-let report=document.getElementById("report");
-let report_btn=document.getElementById("report_btn");
-let delete_report=document.getElementById("delete_report");
-
-console.log(report);
-console.log(report_btn);
-console.log(delete_report);
-
-report_btn.addEventListener("click",function(){
-    createMask();
-    report.style.display="block";
-});
-
-delete_report.addEventListener("click",function(){
-    deleteMask();
-    report.style.display="none";
-
-});
 
 
 

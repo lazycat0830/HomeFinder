@@ -28,10 +28,12 @@
                 </div>
                 <div id="body_content_body" class="flexcenter">
                     <div id="body_content_body_content" class="flexcolumn">
-                        <div class="t1"><label>帳號：</label><input type="text"></div>
-                        <div class="t1"><label>密碼：</label><input type="password"></div>
+                        <div class="t1"><label>帳號：</label><input id="LoginAccount" type="text"></div>
+                        <div class="t1"><label>密碼：</label><input id="LoginPassword"  type="password"></div>
                         <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
-                        <a href="#"><button class="btn1">登入</button></a>
+
+                        <div id="validataLogintext" class="validatatext"></div>
+                        <button id="Loginbtn" class="btn1">登入</button>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
                     </div>
                 </div>
@@ -77,7 +79,8 @@
                     <a href="/renter房客/collect.html"><li><button id="btnsign" type="button">已收藏</button></li></a>
                     <hr>
                     <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
+                    <a href="#"><li><button id="rentermenubtnlogout" type="button">登出</button></li></a>
                 </ul>
             </div>
             <div id="publishermenu" class="absolute userfunction">
@@ -88,7 +91,8 @@
                     <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
                     <hr>
                     <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
+                    <a href="#"><li><button id="publishermenubtnlogout" type="button">登出</button></li></a>
                 </ul>
             </div>
             <div id="adminmenu" class="absolute userfunction">
@@ -96,19 +100,19 @@
                     <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
                     <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
                     <hr>
-                    <a href=""><li><button id="btnsign" type="button">帳號</button></li></a>
-                    <a href="#"><li><button id="btnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
+                    <a href="#"><li><button id="adminmenubtnlogout" type="button">登出</button></li></a>
                 </ul>
             </div>
             <div id="header_in" class="flexbetween">
                 <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
                 <div class="back_home flexrow">
                     <a href="/通用/index.html"><i class="fa-solid fa-house"></i></a>
-                    <a onclick="goBack()" href="#"><i class="fa-solid fa-right-left"></i></a>
+                    <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
                 </div>
                 
                 <button id="Useravatar"><img width="40px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></button>
-                
+           
             </div>
         </div>
     </header>
@@ -281,6 +285,18 @@
 
     
 </body>
-<script src="/javascript/pop-upwindow_nofilter.js"></script>
-<script src="/javascript/back.js"></script>
+
+<script src="/javascript/window_onload/item.js"></script>
+
+<script src="/javascript/API/Members/function.js"></script>
+<script src="/javascript/API/Members/Logout.js"></script>
+<script src="/javascript/API/Members/Login.js"></script>
+
+<script src="/javascript/API/Rental/oneRental.js"></script>
+
+<script src="/javascript/通用/mask.js"></script>
+<script src="/javascript/通用/popup_Login.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/javascript/通用/back.js"></script>
 </html> 

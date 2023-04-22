@@ -43,17 +43,24 @@
 }
 
 .inner2 div label{
-    width: 170px;
+    font-weight: bolder;
+    width: 250px;
     text-align: right;
 }
 
 .inner2 div div{
     width: 100%;
-    margin: -5px 5px;
+    margin: 0px 5px;
 
 }
 
 .inner2 div div input{
+    font-size: 22px;
+    width: 80%;
+}
+
+.inner2 div div select{
+    font-size: 22px;
     width: 80%;
 }
 
@@ -68,6 +75,8 @@
     border-radius: 50px;
     font-size: large;
     font-weight: bold;
+    width: 70%;
+    margin: auto;
 }
 .inner3 #reset{
     color: #000;
@@ -76,4 +85,6 @@
     border-radius: 50px;
     font-size: large;
     font-weight: bold;
+    width: 70%;
+    margin: auto;
 }

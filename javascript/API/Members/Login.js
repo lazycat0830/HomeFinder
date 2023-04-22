@@ -1,33 +1,50 @@
-let Loginbtn=document.getElementById('Loginbtn');
+let LoginData= JSON.parse(sessionStorage.getItem('LoginData'));
+
+
+
+function handleLoginData(data) {
+    LoginData = data;
+}
+
+let accountinput =document.getElementById('LoginAccount');
+let passwordinput =document.getElementById('LoginPassword');
+
 var a =true;
 
-Useravatar.addEventListener("click", () => {
-    adminmenu.classList.remove("show");
-    rentermenu.classList.remove("show");
-    publishermenu.classList.remove("show");
-    usermenu.classList.remove("show");
-    usermenu.classList.add("show");
+
+Useravatar.addEventListener("click", () => { 
+    console.log(LoginData);
     console.log(a);
-    a=!a;
     if(a){
-    adminmenu.classList.remove("show");
-    rentermenu.classList.remove("show");
-    publishermenu.classList.remove("show");
-    usermenu.classList.remove("show");
-    usermenu.classList.add("show");
+        if(LoginData==null){
+            removeshowcss();
+            usermenu.classList.add("show");
+
+        }else if(LoginData.members.identity==0){
+            removeshowcss();
+            adminmenu.classList.add("show");
+
+        }else if(LoginData.members.identity==1){
+            removeshowcss();
+            rentermenu.classList.add("show");
+        }else if(LoginData.members.identity==2){
+            removeshowcss();
+            publishermenu.classList.add("show");
+        }
     }else{
-        adminmenu.classList.remove("show");
-        rentermenu.classList.remove("show");
-        publishermenu.classList.remove("show");
-        usermenu.classList.remove("show");
+            removeshowcss();
     }
 })
 
 
+let Loginbtn=document.getElementById('Loginbtn');
 Loginbtn.onclick = function(){
-    let account =document.getElementById('LoginAccount').value;
-    let password =document.getElementById('LoginPassword').value;
-    
+
+    usermenu.classList.remove("show");
+    a=!a;
+    console.log(a);
+    let account =accountinput.value;
+    let password =passwordinput.value;
     
     axios({
         method: 'post',
@@ -44,52 +61,20 @@ Loginbtn.onclick = function(){
         
     })
     .then(({ data }) => {
-        // 处理服务器响应的数据
-        deleteMask();
-        console.log(data);
         
-        Useravatar.addEventListener("click", () => {
-            usermenu.classList.remove("show");
-            a=!a;
-            if(a){
-                if(data.members.identity==0){
-                    adminmenu.classList.remove("show");
-                    rentermenu.classList.remove("show");
-                    publishermenu.classList.remove("show");
-                    usermenu.classList.remove("show");
-                    adminmenu.classList.add("show");
-
-                }else if(data.members.identity==1){
-                    adminmenu.classList.remove("show");
-                    rentermenu.classList.remove("show");
-                    publishermenu.classList.remove("show");
-                    usermenu.classList.remove("show");
-                    rentermenu.classList.add("show");
-                }else if(data.members.identity==2){
-                    adminmenu.classList.remove("show");
-                    rentermenu.classList.remove("show");
-                    publishermenu.classList.remove("show");
-                    usermenu.classList.remove("show");
-                    publishermenu.classList.add("show");
-                }
-            }else{
-                if(data.members.identity==0){
-                    adminmenu.classList.remove("show");
-                    rentermenu.classList.remove("show");
-                    publishermenu.classList.remove("show");
-                    usermenu.classList.remove("show");
-                }
-            }
-        });
-
-
-    
-
-
-
+        LoginData=data;
+        sessionStorage.setItem('LoginData', JSON.stringify(data));
+        // window.location.href = '/通用/index.html';
+        location.reload();
+        accountinput.value='';
+        passwordinput.value='';
+        deleteMask();
+        oneAccount(LoginData); 
+        
     })
     .catch(error => {
         // 处理请求过程中的错误
         console.error(error);
     });
+
     }

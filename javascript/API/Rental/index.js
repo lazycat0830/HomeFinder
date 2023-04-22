@@ -3,7 +3,7 @@ window.onload=function(){
 
 axios({
     method: 'get',
-    url: 'http://localhost:5190/api/Home/RentalIndex',
+    url: 'http://localhost:5190/api/HomeAny/HomeAny',
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -12,6 +12,14 @@ axios({
     
 })
         .then(( { data } ) => {
+
+            
+
+            console.log(data.search);
+            console.log(data.idList);
+            console.log(data.rentalBlock);
+            console.log(data.paging);
+            
             var all=0;
             data.idList.forEach(function(currentValue) {
             console.log(currentValue);
@@ -29,7 +37,9 @@ axios({
                 
                     const  Housing_Profile_a=document.createElement('a');
                     Housing_Profile_a.setAttribute('href', '/通用/item.html');
-                
+                    Housing_Profile_a.id=`rental_id${i}`;
+                    Housing_Profile_a.setAttribute(onclick,onRental(data.rentalBlock[i],`rental_id${i}`));
+
                     const Housing_Profile_a_Houseimg=document.createElement('div');
                     Housing_Profile_a_Houseimg.classList.add("Houseimg");
                     Housing_Profile_a_Houseimg.classList.add("relative");
@@ -38,6 +48,7 @@ axios({
                     Houseimg_img.setAttribute('width','100%');
                     Houseimg_img.setAttribute('hight','100%');
                     Houseimg_img.setAttribute('src','/image/'+(i+1)+'.webp');
+
                 
                     const Houseimg_a=document.createElement('a');
                     Houseimg_a.classList.add("Like");
@@ -98,14 +109,9 @@ axios({
         .catch(error => {
         console.log(error);
         });
-    }
+}
 
-let btnlogin =document.getElementById("btnlogin");
-let delete_longinbtn =document.getElementById("delete_longinbtn");
-let login =document.getElementById("login");
-console.log(btnlogin);
-console.log(login);
-console.log(delete_longinbtn);
+
 
 let createMask =()=>{
     if(document.getElementById("mask")){
@@ -121,6 +127,8 @@ let createMask =()=>{
     
 };
 
+
+let login =document.getElementById("login");
 let deleteMask =()=>{
     let mask;
     if(mask=document.getElementById("mask")){
@@ -133,14 +141,7 @@ let deleteMask =()=>{
     }
 };
 
-btnlogin.addEventListener("click",function(){
-    createMask();
-    login.style.display="block";
-});
 
-delete_longinbtn.onclick=function(){
-    deleteMask();
-}
 
 
 let Useravatar=document.getElementById("Useravatar");
@@ -190,22 +191,6 @@ filter_delete.onclick=function(){
 // })
 
 
-let forgetpassword=document.getElementById("forgetpassword");
-let forgetpassword_btn=document.getElementById("forgetpassword_btn");
-let delete_forgetbtn=document.getElementById("delete_forgetbtn");
-console.log(forgetpassword);
-console.log(forgetpassword_btn);
-console.log(delete_forgetbtn);
-
-forgetpassword_btn.addEventListener("click",function(){
-    createMask();
-    forgetpassword.style.display="block";
-    login.style.display="none";
-});
-
-delete_forgetbtn.onclick=function(){
-    deleteMask();
-}
 
 
 
