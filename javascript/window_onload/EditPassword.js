@@ -14,16 +14,18 @@ window.onload = function() {
         </div>
         <div id="validatatext_signup" style="font-size: 1rem;text-align: center;color: #ff0000;font-weight: bolder;padding-bottom: 20px;"></div>
         <div class="inner3">
-            <input type="button" value="修改" id="submit"/><br>
-            <input type="reset" value="清除" id="reset"/>
+        <input class="updata_submit" onclick="submit()" value="修改" type="button"></br>
+                        <input class="updata_reset" onclick="reset()" value="修改" type="button">
+
         </div>
     
 </div>`;
-
-        oneAccount(LoginData);
+        
         handleLogoutData(LoginData);
         console.log(LoginData);
-        LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
+
+        
+        // EditPassword(LoginData);
     }
     
     

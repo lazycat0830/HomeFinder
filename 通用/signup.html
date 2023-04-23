@@ -52,8 +52,8 @@
                 </div>
                 <div id="body_content_body" class="flexcenter">
                     <div id="forget_body_content_body_content" class="flexcolumn">
-                        <div class="forget_text1"><label>Email：</label><input type="text"></div>
-                        <a href="/通用/changepassword.html"><button class="forget_btn1">送出</button></a>
+                        <div class="forget_text1"><label>帳號：</label><input id="forget_account" type="text"></div>
+                        <a href="#"><button id="forget_btn" class="forget_btn1">送出</button></a>
                         
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                             <div>
                             <select id="identity" name="newMember.identity">
                                 <option value="" disabled selected>請選擇</option>
-                                <option style="font-size: 22px;"  value="2">一般使用者</option>
+                                <option style="font-size: 22px;"  value="0">一般使用者</option>
                                 <option style="font-size: 22px;" value="1">房東</option>
                             </select>
                             </div>
@@ -145,8 +145,8 @@
                     </div>
                     <div id="validatatext_signup" style="font-size: 1rem;text-align: center;color: #ff0000;font-weight: bolder;padding-bottom: 20px;"></div>
                     <div class="inner3">
-                        <input type="button" value="註冊" id="submit"/><br>
-                        <input type="reset" value="清除" id="reset"/>
+                        <input class="updata_submit" type="button" value="註冊" id="submit"/><br>
+                        <input class="updata_reset" type="reset" value="清除" id="reset"/>
                     </div>
                 </form>
             </div>

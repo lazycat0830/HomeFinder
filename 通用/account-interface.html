@@ -52,8 +52,8 @@
                 </div>
                 <div id="body_content_body" class="flexcenter">
                     <div id="forget_body_content_body_content" class="flexcolumn">
-                        <div class="forget_text1"><label>Email：</label><input type="text"></div>
-                        <a href="/通用/changepassword.html"><button class="forget_btn1">送出</button></a>
+                        <div class="forget_text1"><label>帳號：</label><input id="forget_account" type="text"></div>
+                        <a href="#"><button id="forget_btn" class="forget_btn1">送出</button></a>
                         
                     </div>
                 </div>
@@ -62,7 +62,7 @@
     
         </div>
     </div>
-
+    
     <header>
         <div class="relative">
             <div id="usermenu" class="absolute userfunction">
@@ -128,7 +128,7 @@
                         <span id="oneAccountEmail"></span>
                     </div>
                     <div id="Account_updataAccount_btn" class="flexend">
-
+                        <button id='updataAccount_btn'>修改</button>
                     </div>
                     <div>
                         <button id="report_btn" class="report_btn">檢舉</button>
@@ -154,6 +154,7 @@
                 
             </div>
         </div>
+        <div id="noLogin" style="display: none;text-align: center;">請登入</div>
     </div>
 
 
@@ -174,7 +175,7 @@
                         <div class="update_text1"><label>電話：</label><input  id="updata_phone" type="text" name="phone"></div>
                         <div class="update_text1"><label>大頭照：</label><input id="updata_img" type="file" name="img_upload"></div>
                         <div class="flexcenter"><button id="updataoneAccount_btn" class="update_btn1">保存</button></div>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>

@@ -5,7 +5,6 @@ submit.addEventListener("click", (event) => {
   event.preventDefault();
   const formData = new FormData(form);
   formData.append('newMember.authcode','');
-  // formData.append('newMember.identity','1');
   formData.append('newMember.score','0');
   formData.append('newMember.img','');
 

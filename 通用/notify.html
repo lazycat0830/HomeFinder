@@ -14,7 +14,53 @@
 </head>
 
 <body  class="relative">
+    <div id="login" class="login_Location">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <div></div>
+                        <span>登入</span>
+                        <button id="delete_longinbtn">X</button>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="body_content_body_content" class="flexcolumn">
+                        <div class="t1"><label>帳號：</label><input id="LoginAccount" type="text"></div>
+                        <div class="t1"><label>密碼：</label><input id="LoginPassword"  type="password"></div>
+                        <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
 
+                        <div id="validataLogintext" class="validatatext"></div>
+                        <button id="Loginbtn" class="btn1">登入</button>
+                        <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="forgetpassword" class="forgetpassword">
+        <div id="body_width100" class="flexcenter">
+            <div id="body_content">
+                <div id="body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <div></div>
+                        <span>忘記密碼</span>
+                        <button id="delete_forgetbtn">X</button>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                    <div id="forget_body_content_body_content" class="flexcolumn">
+                        <div class="forget_text1"><label>帳號：</label><input id="forget_account" type="text"></div>
+                        <a href="#"><button id="forget_btn" class="forget_btn1">送出</button></a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
 
 <header>
     <div class="relative">
@@ -165,6 +211,8 @@
 <script src="/javascript/API/Members/Logout.js"></script>
 <script src="/javascript/API/Members/Login.js"></script>
 
+<script src="/javascript/通用/mask.js"></script>
+<script src="/javascript/通用/popup_Login.js"></script>
 
 <script src="/javascript/通用/back.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

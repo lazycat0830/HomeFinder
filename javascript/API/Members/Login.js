@@ -24,10 +24,10 @@ Useravatar.addEventListener("click", () => {
             removeshowcss();
             adminmenu.classList.add("show");
 
-        }else if(LoginData.members.identity==1){
+        }else if(LoginData.members.identity==2){
             removeshowcss();
             rentermenu.classList.add("show");
-        }else if(LoginData.members.identity==2){
+        }else if(LoginData.members.identity==1){
             removeshowcss();
             publishermenu.classList.add("show");
         }
@@ -77,4 +77,27 @@ Loginbtn.onclick = function(){
         console.error(error);
     });
 
+    }
+
+    let forget_btn=document.getElementById('forget_btn');
+    let forget_account=document.getElementById('forget_account').value;
+    forget_btn.onclick=function(){
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/Auth/login',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${token}`, 
+            },
+            data: { 
+                Account:forget_account,
+            },
+        })
+        .then(({ data }) => {
+            console.log(data);
+        }).catch(error => {
+        // 处理请求过程中的错误
+        console.error(error);
+    });
     }

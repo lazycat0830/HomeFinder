@@ -1,8 +1,8 @@
 window.onload = function() {
+    viewallAccount();
     
-    oneAccount(LoginData);
     handleLogoutData(LoginData);
     console.log(LoginData);
-    LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
     
+    // LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
 };

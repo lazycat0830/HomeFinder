@@ -1,14 +1,12 @@
-const submit = document.getElementById("submit");
-const reset = document.getElementById("reset");
-const Password = document.getElementById("Password");
-const NewPassword = document.getElementById("NewPassword");
-const CheckNewPassword = document.getElementById("CheckNewPassword");
 
 
+console.log(LoginData);
 
-submit.addEventListener("click", (event) => {
-    event.preventDefault();
 
+function submit(){
+    const Password = document.getElementById("Password");
+    const NewPassword = document.getElementById("NewPassword");
+    const CheckNewPassword = document.getElementById("CheckNewPassword");
     
         axios({
         method: "post",
@@ -36,12 +34,11 @@ submit.addEventListener("click", (event) => {
         .catch((error) => {
             console.error(error);
         });
-    });
+    };
 
 
-    reset.addEventListener("click", (event) => {
-        event.preventDefault();
+    function reset(){
         Password.value='';
         NewPassword.value='';
         CheckNewPassword.value='';
-    });
+    };

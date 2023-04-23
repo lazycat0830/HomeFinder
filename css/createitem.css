@@ -72,13 +72,19 @@
     margin: auto 0px;
 }
 
-.Label ul li a{
-    text-decoration: none;
-    color: #000;
+.Label_btn_off{
+    font-size: 16px;
+    border: 0px;
+    background-color: #fff;
+    cursor: pointer;
 }
 
-.Label ul li a:focus{
+.Label_btn_on{
+    font-size: 16px;
     color: #ffa435;
+    cursor: pointer;
+    border: 0px;
+    background-color: #fff;
 }
 
 .housing_information_content{

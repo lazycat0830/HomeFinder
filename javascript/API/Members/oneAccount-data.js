@@ -6,12 +6,6 @@ let report=document.getElementById("report");
 let report_btn=document.getElementById("report_btn");
 let delete_report=document.getElementById("delete_report");
 
-
-
-let Account_updataAccount_btn=document.getElementById('Account_updataAccount_btn');
-let Account_btn=document.createElement('button');
-Account_btn.id='updataAccount_btn';
-Account_btn.innerHTML='修改';
 let Report_text1=document.getElementById('Report_text1');
 
 let updataoneAccount_btn=document.getElementById('updataoneAccount_btn');
@@ -20,11 +14,7 @@ const form = document.querySelector("form");
 let score;
 
 function oneAccount(data){
-    if(data==null){
-        
 
-        
-    }else{
         report_btn.addEventListener("click",function(){
             Report_text1.innerHTML=`是否要檢舉${data.members.name}`;
             createMask();
@@ -50,28 +40,21 @@ function oneAccount(data){
         oneAccountPhome.innerHTML=`電話：${data.members.phone}`;
         oneAccountEmail.innerHTML=`E-mail：${data.members.email}`;
 
-        Account_updataAccount_btn.appendChild(Account_btn);
-        
-        let updataAccount_btn=document.getElementById('updataAccount_btn');
-        updataAccount_btn.onclick=function(){
-            createMask();
-            update_Account.style.display="block";
-            updata_Name.value=data.members.name;
-            updata_phone.value=data.members.phone;
-            updata_img.value=data.members.img;
-        }
-    
-        delete_updateAccount.addEventListener("click",function(){
-            deleteMask();
-            update_Account.style.display="none";
-            
-        });
         
     }
-    
-    
+    updataAccount_btn.onclick=function(){
+        createMask();
+        update_Account.style.display="block";
+        updata_Name.value=LoginData.members.name;
+        updata_phone.value=LoginData.members.phone;
+        // updata_img.value=LoginData.members.img;
+    }
 
-}
+    delete_updateAccount.addEventListener("click",function(){
+        deleteMask();
+        update_Account.style.display="none";
+        
+    });
 
 
 updataoneAccount_btn.addEventListener("click", (event) => {
@@ -91,8 +74,14 @@ updataoneAccount_btn.addEventListener("click", (event) => {
         })
         .then((response) => {
             console.log(response.data);
+            LoginData.members.name=updata_Name.value;
+            LoginData.members.phone=updata_phone.value;
+            // LoginData.members.img=updata_img.value;
+            console.log(LoginData);
+            oneAccount(LoginData);
+            deleteMask();
+            sessionStorage.setItem('LoginData', JSON.stringify(LoginData));
             
-            location.reload()
             //修改後網頁資訊不會變!!!
 
         })

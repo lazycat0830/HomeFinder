@@ -18,7 +18,7 @@ inputImage1.addEventListener('change', () => {
     img1.onload = (event) => {
         inputImageview1.style.backgroundImage= 'url(' + event.target.result + ')';
         inputImageview1.style.backgroundSize ='cover';
-        document.getElementById("inputImageview1").innerHTML ="";
+        inputImageview1.innerHTML ="";
         console.log(img1.result);
     };
     
@@ -33,7 +33,7 @@ inputImage1.addEventListener('change', () => {
         img2.onload = (event) => {
             inputImageview2.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview2.style.backgroundSize ='cover';
-            document.getElementById("inputImageview2").innerHTML ="";
+            inputImageview2.innerHTML ="";
             console.log(img2.result);
         };
         
@@ -48,7 +48,7 @@ inputImage1.addEventListener('change', () => {
         img3.onload = (event) => {
             inputImageview3.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview3.style.backgroundSize ='cover';
-            document.getElementById("inputImageview3").innerHTML ="";
+            inputImageview3.innerHTML ="";
             console.log(img3.result);
         };
         
@@ -63,7 +63,7 @@ inputImage1.addEventListener('change', () => {
         img4.onload = (event) => {
             inputImageview4.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview4.style.backgroundSize ='cover';
-            document.getElementById("inputImageview4").innerHTML ="";
+            inputImageview4.innerHTML ="";
             console.log(img4.result);
         };
         
@@ -78,7 +78,7 @@ inputImage1.addEventListener('change', () => {
         img5.onload = (event) => {
             inputImageview5.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview5.style.backgroundSize ='cover';
-            document.getElementById("inputImageview5").innerHTML ="";
+            inputImageview5.innerHTML ="";
             console.log(img5.result);
         };
         
