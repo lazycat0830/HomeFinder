@@ -1,5 +1,5 @@
 window.onload = function() {
-    viewallAccount();
+    
     
     handleLogoutData(LoginData);
     console.log(LoginData);

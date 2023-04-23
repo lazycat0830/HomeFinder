@@ -37,7 +37,7 @@
 }
 
 .reviewcentent table tr td div {
-    width: 75%;
+    width: 130px;
     display: flex;
     justify-content: space-between;
 }
