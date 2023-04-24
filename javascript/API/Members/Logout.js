@@ -11,17 +11,17 @@ function handleLogoutData(data) {
 rentermenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
-    location.reload()
+    location.reload();
 };
 publishermenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
-    location.reload()
+    location.reload();
 };
 adminmenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
-    location.reload()
+    location.reload();
 };
 
 

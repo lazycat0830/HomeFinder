@@ -19,7 +19,6 @@ inputImage1.addEventListener('change', () => {
         inputImageview1.style.backgroundImage= 'url(' + event.target.result + ')';
         inputImageview1.style.backgroundSize ='cover';
         inputImageview1.innerHTML ="";
-        console.log(img1.result);
     };
     
     img1.readAsDataURL(file1);
@@ -34,7 +33,6 @@ inputImage1.addEventListener('change', () => {
             inputImageview2.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview2.style.backgroundSize ='cover';
             inputImageview2.innerHTML ="";
-            console.log(img2.result);
         };
         
         img2.readAsDataURL(file2);
@@ -49,7 +47,7 @@ inputImage1.addEventListener('change', () => {
             inputImageview3.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview3.style.backgroundSize ='cover';
             inputImageview3.innerHTML ="";
-            console.log(img3.result);
+
         };
         
         img3.readAsDataURL(file3);
@@ -64,7 +62,6 @@ inputImage1.addEventListener('change', () => {
             inputImageview4.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview4.style.backgroundSize ='cover';
             inputImageview4.innerHTML ="";
-            console.log(img4.result);
         };
         
         img4.readAsDataURL(file4);
@@ -79,7 +76,6 @@ inputImage1.addEventListener('change', () => {
             inputImageview5.style.backgroundImage= 'url(' + event.target.result + ')';
             inputImageview5.style.backgroundSize ='cover';
             inputImageview5.innerHTML ="";
-            console.log(img5.result);
         };
         
         img5.readAsDataURL(file5);

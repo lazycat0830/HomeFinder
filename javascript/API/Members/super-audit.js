@@ -9,7 +9,7 @@ function addRental(data,id) {
     <td><button id="check_${data.rentalBlock[id].allData.rental_id}" >查看</button></td>
     <td>${data.rentalBlock[id].allData.publisher}</td>
     <td class='flexcenter'>
-    <div><input class="Ok" type="button" value="通過"><input class="On" type="button" value="不通過"></div>
+    <div><input id='review_true' class="Ok" type="button" value="通過"><input id='review_false' class="On" type="button" value="不通過"></div>
     </td>
         `;
         superaudit_table.appendChild(superaudit_onerental);
@@ -31,12 +31,26 @@ function addRental(data,id) {
                 console.log(data);
                 viewonRental(data);
 
+
+
             })
             .catch(error => {
                 console.log(error);
             });
         }
         
+        let review_true=document.getElementById('review_true');
+        let review_false=document.getElementById('review_false');
+        var check;
+        review_true.onclick=function(){
+            check=1;
+            review(data.rentalBlock[id].allData.rental_id,check);
+        }
+        review_false.onclick=function(){
+            check=0;
+            review(data.rentalBlock[id].allData.rental_id,check);
+        }
+
     }
 
 function viewallRental(){
@@ -53,6 +67,7 @@ function viewallRental(){
 
     })
     .then(({data})=>{
+        console.log(data);
         var rental_Id=0;
         console.log(data.rentalBlock[0].allData);
         data.idList.forEach(function(){
@@ -80,9 +95,9 @@ function viewonRental(data){
     let check_uploadtime=document.getElementById('check_uploadtime');
     check_title.value=data.title;
     check_address.value=data.address;
-    check_rent.value=data.rent;
+    check_rent.value=data.rent+'/月';
     check_floor.value=data.floor;
-    check_area.value=data.area;
+    check_area.value=data.area+'坪';
     check_content.innerHTML=data.content;
     check_uploadtime.value=data.uploadtime.replace('T','　');
     
@@ -91,4 +106,27 @@ function viewonRental(data){
         check.style.display='none';
     }
 
+}
+
+function review(id,check){
+    const formData = new FormData();
+    formData.append('check',check);
+
+    axios({
+        method:'put',
+        url:`http://localhost:5190/api/HomeDetail/${id}`,
+        headers:{
+            'Content-Type':'multipart/form-data',
+            "Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`, 
+        },
+        data: formData,
+    })
+    .then(({data})=>{
+        console.log(data);
+        location.reload()
+    })
+    .catch(error => {
+        console.log(error);
+    });
 }

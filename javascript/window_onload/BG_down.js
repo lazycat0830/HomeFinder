@@ -93,10 +93,6 @@ window.onload = function() {
             content_td7_div_input1.setAttribute('type','button');
             content_td7_div_input1.classList.add('updateallbtn');
             content_td7_div_input1.setAttribute('value','修改');
-            let content_td7_div_input2=document.createElement('input');
-            content_td7_div_input2.setAttribute('type','button');
-            content_td7_div_input2.classList.add('updateallbtn');
-            content_td7_div_input2.setAttribute('value','下架');
             content_td7_div_input3=document.createElement('input');
             content_td7_div_input3.setAttribute('type','button');
             content_td7_div_input3.classList.add('updateallbtn');
@@ -120,7 +116,6 @@ window.onload = function() {
             content_tr.appendChild(content_td7);
             content_td7.appendChild(content_td7_div);
             content_td7_div.appendChild(content_td7_div_input1);
-            content_td7_div.appendChild(content_td7_div_input2);
             content_td7_div.appendChild(content_td7_div_input3);
     };
             })

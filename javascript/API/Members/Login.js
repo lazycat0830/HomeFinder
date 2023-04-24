@@ -21,13 +21,16 @@ Useravatar.addEventListener("click", () => {
             usermenu.classList.add("show");
 
         }else if(LoginData.members.identity==0){
+            //管理員
             removeshowcss();
             adminmenu.classList.add("show");
 
         }else if(LoginData.members.identity==2){
+            //一般使用者
             removeshowcss();
             rentermenu.classList.add("show");
         }else if(LoginData.members.identity==1){
+            //房東
             removeshowcss();
             publishermenu.classList.add("show");
         }

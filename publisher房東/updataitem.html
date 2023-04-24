@@ -113,28 +113,28 @@
         </div>
     </div>
 	<hr>
-	<div class="collect_header">新增房屋</div>
+	<div class="collect_header">修改房屋</div>
     </header>
 
 <form>
     <div id="content">
         <div id="content_in">
-            <div class="upload_img">
+            <!-- <div class="upload_img">
                 
                 <div class="title">上傳照片</div>
                 
                 <div class="upload_img_content">
                     <div class="flexcolumn relative">封面(圖1)<a id="inputImageview1" href="javascript:;" class="upload_img_btn">+</a><input name="img1_1" id="inputImage1" class="change"  type="file" multiple="multiple"></div>
                     <div class="flexcolumn relative">圖2<a id="inputImageview2" href="javascript:;" class="upload_img_btn">+</a><input name="img1_2" id="inputImage2" class="change"  type="file" multiple="multiple"></div>
-                    <!-- <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input id="inputImage3" class="change"  type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input id="inputImage3" class="change"  type="file" multiple="multiple"></div>
                     <div class="flexcolumn relative">圖4<a id="inputImageview4" href="javascript:;" class="upload_img_btn">+</a><input id="inputImage4" class="change"  type="file" multiple="multiple"></div>
-                    <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input id="inputImage5" class="change"  type="file" multiple="multiple"></div> -->
+                    <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input id="inputImage5" class="change"  type="file" multiple="multiple"></div>
 
                 </div>
                 <div id="validateimg" class="validatatext"></div>
             
             </div>
-            <hr>
+            <hr> -->
             <div class="housing_label">
                 <div class="title">房屋標籤</div>
                 <div class="Label flexcolumn">
@@ -204,7 +204,7 @@
                 </div>
                 <div class="housing_information_content">
                     <label class="housing_information_title" >樓層：</label>
-                    <input id="pattern" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
+                    <input id="floor" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
                     <label class="housing_information_title" >坪數：</label>
                     <input id="area" class="housing_information_text" type="text" name="area" >
                 </div>
@@ -245,17 +245,21 @@
     </footer>
 </form>
 </body>
+<script>
+    
+</script>
 
+<!-- <script src="/javascript/API/Rental/createitem.js"></script> -->
 
-
-<script src="/javascript/API/Rental/createitem.js"></script>
-<script src="/javascript/window_onload/createitem.js"></script>
+<!-- <script src="/javascript/API/Rental/BG_up.js"></script> -->
+<script src="/javascript/API/Rental/updataitem.js"></script>
+<script src="/javascript/window_onload/updataitem.js"></script>
 
 <script src="/javascript/API/Members/function.js"></script>
 <script src="/javascript/API/Members/Logout.js"></script>
 <script src="/javascript/API/Members/Login.js"></script>
 
-<script src="/javascript/通用/insert-Rentalimg.js"></script>
+<!-- <script src="/javascript/通用/insert-Rentalimg.js"></script> -->
 <script src="/javascript/通用/mask.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
 

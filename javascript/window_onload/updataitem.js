@@ -1,12 +1,42 @@
+const form = document.querySelector("form");
 let genre;
 let pattern;
 let type;
 let equipmentname = '';
 
 
-function createitem(data){
+window.onload = function() {
+
+    handleLogoutData(LoginData);
+    console.log(LoginData);
+    console.log(UPDataRetal);
+    updata();
+    updataitem(LoginData,UPDataRetal);
+}
+
+function updata(){
+    console.log(UPDataRetal);
+    title.value=`${UPDataRetal.title}`;
+    address.value=`${UPDataRetal.address}`;
+    rent.value=`${UPDataRetal.rent}`;
+    waterfee.value=`${UPDataRetal.waterfee}`;
+    electricitybill.value=`${UPDataRetal.electricitybill}`;
+    adminfee.value=`${UPDataRetal.adminfee}`;
+    floor.value=`${UPDataRetal.floor}`;
+    area.value=`${UPDataRetal.area}`;
+    genre=`${UPDataRetal.genre}`;
+    pattern=`${UPDataRetal.pattern}`;
+    type=`${UPDataRetal.type}`;
+    equipmentname=`${UPDataRetal.equipmentname}`;
+    housingcontent.value=`${UPDataRetal.content}`;
+}
+
+
+
+
+function updataitem(data,UPDataRetal){
     const submit = document.getElementById("submit");
-    const form = document.querySelector("form");
+    
     
     submit.addEventListener("click", (event) => {
     event.preventDefault();
@@ -43,8 +73,8 @@ function createitem(data){
 
 
     axios({
-        method: "post",
-        url: "http://localhost:5190/api/Home/InsertRental",
+        method: "put",
+        url: `http://localhost:5190/api/Home/${UPDataRetal.rental_id}`,
         headers: {
         "Content-Type": "multipart/form-data",
         'Accept': "application/json",
