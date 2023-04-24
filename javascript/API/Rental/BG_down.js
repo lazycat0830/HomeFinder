@@ -1,10 +1,9 @@
 let UPDataRetal= JSON.parse(sessionStorage.getItem('UPDataRetal'));
 
-
-function addonBG_up(data,id){
-    let upRental_table=document.getElementById('upRental_table');
-    let upRental_onerental = document.createElement('tr');
-    upRental_onerental.innerHTML=`
+function addonBG_down(data,id){
+    let downRental_table=document.getElementById('downRental_table');
+    let downRental_onerental = document.createElement('tr');
+    downRental_onerental.innerHTML=`
             <td>${id+1}</td>
             <td><div class="flexcenter BG_img"><img src="/image/${id+1}.webp" width="100%"></div></td>
             <td>${data.rentalBlock[id].allData.title}</td>
@@ -13,16 +12,14 @@ function addonBG_up(data,id){
             <td>${data.rentalBlock[id].allData.uploadtime.replace('T',' | ')}</td>
             <td>
                 <div class="flexcolumn">
-                    <input id="updata_${data.rentalBlock[id].allData.rental_id}" type="button" class="updateallbtn" value="修改">
-                    <input id="down_${data.rentalBlock[id].allData.rental_id}" type="button" class="updateallbtn" value="下架">
+                    <input id="updata_${data.rentalBlock[id].allData.rental_id}" type="button" class="updateallbtn" value="修改並審核">
                     <input id="delete_${data.rentalBlock[id].allData.rental_id}" type="button" class="updateallbtn" value="刪除">
                 </div>
             </td>
     `;
-    upRental_table.appendChild(upRental_onerental);
+    downRental_table.appendChild(downRental_onerental);
     
     let updatabtn =document.getElementById(`updata_${data.rentalBlock[id].allData.rental_id}`);
-    let downbtn =document.getElementById(`down_${data.rentalBlock[id].allData.rental_id}`);
     let deletebtn =document.getElementById(`delete_${data.rentalBlock[id].allData.rental_id}`);
     updatabtn.onclick=function(){
         window.location.href = '/publisher房東/updataitem.html';
@@ -61,25 +58,5 @@ function addonBG_up(data,id){
                 }
         
     }
-    downbtn.onclick=function(){
-        axios({
-            method: 'put',
-            url: `http://localhost:5190/api/Home/HomeUpToDown/${data.rentalBlock[id].allData.rental_id}`,
-            headers:{
-                "Content-Type": "multipart/form-data",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${LoginData.token}`, 
-            },
-        })
-                .then(( { data } ) => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-
-                location.reload();
-    }
-    
 
 }

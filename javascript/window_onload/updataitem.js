@@ -6,12 +6,18 @@ let equipmentname = '';
 
 
 window.onload = function() {
-
+    
     handleLogoutData(LoginData);
     console.log(LoginData);
     console.log(UPDataRetal);
+
+    genre_combination();
+    pattern_combination();
+    type_combination();
+    equipmentname_combination();
     updata();
-    updataitem(LoginData,UPDataRetal);
+    
+    updataitem();
 }
 
 function updata(){
@@ -29,12 +35,17 @@ function updata(){
     type=`${UPDataRetal.type}`;
     equipmentname=`${UPDataRetal.equipmentname}`;
     housingcontent.value=`${UPDataRetal.content}`;
+
+    
+
+    judgment_label();
+    judgment_equipmentname();
 }
 
 
 
 
-function updataitem(data,UPDataRetal){
+function updataitem(){
     const submit = document.getElementById("submit");
     
     
@@ -44,33 +55,19 @@ function updataitem(data,UPDataRetal){
     equipmentname = equipmentname.slice(0, -1);
 
     const formData = new FormData(form);
-    // formData.append('img1_1','');
-    // formData.append('img1_2','');
     formData.append('type',`${type}`);
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
-    formData.append('publisher',`${data.members.account}`);
-    // formData.append('waterfee','85');
-    // formData.append('electricitybill','85');
-    // formData.append('adminfee','85');
-    // formData.append('rent','85');
-    // formData.append('title','yjub85');
-    // formData.append('address','uhkuk');
-    // formData.append('content','ugigui');
+    formData.append('publisher',`${LoginData.members.account}`);
 
 
     console.log(type);
     console.log(genre);
     console.log(pattern);
     console.log(equipmentname);
-    console.log(data.members.account);
-    console.log(formData.entries());
+    console.log(LoginData.members.account);
     console.log(type);
-
-
-    
-
 
     axios({
         method: "put",
@@ -78,14 +75,14 @@ function updataitem(data,UPDataRetal){
         headers: {
         "Content-Type": "multipart/form-data",
         'Accept': "application/json",
-        'Authorization': `Bearer ${data.token}`,
+        'Authorization': `Bearer ${LoginData.token}`,
         },
         data: formData,
     })
         .then((response) => {
         console.log(response.data);
-        
         window.location.href = '/publisher房東/BG_audit.html';  
+        // goBack();
         // let validatatext_signup=document.getElementById('validatatext_signup');
         // validatatext_signup.innerHTML=response.data.message;
         })
@@ -382,4 +379,87 @@ parking_space.onclick=function(){
     }
 }
 
+}
+
+function judgment_label(){
+    if(type==type_apartment.value){
+        type_apartment.classList=('Label_btn_on');
+    }else if(type==type_elevator_building.value){
+        type_apartment.classList=('Label_btn_on');
+    }else if(type==type_Tutiancuo.value){
+        type_apartment.classList=('Label_btn_on');
+    }else if(type==type_villa.value){
+        type_apartment.classList=('Label_btn_on');
+    }
+
+    if(genre==genre_wholefloorhome.value){
+        genre_wholefloorhome.classList=('Label_btn_on');
+    }else if(genre==genre_independentsuite.value){
+        genre_independentsuite.classList=('Label_btn_on');
+    }else if(genre==genre_SubletSuite.value){
+        genre_SubletSuite.classList=('Label_btn_on');
+    }else if(genre==genre_elegantroom.value){
+        genre_elegantroom.classList=('Label_btn_on');
+    }
+
+    if(pattern==pattern_1room.value){
+        pattern_1room.classList=('Label_btn_on');
+    }else if(pattern==pattern_2room.value){
+        pattern_2room.classList=('Label_btn_on');
+    }else if(pattern==pattern_3room.value){
+        pattern_3room.classList=('Label_btn_on');
+    }else if(pattern==pattern_4room.value){
+        pattern_4room.classList=('Label_btn_on');
+    }
+};
+
+function judgment_equipmentname(){
+    if(equipmentname.includes(`${refrigerator.value}`)){
+        refrigerator.checked=true;
+    }
+    if(equipmentname.includes(`${Washing_machine.value}`)){
+        Washing_machine.checked=true;
+    }
+    if(equipmentname.includes(`${TV.value}`)){
+        TV.checked=true;
+    }
+    if(equipmentname.includes(`${air_conditioner.value}`)){
+        air_conditioner.checked=true;
+    }
+    if(equipmentname.includes(`${Can_partner.value}`)){
+        Can_partner.checked=true;
+    }
+    if(equipmentname.includes(`${water_heater.value}`)){
+        water_heater.checked=true;
+    }
+    if(equipmentname.includes(`${bed.value}`)){
+        bed.checked=true;
+    }
+    if(equipmentname.includes(`${clothes.value}`)){
+        clothes.checked=true;
+    }
+    if(equipmentname.includes(`${fourth_unit.value}`)){
+        fourth_unit.checked=true;
+    }
+    if(equipmentname.includes(`${Network.value}`)){
+        Network.checked=true;
+    }
+    if(equipmentname.includes(`${natural_gas.value}`)){
+        natural_gas.checked=true;
+    }
+    if(equipmentname.includes(`${sofa.value}`)){
+        sofa.checked=true;
+    }
+    if(equipmentname.includes(`${tables_chairs.value}`)){
+        tables_chairs.checked=true;
+    }
+    if(equipmentname.includes(`${balcony.value}`)){
+        balcony.checked=true;
+    }
+    if(equipmentname.includes(`${Elevator.value}`)){
+        Elevator.checked=true;
+    }
+    if(equipmentname.includes(`${parking_space.value}`)){
+        parking_space.checked=true;
+    }
 }

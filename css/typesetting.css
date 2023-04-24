@@ -228,6 +228,17 @@
     display: none;
 }
 
+.delete_confirm{
+    position: fixed;
+    width: 100%;
+    top: 200px;
+    z-index: 99999;
+}
+
+#delete_confirm{
+    display: none;
+}
+
 .updateallbtn{
     color: #000;
     background-color: #fff;

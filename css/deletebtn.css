@@ -1,0 +1,37 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Microsoft JhengHei';
+}
+
+
+#delete_body_content_body_content div{
+    padding: 15px 0px;
+}
+
+
+.delete_text1 label{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+
+.delete_btn1{
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    padding: 5px 50px;
+    margin: 0px 10px;
+}
+
+.delete_btn2{
+    font-weight: bolder;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 25px;
+    border: 2px #000 solid;
+    padding: 3px 50px;
+    margin: 0px 10px;
+}

@@ -1,7 +1,4 @@
 
-
-
-
 function viewallupdata(){
     console.log(LoginData);
         axios({
