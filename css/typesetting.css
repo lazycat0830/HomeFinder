@@ -170,6 +170,14 @@
     display: none;
 }
 
+#reporting_look{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    z-index: 99999;
+    display: none;
+}
+
 #body_content{
     padding: 20px 0px;
 }

@@ -22,13 +22,14 @@ let Houseimg_Profile=document.createElement('div');
 Houseimg_Profile.classList='Housing_Profile';
 Houseimg_Profile.innerHTML=`
 
-    <div class="Housing_Profile_content flexcolumn">
-        <a href="/通用/item.html" id="rental_id0" null="undefined">
-        <div class="Houseimg relative">
-            <img width="100%" hight="100%" src="/image/${id+1}.webp">
-            ${like}
-        </div>
-        </a>
+    <div class="Housing_Profile_content flexcolumn relative">
+        
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
+                <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                ${like}
+            </a>
+            </a>
+        
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
         <a class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></a>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
@@ -45,9 +46,18 @@ if(LoginData!=null){
     
     clicklike(likebtn,likeheart);
 }
+let rental_id=document.getElementById(`rental_id${data.rentalBlock[id].allData.rental_id}`);
 
+
+
+rental_id.onclick=function(){
+    let rental_Id=`rental_id${data.rentalBlock[id].allData.rental_id}`;
+    rental_Id=rental_Id.replace('rental_id','')
+    sessionStorage.setItem('goitem_id', rental_Id);
+}
 
 }
+
 
 function clicklike(likebtn,likeheart){
 like_btn=document.getElementById(likebtn);

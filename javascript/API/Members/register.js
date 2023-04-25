@@ -4,9 +4,11 @@ const form = document.querySelector("form");
 submit.addEventListener("click", (event) => {
   event.preventDefault();
   const formData = new FormData(form);
-  formData.append('newMember.authcode','');
+  formData.append('newMember.authcode','0');
   formData.append('newMember.score','0');
-  formData.append('newMember.img','');
+  formData.append('newMember.img','0');
+  console.log(formData.get("ProfileImage"));
+  // if(formData.get(ProfileImage)==null)
 
   axios({
     method: "post",

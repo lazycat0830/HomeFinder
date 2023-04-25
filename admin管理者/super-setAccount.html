@@ -62,6 +62,31 @@
         </div>
     </div>
 
+    <div id="reporting_look" >
+        <div id="body_width100" class="flexcenter">
+            <div id="reporting_body_content">
+                <div id="reporting_body_content_header">
+                    <div id="body_content_header_content" class="flexbetween">
+                        <div></div>
+                        <span>檢舉紀錄</span>
+                        <button id="delete_reporting">X</button>
+                    </div>
+                </div>
+                <div id="body_content_body" class="flexcenter">
+                        <table id="reporting_table">
+                            <tr>
+                                <th>檢舉人</th>
+                                <th>檢舉原因</th>
+                            </tr>
+                            
+                        </table>
+                </div>
+            </div>
+            
+    
+        </div>
+    </div>
+
 <header>
     <div class="relative">
         <div id="usermenu" class="absolute userfunction">
@@ -127,7 +152,7 @@
                 </div>
             </div>
             <div class="Accountcentent flexcenter">
-                <table>
+                <table id="superaccount_table">
                     <tr>
                             <th>編號</th>
                             <th>帳號</th>
@@ -138,25 +163,7 @@
                             <th style="width: 56px;"></th>
                     </tr>
                     <tr><td colspan="8" style="padding: 0px;"><hr></td></tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Account</td>
-                        <td>publisher</td>
-                        <td>尚未評分</td>
-                        <td>6筆</td>
-                        <td>0</td>
-                        <td class="flexbetween" style="width: 110px;"><button>停用</button><button>解禁</button></td>
-                </tr>
-                <tr><td colspan="8" style="padding: 0px;"><hr></td></tr>
-                <tr>
-                    <td>2</td>
-                    <td>Account</td>
-                    <td>renter</td>
-                    <td>尚未評分</td>
-                    <td>0筆</td>
-                    <td>0</td>
-                    <td class="flexbetween" style="width: 110px;"><button>停用</button><button>解禁</button></td>
-            </tr>
+
                 </table>
             </div>
 
@@ -165,11 +172,10 @@
 
 
 </body>
-<!-- <script src="/javascript/window_onload/super-setAccount.js"></script>
-<script src="/javascript/loggedin.js"></script> -->
 
 
 <script src="/javascript/window_onload/super-setAccount.js"></script>
+<script src="/javascript/API/Members/super-setAccount.js"></script>
 
 <script src="/javascript/API/Members/function.js"></script>
 <script src="/javascript/API/Members/Logout.js"></script>
@@ -178,7 +184,6 @@
 <script src="/javascript/通用/mask.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
 
-<!-- <script src="/javascript/API/Members/register.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
