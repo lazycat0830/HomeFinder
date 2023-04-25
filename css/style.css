@@ -96,13 +96,25 @@ body.relative{
 }
 
 .navbtn{
+    border: 0px;
     padding: 5px;
     margin:10px;
     text-align: center;
     background-color: #fff;
+    cursor: pointer;
 }
 .navbtn:hover{
     background-color: #a4a4a4;
+    cursor: pointer;
+}
+
+.onnavbtn{
+    border: 0px;
+    padding: 5px;
+    margin:10px;
+    text-align: center;
+    background-color: #a4a4a4;
+    cursor: pointer;
 }
 
 .navbtn span{

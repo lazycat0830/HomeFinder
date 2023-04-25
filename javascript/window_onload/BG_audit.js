@@ -10,7 +10,6 @@ window.onload = function() {
     
 }
 
-
 function viewallauditdata(){
     console.log(LoginData);
         axios({
@@ -25,7 +24,7 @@ function viewallauditdata(){
             .then(( { data } ) => {
                 console.log(data);
                 var rental_Id=0;
-                console.log(data);
+
                 data.idList.forEach(function(){
                     addonBG_audit(data,rental_Id);
                     rental_Id++;

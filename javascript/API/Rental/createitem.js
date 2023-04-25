@@ -20,7 +20,7 @@ function createitem(data){
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
-    formData.append('publisher',`${data.members.account}`);
+    formData.append('publisher',`${data.members.name}`);
     // formData.append('waterfee','85');
     // formData.append('electricitybill','85');
     // formData.append('adminfee','85');
@@ -34,7 +34,7 @@ function createitem(data){
     console.log(genre);
     console.log(pattern);
     console.log(equipmentname);
-    console.log(data.members.account);
+    console.log(data.members.name);
     console.log(formData.entries());
     console.log(type);
 

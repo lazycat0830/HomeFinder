@@ -59,14 +59,14 @@ function updataitem(){
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
-    formData.append('publisher',`${LoginData.members.account}`);
+    formData.append('publisher',`${LoginData.members.name}`);
 
 
     console.log(type);
     console.log(genre);
     console.log(pattern);
     console.log(equipmentname);
-    console.log(LoginData.members.account);
+    console.log(LoginData.members.name);
     console.log(type);
 
     axios({
