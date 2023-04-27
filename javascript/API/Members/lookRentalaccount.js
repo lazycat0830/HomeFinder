@@ -54,7 +54,7 @@ function oneAccount(data){
     oneAccountPhome.innerHTML=`電話：${data.phone}`;
     oneAccountEmail.innerHTML=`E-mail：${data.email}`;
 
-    newRenterRental();
+    newRenterRentalAPI();
 }
 
 function viewRentalAccount(Account){
@@ -108,22 +108,153 @@ function reason(){
         console.log(error);
     });
 }
+let Account_Rental=document.getElementById('Account_Rental');
+function newRenterRental(data,id){
+    console.log(data.rentalBlock[id].allData.member.score)
+    let scoretext;
+    if(data.rentalBlock[id].allData.member.score==null){
+        scoretext='尚未有信用分數';
+    }else{
+        scoretext=data.rentalBlock[id].allData.member.score;
+    }
+    if(LoginData==null){
+        like=``;
+    }else{
+        if(LoginData.members.identity==2){
+            like=`
+            <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
+            </a>`;
+        }else{
+            like=``;
+        }
+    }
 
-function newRenterRental(){
-    let Account_Rental=document.getElementById('Account_Rental');
-    console.log(Account_Rental);
-    Account_Rental.innerHTML=`
-    <div class="Housing_Profile">
-    <div class="Housing_Profile_content flexcolumn">
-        <a href="/通用/item.html"><div class="Houseimg relative">
-            <img width="100%" src="/image/1.webp">
-            <a id="likebtn" class="absolute Like"><img id="like" width="30px" src="/image/heart.png"></a>
-        </div></a>
-        <span class="text1">免仲介費/全新完工/獨洗曬/嚴選房客</span>
-        <span class="text2 flexbetween">出租者： 顏小姐 <span style="color: #e48500;font-size: 12px;font-weight: bolder;">尚未有信用分數</span></span>
-        <span class="text3">上架日期： 2023/03/27 | 15:23</span>
-        <span class="text4">價格： <span style="color: #ff0000;font-weight: bolder;">11000<span style="font-size: 12px;font-weight: bolder;">元/月</span></span></span>
-    </div>
+    let Account_onRental=document.createElement('div');
+    Account_onRental.classList="Housing_Profile";
+
+    Account_onRental.innerHTML=`
+    <div class="Housing_Profile_content flexcolumn relative">
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
+                <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                ${like}
+            </a>
+            </a>
+        <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
+        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></span>
+        <span class="text3">上架日期：${data.rentalBlock[id].allData.uploadtime.replace(/T.*/,'')}</span>
+        <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>
     `;
+    Account_Rental.appendChild(Account_onRental);
+
+    if(LoginData==null){
+        like=``;
+    }else{
+        if(LoginData.members.identity==2){
+            likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
+            likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
+            
+            clicklike(likebtn,likeheart);
+        }
+    }
+    let rental_id=document.getElementById(`rental_id${data.rentalBlock[id].allData.rental_id}`);
+
+
+
+    rental_id.onclick=function(){
+    let rental_Id=`rental_id${data.rentalBlock[id].allData.rental_id}`;
+    rental_Id=rental_Id.replace('rental_id','')
+    sessionStorage.setItem('goitem_id', rental_Id);
 }
+
+
+
+}
+
+function newRenterRentalAPI(){
+    axios({
+        method: 'get',
+        url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${newRantalRenter}`,
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    }).then(({data})=>{
+        console.log(data);
+        rental_Id=0;
+        data.idList.forEach(function(){
+            newRenterRental(data,rental_Id);
+            rental_Id++;
+        });
+
+    }).catch(error=>{
+        console.log(error);
+    });
+}
+
+
+function clicklike(likebtn,likeheart){
+    like_btn=document.getElementById(likebtn);
+    likeheart=document.getElementById(likeheart);
+    console.log(like_btn);
+    console.log(likeheart);
+    like_btn.onclick=function(){
+        console.log(likeheart.getAttribute("src"))
+        if(likeheart.getAttribute("src")=="/image/heart.png"){
+            likeheart.setAttribute('src','/image/like.png')
+            collect(likeheart);
+    
+        }else if(likeheart.getAttribute("src")=="/image/like.png"){
+            likeheart.setAttribute('src','/image/heart.png')
+            deletecollect(likeheart);
+        }
+    }
+    }
+    
+    function deletecollect(likeheart){
+        console.log(likeheart.id);
+        Id=likeheart.id.replace('likeheart_','')
+        console.log(Id);
+        console.log(LoginData);
+        axios({
+            method: 'delete',
+            url: `http://localhost:5190/api/HomeAny/RemoveCollect/${Id}`,
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
+    
+    function collect(likeheart){
+        console.log(likeheart.id);
+        Id=likeheart.id.replace('likeheart_','')
+        console.log(Id);
+        console.log(LoginData);
+        axios({
+            method: 'post',
+            url: `http://localhost:5190/api/HomeAny/AddCollect?rental_id=${Id}`,
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }

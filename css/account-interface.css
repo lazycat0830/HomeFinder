@@ -73,6 +73,17 @@
     overflow: hidden;
 }
 
+.Housing_Profile a {
+    line-height: 1.7rem;
+    color: #000;
+    text-decoration: none;
+}
+.price {
+    color: #ff0000;
+    font-weight: bolder;
+}
+
+
 
 .text1{
     font-weight: bolder;
