@@ -15,18 +15,6 @@ let score;
 
 function oneAccount(data){
 
-        report_btn.addEventListener("click",function(){
-            Report_text1.innerHTML=`是否要檢舉${data.members.name}`;
-            createMask();
-            report.style.display="block";
-        });
-        
-        delete_report.addEventListener("click",function(){
-            deleteMask();
-            report.style.display="none";
-        
-        });
-
 
         console.log(data);
         if(data.members.score==0){

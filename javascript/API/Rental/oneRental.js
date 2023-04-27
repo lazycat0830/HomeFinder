@@ -12,10 +12,14 @@ function addonRental(data,id){
     if(LoginData==null){
         like=``;
     }else{
-        like=`
+        if(LoginData.members.identity==2){
+            like=`
             <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
             </a>`;
+        }else{
+            like=``;
+        }
     }
 
 let Houseimg_Profile=document.createElement('div');
@@ -40,12 +44,24 @@ Houseimg_Profile.innerHTML=`
     
 content_in.appendChild(Houseimg_Profile);
 
-if(LoginData!=null){
-    likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
-    likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
+// if(LoginData!=null){
+//     likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
+//     likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
     
-    clicklike(likebtn,likeheart);
+//     clicklike(likebtn,likeheart);
+// }
+
+if(LoginData==null){
+    like=``;
+}else{
+    if(LoginData.members.identity==2){
+        likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
+        likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
+        
+        clicklike(likebtn,likeheart);
+    }
 }
+
 let rental_id=document.getElementById(`rental_id${data.rentalBlock[id].allData.rental_id}`);
 
 

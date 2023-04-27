@@ -46,8 +46,8 @@ Loginbtn.onclick = function(){
     usermenu.classList.remove("show");
     a=!a;
     console.log(a);
-    let account =accountinput.value;
-    let password =passwordinput.value;
+    let account =LoginAccount.value;
+    let password =LoginPassword.value;
     
     axios({
         method: 'post',
@@ -64,7 +64,7 @@ Loginbtn.onclick = function(){
         
     })
     .then(({ data }) => {
-        
+        console.log(data.token);
         LoginData=data;
         sessionStorage.setItem('LoginData', JSON.stringify(data));
         // window.location.href = '/通用/index.html';
@@ -82,25 +82,31 @@ Loginbtn.onclick = function(){
 
     }
 
+    let forget_validatatext=document.getElementById('forget_validatatext');
     let forget_btn=document.getElementById('forget_btn');
-    let forget_account=document.getElementById('forget_account').value;
+    let forget_account=document.getElementById('forget_account');
     forget_btn.onclick=function(){
+        console.log(forget_account.value);
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/Auth/login',
+            url: 'http://localhost:5190/api/Auth/forgetPasswordMail',
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 // "Authorization": `Bearer ${token}`, 
             },
             data: { 
-                Account:forget_account,
+                Account:forget_account.value,
             },
         })
         .then(({ data }) => {
+            if(data=='忘記密碼解決'){
+                forget_validatatext.innerHTML="請去信箱收取新密碼，再重新修改密碼";
+            }
             console.log(data);
         }).catch(error => {
         // 处理请求过程中的错误
         console.error(error);
+        forget_validatatext.innerHTML=`${error}`;
     });
     }

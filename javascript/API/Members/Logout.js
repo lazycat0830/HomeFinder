@@ -12,16 +12,20 @@ rentermenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
     location.reload();
+    window.location.href = '/通用/index.html';
 };
 publishermenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
     location.reload();
+    window.location.href = '/通用/index.html';
 };
 adminmenubtnlogout.onclick=function(){
     sessionStorage.clear();
     Logoutaxios();
     location.reload();
+    window.location.href = '/通用/index.html';
+
 };
 
 

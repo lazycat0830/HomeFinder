@@ -1,5 +1,6 @@
-let content_in=document.getElementById('content_in');
-let noLogin=document.getElementById('noLogin');
+let newRantalRenter=sessionStorage.getItem('newRantalRenter');
+console.log(newRantalRenter);
+
 window.onload = function() {
     console.log(LoginData);
     // if(LoginData==null){
@@ -10,11 +11,11 @@ window.onload = function() {
         content_in.style.display='block';
         noLogin.style.display='none';
     
-        handleLogoutData(LoginData);
-        oneAccount(LoginData);
+        viewRentalAccount(newRantalRenter);
         console.log(LoginData);
-        LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
-    // }
+        // LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
+        handleLogoutData(LoginData);
+        // }
     
     
 };

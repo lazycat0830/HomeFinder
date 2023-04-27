@@ -14,32 +14,44 @@ function createitem(data){
     equipmentname = equipmentname.slice(0, -1);
 
     const formData = new FormData(form);
-    // formData.append('img1_1','');
-    // formData.append('img1_2','');
+
     formData.append('type',`${type}`);
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
     formData.append('publisher',`${data.members.name}`);
-    // formData.append('waterfee','85');
-    // formData.append('electricitybill','85');
-    // formData.append('adminfee','85');
-    // formData.append('rent','85');
-    // formData.append('title','yjub85');
-    // formData.append('address','uhkuk');
-    // formData.append('content','ugigui');
 
 
-    console.log(type);
-    console.log(genre);
-    console.log(pattern);
-    console.log(equipmentname);
-    console.log(data.members.name);
-    console.log(formData.entries());
-    console.log(type);
 
+    // console.log(type);
+    // console.log(genre);
+    // console.log(pattern);
+    // console.log(equipmentname);
+    // console.log(data.members.name);
+    // console.log(type);
+    // console.log(formData.get("img1_1"));
+    // console.log(formData.get("img1_2"));
+    // console.log(formData.get("img1_3"));
+    // console.log(formData.get("img1_4"));
+    // console.log(formData.get("img1_5"));
+    // console.log(formData.get("type"));
+    // console.log(formData.get("floor"));
+    // console.log(formData.get("genre"));
+    // console.log(formData.get("title"));
+    // console.log(formData.get("address"));
+    // console.log(formData.get("content"));
 
+    // console.log(formData.get("pattern"));
+    // console.log(formData.get("equipmentname"));
+    // console.log(formData.get("publisher"));
+    // console.log(formData.get("waterfee"));
+    // console.log(formData.get("electricitybill"));
+    // console.log(formData.get("adminfee"));
+    // console.log(formData.get("rent"));
+    // console.log(formData.get("area"));
     
+    
+
 
 
     axios({

@@ -127,25 +127,14 @@
                         <span id="oneAccountPhome"></span>
                         <span id="oneAccountEmail"></span>
                     </div>
-                    <div id="Account_updataAccount_btn" class="flexend">
-                        <button id='updataAccount_btn'>修改</button>
+                    <div id="report_judge">
+                        <button id="report_btn" class="report_btn">檢舉</button>
                     </div>
                 </div>
             </div>
             <div class="Account_collect_title">租屋</div>
-            <div class="Account_collect">
-                <div class="Housing_Profile">
-                    <div class="Housing_Profile_content flexcolumn">
-                        <a href="/通用/item.html"><div class="Houseimg relative">
-                            <img width="100%" src="/image/1.webp">
-                            <a id="likebtn" class="absolute Like"><img id="like" width="30px" src="/image/heart.png"></a>
-                        </div></a>
-                        <span class="text1">免仲介費/全新完工/獨洗曬/嚴選房客</span>
-                        <span class="text2 flexbetween">出租者： 顏小姐 <span style="color: #e48500;font-size: 12px;font-weight: bolder;">尚未有信用分數</span></span>
-                        <span class="text3">上架日期： 2023/03/27 | 15:23</span>
-                        <span class="text4">價格： <span style="color: #ff0000;font-weight: bolder;">11000<span style="font-size: 12px;font-weight: bolder;">元/月</span></span></span>
-                    </div>
-                </div>
+            <div id="Account_Rental" class="Account_collect">
+                
                 
                 
                 
@@ -194,9 +183,17 @@
                 <div id="body_content_body" class="flexcenter">
                     <div id="report_body_content_body_content" class="flexcolumn">
                         <div id="Report_text1" class="report_text1"></div>
+                        <div style="padding-bottom: 20px;">
+                            <select id="Report_reason" style="width: 100%;font-size: 1rem;">
+                                <option  value="" disabled selected>請選擇檢舉原因</option>
+                                <option style="font-size: 22px;"  value="遲到">遲到</option>
+                                <option style="font-size: 22px;" value="態度不好">態度不好</option>
+                                <option style="font-size: 22px;" value="詐騙">詐騙</option>
+                            </select>
+                        </div>
                         <div class="flexrow report_btnwidth">
-                            <a href="#"><button class="report_btn1">確認</button></a>
-                            <a href="#"><button class="report_btn2">取消</button></a>
+                            <a href="#"><button id="report_btn1" class="report_btn1">確認</button></a>
+                            <a href="#"><button id="report_btn2" class="report_btn2">取消</button></a>
                         </div>
                     </div>
                 </div>
@@ -208,9 +205,9 @@
 
 </body>
 
-<script src="/javascript/window_onload/account-interface.js"></script>
-
-<script src="/javascript/API/Members/oneAccount-data.js"></script>
+<script src="/javascript/window_onload/lookRentalaccount.js"></script>
+<script src='/javascript/API/Members/lookRentalaccount.js'></script>
+<!-- <script src="/javascript/API/Members/oneAccount-data.js"></script> -->
 
 <script src="/javascript/API/Members/function.js"></script>
 <script src="/javascript/API/Members/Logout.js"></script>
