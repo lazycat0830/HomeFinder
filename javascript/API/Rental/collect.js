@@ -75,16 +75,25 @@ rental_id.onclick=function(){
 
 
 function viewcollect(){
-    collectData= JSON.parse(sessionStorage.getItem('collectData'));
-            console.log(data);
-            console.log(collectData);
-            var rental_Id=0;
-            collectData.idList.forEach(function(){
-                addoncollect(collectData,rental_Id);
-                rental_Id++;
-            }
-            );
-}
+    axios({
+        method:'post',
+        url:'http://localhost:5190/api/HomeAny/AllCollect',
+        headers:{
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`,
+        },
+    }).then(({data})=>{
+        console.log(data);
+        var rental_Id=0;
+        data.idList.forEach(function(){
+            addoncollect(data,rental_Id);
+            rental_Id++;
+        })
+    }).catch(error=>{
+        console.error(error);
+    });
+};
 
 function clicklike(likebtn,likeheart){
     like_btn=document.getElementById(likebtn);

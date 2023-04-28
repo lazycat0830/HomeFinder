@@ -224,6 +224,31 @@ body.relative{
     display: none;
 }
 
+.Label ul {
+    list-style: none;
+}
+
+.Label ul li {
+    padding: 10px 10px 10px 0px;
+    margin: auto 0px;
+}
+
+.Label_btn_off {
+    font-size: 16px;
+    border: 0px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.Label_btn_on {
+    font-size: 16px;
+    color: #ffa435;
+    cursor: pointer;
+    border: 0px;
+    background-color: #fff;
+}
+
+
 @media screen and (max-width: 1400px) {
     /* calc(100% - 24px); */
 }
