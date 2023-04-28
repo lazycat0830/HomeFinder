@@ -1,7 +1,26 @@
 let content_in=document.getElementById('content_in');
 
 function addonRental(data,id){
+    var rentalId=0;
+    let likesrc;
     let scoretext;
+    console.log(id);
+    console.log(data);
+    
+    
+    if(LoginData==null){
+        like=``;
+    }else{
+        if(LoginData.members.identity==2){
+            like=`
+                        <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                        <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
+                        </a>`;
+        }else{
+            like=``;
+        }
+    }
+
     if(data.rentalBlock[id].allData.member.score==null){
         scoretext='尚未有信用分數';
     }else{
@@ -9,22 +28,11 @@ function addonRental(data,id){
     }
     let update;
     update=data.rentalBlock[id].allData.uploadtime;
-    if(LoginData==null){
-        like=``;
-    }else{
-        if(LoginData.members.identity==2){
-            like=`
-            <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
-                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
-            </a>`;
-        }else{
-            like=``;
-        }
-    }
+    
 
-let Houseimg_Profile=document.createElement('div');
-Houseimg_Profile.classList='Housing_Profile';
-Houseimg_Profile.innerHTML=`
+    let Houseimg_Profile=document.createElement('div');
+    Houseimg_Profile.classList='Housing_Profile';
+    Houseimg_Profile.innerHTML=`
 
     <div class="Housing_Profile_content flexcolumn relative">
         
@@ -35,7 +43,7 @@ Houseimg_Profile.innerHTML=`
             </a>
         
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <a class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></a>
+        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">信用${scoretext}分</span></span>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>
@@ -44,12 +52,12 @@ Houseimg_Profile.innerHTML=`
     
 content_in.appendChild(Houseimg_Profile);
 
-// if(LoginData!=null){
-//     likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
-//     likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
+// // if(LoginData!=null){
+// //     likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
+// //     likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
     
-//     clicklike(likebtn,likeheart);
-// }
+// //     clicklike(likebtn,likeheart);
+// // }
 
 if(LoginData==null){
     like=``;
@@ -100,7 +108,7 @@ function deletecollect(likeheart){
     console.log(LoginData);
     axios({
         method: 'delete',
-        url: `http://localhost:5190/api/HomeAny/RemoveCollect/${Id}`,
+        url: `http://localhost:5190/api/HomeAny/RemoveCollect?rental_id=${Id}`,
         headers:{
             "Content-Type": "multipart/form-data",
             "Accept": "application/json",
@@ -155,10 +163,12 @@ function viewDownTimeallData(){
         .then(( { data } ) => {
             console.log(data);
             var rental_Id=0;
-            console.log(data);
+            console.log(data.idList);
             data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
+                    
+                    console.log(rental_Id);
+                    addonRental(data,rental_Id);
+                    rental_Id++;
             });
         })
         .catch(error => {

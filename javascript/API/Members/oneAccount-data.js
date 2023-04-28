@@ -28,8 +28,98 @@ function oneAccount(data){
         oneAccountPhome.innerHTML=`電話：${data.members.phone}`;
         oneAccountEmail.innerHTML=`E-mail：${data.members.email}`;
 
-        
+        newRenterRentalAPI(data.members.account);
     }
+
+    let Account_Rental=document.getElementById('Account_Rental');
+    function newRenterRental(data,id){
+        console.log(data.rentalBlock[id].allData.member.score)
+        let scoretext;
+        if(data.rentalBlock[id].allData.member.score==null){
+            scoretext='尚未有信用分數';
+        }else{
+            scoretext=data.rentalBlock[id].allData.member.score;
+        }
+        if(LoginData==null){
+            like=``;
+        }else{
+            if(LoginData.members.identity==2){
+                like=`
+                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                    <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
+                </a>`;
+            }else{
+                like=``;
+            }
+        }
+    
+        let Account_onRental=document.createElement('div');
+        Account_onRental.classList="Housing_Profile";
+    
+        Account_onRental.innerHTML=`
+        <div class="Housing_Profile_content flexcolumn relative">
+                <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
+                    <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                    ${like}
+                </a>
+                </a>
+            <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
+            <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></span>
+            <span class="text3">上架日期：${data.rentalBlock[id].allData.uploadtime.replace(/T.*/,'')}</span>
+            <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
+        </div>
+        `;
+        Account_Rental.appendChild(Account_onRental);
+    
+        if(LoginData==null){
+            like=``;
+        }else{
+            if(LoginData.members.identity==2){
+                likebtn=`likebtn_${data.rentalBlock[id].allData.rental_id}`;
+                likeheart=`likeheart_${data.rentalBlock[id].allData.rental_id}`;
+                
+                clicklike(likebtn,likeheart);
+            }
+        }
+        let rental_id=document.getElementById(`rental_id${data.rentalBlock[id].allData.rental_id}`);
+    
+    
+    
+        rental_id.onclick=function(){
+        let rental_Id=`rental_id${data.rentalBlock[id].allData.rental_id}`;
+        rental_Id=rental_Id.replace('rental_id','')
+        sessionStorage.setItem('goitem_id', rental_Id);
+    }
+    
+    
+    
+    }
+
+    function newRenterRentalAPI(account){
+        console.log(account);
+        axios({
+            method: 'get',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${account}`,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(({data})=>{
+            console.log(data);
+            rental_Id=0;
+            data.idList.forEach(function(){
+                newRenterRental(data,rental_Id);
+                rental_Id++;
+            });
+    
+        }).catch(error=>{
+            console.log(error);
+        });
+    }
+
+
+    
     updataAccount_btn.onclick=function(){
         createMask();
         update_Account.style.display="block";

@@ -15,7 +15,7 @@ window.onload = function() {
         <div id="validatatext_signup" style="font-size: 1rem;text-align: center;color: #ff0000;font-weight: bolder;padding-bottom: 20px;"></div>
         <div class="inner3">
         <input class="updata_submit" onclick="submit()" value="修改" type="button"></br>
-                        <input class="updata_reset" onclick="reset()" value="修改" type="button">
+                        <input class="updata_reset" onclick="reset()" value="清除" type="button">
 
         </div>
     

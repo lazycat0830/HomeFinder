@@ -122,10 +122,11 @@
             <div class="selection_period flexcolumn">
                 <div class="flexrow select_date_nav">
                     <div class="beforeday"><a href="#"><</a></div>
-                    <div class="today">2023/03/26　星期日</div>
+                    <div id="day" class="today"></div>
                     <div class="afterday"><a href="#">></a></div>
+                    <input id="changeDate" type="date" style="visibility: hidden;">
                 </div>
-                <div class="flexcenter selection_period_margin">
+                <!-- <div class="flexcenter selection_period_margin" >
                     <div class="day">
                         <div class="selection_period_title">日期</div>
                         <div class="yearmonth flexcenter">
@@ -256,7 +257,7 @@
                         </table>
 
                     </div>
-                </div>
+                </div> -->
                 <hr>
                 <div class="Show_reserved_properties">
                     <div class="flexbetween title"><span>被預約的房屋</span><button>時間遞增</button></div>

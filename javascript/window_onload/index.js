@@ -32,11 +32,12 @@ let genre,pattern,equipmentname,type;
 
 window.onload=function(){
     console.log(LoginData);
+    console.log(collectData);
     viewDownTimeallData();
-    
+
     handleLogoutData(LoginData);
     console.log(LoginData);
-    // LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
+    //LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
     
     
     DownTimeallData.onclick=function(){
@@ -278,3 +279,6 @@ function offallnavbtn(){
     equipmentname_sofa.classList="navbtn";
     equipmentname_balcony.classList="navbtn";
 }
+
+
+

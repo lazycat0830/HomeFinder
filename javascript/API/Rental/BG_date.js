@@ -1,0 +1,95 @@
+// let monup1=document.getElementById('monup1');
+// let mondown1=document.getElementById('mondown1');
+// let monup2=document.getElementById('monup2');
+// let mondown2=document.getElementById('mondown2');
+// let monup3=document.getElementById('monup3');
+// let mondown3=document.getElementById('mondown3');
+// let monup4=document.getElementById('monup4');
+// let mondown4=document.getElementById('mondown4');
+// let monup5=document.getElementById('monup5');
+// let mondown5=document.getElementById('mondown5');
+// let monup6=document.getElementById('monup6');
+// let mondown6=document.getElementById('mondown6');
+// let tueup1=document.getElementById('tueup1');
+// let tuedown1=document.getElementById('tuedown1');
+// let tueup2=document.getElementById('tueup2');
+// let tuedown2=document.getElementById('tuedown2');
+// let tueup3=document.getElementById('tueup3');
+// let tuedown3=document.getElementById('tuedown3');
+// let tueup4=document.getElementById('tueup4');
+// let tuedown4=document.getElementById('tuedown4');
+// let tueup5=document.getElementById('tueup5');
+// let tuedown5=document.getElementById('tuedown5');
+// let tueup6=document.getElementById('tueup6');
+// let tuedown6=document.getElementById('tuedown6');
+// let wedup1=document.getElementById('wedup1');
+// let weddown1=document.getElementById('weddown1');
+// let wedup2=document.getElementById('wedup2');
+// let weddown2=document.getElementById('weddown2');
+// let wedup3=document.getElementById('wedup3');
+// let weddown3=document.getElementById('weddown3');
+// let wedup4=document.getElementById('wedup4');
+// let weddown4=document.getElementById('weddown4');
+// let wedup5=document.getElementById('wedup5');
+// let weddown5=document.getElementById('weddown5');
+// let wedup6=document.getElementById('wedup6');
+// let weddown6=document.getElementById('weddown6');
+// let thuup1=document.getElementById('thuup1');
+// let thudown1=document.getElementById('thudown1');
+// let thuup2=document.getElementById('thuup2');
+// let thudown2=document.getElementById('thudown2');
+// let thuup3=document.getElementById('thuup3');
+// let thudown3=document.getElementById('thudown3');
+// let thuup4=document.getElementById('thuup4');
+// let thudown4=document.getElementById('thudown4');
+// let thuup5=document.getElementById('thuup5');
+// let thudown5=document.getElementById('thudown5');
+// let thuup6=document.getElementById('thuup6');
+// let thudown6=document.getElementById('thudown6');
+// let friup1=document.getElementById('friup1');
+// let fridown1=document.getElementById('fridown1');
+// let friup2=document.getElementById('friup2');
+// let fridown2=document.getElementById('fridown2');
+// let friup3=document.getElementById('friup3');
+// let fridown3=document.getElementById('fridown3');
+// let friup4=document.getElementById('friup4');
+// let fridown4=document.getElementById('fridown4');
+// let friup5=document.getElementById('friup5');
+// let fridown5=document.getElementById('fridown5');
+// let friup6=document.getElementById('friup6');
+// let fridown6=document.getElementById('fridown6');
+// let satup1=document.getElementById('satup1');
+// let satdown1=document.getElementById('satdown1');
+// let satup2=document.getElementById('satup2');
+// let satdown2=document.getElementById('satdown2');
+// let satup3=document.getElementById('satup3');
+// let satdown3=document.getElementById('satdown3');
+// let satup4=document.getElementById('satup4');
+// let satdown4=document.getElementById('satdown4');
+// let satup5=document.getElementById('satup5');
+// let satdown5=document.getElementById('satdown5');
+// let satup6=document.getElementById('satup6');
+// let satdown6=document.getElementById('satdown6');
+// let sunup1=document.getElementById('sunup1');
+// let sundown1=document.getElementById('sundown1');
+// let sunup2=document.getElementById('sunup2');
+// let sundown2=document.getElementById('sundown2');
+// let sunup3=document.getElementById('sunup3');
+// let sundown3=document.getElementById('sundown3');
+// let sunup4=document.getElementById('sunup4');
+// let sundown4=document.getElementById('sundown4');
+// let sunup5=document.getElementById('sunup5');
+// let sundown5=document.getElementById('sundown5');
+// let sunup6=document.getElementById('sunup6');
+// let sundown6=document.getElementById('sundown6');
+
+// let save=document.getElementById('save');
+// let mon=monup1+'-'+mondown1+';'
+
+
+
+
+// save.onclick=function(){
+//     console.log(monup1.value);
+//     console.log(mondown1.value);
+// }

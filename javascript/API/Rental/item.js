@@ -35,8 +35,17 @@ function viewnewitem(rental_id){
 }
 
 
+
+
 function Editviewitemcontent(data){
     console.log(data);
+    let scoretext;
+    if(data.member.score==null){
+        scoretext='尚未有信用分數';
+    }else{
+        scoretext=data.member.score;
+    }
+
     judgment_equipment(data.equipmentname);
     Combinationtags(data);
     let data_time=data.uploadtime.replace(/\..*/g, "").replace("T", " | ");
@@ -193,8 +202,8 @@ function Editviewitemcontent(data){
                         <div class="flexcenter"><a id='Accountimg_btn' class="avatar" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a></div>
                     </div>
                     <div class="publisher_Information_text">
-                        出租者：<span class="subtitle">${data.member.name}</span><span class="credit_score">尚未有信用分數</span><br>
-                        電話：<span class="subtitle">0000-000-000</span>
+                        出租者：<span class="subtitle">${data.member.name}</span><span class="credit_score">信用:${scoretext}分</span><br>
+                        電話：<span class="subtitle">${data.member.phone}</span>
                     </div>
                     </div>
                 </div>  
