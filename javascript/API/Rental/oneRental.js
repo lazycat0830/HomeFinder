@@ -1,21 +1,29 @@
 let content_in=document.getElementById('content_in');
+    
 
 function addonRental(data,id){
+    collectData= JSON.parse(sessionStorage.getItem('collectData'));
     var rentalId=0;
     let likesrc;
     let scoretext;
     console.log(id);
     console.log(data);
-    
+    console.log(collectData);
     
     if(LoginData==null){
         like=``;
     }else{
         if(LoginData.members.identity==2){
+            // console.log(collectData.idList);
             like=`
-                        <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
-                        <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
-                        </a>`;
+                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
+                </a>`;
+            //     collectData.idList.forEach(function(){
+            //         console.log(rentalId);
+            //         rentalId++;
+            // });
+            
         }else{
             like=``;
         }

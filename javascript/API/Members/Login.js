@@ -74,9 +74,11 @@ Loginbtn.onclick = function(){
         deleteMask();
 
 
-        collectAllData(LoginData);
+        
         //設定可預約時間
-        postBookTime(LoginData);
+        if(data.members.identity==1){
+            postBookTime(LoginData);
+        }
         
         location.reload();
     })
@@ -90,7 +92,7 @@ Loginbtn.onclick = function(){
     }
 
     function collectAllData(LoginData){
-        console.log(LoginData);
+        console.log(LoginData.token);
         axios({
             method: 'post',
             url: 'http://localhost:5190/api/HomeAny/AllCollect',

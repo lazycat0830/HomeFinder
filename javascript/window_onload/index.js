@@ -34,7 +34,11 @@ window.onload=function(){
     console.log(LoginData);
     console.log(collectData);
     viewDownTimeallData();
-
+    // if(LoginData!=null){
+    //     if(LoginData.members.identity==2){
+    //         collectAllData(LoginData);
+    //     }
+    // }
     handleLogoutData(LoginData);
     console.log(LoginData);
     //LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   

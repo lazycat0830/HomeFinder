@@ -108,19 +108,16 @@ function viewonRental(data){
 
 }
 
-function review(id,check){
-    const formData = new FormData();
-    formData.append('check',check);
+function review(id,type){
 
     axios({
         method:'put',
-        url:`http://localhost:5190/api/HomeDetail/${id}`,
+        url:`http://localhost:5190/api/HomeDetail/Check?type=${type}&Id=${id}`,
         headers:{
             'Content-Type':'multipart/form-data',
             "Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`, 
         },
-        data: formData,
     })
     .then(({data})=>{
         console.log(data);

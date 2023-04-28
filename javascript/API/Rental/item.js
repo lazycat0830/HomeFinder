@@ -27,7 +27,7 @@ function viewnewitem(rental_id){
         },
     }).then(( { data } ) => {
         console.log(data);
-        Editviewitemcontent(data);
+        Editviewitemcontent(data,rental_id);
     })
     .catch(error => {
         console.log(error);
@@ -37,7 +37,7 @@ function viewnewitem(rental_id){
 
 
 
-function Editviewitemcontent(data){
+function Editviewitemcontent(data,rental_id){
     console.log(data);
     let scoretext;
     if(data.member.score==null){
@@ -172,30 +172,28 @@ function Editviewitemcontent(data){
                 </div>
                 <div id="content_right" class="flexcolumn" >
                     <div class="Choose_time">
-                        <span class="Choose_title">選擇預約時間</span>
+                        <span class="Choose_time flexcolumn">選擇預約時間</span>
+                        <input type='date' id='changedata'>
                         <div class="Choose_time_btn flexcenter">
                             <ul>
-                                <li class="Choose_time_btn_true" tabindex="1">
-                                    08:30~10:30
+                                <li>
+                                    <a  id='changetime1' class='Choose_time_btn_true'>07:00-09:00</a>
                                 </li>
-                                <li class="Choose_time_btn_true"  tabindex="2">
-                                    11:00~12:30
+                                <li>
+                                    <a  id='changetime2' class='Choose_time_btn_true'>10:00-12:00</a>
                                 </li>
-                                <li class="Choose_time_btn_true" tabindex="3">
-                                    13:00~14:30
+                                <li>
+                                    <a  id='changetime3' class='Choose_time_btn_true'>14:00-16:00</a>
                                 </li>
-                                <li class="Choose_time_btn_true" tabindex="4">
-                                    15:00~16:30
+                                <li>
+                                    <a  id='changetime4' class='Choose_time_btn_true'>17:00-19:00</a>
                                 </li>
-                                <li class="Choose_time_btn_true" tabindex="5">
-                                    17:00~18:30
-                                </li>
-                                <li class="Choose_time_btn_true" tabindex="6">
-                                    20:00~21:30
+                                <li>
+                                    <a id='changetime5' class='Choose_time_btn_true'>20:00-22:00</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="Choose_time_button"><input type="submit" value="我要預約"></div>
+                        <div class="Choose_time_button"><input id='reservedate' type="submit" value="我要預約"></div>
                     </div>
                     <div class="publisher_Information flexrow">
                     <div class="publisher_Information_img flexcolumn">
@@ -213,10 +211,77 @@ function Editviewitemcontent(data){
     Accountimg_btn.onclick=function(){
         sessionStorage.setItem('newRantalRenter',data.member.account);
     }
+    reserve(rental_id)
 }
 
+function reserve(rental_id){
+    let time;
+    let changetime1=document.getElementById('changetime1');
+    let changetime2=document.getElementById('changetime2');
+    let changetime3=document.getElementById('changetime3');
+    let changetime4=document.getElementById('changetime4');
+    let changetime5=document.getElementById('changetime5');
+    let reservedate=document.getElementById('reservedate');
+    changetime1.onclick=function(){
+        cssfalse();
+        changetime1.classList='Choose_time_btn_false';
+        time=changetime1.innerHTML;
+    }
+    changetime2.onclick=function(){
+        cssfalse();
+        changetime2.classList='Choose_time_btn_false';
+        time=changetime2.innerHTML;
+    }
+    changetime3.onclick=function(){
+        cssfalse();
+        changetime3.classList='Choose_time_btn_false';
+        time=changetime3.innerHTML;
+    }
+    changetime4.onclick=function(){
+        cssfalse();
+        changetime4.classList='Choose_time_btn_false';
+        time=changetime4.innerHTML;
+    }
+    changetime5.onclick=function(){
+        cssfalse();
+        changetime5.classList='Choose_time_btn_false';
+        time=changetime5.innerHTML;
+    }
+    reservedate.onclick=function(){
+        let changedata=document.getElementById('changedata');
+        console.log(changedata.value);
+        console.log(time);
+        console.log(rental_id);
+        axios({
+            method:'post',
+            url:'http://localhost:5190/api/List/AddBooking',
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },data:{
+                bookdate:changedata.value,
+                booktime:time,
+                rental_id:rental_id,
+            }
+        }).then(({ data }) => {
+            console.log(data);
+        }).catch(error => {
+        // 处理请求过程中的错误
+        console.error(error);
+        
+    });
+    }
 
+}
 
+function cssfalse(){
+    changetime1.classList='Choose_time_btn_true';
+    changetime2.classList='Choose_time_btn_true';
+    changetime3.classList='Choose_time_btn_true';
+    changetime4.classList='Choose_time_btn_true';
+    changetime5.classList='Choose_time_btn_true';
+}
 
 function Combinationtags(data){
     if(data.type!=null){
