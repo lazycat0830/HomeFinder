@@ -20,8 +20,8 @@ function createitem(data){
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
     formData.append('publisher',`${data.members.name}`);
-
-
+    
+    
 
     // console.log(type);
     // console.log(genre);

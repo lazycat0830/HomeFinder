@@ -58,7 +58,7 @@ filter_btn.addEventListener("click",function(){
     genre_combination();
     type_combination();
     pattern_combination();
-
+    equipmentname_combination()
 });
 
 filter_delete.onclick=function(){
@@ -196,3 +196,108 @@ function type_Label_btn_off(){
     type_villa.classList='Label_btn_off';
 }
 
+let equipmentname_parkingspace=document.getElementById('equipmentname_parkingspace');
+let equipmentname_elevator=document.getElementById('equipmentname_elevator');
+let equipmentname_Canpartner=document.getElementById('equipmentname_Canpartner');
+let equipmentname_bed=document.getElementById('equipmentname_bed');
+let equipmentname_tablesandchairs=document.getElementById('equipmentname_tablesandchairs');
+let equipmentname_waterheater=document.getElementById('equipmentname_waterheater');
+let equipmentname_airconditioner=document.getElementById('equipmentname_airconditioner');
+let equipmentname_washingmachine=document.getElementById('equipmentname_washingmachine');
+let equipmentname_Wardrobe=document.getElementById('equipmentname_Wardrobe');
+let equipmentname_refrigerator=document.getElementById('equipmentname_refrigerator');
+let equipmentname_naturalgas=document.getElementById('equipmentname_naturalgas');
+let equipmentname_Thefourthstation=document.getElementById('equipmentname_Thefourthstation');
+let equipmentname_sofa=document.getElementById('equipmentname_sofa');
+let equipmentname_balcony=document.getElementById('equipmentname_balcony');
+
+function equipmentname_combination(){
+    equipmentname_parkingspace.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_parkingspace.classList='Label_btn_on';
+        type=equipmentname_parkingspace.value;
+    }
+    equipmentname_elevator.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_elevator.classList='Label_btn_on';
+        type=equipmentname_elevator.value;
+    }
+    equipmentname_Canpartner.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_Canpartner.classList='Label_btn_on';
+        type=equipmentname_Canpartner.value;
+    }
+    equipmentname_bed.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_bed.classList='Label_btn_on';
+        type=equipmentname_bed.value;
+    }
+    equipmentname_tablesandchairs.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_tablesandchairs.classList='Label_btn_on';
+        type=equipmentname_tablesandchairs.value;
+    }
+    equipmentname_waterheater.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_waterheater.classList='Label_btn_on';
+        type=equipmentname_waterheater.value;
+    }
+    equipmentname_airconditioner.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_airconditioner.classList='Label_btn_on';
+        type=equipmentname_airconditioner.value;
+    }
+    equipmentname_washingmachine.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_washingmachine.classList='Label_btn_on';
+        type=equipmentname_washingmachine.value;
+    }
+    equipmentname_Wardrobe.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_Wardrobe.classList='Label_btn_on';
+        type=equipmentname_Wardrobe.value;
+    }
+    equipmentname_refrigerator.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_refrigerator.classList='Label_btn_on';
+        type=equipmentname_refrigerator.value;
+    }
+    equipmentname_naturalgas.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_naturalgas.classList='Label_btn_on';
+        type=equipmentname_naturalgas.value;
+    }
+    equipmentname_Thefourthstation.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_Thefourthstation.classList='Label_btn_on';
+        type=equipmentname_Thefourthstation.value;
+    }
+    equipmentname_sofa.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_sofa.classList='Label_btn_on';
+        type=equipmentname_sofa.value;
+    }
+    equipmentname_balcony.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_balcony.classList='Label_btn_on';
+        type=equipmentname_balcony.value;
+    }
+
+}
+
+function equipmentname_Label_btn_off(){
+    equipmentname_parkingspace.classList='Label_btn_off';
+    equipmentname_elevator.classList='Label_btn_off';
+    equipmentname_Canpartner.classList='Label_btn_off';
+    equipmentname_bed.classList='Label_btn_off';
+    equipmentname_tablesandchairs.classList='Label_btn_off';
+    equipmentname_waterheater.classList='Label_btn_off';
+    equipmentname_airconditioner.classList='Label_btn_off';
+    equipmentname_washingmachine.classList='Label_btn_off';
+    equipmentname_Wardrobe.classList='Label_btn_off';
+    equipmentname_refrigerator.classList='Label_btn_off';
+    equipmentname_naturalgas.classList='Label_btn_off';
+    equipmentname_Thefourthstation.classList='Label_btn_off';
+    equipmentname_sofa.classList='Label_btn_off';
+    equipmentname_balcony.classList='Label_btn_off';
+}

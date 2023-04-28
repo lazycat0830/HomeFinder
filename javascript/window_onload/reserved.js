@@ -2,19 +2,20 @@
 
 
 function getReservedData(LoginData){
-    console.log("123",LoginData.token);
     axios({
         method:'get',
         url:'http://localhost:5190/api/List',
-        header:{
+        headers:{
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({ data })=> {
         console.log(data);
+        var id=0;
         data.forEach(function(){
-            viewAllReserved();
+            viewAllReserved(data[id]);
+            id++;
         });
         
     }).catch(error=>{
@@ -24,7 +25,7 @@ function getReservedData(LoginData){
 
 window.onload = function() {
     
-    console.log(LoginData);
+    console.log("token",LoginData);
     // if(LoginData==null){
     //     let content_in=document.getElementById('content_in');
     //     content_in.innerHTML='請先登入';
