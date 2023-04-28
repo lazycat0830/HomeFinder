@@ -47,7 +47,7 @@ function addRental(data,id) {
             review(data.rentalBlock[id].allData.rental_id,check);
         }
         review_false.onclick=function(){
-            check=0;
+            check=2;
             review(data.rentalBlock[id].allData.rental_id,check);
         }
 
@@ -108,16 +108,20 @@ function viewonRental(data){
 
 }
 
-function review(id,type){
+function review(id,check){
 
     axios({
         method:'put',
-        url:`http://localhost:5190/api/HomeDetail/Check?type=${type}&Id=${id}`,
+        url:`http://localhost:5190/api/HomeDetail/Check`,
         headers:{
-            'Content-Type':'multipart/form-data',
+            'Content-Type':'application/json',
             "Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`, 
-        },
+        },data:{
+            Id:`${id}`,
+            Type:`${check}`,
+            Reason:"",
+        }
     })
     .then(({data})=>{
         console.log(data);
