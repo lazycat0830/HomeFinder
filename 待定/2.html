@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="date">选择日期：</label>
+    <input type="text" id="date" placeholder="点击选择日期">
+    <input type="date" id="datepicker" style="display:none;">
+    <button id="prev-day">&lt;</button>
+    <button id="next-day">&gt;</button>
+</body>
+<script>
+    const dateText = document.getElementById('date');
+    const datepicker = document.getElementById('datepicker');
+    const prevDayBtn = document.getElementById('prev-day');
+    const nextDayBtn = document.getElementById('next-day');
+
+    // 获取今天的日期
+    const today = new Date();
+    let selectedDate = today;
+
+    // 将今天的日期设置为文本元素的默认值
+    const todayString = today.toLocaleDateString();
+    dateText.value = todayString;
+
+    // 点击文本元素时显示日期选择器
+    dateText.addEventListener('click', () => {
+    datepicker.style.display = 'block';
+    });
+
+    // 选择日期时更新文本元素的值
+    datepicker.addEventListener('change', () => {
+    selectedDate = new Date(datepicker.value);
+    dateText.value = selectedDate.toLocaleDateString();
+    datepicker.style.display = 'none';
+    });
+
+    // 点击 "<" 按钮时将日期向前推一天
+    prevDayBtn.addEventListener('click', () => {
+    selectedDate.setDate(selectedDate.getDate() - 1);
+    dateText.value = selectedDate.toLocaleDateString();
+    });
+
+    // 点击 ">" 按钮时将日期向后推一天
+    nextDayBtn.addEventListener('click', () => {
+    selectedDate.setDate(selectedDate.getDate() + 1);
+    dateText.value = selectedDate.toLocaleDateString();
+    });
+</script>
+</html>

@@ -91,27 +91,27 @@ Loginbtn.onclick = function(){
     
     }
 
-    function collectAllData(LoginData){
-        console.log(LoginData.token);
-        axios({
-            method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/AllCollect',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${LoginData.token}`, 
-            },
-        })
-        .then(({ data }) => {
-            console.log(data);
-            collectData=data;
-            sessionStorage.setItem('collectData', JSON.stringify(data));
-        }).catch(error => {
-        // 处理请求过程中的错误
-        console.error(error);
+    // function collectAllData(LoginData){
+    //     console.log(LoginData.token);
+    //     axios({
+    //         method: 'get',
+    //         url: 'http://localhost:5190/api/HomeAny/AllCollectTEST',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json",
+    //             "Authorization": `Bearer ${LoginData.token}`, 
+    //         },
+    //     })
+    //     .then(({ data }) => {
+    //         console.log(data);
+    //         collectData=data;
+    //         sessionStorage.setItem('collectData', JSON.stringify(data));
+    //     }).catch(error => {
+    //     // 处理请求过程中的错误
+    //     console.error(error);
         
-    });
-    }
+    // });
+    // }
 
 
 

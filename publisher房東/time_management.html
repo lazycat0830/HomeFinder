@@ -71,7 +71,7 @@
         </div>
         <div id="rentermenu" class="absolute userfunction">
             <ul>
-                <a href="/通用/notify.html"><li><button id="btnsign" type="button">通知</button></li></a>
+                
                 <a href="/renter房客/reserved.html"><li><button id="btnsign" type="button">已預約房屋</button></li></a>
                 <a href="/renter房客/collect.html"><li><button id="btnsign" type="button">已收藏</button></li></a>
                 <hr>
@@ -82,7 +82,7 @@
         </div>
         <div id="publishermenu" class="absolute userfunction">
             <ul>
-                <a href="/通用/notify.html"><li><button id="btnsign" type="button">通知</button></li></a>
+                
                 <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
                 <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
                 <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
@@ -120,12 +120,15 @@
     <div id="content">
         <div id="content_in">
             <div class="selection_period flexcolumn">
-                <div class="flexrow select_date_nav">
-                    <div class="beforeday"><a href="#"><</a></div>
-                    <div id="day" class="today"></div>
-                    <div class="afterday"><a href="#">></a></div>
-                    <input id="changeDate" type="date" style="visibility: hidden;">
-                </div>
+                <div class="select_date_nav">
+                    <div class='flexcolumn'>
+                        <div class="flexrow flexcenter">
+                            <button id="prev-day">&lt;</button>
+                            <a id="date" class="today">日期</a>
+                            <button id="next-day">&gt;</button>
+                        </div>
+                        <div class="flexcenter"><input type="date" id="datepicker" style="display:none; width: 200px;"></div>
+                    </div>
                 <!-- <div class="flexcenter selection_period_margin" >
                     <div class="day">
                         <div class="selection_period_title">日期</div>
@@ -261,33 +264,8 @@
                 <hr>
                 <div class="Show_reserved_properties">
                     <div class="flexbetween title"><span>被預約的房屋</span><button>時間遞增</button></div>
-                    <div class="booked">
-                        <div class="flexbetween item_content">
-                            <div class="item_content_img"><img width="100%" src="/image/1.webp"></div>
-                            <div class="flexcolumn">
-                                <span class="text1">免仲介費/全新完工/獨洗曬/嚴選房客</span>
-                                <span class="text2">2023/03/27 10:00-11:30</span>
-                                <span class="text5">地址：406台中市北屯區一新一街5巷2-14</span>
-                                <div class="flexbetween"><span class="text3">預約者：User</span><span class="text4">尚未有信用分數</span></div>
-                            </div>
-                            <div class="flexcolumn">
-                                <div class="flexcenter" style="padding-bottom: 20px;"><img height="60px" src="/image/圖片2.png"></div>
-                                <button class="cancel_appointment_btn">取消預約</button>
-                            </div>
-                        </div>
-                        <div class="flexbetween item_content">
-                            <div class="item_content_img"><img width="100%" src="/image/1.webp"></div>
-                            <div class="flexcolumn">
-                                <span class="text1">免仲介費/全新完工/獨洗曬/嚴選房客</span>
-                                <span class="text2">2023/03/27 10:00-11:30</span>
-                                <span class="text5">地址：406台中市北屯區一新一街5巷2-14</span>
-                                <div class="flexbetween"><span class="text3">預約者：User</span><span class="text4">尚未有信用分數</span></div>
-                            </div>
-                            <div class="flexcolumn">
-                                <div class="flexcenter" style="padding-bottom: 20px;"><img height="60px" src="/image/圖片2.png"></div>
-                                <button class="cancel_appointment_btn">取消預約</button>
-                            </div>
-                        </div>
+                    <div id="item_content" class="booked">
+                        
                     </div>
                 </div>
                 
@@ -297,7 +275,7 @@
     </div>
 </body>
 <!-- <script src="/javascript/loggedin.js"></script> -->
-
+<script src="/javascript/API/Members/time_management.js"></script>
 <script src="/javascript/window_onload/time_management.js"></script>
 
 <script src="/javascript/API/Members/function.js"></script>
@@ -306,6 +284,7 @@
 
 <script src="/javascript/通用/mask.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
+<script src="/javascript/通用/deleteBook-API.js"></script>
 
 <!-- <script src="/javascript/API/Members/register.js"></script> -->
 
