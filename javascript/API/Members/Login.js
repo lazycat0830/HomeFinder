@@ -4,6 +4,7 @@ let collectData= JSON.parse(sessionStorage.getItem('collectData'));
 
 function handleLoginData(data) {
     LoginData = data;
+    
 }
 
 let accountinput =document.getElementById('LoginAccount');

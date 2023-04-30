@@ -12,7 +12,7 @@ function addtime_management(data,changedate){
         item_data.classList='flexbetween item_content';
         item_data.innerHTML=`
     
-        <div class="item_content_img"><img width="100%" src="/image/1.webp"></div>
+        <div class="item_content_img"><img width="100%" src="${data.img1}"></div>
         <div class="flexcolumn">
             <span class="text1">${data.title}</span>
             <span class="text2">${data.bookdate} ${data.booktime}</span>

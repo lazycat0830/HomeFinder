@@ -7,7 +7,7 @@ function submit(){
     const Password = document.getElementById("Password");
     const NewPassword = document.getElementById("NewPassword");
     const CheckNewPassword = document.getElementById("CheckNewPassword");
-    
+    validatatext_signup.innerHTML=''
         axios({
         method: "post",
         url: "http://localhost:5190/api/Auth/changePassword",

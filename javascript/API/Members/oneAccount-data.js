@@ -87,6 +87,7 @@ function oneAccount(data){
     }
 
     function newRenterRentalAPI(account){
+        
         console.log(account);
         axios({
             method: 'get',
@@ -128,6 +129,7 @@ function oneAccount(data){
 
 updataoneAccount_btn.addEventListener("click", (event) => {
     event.preventDefault();
+    
     const formData = new FormData(form);
     formData.append('img','');
     
@@ -136,8 +138,8 @@ updataoneAccount_btn.addEventListener("click", (event) => {
         url: "http://localhost:5190/api/Auth/EditProfile",
         headers: {
             "Content-Type": "multipart/form-data",
-            Accept: "application/json",
-            Authorization: `Bearer ${LoginData.token}`,
+           " Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`,
         },
         data: formData,
         })
