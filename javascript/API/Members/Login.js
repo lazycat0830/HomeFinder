@@ -1,6 +1,6 @@
 let LoginData= JSON.parse(sessionStorage.getItem('LoginData'));
 let collectData= JSON.parse(sessionStorage.getItem('collectData'));
-
+let avatarimg=document.getElementById('avatarimg');
 
 function handleLoginData(data) {
     LoginData = data;

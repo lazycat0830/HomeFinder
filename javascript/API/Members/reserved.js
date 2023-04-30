@@ -1,7 +1,9 @@
 
 
-
-
+let deleteX_btn=document.getElementById('deleteX_btn');
+let delete_btn=document.getElementById('delete_btn');
+let nodelete_btn=document.getElementById('nodelete_btn');
+let delete_confirm=document.getElementById('delete_confirm');
 
 function viewAllReserved(data){
     let content_in=document.getElementById('content_in');
@@ -12,7 +14,7 @@ function viewAllReserved(data){
     }
     item_content.innerHTML=`
                 <div class="item_content_img"><img width="100%" src="${data.img1}"></div>
-                <div class="flexcolumn">
+                <div class="flexcolumn" style='width:500px'>
                     <span class="text1">${data.title}</span>
                     <span class="text2">${data.bookdate} ${data.booktime}</span>
                     <span class="text5">${data.address}</span>
@@ -29,6 +31,22 @@ function viewAllReserved(data){
     booking=deleteBooking.id.replace('deleteBooking_','')
     console.log(booking);
     deleteBooking.onclick=function(){
+        createMask();
+        delete_confirm.style.display='block';
+    }
+    delete_btn.onclick=function(){
         deleteBook(booking);
     }
+
+}
+
+
+nodelete_btn.onclick=function(){
+    deleteMask();
+    delete_confirm.style.display='none';
+}
+    
+deleteX_btn.onclick=function(){
+    deleteMask();
+    delete_confirm.style.display='none';
 }

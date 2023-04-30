@@ -104,9 +104,6 @@
     font-size: 15px;
     color: #000;
 }
-.address span{
-    font-size: 20px;
-}
 
 .address div div{
     font-size: 20px;
@@ -129,9 +126,7 @@
 .equipment{
     padding: 10px -3px;
 }
-.equipment span{
-    font-size: 25px;
-}
+
 
 
 .equipment_label ul{
@@ -161,11 +156,13 @@
 
 
 .house_content_text{
-    font-size: 16px;
-    width:500px ;
+    font-size: 18px;
+    width: 600px;
     overflow: hidden;
     flex-wrap: wrap-reverse;
     text-overflow: ellipsis;
+    text-align: justify;
+    padding-top: 20px;
 }
 
 .house_content span a{
@@ -277,4 +274,17 @@ a{
     padding: 10px 0px;
     font-size:18px;
     color: #000;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #000;
+
+}
+
+.reserveText_text{
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: bold;
 }

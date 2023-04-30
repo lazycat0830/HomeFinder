@@ -1,5 +1,5 @@
 let content_in=document.getElementById('content_in');
-    
+let noDataText=document.getElementById('noDataText')
 
 function addonRental(data,id){
     collectData= JSON.parse(sessionStorage.getItem('collectData'));
@@ -177,13 +177,19 @@ function viewDownTimeallData(){
         })
                 .then(( { data } ) => {
                     console.log(data);
-                    var rental_Id=0;
-                    console.log(data.idList);
-                    data.idList.forEach(function(){
+                    if(data=='無資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='無資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
                             console.log(rental_Id);
                             addonRental(data,rental_Id);
                             rental_Id++;
-                    });
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -200,14 +206,19 @@ function viewDownTimeallData(){
         })
                 .then(( { data } ) => {
                     console.log(data);
-                    var rental_Id=0;
-                    console.log(data.idList);
-                    data.idList.forEach(function(){
-                            
+                    if(data=='無資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='無資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
                             console.log(rental_Id);
                             addonRental(data,rental_Id);
                             rental_Id++;
-                    });
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -230,13 +241,19 @@ function viewUpTimeallData(){
             },
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='無資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='無資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -252,13 +269,19 @@ function viewUpTimeallData(){
             },
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='無資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='無資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -297,13 +320,19 @@ function view_genre(genre){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -320,13 +349,19 @@ function view_genre(genre){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -364,13 +399,19 @@ function view_type(type){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -387,13 +428,19 @@ function view_type(type){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -431,13 +478,19 @@ function view_pattern(pattern){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -454,13 +507,19 @@ function view_pattern(pattern){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -498,13 +557,19 @@ function view_equipmentname(equipmentname){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);
@@ -521,13 +586,19 @@ function view_equipmentname(equipmentname){
              data: formData,
         })
                 .then(( { data } ) => {
-                    console.log(data);
-                    var rental_Id=0;
-                    console.log(data);
-                    data.idList.forEach(function(){
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
+                    if(data=='查無此資料'){
+                        noDataText.style.display='block';
+                        noDataText.innerHTML='查無此資料';
+                    }else{
+                        noDataText.style.display='none';
+                        var rental_Id=0;
+                        console.log(data.idList);
+                        data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                        });
+                    }
                 })
                 .catch(error => {
                     console.log(error);

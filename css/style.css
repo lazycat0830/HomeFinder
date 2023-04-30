@@ -248,6 +248,13 @@ body.relative{
     background-color: #fff;
 }
 
+#noDataText{
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
 
 @media screen and (max-width: 1400px) {
     /* calc(100% - 24px); */

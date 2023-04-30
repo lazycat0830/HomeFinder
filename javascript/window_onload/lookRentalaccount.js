@@ -3,6 +3,11 @@ console.log(newRantalRenter);
 
 window.onload = function() {
     console.log(LoginData);
+    if(LoginData!=null){
+        avatarimg.src=`${LoginData.members.img}`;
+    }else{
+        avatarimg.src='/image/default_avatar.jpeg';
+    }
     // if(LoginData==null){
     //     content_in.style.display='none';
     //     noLogin.style.display='block';

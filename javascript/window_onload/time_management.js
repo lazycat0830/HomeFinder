@@ -1,5 +1,10 @@
 window.onload = function() {
     console.log(LoginData);
+    if(LoginData!=null){
+        avatarimg.src=`${LoginData.members.img}`;
+    }else{
+        avatarimg.src='/image/default_avatar.jpeg';
+    }
 
         const dateText = document.getElementById('date');
         const datepicker = document.getElementById('datepicker');
@@ -13,7 +18,7 @@ window.onload = function() {
         const todayString = today.toLocaleDateString();
         dateText.innerHTML = todayString;
 
-        var a=true;
+        var a=false;
         dateText.addEventListener('click', () => {
             a=!a;
             if(a){
@@ -27,6 +32,7 @@ window.onload = function() {
         datepicker.addEventListener('change', () => {
         selectedDate = new Date(datepicker.value);
         dateText.innerHTML = selectedDate.toLocaleDateString();
+        a=!a;
         datepicker.style.display = 'none';
         viewtime_management(dateText.innerHTML);
         });

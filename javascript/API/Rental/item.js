@@ -15,6 +15,8 @@ let equipment_img_elevator;
 let equipment_img_parkingspace;
 let styleclass_1,styleclass_2,styleclass_3,styleclass_4,styleclass_5,styleclass_6,styleclass_7,styleclass_8,styleclass_9,styleclass_10,styleclass_11,styleclass_12,styleclass_13,styleclass_14,styleclass_15;
 let Combination="";
+let reserveText=document.getElementById('reserveText');
+let deleteX_btn=document.getElementById('deleteX_btn');
 
 function viewnewitem(rental_id){
     axios({
@@ -40,38 +42,64 @@ function viewnewitem(rental_id){
 function Editviewitemcontent(data,rental_id){
     console.log(data);
     let adminfee,waterfee,electricitybill;
-    if(data.adminfee==null){
+    if(data.adminfee==0){
         adminfee="無";
     }else{
-        adminfee=data.adminfee+' /月';
+        adminfee='$'+data.adminfee+' /月';
     }
-    if(data.waterfee==null){
+    if(data.waterfee==0){
         waterfee="無";
     }else{
-        waterfee=data.waterfee+' /月';
+        waterfee='$'+data.waterfee+' /月';
     }
-    if(data.electricitybill==null){
+    if(data.electricitybill==0){
         electricitybill="無";
     }else{
-        electricitybill=data.electricitybill+' /月';
+        electricitybill='$'+data.electricitybill+' /月';
     }
 
 
     judgment_equipment(data.equipmentname);
     Combinationtags(data);
+    var img1,img2,img3,img4,img5;
+    if(data.img1==''){
+        img1='/image/noRenterImg.png';
+    }else{
+        img1=data.img1;
+    }
+    if(data.img2==''){
+        img2='/image/noRenterImg.png';
+    }else{
+        img2=data.img2;
+    }
+    if(data.img3==''){
+        img3='/image/noRenterImg.png';
+    }else{
+        img3=data.img3;
+    }
+    if(data.img4==''){
+        img4='/image/noRenterImg.png';
+    }else{
+        img4=data.img4;
+    }
+    if(data.img5==''){
+        img5='/image/noRenterImg.png';
+    }else{
+        img5=data.img5;
+    }
     let data_time=data.uploadtime.replace(/\..*/g, "").replace("T", " | ");
     let content_in=document.getElementById('content_in');
     content_in.innerHTML=`
             <div class="img1-8 flexcenter">
-                <div class="img1-8_img1_width"><img class="img1-8_img1" src="${data.img1}"></div>
+                <div class="img1-8_img1_width"><img class="img1-8_img1" src="${img1}"></div>
                 <div class="flexcolumn">
                     <div class="flexrow">
-                        <img src="${data.img2}">
-                        <img class="img1-8_img2" src="${data.img3}">
+                        <img src="${img2}">
+                        <img class="img1-8_img2" src="${img3}">
                     </div >
                     <div class="flexrow">
-                        <img src="${data.img4}">
-                        <img  class="img1-8_img3" src="${data.img5}">
+                        <img src="${img4}">
+                        <img  class="img1-8_img3" src="${img5}">
                     </div>
                     <div class="puttime">上架時間：${data_time}</div>
                 </div>
@@ -87,9 +115,9 @@ function Editviewitemcontent(data,rental_id){
                         $${data.rent}<span class="amount_unit">元/月</span>
                         <div> 
                         <div class='cost'>
-                            管理費：$${adminfee}<span> | </span>
-                            水費：$${waterfee}<span> | </span>
-                            電費費：$${electricitybill}<span> /月</span>
+                            管理費：${adminfee}<span> | </span>
+                            水費：${waterfee}<span> | </span>
+                            電費費：${electricitybill}<span> </span>
                         </div>
                         </div>
 
@@ -97,7 +125,7 @@ function Editviewitemcontent(data,rental_id){
                     
                     
                     <div class="address">
-                        <span>地址：</span>
+                        <span class='title'>地址：</span>
                         <div class="addressborder flexrow">
                         <div><a href="https://www.google.com/maps/search/?api=1&query=${data.address}"><img width=30px src='/image/圖片2.png' style='padding:10px ;'></a></div>
                             <div>${data.address}</div>
@@ -106,7 +134,7 @@ function Editviewitemcontent(data,rental_id){
                     </div>
                     <div>
                         <div class="equipment">
-                            <span>設備與服務</span>
+                            <span class='title'>設備與服務</span>
                             <div class="equipment_label">
                                 <ul>
                                     <li>
@@ -174,7 +202,7 @@ function Editviewitemcontent(data,rental_id){
                         </div>
                     </div>
                     <div class="house_content">
-                        <span>房屋介紹</span>
+                        <span class='title'>房屋介紹</span>
                         <div class="house_content_text">
                             ${data.content}
                         </div>
@@ -357,9 +385,9 @@ function getReservedData(){
 
 function reserve(rental_id){
 
-    const today = new Date().toISOString().split('T')[0];
+    // let today1 = new Date().toISOString().split('T')[0];
     let changedata=document.getElementById('changedata');
-    changedata.value=today;
+    // changedata.value=today1;
     
     let time;
 
@@ -408,29 +436,45 @@ function reserve(rental_id){
         }
     }
     reservedate.onclick=function(){
-        let changedata=document.getElementById('changedata');
-        console.log(changedata.value);
-        console.log(time);
-        console.log(rental_id);
-        axios({
-            method:'post',
-            url:'http://localhost:5190/api/List/AddBooking',
-            headers:{
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${LoginData.token}`, 
-            },data:{
-                bookdate:changedata.value,
-                booktime:time,
-                rental_id:rental_id,
-            }
-        }).then(({ data }) => {
-            console.log(data);
-        }).catch(error => {
-        // 处理请求过程中的错误
-        console.error(error);
-        
-    });
+        let text =document.getElementById('text');
+        if(LoginData!=null){
+            let changedata=document.getElementById('changedata');
+            console.log(changedata.value);
+            console.log(time);
+            console.log(rental_id);
+            axios({
+                method:'post',
+                url:'http://localhost:5190/api/List/AddBooking',
+                headers:{
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${LoginData.token}`, 
+                },data:{
+                    bookdate:changedata.value,
+                    booktime:time,
+                    rental_id:rental_id,
+                },
+            }).then(({ data }) => {
+                console.log(data);
+                reserveText.style.display='block';
+                text.innerHTML='預約成功';
+                createMask();
+
+            }).catch(error => {
+            // 处理请求过程中的错误
+            console.error(error);
+                reserveText.style.display='block';
+                createMask();
+                text.innerHTML='預約失敗，日期超過了';
+            }); 
+        }else{
+            login.style.display='block';
+            createMask();
+        }
+    }
+    deleteX_btn.onclick=function(){
+        reserveText.style.display='none';
+        deleteMask();
     }
 
 }

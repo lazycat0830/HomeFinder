@@ -47,6 +47,7 @@
 
 .item_content {
     align-items: center;
+    padding: 10px 0px;
 }
 
 .cancel_appointment_btn{
@@ -59,4 +60,24 @@
 .item_content_img{
     width: 230px;
     overflow: hidden;
+}
+
+.delete_btn1 {
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    padding: 5px 50px;
+    margin: 0px 10px;
+}
+
+.delete_btn2 {
+    font-weight: bolder;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 25px;
+    border: 2px #000 solid;
+    padding: 3px 50px;
+    margin: 0px 10px;
 }

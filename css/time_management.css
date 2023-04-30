@@ -17,12 +17,12 @@
     text-decoration: none;
     color: #000;
     font-weight: bolder;
+    margin: auto 0px;
 }
 
 .select_date_nav div{
     padding: 10px 10px;
     font-size: 24px;
-    align-items: center;
 }
 
 .selection_period_margin{
@@ -61,7 +61,7 @@
 
 .title{
     padding: 10px 0px;
-    margin: 0px 80px;
+    margin: 0px 210px;
     font-size: 24px;
     font-weight: bolder;
 }
@@ -146,7 +146,7 @@
 }
 
 .booked{
-    margin: 20px 80px;
+    margin: 20px 200px;
 }
 
 .cancel_appointment_btn{
@@ -214,4 +214,24 @@
 
 .today{
     cursor: pointer;
+}
+
+.delete_btn1 {
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    padding: 5px 50px;
+    margin: 0px 10px;
+}
+
+.delete_btn2 {
+    font-weight: bolder;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 25px;
+    border: 2px #000 solid;
+    padding: 3px 50px;
+    margin: 0px 10px;
 }

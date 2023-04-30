@@ -1,8 +1,10 @@
 const submit = document.getElementById("submit");
 const form = document.querySelector("form");
+let validatatext_signup=document.getElementById('validatatext_signup');
 
 submit.addEventListener("click", (event) => {
   event.preventDefault();
+  validatatext_signup.innerHTML='';
   const formData = new FormData(form);
   formData.append('newMember.authcode','0');
   formData.append('newMember.score','0');
@@ -22,7 +24,7 @@ submit.addEventListener("click", (event) => {
   })
     .then((response) => {
       console.log(response.data);
-      let validatatext_signup=document.getElementById('validatatext_signup');
+      
       validatatext_signup.innerHTML=response.data.message;
     })
     .catch((error) => {

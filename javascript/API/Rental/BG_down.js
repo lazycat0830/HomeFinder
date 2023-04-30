@@ -28,14 +28,17 @@ function addonBG_down(data,id){
     }
     deletebtn.onclick=function(){
         let delete_confirm=document.getElementById('delete_confirm');
+        createMask();
         delete_confirm.style.display='block';
         let nodelete_btn=document.getElementById('nodelete_btn');
         nodelete_btn.onclick=function(){
             delete_confirm.style.display='none';
+            deleteMask();
         }
         let deleteX_btn=document.getElementById('deleteX_btn');
         deleteX_btn.onclick=function(){
             delete_confirm.style.display='none';
+            deleteMask();
         }
         let delete_btn=document.getElementById('delete_btn');
         delete_btn.onclick=function(){

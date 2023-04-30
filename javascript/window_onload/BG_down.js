@@ -3,6 +3,11 @@ var all=0;
 
 window.onload = function() {
     console.log(LoginData);
+    if(LoginData!=null){
+        avatarimg.src=`${LoginData.members.img}`;
+    }else{
+        avatarimg.src='/image/default_avatar.jpeg';
+    }
     viewalldowndata();
     
     handleLogoutData(LoginData);

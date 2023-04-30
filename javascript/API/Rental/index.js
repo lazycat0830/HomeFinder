@@ -102,20 +102,62 @@ allfilter_btn.onclick=function(){
     
     
 
-    axios({
-        method:'post',
-        url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-        headers:{
-            'Content-Type':"multipart/form-data",
-            'Accept': "application/json",
-            Authorization: `Bearer ${LoginData.token}`,
-        },data:formData,
-    }).then((response) => {
-        console.log(response.data);
-    })
-    .catch((error) => {
-        console.error(error);
-    });
+    if(LoginData!=null){
+        axios({
+            method:'post',
+            url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                'Content-Type':"multipart/form-data",
+                'Accept': "application/json",
+                Authorization: `Bearer ${LoginData.token}`,
+            },data:formData,
+        }).then(( { data } ) => {
+            if(data=='查無此資料'){
+                noDataText.style.display='block';
+                noDataText.innerHTML='查無此資料';
+            }else{
+                noDataText.style.display='none';
+                var rental_Id=0;
+                console.log(data.idList);
+                data.idList.forEach(function(){
+                    console.log(rental_Id);
+                    addonRental(data,rental_Id);
+                    rental_Id++;
+                });
+            }
+
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }else{
+        axios({
+            method:'post',
+            url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                'Content-Type':"multipart/form-data",
+                'Accept': "application/json",
+                // Authorization: `Bearer ${LoginData.token}`,
+            },data:formData,
+        }).then(( { data } ) => {
+            if(data=='查無此資料'){
+                noDataText.style.display='block';
+                noDataText.innerHTML='查無此資料';
+            }else{
+                noDataText.style.display='none';
+                var rental_Id=0;
+                console.log(data.idList);
+                data.idList.forEach(function(){
+                    console.log(rental_Id);
+                    addonRental(data,rental_Id);
+                    rental_Id++;
+                });
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
 }
 
 

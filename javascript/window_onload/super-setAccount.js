@@ -1,5 +1,9 @@
 window.onload = function() {
-    
+    if(LoginData!=null){
+        avatarimg.src=`${LoginData.members.img}`;
+    }else{
+        avatarimg.src='/image/default_avatar.jpeg';
+    }
     let content_in=document.getElementById('content_in');
         content_in.innerHTML=`
             <div class="nav">

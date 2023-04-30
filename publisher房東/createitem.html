@@ -108,7 +108,7 @@
                 <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
             </div>
             
-            <button id="Useravatar"><img width="40px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></button>
+            <button id="Useravatar"><img id="avatarimg" width="40px"></button>
        
         </div>
     </div>
@@ -129,11 +129,12 @@
                     <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input name="img1_3" id="inputImage3" class="change"  type="file" multiple="multiple"></div>
                     <div class="flexcolumn relative">圖4<a id="inputImageview4" href="javascript:;" class="upload_img_btn">+</a><input name="img1_4" id="inputImage4" class="change"  type="file" multiple="multiple"></div>
                     <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input name="img1_5" id="inputImage5" class="change"  type="file" multiple="multiple"></div>
-
+                    
                 </div>
-                <div id="validateimg" class="validatatext"></div>
+                <span id="validataimg" class="validata"></span>
             
             </div>
+            
             <hr>
             <div class="housing_label">
                 <div class="title">房屋標籤</div>
@@ -145,6 +146,7 @@
                         <li><input id="genre_SubletSuite" class="Label_btn_off"  type="button" value="分租套房"></li>
                         <li><input id="genre_elegantroom" class="Label_btn_off"  type="button" value="雅房"></li>
                     </ul>
+                    <span id="validatagenre" class="validata"></span>
                 </div>
                 <div class="Label flexcolumn">
                     <ul class="flexrow">
@@ -154,6 +156,7 @@
                         <li><input id="pattern_3room" class="Label_btn_off"  type="button" value="3房"></li>
                         <li><input id="pattern_4room" class="Label_btn_off"  type="button" value="4房以上"></li>
                     </ul>
+                    <span id="validatapattern" class="validata"></span>
                 </div>
                 <div class="Label flexcolumn">
                     <ul class="flexrow">
@@ -163,6 +166,7 @@
                         <li><input id="type_Tutiancuo" class="Label_btn_off"  type="button" value="透天厝"></li>
                         <li><input id="type_villa" class="Label_btn_off"  type="button" value="別墅"></li>
                     </ul>
+                    <span id="validatatype" class="validata"></span>
                 </div>
                 <!-- <div class="Label flexcolumn">
                     <ul class="flexrow">
@@ -178,16 +182,19 @@
                 <div class="title">房屋資訊</div>
                 <div class="housing_information_content">
                     <label class="housing_information_title" for="title">標題：</label>
-                    <input id="title" class="housing_information_text" type="text" name="title">
+                    <input style="width:620px" id="title" class="housing_information_text" type="text" name="title">
                 </div>
+                <span id="validatatitle" class="validata"></span>
                 <div class="housing_information_content">
                     <label class="housing_information_title">地址：</label>
-                    <input id="address" class="housing_information_text" type="text" name="address">
+                    <input style="width:620px" id="address" class="housing_information_text" type="text" name="address">
                 </div>
+                <span id="validataaddress" class="validata"></span>
                 <div class="housing_information_content">
-                    <label class="housing_information_title">價錢：</label>
+                    <label class="housing_information_title">租金：</label>
                     <input id="rent" class="housing_information_text" type="text" name="rent">/月
                 </div>
+                <span id="validatarent" class="validata"></span>
                 <div class="flexrow right">
                     <div class="housing_information_content">
                         <label class="housing_information_title">水費：</label>
@@ -202,13 +209,18 @@
                         <input id="adminfee" class="housing_information_text" type="text" name="adminfee">
                     </div>
                 </div>
-                <div class="housing_information_content">
-                    <label class="housing_information_title" >樓層：</label>
-                    <input id="pattern" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
-                    <label class="housing_information_title" >坪數：</label>
-                    <input id="area" class="housing_information_text" type="text" name="area" >
+                <span id="validata_waterfee_electricitybill_adminfee" class="validata"></span>
+                <div class="flexrow right">
+                    <div class="housing_information_content">
+                        <label class="housing_information_title" >樓層：</label>
+                        <input id="floor" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
+                    </div>
+                    <div class="housing_information_content">
+                        <label class="housing_information_title" >坪數：</label>
+                        <input id="area" class="housing_information_text" type="text" name="area" >
+                    </div>
                 </div>
-                
+                <span id="validata_pattern_area" class="validata"></span>
                 <div class="housing_information_content">
                     <div style="padding-bottom: 10px;"><label class="housing_information_title">設備：</label></div>
                     <div class="housing_information_label">
@@ -230,10 +242,12 @@
                         <input id="parking_space" type="checkbox" value="車位"><label for="parking_space">車位</label>
                     </div>
                 </div>
+                <span id="validata_equipmentname" class="validata"></span>
                 <div class="housing_information_content">
-                    <label class="housing_information_title" for="title">介紹：</label><br>
-                    <textarea id="housingcontent" name="content"></textarea>
+                    <label class="housing_information_title" for="content">介紹內容：</label><br>
+                    <textarea id="housingcontent"></textarea>
                 </div>
+                <span id="validata_content" class="validata"></span>
             </div>
         </div>
     </div>

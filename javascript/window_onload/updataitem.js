@@ -6,6 +6,11 @@ let equipmentname = '';
 
 
 window.onload = function() {
+    if(LoginData!=null){
+        avatarimg.src=`${LoginData.members.img}`;
+    }else{
+        avatarimg.src='/image/default_avatar.jpeg';
+    }
     
     handleLogoutData(LoginData);
     console.log(LoginData);
@@ -49,7 +54,7 @@ function updata(){
     pattern=`${UPDataRetal.pattern}`;
     type=`${UPDataRetal.type}`;
     equipmentname=`${UPDataRetal.equipmentname}`;
-    housingcontent.value=`${UPDataRetal.content}`;
+    housingcontent.value=`${UPDataRetal.content.replace(/<br>/g, '\n')}}`;
     
     
 
@@ -57,6 +62,85 @@ function updata(){
     judgment_equipmentname();
 }
 
+
+function createitem_validatatext(){
+    let validataimg=document.getElementById('validataimg');
+    let validatagenre=document.getElementById('validatagenre');
+    let validatapattern=document.getElementById('validatapattern');
+    let validatatype=document.getElementById('validatatype');
+    let validatatitle=document.getElementById('validatatitle');
+    let validataaddress=document.getElementById('validataaddress');
+    let validata_pattern_area=document.getElementById('validata_pattern_area');
+    let validata_waterfee_electricitybill_adminfee=document.getElementById('validata_waterfee_electricitybill_adminfee');
+    let validata_equipmentname=document.getElementById('validata_equipmentname');
+    let validata_content=document.getElementById('validata_content');
+    console.log(inputImage1.value);
+    
+    // if(inputImage1.value==""){
+    //     validataimg.innerHTML='※封面(圖1)為必填';
+    // }else{
+    //     validataimg.innerHTML='';
+    // }
+    if(genre==null){
+        validatagenre.innerHTML='※類型為必填';
+    }else{
+        validatagenre.innerHTML='';
+    }
+    if(pattern==null){
+        validatapattern.innerHTML='※格局為必填';
+    }else{
+        validatapattern.innerHTML='';
+    }
+    if(type==null){
+        validatatype.innerHTML='※型態為必填';
+    }else{
+        validatatype.innerHTML='';
+    }
+    if(title.value==""){
+        validatatitle.innerHTML='※標題為必填';
+    }else{
+        validatatitle.innerHTML='';
+    }
+    if(address.value==""){
+        validataaddress.innerHTML='※地址為必填';
+    }else{
+        validataaddress.innerHTML='';
+    }
+    if(rent.value==""){
+        validatarent.innerHTML='※租金為必填';
+    }else{
+        validatarent.innerHTML='';
+    }
+    if((waterfee.value=='')||(electricitybill.value=='')||(adminfee.value=='')){
+        validata_waterfee_electricitybill_adminfee.innerHTML='※水費、電費、管理費為必填，如果無定價請填0'
+    }else{
+        validata_waterfee_electricitybill_adminfee.innerHTML='';
+    }
+    console.log(floor.value);
+    console.log(area.value);
+    if((floor.value=='')&&(area.value=='')){
+        validata_pattern_area.innerHTML='※樓層、坪數為必填'
+    }else if(floor.value==''){
+        validata_pattern_area.innerHTML='※樓層為必填';
+    }else if(area.value==''){
+        validata_pattern_area.innerHTML='※坪數為必填';
+    }else if(floor.value.includes('/')==false){
+        validata_pattern_area.innerHTML='※樓層寫法為當前樓層/總樓層';
+    }else{
+        validata_pattern_area.innerHTML='';
+    }
+    if(equipmentname==''){
+        validata_equipmentname.innerHTML='※設備最少選一';
+    }else{
+        validata_equipmentname.innerHTML='';
+    }
+    if(housingcontent.value==""){
+        validata_content.innerHTML='※介紹內容為必填';
+    }else{
+        validata_content.innerHTML='';
+    }
+
+}
 
 
 
@@ -66,6 +150,7 @@ function updataitem(){
     
     submit.addEventListener("click", (event) => {
     event.preventDefault();
+    createitem_validatatext();
 
     equipmentname = equipmentname.slice(0, -1);
 
@@ -74,7 +159,7 @@ function updataitem(){
     formData.append('updateData.genre',`${genre}`);
     formData.append('updateData.pattern',`${pattern}`);
     formData.append('updateData.equipmentname',`${equipmentname}`);
-
+    formData.append('updateData.content',`${housingcontent.value.replace(/\n/g, '<br>')}`);
 
     console.log(type);
     console.log(genre);

@@ -29,7 +29,7 @@ let equipmentname_sofa1=document.getElementById('equipmentname_sofa1');
 let equipmentname_balcony1=document.getElementById('equipmentname_balcony1');
 let genre,pattern,equipmentname,type;
 
-let avatarimg=document.getElementById('avatarimg');
+
 window.onload=function(){
     console.log(LoginData);
     console.log(collectData);

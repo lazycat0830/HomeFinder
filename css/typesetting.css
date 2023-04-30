@@ -149,21 +149,21 @@
 
 
 .filter_Location{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 10%;
     z-index: 99999;
 }
 
 .updateAccount{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 10%;
     z-index: 99999;
 }
 
 .report{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 10%;
     z-index: 99999;
@@ -171,7 +171,7 @@
 }
 
 #check{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 10%;
     z-index: 99999;
@@ -179,7 +179,7 @@
 }
 
 #reporting_look{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 30%;
     z-index: 99999;
@@ -227,14 +227,14 @@
 }
 
 .login_Location{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 100px;
     z-index: 99999;
 }
 
 .forgetpassword{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 100px;
     z-index: 99999;
@@ -263,4 +263,10 @@
     text-decoration: underline;
     padding: 4px 0px;
     cursor: pointer;
+}
+
+.validata{
+    font-size: 1rem;
+    color: #ec0000;
+    font-weight: bolder;
 }
