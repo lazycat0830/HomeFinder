@@ -108,7 +108,7 @@ allfilter_btn.onclick=function(){
         headers:{
             'Content-Type':"multipart/form-data",
             'Accept': "application/json",
-            // Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${LoginData.token}`,
         },data:formData,
     }).then((response) => {
         console.log(response.data);
