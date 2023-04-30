@@ -39,12 +39,28 @@ function viewnewitem(rental_id){
 
 function Editviewitemcontent(data,rental_id){
     console.log(data);
-    let scoretext;
+    let scoretext,adminfee,waterfee,electricitybill;
     if(data.member.score==null){
         scoretext='尚未有信用分數';
     }else{
         scoretext=data.member.score;
     }
+    if(data.adminfee==null){
+        adminfee="無";
+    }else{
+        adminfee=data.adminfee+' /月';
+    }
+    if(data.waterfee==null){
+        waterfee="無";
+    }else{
+        waterfee=data.waterfee+' /月';
+    }
+    if(data.electricitybill==null){
+        electricitybill="無";
+    }else{
+        electricitybill=data.electricitybill+' /月';
+    }
+
 
     judgment_equipment(data.equipmentname);
     Combinationtags(data);
@@ -52,15 +68,15 @@ function Editviewitemcontent(data,rental_id){
     let content_in=document.getElementById('content_in');
     content_in.innerHTML=`
             <div class="img1-8 flexcenter">
-                <div class="img1-8_img1_width"><img class="img1-8_img1" src="/image/6-1.webp"></div>
+                <div class="img1-8_img1_width"><img class="img1-8_img1" src="${data.img1}"></div>
                 <div class="flexcolumn">
                     <div class="flexrow">
-                        <img src="/image/6-2.webp">
-                        <img class="img1-8_img2" src="/image/6-3.webp">
+                        <img src="${data.img2}">
+                        <img class="img1-8_img2" src="${data.img3}">
                     </div >
                     <div class="flexrow">
-                        <img src="/image/6-4.webp">
-                        <img  class="img1-8_img3" src="/image/6-5.webp">
+                        <img src="${data.img4}">
+                        <img  class="img1-8_img3" src="${data.img5}">
                     </div>
                     <div class="puttime">上架時間：${data_time}</div>
                 </div>
@@ -70,15 +86,15 @@ function Editviewitemcontent(data,rental_id){
                 <div id="content_left flexcolumn">
                     <div class="house_title">${data.title}</div>
                     <div class="house_type">
-                       ${Combination}
+                        ${Combination}
                     </div>
                     <div class="house_amount">
                         $${data.rent}<span class="amount_unit">元/月</span>
                         <div> 
                         <div class='cost'>
-                            管理費：$${data.adminfee}<span> 元 | </span>
-                            水費：$${data.waterfee}<span> /月 | </span>
-                            電費費：$${data.electricitybill}<span> /月</span>
+                            管理費：$${adminfee}<span> | </span>
+                            水費：$${waterfee}<span> | </span>
+                            電費費：$${electricitybill}<span> /月</span>
                         </div>
                         </div>
 

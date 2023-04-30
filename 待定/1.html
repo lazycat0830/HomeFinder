@@ -1,38 +1,12 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>GPT Demo</title>
-  </head>
-  <body>
-
-    
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      window.onload = function() {
-        axios({
-          method: 'get',
-          url: 'http://localhost:5190/api/HomeAny/HomeAny',
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            // "Authorization": `Bearer ${token}`, 
-          },
-        })
-        .then(function(response) {
-          // 直接存取回應中的資料陣列
-          const data = response.data;
-          
-          console.log(data.search);
-          console.log(data.idList);
-          console.log(data.rentalBlock);
-          console.log(data.paging);
-          
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-      }
-    </script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="C:\Users\black\Desktop\home200-main\wwwroot\Image\2af0cbee-537b-4f67-b024-d4acfecbfb6c.png">
+</body>
 </html>

@@ -9,7 +9,7 @@ function addRental(data,id) {
     <td><button id="check_${data.rentalBlock[id].allData.rental_id}" >查看</button></td>
     <td>${data.rentalBlock[id].allData.publisher}</td>
     <td class='flexcenter'>
-    <div><input id='review_true' class="Ok" type="button" value="通過"><input id='review_false' class="On" type="button" value="不通過"></div>
+    <div><input id='review_true_${data.rentalBlock[id].allData.rental_id}' class="Ok" type="button" value="通過"><input id='review_false_${data.rentalBlock[id].allData.rental_id}' class="On" type="button" value="不通過"></div>
     </td>
         `;
         superaudit_table.appendChild(superaudit_onerental);
@@ -39,8 +39,8 @@ function addRental(data,id) {
             });
         }
         
-        let review_true=document.getElementById('review_true');
-        let review_false=document.getElementById('review_false');
+        let review_true=document.getElementById(`review_true_${data.rentalBlock[id].allData.rental_id}`);
+        let review_false=document.getElementById(`review_false_${data.rentalBlock[id].allData.rental_id}`);
         var check;
         review_true.onclick=function(){
             check=1;

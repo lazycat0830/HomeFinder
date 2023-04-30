@@ -58,14 +58,14 @@
 
 #rentermenu{
     top: 30px;
-    right: 120px;
+    right: 50px;
     z-index: 11;
 
 }
 
 #publishermenu{
     top: 30px;
-    right:230px;
+    right:50px;
     z-index: 11;
 
 }
@@ -74,7 +74,7 @@
 
 #adminmenu{
     top: 30px;
-    right: 330px;
+    right: 50px;
     z-index: 11;
 
 }

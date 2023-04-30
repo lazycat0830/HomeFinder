@@ -21,6 +21,21 @@ window.onload = function() {
 }
 
 function updata(){
+    inputImageview1.style.backgroundImage='url(' +UPDataRetal.img1+ ')';
+    inputImageview1.style.backgroundSize ='cover';
+    inputImageview1.innerHTML ="";
+    inputImageview2.style.backgroundImage='url(' +UPDataRetal.img2+ ')';
+    inputImageview2.style.backgroundSize ='cover';
+    inputImageview2.innerHTML ="";
+    inputImageview3.style.backgroundImage='url(' +UPDataRetal.img3+ ')';
+    inputImageview3.style.backgroundSize ='cover';
+    inputImageview3.innerHTML ="";
+    inputImageview4.style.backgroundImage='url(' +UPDataRetal.img4+ ')';
+    inputImageview4.style.backgroundSize ='cover';
+    inputImageview4.innerHTML ="";
+    inputImageview5.style.backgroundImage='url(' +UPDataRetal.img5+ ')';
+    inputImageview5.style.backgroundSize ='cover';
+    inputImageview5.innerHTML ="";
     console.log(UPDataRetal);
     title.value=`${UPDataRetal.title}`;
     address.value=`${UPDataRetal.address}`;
@@ -35,7 +50,7 @@ function updata(){
     type=`${UPDataRetal.type}`;
     equipmentname=`${UPDataRetal.equipmentname}`;
     housingcontent.value=`${UPDataRetal.content}`;
-
+    
     
 
     judgment_label();
@@ -55,19 +70,17 @@ function updataitem(){
     equipmentname = equipmentname.slice(0, -1);
 
     const formData = new FormData(form);
-    formData.append('type',`${type}`);
-    formData.append('genre',`${genre}`);
-    formData.append('pattern',`${pattern}`);
-    formData.append('equipmentname',`${equipmentname}`);
-    formData.append('publisher',`${LoginData.members.name}`);
+    formData.append('updateData.type',`${type}`);
+    formData.append('updateData.genre',`${genre}`);
+    formData.append('updateData.pattern',`${pattern}`);
+    formData.append('updateData.equipmentname',`${equipmentname}`);
 
 
     console.log(type);
     console.log(genre);
     console.log(pattern);
     console.log(equipmentname);
-    console.log(LoginData.members.name);
-    console.log(type);
+    console.log(formData.get('updateData.img1_1'));
 
     axios({
         method: "put",
@@ -81,7 +94,7 @@ function updataitem(){
     })
         .then((response) => {
         console.log(response.data);
-        window.location.href = '/publisher房東/BG_audit.html';  
+        // window.location.href = '/publisher房東/BG_audit.html';  
         // goBack();
         // let validatatext_signup=document.getElementById('validatatext_signup');
         // validatatext_signup.innerHTML=response.data.message;

@@ -58,7 +58,9 @@ filter_btn.addEventListener("click",function(){
     genre_combination();
     type_combination();
     pattern_combination();
-    equipmentname_combination()
+    equipmentname_combination();
+    CountChange();
+
 });
 
 filter_delete.onclick=function(){
@@ -67,9 +69,39 @@ filter_delete.onclick=function(){
 
 let data=document.querySelector("form");
 let allfilter_btn=document.getElementById('allfilter_btn');
+let rent1=document.getElementById('rent1');
+let rent2=document.getElementById('rent2');
+let town=document=document.getElementById('town');
+
+// town.addEventListener('change', () => {
+//     console.log(town.value);
+// });
 
 allfilter_btn.onclick=function(){
-    let formData=new FormData(data);
+    let formData=new FormData();
+
+    console.log(County.value);
+    console.log(townSelect.value);
+    console.log(rent1.value);
+    console.log(rent2.value);
+    console.log(genre);
+    console.log(pattern);
+    console.log(type);
+    console.log(equipmentname);
+
+    formData.append('county',County.value);
+    formData.append('township',townSelect.value);
+    formData.append('rent1',rent1.value);
+    formData.append('rent2',rent2.value);
+    formData.append('genre',genre);
+    formData.append('pattern',pattern);
+    formData.append('type',type);
+    formData.append('equipmentname',equipmentname);
+    formData.append('uploadtime',"");
+    
+    
+    
+
     axios({
         method:'post',
         url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',

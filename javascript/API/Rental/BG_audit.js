@@ -10,7 +10,7 @@ function addonBG_audit(data,id){
     let auditRental_onerental = document.createElement('tr');
     auditRental_onerental.innerHTML=`
             <td>${id+1}</td>
-            <td><div class="flexcenter BG_img"><img src="/image/${id+1}.webp" width="100%"></div></td>
+            <td><div class="flexcenter BG_img"><img src="${data.rentalBlock[id].allData.img1}" width="100%"></div></td>
             <td>${data.rentalBlock[id].allData.title}</td>
             <td>${data.rentalBlock[id].allData.rent}</td>
             <td>${data.rentalBlock[id].allData.address}</td>
