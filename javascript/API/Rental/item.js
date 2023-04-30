@@ -39,12 +39,7 @@ function viewnewitem(rental_id){
 
 function Editviewitemcontent(data,rental_id){
     console.log(data);
-    let scoretext,adminfee,waterfee,electricitybill;
-    if(data.member.score==null){
-        scoretext='尚未有信用分數';
-    }else{
-        scoretext=data.member.score;
-    }
+    let adminfee,waterfee,electricitybill;
     if(data.adminfee==null){
         adminfee="無";
     }else{
@@ -193,19 +188,19 @@ function Editviewitemcontent(data,rental_id){
                         <div class="Choose_time_btn flexcenter">
                             <ul>
                                 <li>
-                                    <a  id='changetime1' class='Choose_time_btn_true'>07:00-09:00</a>
+                                    <input type='button'  id='changetime1' class='Choose_time_btn_true' value='07:00-09:00'/>
                                 </li>
                                 <li>
-                                    <a  id='changetime2' class='Choose_time_btn_true'>10:00-12:00</a>
+                                    <input type='button'  id='changetime2' class='Choose_time_btn_true' value='10:00-12:00' />
                                 </li>
                                 <li>
-                                    <a  id='changetime3' class='Choose_time_btn_true'>14:00-16:00</a>
+                                    <input type='button'  id='changetime3' class='Choose_time_btn_true' value='14:00-16:00' />
                                 </li>
                                 <li>
-                                    <a  id='changetime4' class='Choose_time_btn_true'>17:00-19:00</a>
+                                    <input type='button'  id='changetime4' class='Choose_time_btn_true' value='17:00-19:00' />
                                 </li>
                                 <li>
-                                    <a id='changetime5' class='Choose_time_btn_true'>20:00-22:00</a>
+                                    <input type='button'  id='changetime5' class='Choose_time_btn_true' value='20:00-22:00' />
                                 </li>
                             </ul>
                         </div>
@@ -216,7 +211,7 @@ function Editviewitemcontent(data,rental_id){
                         <div class="flexcenter"><a id='Accountimg_btn' class="avatar" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a></div>
                     </div>
                     <div class="publisher_Information_text">
-                        出租者：<span class="subtitle">${data.member.name}</span><span class="credit_score">信用:${scoretext}分</span><br>
+                        出租者：<span class="subtitle">${data.member.name}</span><br>
                         電話：<span class="subtitle">${data.member.phone}</span>
                     </div>
                     </div>
@@ -227,41 +222,190 @@ function Editviewitemcontent(data,rental_id){
     Accountimg_btn.onclick=function(){
         sessionStorage.setItem('newRantalRenter',data.member.account);
     }
-    reserve(rental_id)
+    reserve(rental_id);
+    if(LoginData!=null){
+        if(LoginData.members.identity==2){
+            getReservedData();
+        }
+    }
 }
 
+
+function getReservedData(){
+    axios({
+        method: 'get',
+        url: 'http://localhost:5190/api/List/',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    })
+    .then(({ data }) => {
+        console.log(data);
+        console.log(changedata.value);
+        var id=0;
+        let renservedData='';
+        data.forEach(function(){
+            console.log(data[id].bookdate);
+            console.log(data[id].bookdate==changedata.value)
+            if(data[id].bookdate==changedata.value){
+                renservedData+=data[id].booktime+',';
+                console.log(renservedData);
+            }
+            id++;
+        });
+            console.log(renservedData.includes(changetime1.value));
+            if(renservedData.includes(changetime1.value)){
+                changetime1.classList='Choose_time_btn_stop';
+                document.getElementById("changetime1").disabled = true;
+            }else{
+                changetime1.classList='Choose_time_btn_true';
+                document.getElementById("changetime1").disabled = false;
+            }
+            if(renservedData.includes(changetime2.value)){
+                changetime2.classList='Choose_time_btn_stop';
+                document.getElementById("changetime2").disabled = true;
+            }else{
+                changetime2.classList='Choose_time_btn_true';
+                document.getElementById("changetime2").disabled = false;
+            }
+            if(renservedData.includes(changetime3.value)){
+                changetime3.classList='Choose_time_btn_stop';
+                document.getElementById("changetime3").disabled = true;
+            }else{
+                changetime3.classList='Choose_time_btn_true';
+                document.getElementById("changetime3").disabled = false;
+            }
+            if(renservedData.includes(changetime4.value)){
+                changetime4.classList='Choose_time_btn_stop';
+                document.getElementById("changetime4").disabled = true;
+            }else{
+                changetime4.classList='Choose_time_btn_true';
+                document.getElementById("changetime4").disabled = false;
+            }
+            if(renservedData.includes(changetime5.value)){
+                changetime5.classList='Choose_time_btn_stop';
+                document.getElementById("changetime5").disabled = true;
+            }else{
+                changetime5.classList='Choose_time_btn_true';
+                document.getElementById("changetime5").disabled = false;
+            }
+        
+        
+
+        changedata.addEventListener('change', function(){
+            var id=0;
+            let renservedData='';
+            data.forEach(function(){
+                console.log(data[id].bookdate);
+                console.log(data[id].bookdate==changedata.value)
+                if(data[id].bookdate==changedata.value){
+                    renservedData+=data[id].booktime+',';
+                    console.log(renservedData);
+                }
+                id++;
+            });
+            console.log(renservedData.includes(changetime1.value));
+            if(renservedData.includes(changetime1.value)){
+                changetime1.classList='Choose_time_btn_stop';
+                document.getElementById("changetime1").disabled = true;
+            }else{
+                changetime1.classList='Choose_time_btn_true';
+                document.getElementById("changetime1").disabled = false;
+            }
+            if(renservedData.includes(changetime2.value)){
+                changetime2.classList='Choose_time_btn_stop';
+                document.getElementById("changetime2").disabled = true;
+            }else{
+                changetime2.classList='Choose_time_btn_true';
+                document.getElementById("changetime2").disabled = false;
+            }
+            if(renservedData.includes(changetime3.value)){
+                changetime3.classList='Choose_time_btn_stop';
+                document.getElementById("changetime3").disabled = true;
+            }else{
+                changetime3.classList='Choose_time_btn_true';
+                document.getElementById("changetime3").disabled = false;
+            }
+            if(renservedData.includes(changetime4.value)){
+                changetime4.classList='Choose_time_btn_stop';
+                document.getElementById("changetime4").disabled = true;
+            }else{
+                changetime4.classList='Choose_time_btn_true';
+                document.getElementById("changetime4").disabled = false;
+            }
+            if(renservedData.includes(changetime5.value)){
+                changetime5.classList='Choose_time_btn_stop';
+                document.getElementById("changetime5").disabled = true;
+            }else{
+                changetime5.classList='Choose_time_btn_true';
+                document.getElementById("changetime5").disabled = false;
+            }
+        })
+
+    }).catch(error => {
+
+    // 处理请求过程中的错误
+    console.error(error);
+
+});
+}
+
+
+    
+
 function reserve(rental_id){
+
+    const today = new Date().toISOString().split('T')[0];
+    let changedata=document.getElementById('changedata');
+    changedata.value=today;
+    
     let time;
+
     let changetime1=document.getElementById('changetime1');
     let changetime2=document.getElementById('changetime2');
     let changetime3=document.getElementById('changetime3');
     let changetime4=document.getElementById('changetime4');
     let changetime5=document.getElementById('changetime5');
     let reservedate=document.getElementById('reservedate');
-    changetime1.onclick=function(){
-        cssfalse();
-        changetime1.classList='Choose_time_btn_false';
-        time=changetime1.innerHTML;
+
+    if(changetime1.className ==='Choose_time_btn_stop'){
+        changetime1.classList='Choose_time_btn_stop';
+    }else{
+        changetime1.onclick=function(){
+            cssfalse();
+            changetime1.classList='Choose_time_btn_false';
+            time=changetime1.value;
+        }
     }
-    changetime2.onclick=function(){
-        cssfalse();
-        changetime2.classList='Choose_time_btn_false';
-        time=changetime2.innerHTML;
+    if(changetime2.className==='Choose_time_btn_true'){
+        changetime2.onclick=function(){
+            cssfalse();
+            changetime2.classList='Choose_time_btn_false';
+            time=changetime2.value;
+        }
     }
-    changetime3.onclick=function(){
-        cssfalse();
-        changetime3.classList='Choose_time_btn_false';
-        time=changetime3.innerHTML;
+    if(changetime3.className==='Choose_time_btn_true'){
+        changetime3.onclick=function(){
+            cssfalse();
+            changetime3.classList='Choose_time_btn_false';
+            time=changetime3.value;
+        }
     }
-    changetime4.onclick=function(){
-        cssfalse();
-        changetime4.classList='Choose_time_btn_false';
-        time=changetime4.innerHTML;
+    if(changetime4.className==='Choose_time_btn_true'){
+        changetime4.onclick=function(){
+            cssfalse();
+            changetime4.classList='Choose_time_btn_false';
+            time=changetime4.value;
+        }
     }
-    changetime5.onclick=function(){
-        cssfalse();
-        changetime5.classList='Choose_time_btn_false';
-        time=changetime5.innerHTML;
+    if(changetime5.className==='Choose_time_btn_true'){
+        changetime5.onclick=function(){
+            cssfalse();
+            changetime5.classList='Choose_time_btn_false';
+            time=changetime5.value;
+        }
     }
     reservedate.onclick=function(){
         let changedata=document.getElementById('changedata');
@@ -292,11 +436,21 @@ function reserve(rental_id){
 }
 
 function cssfalse(){
-    changetime1.classList='Choose_time_btn_true';
-    changetime2.classList='Choose_time_btn_true';
-    changetime3.classList='Choose_time_btn_true';
-    changetime4.classList='Choose_time_btn_true';
-    changetime5.classList='Choose_time_btn_true';
+    if(changetime1.className!='Choose_time_btn_stop'){
+        changetime1.classList='Choose_time_btn_true';
+    }
+    if(changetime2.className!='Choose_time_btn_stop'){
+        changetime2.classList='Choose_time_btn_true';
+    }
+    if(changetime3.className!='Choose_time_btn_stop'){
+        changetime3.classList='Choose_time_btn_true';
+    }
+    if(changetime4.className!='Choose_time_btn_stop'){
+        changetime4.classList='Choose_time_btn_true';
+    }
+    if(changetime5.className!='Choose_time_btn_stop'){
+        changetime5.classList='Choose_time_btn_true';
+    }
 }
 
 function Combinationtags(data){

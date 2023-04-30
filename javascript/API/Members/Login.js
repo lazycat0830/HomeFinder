@@ -65,22 +65,34 @@ Loginbtn.onclick = function(){
         
     })
     .then(({ data }) => {
-        console.log(data.token);
-        LoginData=data;
-        sessionStorage.setItem('LoginData', JSON.stringify(data));
-        // window.location.href = '/通用/index.html';
-        accountinput.value='';
-        passwordinput.value='';
-        deleteMask();
 
-
-        
-        //設定可預約時間
-        if(data.members.identity==1){
-            postBookTime(LoginData);
+        if(data=='密碼錯誤'){
+            console.log(data);
+        }else if(data=='尚未驗證，請去EMAIL收驗證信'){
+            console.log(data);
+        }else if(data=='您已被停權'){
+            console.log(data);
+        }else if(data=='無此會員，請去註冊'){
+            console.log(data);
+        }else{
+            console.log(data.token);
+            LoginData=data;
+            sessionStorage.setItem('LoginData', JSON.stringify(data));
+            // window.location.href = '/通用/index.html';
+            accountinput.value='';
+            passwordinput.value='';
+            deleteMask();
+    
+    
+            
+            // 設定可預約時間
+            if(data.members.identity==1){
+                postBookTime(LoginData);
+            }
+            
+            location.reload();
         }
         
-        location.reload();
     })
     .catch(error => {
         // 处理请求过程中的错误

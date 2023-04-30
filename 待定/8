@@ -1,17 +1,45 @@
-let equipment_img_refrigerator;
-let equipment_img_washingmachine;
-let equipment_img_TV;
-let equipment_img_airconditioner;
-let equipment_img_waterheater;
-let equipment_img_bed;
-let equipment_img_Fourth;
-let equipment_img_Wardrobe;
-let equipment_img_network;
-let equipment_img_naturalgas;
-let equipment_img_sofa;
-let equipment_img_tablesandchairs;
-let equipment_img_balcony;
-let equipment_img_elevator;
-let equipment_img_parkingspace;
+var id=0;
+            data.forEach(function(){
+                console.log((changetime1.value==data[id].booktime)&&(changedata.value==data[id].bookdate));
+                console.log((changetime2.value==data[id].booktime)&&(changedata.value==data[id].bookdate));
+                console.log((changetime3.value==data[id].booktime)&&(changedata.value==data[id].bookdate));
+                console.log((changetime4.value==data[id].booktime)&&(changedata.value==data[id].bookdate));
+                console.log((changetime5.value==data[id].booktime)&&(changedata.value==data[id].bookdate));
 
-styleclass_15
+                    if((changetime1.value==data[id].booktime)&&(changedata.value==data[id].bookdate)){
+                        changetime1.classList='Choose_time_btn_stop';
+                        document.getElementById("changetime1").disabled = true;
+                    }else{
+                        changetime1.classList='Choose_time_btn_true';
+                        document.getElementById("changetime1").disabled = false;
+                    }
+                    if((changetime2.value==data[id].booktime)&&(changedata.value==data[id].bookdate)){
+                        changetime2.classList='Choose_time_btn_stop';
+                        document.getElementById("changetime2").disabled = true;
+                    }else{
+                        changetime2.classList='Choose_time_btn_true';
+                        document.getElementById("changetime2").disabled = false;
+                    }
+                    if((changetime3.value==data[id].booktime)&&(changedata.value==data[id].bookdate)){
+                        changetime3.classList='Choose_time_btn_stop';
+                        document.getElementById("changetime3").disabled = true;
+                    }else{
+                        changetime3.classList='Choose_time_btn_true';
+                        document.getElementById("changetime3").disabled = false;
+                    }
+                    if((changetime4.value==data[id].booktime)&&(changedata.value==data[id].bookdate)){
+                        changetime4.classList='Choose_time_btn_stop';
+                        document.getElementById("changetime4").disabled = true;
+                    }else{
+                        changetime4.classList='Choose_time_btn_true';
+                        document.getElementById("changetime4").disabled = false;
+                    }
+                    if((changetime5.value==data[id].booktime)&&(changedata.value==data[id].bookdate)){
+                        changetime5.classList='Choose_time_btn_stop';
+                        document.getElementById("changetime5").disabled = true;
+                    }else{
+                        changetime5.classList='Choose_time_btn_true';
+                        document.getElementById("changetime5").disabled = false;
+                    }
+                id++;
+            });

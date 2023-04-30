@@ -2,11 +2,6 @@ let content_in =document.getElementById('content_in');
 
 function addoncollect(data,id){
     let scoretext;
-    if(data.rentalBlock[id].allData.member.score==null){
-        scoretext='尚未有信用分數';
-    }else{
-        scoretext=data.rentalBlock[id].allData.member.score;
-    }
     let update;
     update=data.rentalBlock[id].allData.uploadtime;
     if(LoginData==null){
@@ -29,13 +24,13 @@ Houseimg_Profile.innerHTML=`
     <div class="Housing_Profile_content flexcolumn relative">
         
             <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
-                <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
                 ${like}
             </a>
             </a>
         
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <a class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></a>
+        <a class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</a>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>

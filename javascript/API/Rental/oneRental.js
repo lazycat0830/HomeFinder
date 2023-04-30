@@ -14,6 +14,12 @@ function addonRental(data,id){
         like=``;
     }else{
         if(LoginData.members.identity==2){
+            if(data.rentalBlock[id].isCollected){
+                like=`
+                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
+                </a>`;
+            }
             // console.log(collectData.idList);
             like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">

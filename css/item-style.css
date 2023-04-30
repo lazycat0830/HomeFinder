@@ -182,16 +182,16 @@
 
 .Choose_time_btn ul{
     padding: 5px 0px;
-    width: 240px;
+    width: 220px;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     text-align:center;
 }
-.Choose_time_btn ul li{
+/* .Choose_time_btn ul li{
     padding: 8px 2px;
-}
+} */
 
 
 #changedata{
@@ -206,22 +206,36 @@ a{
 }
 
 .Choose_time_btn_false{
-    padding: 5px;
+    padding: 5px 10px;
     margin: 5px ;
     background-color: #000;
     border-radius: 5px;
     border: 1px #000 solid;
     color: #fff;
+    cursor: pointer;
 }
 
 .Choose_time_btn_true{
-    padding: 5px;
+    padding: 5px 10px;
     margin: 5px;
     background-color: #ffffff;
     border-radius: 5px;
     border: 1px #000 solid;
     color: #000000;
+    cursor: pointer;
 }
+
+.Choose_time_btn_stop{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #cbcbcb;
+    border-radius: 5px;
+    border: 1px #828282 solid;
+    color: #9d9d9d;
+    cursor: not-allowed;
+}
+
+
 .Choose_title{
 
     font-size: 1.5rem;
