@@ -14,17 +14,20 @@ function addonRental(data,id){
         like=``;
     }else{
         if(LoginData.members.identity==2){
+            console.log(data.rentalBlock[id].isCollected);
             if(data.rentalBlock[id].isCollected){
                 like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
                 </a>`;
-            }
-            // console.log(collectData.idList);
-            like=`
+            }else{
+                like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
                 </a>`;
+            }
+            // console.log(collectData.idList);
+            
             //     collectData.idList.forEach(function(){
             //         console.log(rentalId);
             //         rentalId++;
@@ -167,7 +170,7 @@ function viewDownTimeallData(){
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
 })
         .then(( { data } ) => {
@@ -196,7 +199,7 @@ function viewUpTimeallData(){
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
 })
         .then(( { data } ) => {
@@ -238,7 +241,7 @@ function view_genre(genre){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
@@ -280,7 +283,7 @@ function view_type(type){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
@@ -322,7 +325,7 @@ function view_pattern(pattern){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
@@ -364,7 +367,7 @@ function view_equipmentname(equipmentname){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
