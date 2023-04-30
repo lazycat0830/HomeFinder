@@ -14,17 +14,20 @@ function addonRental(data,id){
         like=``;
     }else{
         if(LoginData.members.identity==2){
+            console.log(data.rentalBlock[id].isCollected);
             if(data.rentalBlock[id].isCollected){
                 like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
                 </a>`;
-            }
-            // console.log(collectData.idList);
-            like=`
+            }else{
+                like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
                 </a>`;
+            }
+            // console.log(collectData.idList);
+            
             //     collectData.idList.forEach(function(){
             //         console.log(rentalId);
             //         rentalId++;
@@ -116,6 +119,7 @@ function deletecollect(likeheart){
     Id=likeheart.id.replace('likeheart_','')
     console.log(Id);
     console.log(LoginData);
+    
     axios({
         method: 'delete',
         url: `http://localhost:5190/api/HomeAny/RemoveCollect?rental_id=${Id}`,
@@ -161,56 +165,105 @@ function collect(likeheart){
 function viewDownTimeallData(){
 
     console.log(LoginData);
-    axios({
-    method: 'get',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnyDownTime',
-    headers:{
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${LoginData.token}`, 
-    },
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data.idList);
-            data.idList.forEach(function(){
-                    
-                    console.log(rental_Id);
-                    addonRental(data,rental_Id);
-                    rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'get',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnyDownTime',
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
         })
-        .catch(error => {
-            console.log(error);
-        });
-
-}
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data.idList);
+                    data.idList.forEach(function(){
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        
+        }else{
+        axios({
+            method: 'get',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnyDownTime',
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data.idList);
+                    data.idList.forEach(function(){
+                            
+                            console.log(rental_Id);
+                            addonRental(data,rental_Id);
+                            rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        
+        }
+    }
 
 function viewUpTimeallData(){
 
     console.log(LoginData);
-    axios({
-    method: 'get',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnyUpTime',
-    headers:{
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${LoginData.token}`, 
-    },
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data);
-            data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'get',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnyUpTime',
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
         })
-        .catch(error => {
-            console.log(error);
-        });
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }else{
+        axios({
+            method: 'get',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnyUpTime',
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 
 }
 
@@ -232,28 +285,53 @@ function view_genre(genre){
     
     console.log(LoginData);
     console.log(formData.get('genre'));
-    axios({
-    method: 'post',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-    headers:{
-        "Content-Type": "multipart/form-data",
-        "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
-    },
-     data: formData,
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data);
-            data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
         })
-        .catch(error => {
-            console.log(error);
-        });
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }else{
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 }
 
 function view_type(type){
@@ -274,28 +352,53 @@ function view_type(type){
     
     console.log(LoginData);
     console.log(formData.get('genre'));
-    axios({
-    method: 'post',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-    headers:{
-        "Content-Type": "multipart/form-data",
-        "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
-    },
-     data: formData,
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data);
-            data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
         })
-        .catch(error => {
-            console.log(error);
-        });
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }else{
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 }
 
 function view_pattern(pattern){
@@ -316,28 +419,53 @@ function view_pattern(pattern){
     
     console.log(LoginData);
     console.log(formData.get('genre'));
-    axios({
-    method: 'post',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-    headers:{
-        "Content-Type": "multipart/form-data",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${LoginData.token}`, 
-    },
-     data: formData,
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data);
-            data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
         })
-        .catch(error => {
-            console.log(error);
-        });
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }else{
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 }
 
 function view_equipmentname(equipmentname){
@@ -358,28 +486,53 @@ function view_equipmentname(equipmentname){
     
     console.log(LoginData);
     console.log(formData.get('equipmentname'));
-    axios({
-    method: 'post',
-    url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-    headers:{
-        "Content-Type": "multipart/form-data",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${LoginData.token}`, 
-    },
-     data: formData,
-})
-        .then(( { data } ) => {
-            console.log(data);
-            var rental_Id=0;
-            console.log(data);
-            data.idList.forEach(function(){
-                addonRental(data,rental_Id);
-                rental_Id++;
-            });
+    if(LoginData!=null){
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
         })
-        .catch(error => {
-            console.log(error);
-        });
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }else{
+        axios({
+            method: 'post',
+            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+             data: formData,
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    var rental_Id=0;
+                    console.log(data);
+                    data.idList.forEach(function(){
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 }
 
 
