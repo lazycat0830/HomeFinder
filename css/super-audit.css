@@ -65,3 +65,33 @@
     color: #000;
     background-color: #FF7878;
 }
+
+#Review_body_content{
+        width: 400px;
+}
+
+#Review_body_content_header{
+    background-color: #fff;
+    width: auto;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top: 2px #000 solid;
+    border-left: 2px #000 solid;
+    border-right: 2px #000 solid;
+}
+
+.Review_btn{
+    color: #fff;
+    background-color: #000;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reason_input{
+    padding: 15px 0px;
+    font-size: 20px;
+    align-items: center;
+    font-weight: bolder;
+}
+

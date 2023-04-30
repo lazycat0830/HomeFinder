@@ -29,11 +29,7 @@ function addonRental(data,id){
         }
     }
 
-    if(data.rentalBlock[id].allData.member.score==null){
-        scoretext='尚未有信用分數';
-    }else{
-        scoretext=data.rentalBlock[id].allData.member.score;
-    }
+    
     let update;
     update=data.rentalBlock[id].allData.uploadtime;
     
@@ -51,7 +47,7 @@ function addonRental(data,id){
             </a>
         
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">信用${scoretext}分</span></span>
+        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>

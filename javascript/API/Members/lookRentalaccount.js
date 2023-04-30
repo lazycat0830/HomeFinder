@@ -50,7 +50,7 @@ function oneAccount(data){
     }
     oneAccountimg.setAttribute('width','100%');
     oneAccountimg.setAttribute('src','/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp');
-    oneAccountName.innerHTML=`姓名：${data.name}<span class="fraction" style="font-size: 14px;align-content: end;padding: 0px;">${score}</span>`;
+    oneAccountName.innerHTML=`姓名：${data.name}`;
     oneAccountPhome.innerHTML=`電話：${data.phone}`;
     oneAccountEmail.innerHTML=`E-mail：${data.email}`;
 
@@ -112,11 +112,6 @@ let Account_Rental=document.getElementById('Account_Rental');
 function newRenterRental(data,id){
     console.log(data.rentalBlock[id].allData.member.score)
     let scoretext;
-    if(data.rentalBlock[id].allData.member.score==null){
-        scoretext='尚未有信用分數';
-    }else{
-        scoretext=data.rentalBlock[id].allData.member.score;
-    }
     if(LoginData==null){
         like=``;
     }else{
@@ -141,7 +136,7 @@ function newRenterRental(data,id){
             </a>
             </a>
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}<span class="fraction">${scoretext}</span></span>
+        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
         <span class="text3">上架日期：${data.rentalBlock[id].allData.uploadtime.replace(/T.*/,'')}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>

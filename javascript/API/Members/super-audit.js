@@ -30,9 +30,6 @@ function addRental(data,id) {
             .then(({data})=>{
                 console.log(data);
                 viewonRental(data);
-
-
-
             })
             .catch(error => {
                 console.log(error);
@@ -44,11 +41,22 @@ function addRental(data,id) {
         var check;
         review_true.onclick=function(){
             check=1;
-            review(data.rentalBlock[id].allData.rental_id,check);
+            reasontext='';
+            review(data.rentalBlock[id].allData.rental_id,check,reasontext);
         }
         review_false.onclick=function(){
-            check=2;
-            review(data.rentalBlock[id].allData.rental_id,check);
+            let Review=document.getElementById('Review');
+            Review.style.display='block';
+            let Review_btn=document.getElementById('Review_btn');
+            let reason=document.getElementById('reason');
+            Review_btn.onclick=function(){
+                check=2;
+                reasontext=reason.value;
+                review(data.rentalBlock[id].allData.rental_id,check,reasontext);
+                reason.value='';
+                Review.style.display='none';
+            }
+            
         }
 
     }
@@ -108,7 +116,7 @@ function viewonRental(data){
 
 }
 
-function review(id,check){
+function review(id,check,reasontext){
 
     axios({
         method:'put',
@@ -120,7 +128,7 @@ function review(id,check){
         },data:{
             Id:`${id}`,
             Type:`${check}`,
-            Reason:"",
+            Reason:`${reasontext}`,
         }
     })
     .then(({data})=>{
@@ -130,4 +138,10 @@ function review(id,check){
     .catch(error => {
         console.log(error);
     });
+}
+
+let delete_Review =document.getElementById('delete_Review');
+delete_Review.onclick=function(){
+    Review.style.display='none';
+    reason.value='';
 }
