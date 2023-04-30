@@ -167,7 +167,7 @@ function viewDownTimeallData(){
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
 })
         .then(( { data } ) => {
@@ -196,7 +196,7 @@ function viewUpTimeallData(){
     headers:{
         "Content-Type": "application/json",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
 })
         .then(( { data } ) => {
@@ -322,7 +322,7 @@ function view_pattern(pattern){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
@@ -364,7 +364,7 @@ function view_equipmentname(equipmentname){
     headers:{
         "Content-Type": "multipart/form-data",
         "Accept": "application/json",
-        // "Authorization": `Bearer ${LoginData.token}`, 
+        "Authorization": `Bearer ${LoginData.token}`, 
     },
      data: formData,
 })
