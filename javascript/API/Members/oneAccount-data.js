@@ -129,6 +129,9 @@ function oneAccount(data){
 updataoneAccount_btn.addEventListener("click", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
+    console.log(formData.get('name'));
+    console.log(formData.get('phone'));
+    console.log(formData.get('img_upload'));
     formData.append('img','');
     
         axios({
@@ -136,8 +139,8 @@ updataoneAccount_btn.addEventListener("click", (event) => {
         url: "http://localhost:5190/api/Auth/EditProfile",
         headers: {
             "Content-Type": "multipart/form-data",
-            Accept: "application/json",
-            Authorization: `Bearer ${LoginData.token}`,
+            "Accept": "application/json",
+            "Authorization": `Bearer ${LoginData.token}`,
         },
         data: formData,
         })
@@ -145,7 +148,7 @@ updataoneAccount_btn.addEventListener("click", (event) => {
             console.log(response.data);
             LoginData.members.name=updata_Name.value;
             LoginData.members.phone=updata_phone.value;
-            // LoginData.members.img=updata_img.value;
+            LoginData.members.img=updata_img.value;
             console.log(LoginData);
             oneAccount(LoginData);
             deleteMask();
