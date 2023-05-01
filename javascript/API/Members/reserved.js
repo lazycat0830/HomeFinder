@@ -4,14 +4,14 @@ let deleteX_btn=document.getElementById('deleteX_btn');
 let delete_btn=document.getElementById('delete_btn');
 let nodelete_btn=document.getElementById('nodelete_btn');
 let delete_confirm=document.getElementById('delete_confirm');
-
+let content_in=document.getElementById('content_in');
 function viewAllReserved(data){
-    let content_in=document.getElementById('content_in');
+    
     let item_content=document.createElement('div');
     item_content.classList='flexbetween item_content';
-    if(data.isDelete){
+    // if(data.isDelete){
         
-    }
+    // }
     item_content.innerHTML=`
                 <div class="item_content_img"><img width="100%" src="${data.img1}"></div>
                 <div class="flexcolumn" style='width:500px'>

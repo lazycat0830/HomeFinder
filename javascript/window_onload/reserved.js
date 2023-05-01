@@ -12,12 +12,17 @@ function getReservedData(LoginData){
         },
     }).then(({ data })=> {
         console.log(data);
-        var id=0;
-        data.forEach(function(){
-            viewAllReserved(data[id]);
-            id++;
-        });
-        
+        console.log(data=='');
+        if(data==''){
+            content_in.innerHTML=`<div class='flexcenter noreservedtext'>無預約資料</div>`
+        }else{
+            content_in.innerHTML=``
+            var id=0;
+            data.forEach(function(){
+                viewAllReserved(data[id]);
+                id++;
+            });
+        }
     }).catch(error=>{
         console.error(error);
     });

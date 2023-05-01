@@ -303,10 +303,10 @@ function type_Label_btn_off(){
     type_villa.classList='Label_btn_off';
 }
 
-let reset=document.getElementById('reset');
-reset.onclick=function(){
-    emptyform();
-}
+// let reset=document.getElementById('reset');
+// reset.onclick=function(){
+//     emptyform();
+// }
 
 function emptyform(){
     genre_Label_btn_off();

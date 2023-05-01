@@ -11,29 +11,23 @@ window.onload = function() {
         const prevDayBtn = document.getElementById('prev-day');
         const nextDayBtn = document.getElementById('next-day');
 
-        const today = new Date();
+
+        var today = new Date();
+
         let selectedDate = today;
-
-
         const todayString = today.toLocaleDateString();
         dateText.innerHTML = todayString;
-
-        var a=false;
-        dateText.addEventListener('click', () => {
-            a=!a;
-            if(a){
-                datepicker.style.display = 'block';
-            }else{
-                datepicker.style.display = 'none';
-            }
-        });
+        
+        var year = today.getFullYear(); // 年份
+        var month = ('0' + (today.getMonth() + 1)).slice(-2); // 月份，补0到两位数
+        var day = ('0' + today.getDate()).slice(-2); // 日期，补0到两位数
+        var dateInput = document.getElementById('datepicker'); // 将myDateInput替换成你的<input type='date'/>元素的ID
+        dateInput.value = year + '-' + month + '-' + day;
 
 
         datepicker.addEventListener('change', () => {
         selectedDate = new Date(datepicker.value);
         dateText.innerHTML = selectedDate.toLocaleDateString();
-        a=!a;
-        datepicker.style.display = 'none';
         viewtime_management(dateText.innerHTML);
         });
 
@@ -42,12 +36,14 @@ window.onload = function() {
         selectedDate.setDate(selectedDate.getDate() - 1);
         dateText.innerHTML = selectedDate.toLocaleDateString();
         viewtime_management(dateText.innerHTML);
+        updateDatePicker(selectedDate);
         });
 
         nextDayBtn.addEventListener('click', () => {
         selectedDate.setDate(selectedDate.getDate() + 1);
         dateText.innerHTML = selectedDate.toLocaleDateString();
         viewtime_management(dateText.innerHTML);
+        updateDatePicker(selectedDate);
         });
         
 
@@ -57,8 +53,16 @@ window.onload = function() {
         console.log(LoginData);
         LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
 
+        function updateDatePicker(date) {
+            const dateString = date.toISOString().split('T')[0];
+            datepicker.value = dateString;
+            dateText.innerHTML = date.toLocaleDateString();
+            viewtime_management(date.toLocaleDateString());
+        }
 
-    
+        // 初始化
+        updateDatePicker(selectedDate);
+        
     
 };
 

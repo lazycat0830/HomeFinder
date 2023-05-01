@@ -296,10 +296,13 @@ function Editviewitemcontent(data,rental_id){
         }
     }
 
-    let changedata =document.getElementById('changedata');
-    console.log(changedata.value);
-    const today = new Date();
-    changedata.value=today.toLocaleDateString();
+    var today = new Date();
+    var year = today.getFullYear(); // 年份
+    var month = ('0' + (today.getMonth() + 1)).slice(-2); // 月份，补0到两位数
+    var day = ('0' + today.getDate()).slice(-2); // 日期，补0到两位数
+    var dateInput = document.getElementById('changedata'); // 将myDateInput替换成你的<input type='date'/>元素的ID
+    dateInput.value = year + '-' + month + '-' + day;
+    
     
     let Accountimg_btn=document.getElementById('Accountimg_btn');
     Accountimg_btn.onclick=function(){

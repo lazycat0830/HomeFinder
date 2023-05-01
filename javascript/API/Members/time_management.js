@@ -42,6 +42,8 @@ function addtime_management(data,changedate){
         delete_btn.onclick=function(){
             deleteBook(booking);
         }
+    }else{
+        item_content.innerHTML=`<div class='flexcenter notime_manageText'>無被預約資訊</div>`;
     }
 }
 
@@ -67,13 +69,17 @@ function viewtime_management(changedate){
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({ data })=> {
-        var id=0;
-        data.forEach(function(){
-            addtime_management(data[id],changedate);
+        if(data==""){
+            item_content.innerHTML=`<div class='flexcenter notime_manageText'>無被預約資訊</div>`;  
+        }else{
+            item_content.innerHTML=``; 
+            var id=0;
+            data.forEach(function(){
+                addtime_management(data[id],changedate);
             id++;
         });
-        console.log(data);
-        
+        }
+
     }).catch(error=>{
         console.error(error);
     });

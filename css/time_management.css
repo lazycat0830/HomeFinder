@@ -235,3 +235,9 @@
     padding: 3px 50px;
     margin: 0px 10px;
 }
+
+.notime_manageText{
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: #ff0000;
+}
