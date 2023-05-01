@@ -78,37 +78,43 @@ let town=document.getElementById('town');
 // });
 let filter_rent_text=document.getElementById('filter_rent_text');
 allfilter_btn.onclick=function(){
+    let township=document.getElementById('township');
 
-    // let rent1,rent2,Conuty,townSelect;
-    
-    const formData = new FormData(form);
-    console.log(County.value);
-    console.log(rent1.value);
-    console.log(rent2.value);
-    console.log(genre);
-    console.log(pattern);
-    console.log(type);
-    console.log(equipmentname);
-
-    formData.append('county',County.value);
-    if(County.value!=""){
-        formData.append('township',townSelect.value);
-    }else{
-        formData.append('township',"");
-    }
-    
-    
-    formData.append('rent1',rent1.value);
-    formData.append('rent2',rent2.value);
-    formData.append('genre',genre);
-    formData.append('pattern',pattern);
-    formData.append('type',type);
-    formData.append('equipmentname',equipmentname);
-    formData.append('uploadtime',"");
     
     if(rent1.value>rent2.value){
         filter_rent_text.innerHTML='最低價格不能超過最高價格'
     }else{
+        // let rent1,rent2,Conuty,townSelect;
+    
+        const formData = new FormData(form);
+        console.log(County.value);
+        console.log(rent1.value);
+        console.log(rent2.value);
+        console.log(genre);
+        console.log(pattern);
+        console.log(type);
+        console.log(equipmentname);
+
+        formData.append('county',County.value);
+        // if(County.value!=""){
+        //     if((townSelect.value!='')||(townSelect.value!=null)){
+                
+        //         formData.append('township',townSelect.value);
+        //         }else{
+        //         formData.append('township',"");
+        //         }
+        // }
+    
+        
+        
+        formData.append('rent1',rent1.value);
+        formData.append('rent2',rent2.value);
+        formData.append('genre',genre);
+        formData.append('pattern',pattern);
+        formData.append('type',type);
+        formData.append('equipmentname',equipmentname);
+        formData.append('uploadtime',"");
+    
         filter_rent_text.innerHTML='';
         if(LoginData!=null){
             axios({

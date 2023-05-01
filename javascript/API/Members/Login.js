@@ -168,7 +168,7 @@ Loginbtn.onclick = function(){
         }).catch(error => {
         // 处理请求过程中的错误
         console.error(error);
-        forget_validatatext.innerHTML=`${error}`;
+        // forget_validatatext.innerHTML=`${error}`;
     });
     }
 

@@ -90,6 +90,7 @@ function Editviewitemcontent(data,rental_id){
     let data_time=data.uploadtime.replace(/\..*/g, "").replace("T", " | ");
     let content_in=document.getElementById('content_in');
     content_in.innerHTML=`
+            <div class='flexright'><button class="item_like "><img width="30px" src="/image/heart.png">未收藏</button></div>
             <div class="img1-8 flexcenter">
                 <div class="img1-8_img1_width"><img class="img1-8_img1" src="${img1}"></div>
                 <div class="flexcolumn">
@@ -117,7 +118,7 @@ function Editviewitemcontent(data,rental_id){
                         <div class='cost'>
                             管理費：${adminfee}<span> | </span>
                             水費：${waterfee}<span> | </span>
-                            電費費：${electricitybill}<span> </span>
+                            電費：${electricitybill}<span> </span>
                         </div>
                         </div>
 
@@ -246,6 +247,11 @@ function Editviewitemcontent(data,rental_id){
                 </div>  
                 </div>
     `
+    let changedata =document.getElementById('changedata');
+    console.log(changedata.value);
+    const today = new Date();
+    changedata.value=today.toLocaleDateString();
+    
     let Accountimg_btn=document.getElementById('Accountimg_btn');
     Accountimg_btn.onclick=function(){
         sessionStorage.setItem('newRantalRenter',data.member.account);
@@ -270,8 +276,8 @@ function getReservedData(){
         },
     })
     .then(({ data }) => {
+       
         console.log(data);
-        console.log(changedata.value);
         var id=0;
         let renservedData='';
         data.forEach(function(){
@@ -459,13 +465,14 @@ function reserve(rental_id){
                 reserveText.style.display='block';
                 text.innerHTML='預約成功';
                 createMask();
+                
 
             }).catch(error => {
             // 处理请求过程中的错误
             console.error(error);
                 reserveText.style.display='block';
                 createMask();
-                text.innerHTML='預約失敗，日期超過了';
+                text.innerHTML='預約失敗';
             }); 
         }else{
             login.style.display='block';
@@ -475,6 +482,7 @@ function reserve(rental_id){
     deleteX_btn.onclick=function(){
         reserveText.style.display='none';
         deleteMask();
+        location.reload();
     }
 
 }

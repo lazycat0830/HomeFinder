@@ -288,3 +288,7 @@ a{
     color: #000;
     font-weight: bold;
 }
+
+.item_like{
+    font-size: 1rem;
+}

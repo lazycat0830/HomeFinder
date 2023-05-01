@@ -7,6 +7,7 @@ function submit(){
     const Password = document.getElementById("Password");
     const NewPassword = document.getElementById("NewPassword");
     const CheckNewPassword = document.getElementById("CheckNewPassword");
+    
     validatatext_signup.innerHTML=''
         axios({
         method: "post",
@@ -28,8 +29,12 @@ function submit(){
             NewPassword.value='';
             CheckNewPassword.value='';
             console.log(response.data);
-            let validatatext_signup=document.getElementById('validatatext_signup');
-            validatatext_signup.innerHTML=response.data;
+            // let validatatext_signup=document.getElementById('validatatext_signup');
+            // validatatext_signup.innerHTML=response.data;
+            Logoutaxios();
+            sessionStorage.clear();
+            location.reload();
+            window.location.href = '/通用/index.html';
         })
         .catch((error) => {
             console.error(error);
