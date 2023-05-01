@@ -70,19 +70,24 @@ function viewRentalAccount(Account){
     });
 }
 
-
+let Report_reason=document.getElementById('Report_reason');
 let report_btn1=document.getElementById('report_btn1');
+let Reportvalidate=document.getElementById('Reportvalidate');
 report_btn1.addEventListener("click",function(){
-    reason();
-    deleteMask();
-    report.style.display="none";
+    console.log(Report_reason);
+    if(Report_reason.value==''){
+        Reportvalidate.innerHTML='不能沒有原因';
+    }else{
+        Reportvalidate.innerHTML='';
+        // reason();
+        // deleteMask();
+        // report.style.display="none";
+    }
 
 });
 
 console.log(newRantalRenter);
 
-
-let Report_reason=document.getElementById('Report_reason');
 function reason(){
     axios({
         method: 'post',

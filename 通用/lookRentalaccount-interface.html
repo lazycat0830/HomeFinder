@@ -184,16 +184,12 @@
                     <div id="report_body_content_body_content" class="flexcolumn">
                         <div id="Report_text1" class="report_text1"></div>
                         <div style="padding-bottom: 20px;">
-                            <select id="Report_reason" style="width: 100%;font-size: 1rem;">
-                                <option  value="" disabled selected>請選擇檢舉原因</option>
-                                <option style="font-size: 22px;"  value="遲到">遲到</option>
-                                <option style="font-size: 22px;" value="態度不好">態度不好</option>
-                                <option style="font-size: 22px;" value="詐騙">詐騙</option>
-                            </select>
+                            <label>檢舉原因：</label><input type="text" id="Report_reason">
+                            <span id="Reportvalidate"></span>
                         </div>
                         <div class="flexrow report_btnwidth">
-                            <a href="#"><button id="report_btn1" class="report_btn1">確認</button></a>
-                            <a href="#"><button id="report_btn2" class="report_btn2">取消</button></a>
+                            <button id="report_btn1" class="report_btn1">確認</button>
+                            <button id="report_btn2" class="report_btn2">取消</button>
                         </div>
                     </div>
                 </div>

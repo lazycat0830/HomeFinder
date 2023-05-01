@@ -19,21 +19,39 @@ let reserveText=document.getElementById('reserveText');
 let deleteX_btn=document.getElementById('deleteX_btn');
 
 function viewnewitem(rental_id){
-    axios({
-        method:'get',
-        url:`http://localhost:5190/api/HomeAny/${rental_id}`,
-        headers:{
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            // "Authorization": `Bearer ${LoginData.token}`, 
-        },
-    }).then(( { data } ) => {
-        console.log(data);
-        Editviewitemcontent(data,rental_id);
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    if(LoginData!=null){
+        axios({
+            method:'get',
+            url:`http://localhost:5190/api/HomeAny/${rental_id}`,
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(( { data } ) => {
+            console.log(data);
+            Editviewitemcontent(data,rental_id);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }else{
+        axios({
+            method:'get',
+            url:`http://localhost:5190/api/HomeAny/${rental_id}`,
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                //  "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(( { data } ) => {
+            console.log(data);
+            Editviewitemcontent(data,rental_id);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 
@@ -42,57 +60,75 @@ function viewnewitem(rental_id){
 function Editviewitemcontent(data,rental_id){
     console.log(data);
     let adminfee,waterfee,electricitybill;
-    if(data.adminfee==0){
+    if(data.allData.adminfee==0){
         adminfee="無";
     }else{
-        adminfee='$'+data.adminfee+' /月';
+        adminfee='$'+data.allData.adminfee+' /月';
     }
-    if(data.waterfee==0){
+    if(data.allData.waterfee==0){
         waterfee="無";
     }else{
-        waterfee='$'+data.waterfee+' /月';
+        waterfee='$'+data.allData.waterfee+' /月';
     }
-    if(data.electricitybill==0){
+    if(data.allData.electricitybill==0){
         electricitybill="無";
     }else{
-        electricitybill='$'+data.electricitybill+' /月';
+        electricitybill='$'+data.allData.electricitybill+' /月';
+    }
+
+    if(LoginData==null){
+        like=``;
+    }else{
+        if(LoginData.members.identity==2){
+            if(data.isCollected){
+                like=`<div id='like_content' class='absolute'><button id="likebtn_${data.allData.rental_id}" class="item_like"><img id="likeheart_${data.allData.rental_id}" width="30px" src="/image/like.png"></button></div>`;
+            }else{
+                like=`<div id='like_content' class='absolute'><button id="likebtn_${data.allData.rental_id}" class="item_like"><img id="likeheart_${data.allData.rental_id}" width="30px" src="/image/heart.png"></button></div>`;
+            }
+
+            
+        }else{
+            like=``;
+        }
     }
 
 
-    judgment_equipment(data.equipmentname);
+    judgment_equipment(data.allData.equipmentname);
     Combinationtags(data);
     var img1,img2,img3,img4,img5;
-    if(data.img1==''){
+    if(data.allData.img1==''){
         img1='/image/noRenterImg.png';
     }else{
-        img1=data.img1;
+        img1=data.allData.img1;
     }
-    if(data.img2==''){
+    if(data.allData.img2==''){
         img2='/image/noRenterImg.png';
     }else{
-        img2=data.img2;
+        img2=data.allData.img2;
     }
-    if(data.img3==''){
+    if(data.allData.img3==''){
         img3='/image/noRenterImg.png';
     }else{
-        img3=data.img3;
+        img3=data.allData.img3;
     }
-    if(data.img4==''){
+    if(data.allData.img4==''){
         img4='/image/noRenterImg.png';
     }else{
-        img4=data.img4;
+        img4=data.allData.img4;
     }
-    if(data.img5==''){
+    if(data.allData.img5==''){
         img5='/image/noRenterImg.png';
     }else{
-        img5=data.img5;
+        img5=data.allData.img5;
     }
-    let data_time=data.uploadtime.replace(/\..*/g, "").replace("T", " | ");
+    let data_time=data.allData.uploadtime.replace(/\..*/g, "").replace("T", " | ");
     let content_in=document.getElementById('content_in');
     content_in.innerHTML=`
-            <div class='flexright'><button class="item_like "><img width="30px" src="/image/heart.png">未收藏</button></div>
-            <div class="img1-8 flexcenter">
-                <div class="img1-8_img1_width"><img class="img1-8_img1" src="${img1}"></div>
+            
+            <div class="img1-8 flexcenter relative">
+                <div class="img1-8_img1_width">
+                    <img class='img1-8_img1' src="${img1}">
+                </div>
                 <div class="flexcolumn">
                     <div class="flexrow">
                         <img src="${img2}">
@@ -104,16 +140,17 @@ function Editviewitemcontent(data,rental_id){
                     </div>
                     <div class="puttime">上架時間：${data_time}</div>
                 </div>
+                ${like}
             </div>
             
             <div id="housing_information" class="flexcenter">
                 <div id="content_left flexcolumn">
-                    <div class="house_title">${data.title}</div>
+                    <div class="house_title">${data.allData.title}</div>
                     <div class="house_type">
                         ${Combination}
                     </div>
                     <div class="house_amount">
-                        $${data.rent}<span class="amount_unit">元/月</span>
+                        $${data.allData.rent}<span class="amount_unit">元/月</span>
                         <div> 
                         <div class='cost'>
                             管理費：${adminfee}<span> | </span>
@@ -128,8 +165,8 @@ function Editviewitemcontent(data,rental_id){
                     <div class="address">
                         <span class='title'>地址：</span>
                         <div class="addressborder flexrow">
-                        <div><a href="https://www.google.com/maps/search/?api=1&query=${data.address}"><img width=30px src='/image/圖片2.png' style='padding:10px ;'></a></div>
-                            <div>${data.address}</div>
+                        <div><a href="https://www.google.com/maps/search/?api=1&query=${data.allData.address}"><img width=30px src='/image/圖片2.png' style='padding:10px ;'></a></div>
+                            <div>${data.allData.address}</div>
                             <!-- https://www.google.com/maps/search/?api=1&query=google map -->
                         </div>
                     </div>
@@ -205,7 +242,7 @@ function Editviewitemcontent(data,rental_id){
                     <div class="house_content">
                         <span class='title'>房屋介紹</span>
                         <div class="house_content_text">
-                            ${data.content}
+                            ${data.allData.content}
                         </div>
                         <!--<span><a href="#">顯示更多內容</a></span>--!>
                     </div>
@@ -237,16 +274,28 @@ function Editviewitemcontent(data,rental_id){
                     </div>
                     <div class="publisher_Information flexrow">
                     <div class="publisher_Information_img flexcolumn">
-                        <div class="flexcenter"><a id='Accountimg_btn' class="avatar flexcenter" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="${data.member.img}"></a></div>
+                        <div class="flexcenter"><a id='Accountimg_btn' class="avatar flexcenter" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="${data.allData.member.img}"></a></div>
                     </div>
                     <div class="publisher_Information_text">
-                        出租者：<span class="subtitle">${data.member.name}</span><br>
-                        電話：<span class="subtitle">${data.member.phone}</span>
+                        出租者：<span class="subtitle">${data.allData.member.name}</span><br>
+                        電話：<span class="subtitle">${data.allData.member.phone}</span>
                     </div>
                     </div>
                 </div>  
                 </div>
     `
+
+    if(LoginData==null){
+        like=``;
+    }else{
+        if(LoginData.members.identity==2){
+            likebtn=`likebtn_${data.allData.rental_id}`;
+            likeheart=`likeheart_${data.allData.rental_id}`;
+            
+            clicklike(likebtn,likeheart);
+        }
+    }
+
     let changedata =document.getElementById('changedata');
     console.log(changedata.value);
     const today = new Date();
@@ -254,7 +303,7 @@ function Editviewitemcontent(data,rental_id){
     
     let Accountimg_btn=document.getElementById('Accountimg_btn');
     Accountimg_btn.onclick=function(){
-        sessionStorage.setItem('newRantalRenter',data.member.account);
+        sessionStorage.setItem('newRantalRenter',data.allData.member.account);
     }
     reserve(rental_id);
     if(LoginData!=null){
@@ -263,6 +312,70 @@ function Editviewitemcontent(data,rental_id){
         }
     }
 }
+
+function clicklike(likebtn,likeheart){
+    like_btn=document.getElementById(likebtn);
+    likeheart=document.getElementById(likeheart);
+    console.log(like_btn);
+    console.log(likeheart);
+    like_btn.onclick=function(){
+        console.log(likeheart.getAttribute("src"))
+        if(likeheart.getAttribute("src")=="/image/heart.png"){
+            likeheart.setAttribute('src','/image/like.png')
+            collect(likeheart);
+    
+        }else if(likeheart.getAttribute("src")=="/image/like.png"){
+            likeheart.setAttribute('src','/image/heart.png')
+            deletecollect(likeheart);
+        }
+    }
+    }
+    
+    function deletecollect(likeheart){
+        console.log(likeheart.id);
+        Id=likeheart.id.replace('likeheart_','')
+        console.log(Id);
+        console.log(LoginData);
+        axios({
+            method: 'delete',
+            url: `http://localhost:5190/api/HomeAny/RemoveCollect/${Id}`,
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
+    
+    function collect(likeheart){
+        console.log(likeheart.id);
+        Id=likeheart.id.replace('likeheart_','')
+        console.log(Id);
+        console.log(LoginData);
+        axios({
+            method: 'post',
+            url: `http://localhost:5190/api/HomeAny/AddCollect?rental_id=${Id}`,
+            headers:{
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        })
+                .then(( { data } ) => {
+                    console.log(data);
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
 
 
 function getReservedData(){

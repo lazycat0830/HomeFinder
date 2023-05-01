@@ -82,3 +82,11 @@
     color: #ff0000;
     font-weight: bolder;
 }
+
+.noData{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #ff0000;
+}

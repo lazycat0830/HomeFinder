@@ -79,12 +79,19 @@ function viewcollect(){
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({data})=>{
+        content_in.innerHTML='';
         console.log(data);
-        var rental_Id=0;
-        data.idList.forEach(function(){
-            addoncollect(data,rental_Id);
-            rental_Id++;
-        })
+        if(data=='無資料'){
+            content_in.innerHTML='<span class="noData">無收藏，趕快去收藏</span>';
+
+        }else{
+            var rental_Id=0;
+            data.idList.forEach(function(){
+                addoncollect(data,rental_Id);
+                rental_Id++;
+            })
+        }
+        
     }).catch(error=>{
         console.error(error);
     });

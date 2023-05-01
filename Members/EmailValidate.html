@@ -7,7 +7,10 @@
     <h1>Email validation result</h1>
     <p>Account: <span id="account"></span></p>
     <p>AuthCode: <span id="authCode"></span></p>
-    <div id="result"></div>
+    <div id="result">
+        
+
+    </div>
 
     <script>
         // 获取 URL 参数
@@ -36,7 +39,15 @@
         fetch(apiUrl)
             .then(response => response.text())
             .then(data => {
-                document.getElementById("result").innerHTML = data;
+                if(data=='驗證碼錯誤，請重新確認或在註冊'){
+                    document.getElementById("result").innerHTML = ``;
+                }else{
+                    document.getElementById("result").innerHTML = `成功`;
+                }
+
+                setTimeout(function(){
+                window.location.href = '/通用/index.html';
+                }, 5000); // 延迟时间为5秒，即5000毫秒
             })
             .catch(error => {
                 document.getElementById("result").innerHTML = "API request failed.";
