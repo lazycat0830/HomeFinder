@@ -10,7 +10,7 @@ function addonBG_up(data,id){
             <td>${data.rentalBlock[id].allData.title}</td>
             <td>${data.rentalBlock[id].allData.rent}</td>
             <td>${data.rentalBlock[id].allData.address}</td>
-            <td>${data.rentalBlock[id].allData.uploadtime.replace('T',' | ')}</td>
+            <td>${data.rentalBlock[id].allData.uploadtime.replace(/\..*/g, "").replace("T", " | ")}</td>
             <td>
                 <div class="flexcolumn">
                     <input id="updata_${data.rentalBlock[id].allData.rental_id}" type="button" class="updateallbtn" value="修改">

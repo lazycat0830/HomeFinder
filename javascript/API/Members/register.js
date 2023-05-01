@@ -39,8 +39,8 @@ submit.addEventListener("click", (event) => {
       })
       .catch((error) => {
         console.error(error);
-        validatatext_signup.innerHTML='全部必填';
-        validatatext_signup.style.display='block';
+        // validatatext_signup.innerHTML='全部必填';
+        // validatatext_signup.style.display='block';
       });
   }
   

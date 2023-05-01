@@ -160,14 +160,15 @@ function updataitem(){
     formData.append('updateData.pattern',`${pattern}`);
     formData.append('updateData.equipmentname',`${equipmentname}`);
     formData.append('updateData.content',`${housingcontent.value.replace(/\n/g, '<br>')}`);
-
+    
     console.log(type);
     console.log(genre);
     console.log(pattern);
     console.log(equipmentname);
-    console.log(formData.get('updateData.img1_1'));
     console.log(UPDataRetal.rental_id);
     console.log(LoginData.token);
+
+
     axios({
         method: "put",
         url: `http://localhost:5190/api/Home/${UPDataRetal.rental_id}`,

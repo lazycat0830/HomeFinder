@@ -14,7 +14,7 @@ function addonBG_audit(data,id){
             <td>${data.rentalBlock[id].allData.title}</td>
             <td>${data.rentalBlock[id].allData.rent}</td>
             <td>${data.rentalBlock[id].allData.address}</td>
-            <td>${data.rentalBlock[id].allData.uploadtime.replace('T',' | ')}</td>
+            <td>${data.rentalBlock[id].allData.uploadtime.replace(/\..*/g, "").replace("T", " | ")}</td>
             <td>
                 <div>
                     ${audittext}
