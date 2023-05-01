@@ -236,7 +236,7 @@ function Editviewitemcontent(data,rental_id){
                     </div>
                     <div class="publisher_Information flexrow">
                     <div class="publisher_Information_img flexcolumn">
-                        <div class="flexcenter"><a id='Accountimg_btn' class="avatar" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp"></a></div>
+                        <div class="flexcenter"><a id='Accountimg_btn' class="avatar flexcenter" href="/通用/lookRentalaccount-interface.html"><img width="55px" src="${data.member.img}"></a></div>
                     </div>
                     <div class="publisher_Information_text">
                         出租者：<span class="subtitle">${data.member.name}</span><br>

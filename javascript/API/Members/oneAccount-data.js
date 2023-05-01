@@ -282,7 +282,8 @@ updataoneAccount_btn.addEventListener("click", (event) => {
             console.log(response.data);
             LoginData.members.name=updata_Name.value;
             LoginData.members.phone=updata_phone.value;
-            LoginData.members.img=updata_img.value;
+            LoginData.members.img=response.data.replace('修改成功,','');
+            avatarimg.src=response.data.replace('修改成功,','');
             console.log(LoginData);
             oneAccount(LoginData);
             deleteMask();

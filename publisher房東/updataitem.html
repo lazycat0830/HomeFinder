@@ -102,7 +102,7 @@
             </ul>
         </div>
         <div id="header_in" class="flexbetween">
-            <a href="#"><img height="30px" src="/image/Apple-Logo.png"></a>
+            <a href="/通用/index.html"><img height="30px" src="/image/LOGO.png"></a>
             <div class="back_home flexrow">
                 <a href="/通用/index.html"><i class="fa-solid fa-house"></i></a>
                 <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
@@ -211,11 +211,11 @@
                 <div class="flexrow right">
                     <div class="housing_information_content">
                         <label class="housing_information_title" >樓層：</label>
-                        <input id="floor" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
+                        <input id="floor" class="housing_information_text" type="text" name="updateData.floor" placeholder="例：當前樓層/總樓層">
                     </div>
                     <div class="housing_information_content">
                         <label class="housing_information_title" >坪數：</label>
-                        <input id="area" class="housing_information_text" type="text" name="area" >
+                        <input id="area" class="housing_information_text" type="text" name="updateData.area" >
                     </div>
                 </div>
                 <span id="validata_pattern_area" class="validata"></span>
@@ -244,7 +244,7 @@
                 <span id="validata_equipmentname" class="validata"></span>
                 <div class="housing_information_content">
                     <label class="housing_information_title" for="housingcontent">介紹：</label><br>
-                    <textarea id="housingcontent" ></textarea>
+                    <textarea id="housingcontent"></textarea>
                 </div>
                 <span id="validata_content" class="validata"></span>
             </div>
@@ -252,8 +252,8 @@
     </div>
     <footer>
         <div class="footer_in flexright">
-            <input id="reset" class="Cancel" onclick="goBack()" value="取消修改">
-            <input id="submit" class="Review_and_put_shelves_btn" type="button" value="審核並上架">
+            <input id="reset" class="Cancel" onclick="goBack()" type="button" value="取消修改">
+            <input id="submit" class="Review_and_put_shelves_btn" type="submit" value="審核並上架">
         </div>
     </footer>
 </form>

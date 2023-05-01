@@ -166,20 +166,21 @@ function updataitem(){
     console.log(pattern);
     console.log(equipmentname);
     console.log(formData.get('updateData.img1_1'));
-
+    console.log(UPDataRetal.rental_id);
+    console.log(LoginData.token);
     axios({
         method: "put",
         url: `http://localhost:5190/api/Home/${UPDataRetal.rental_id}`,
         headers: {
         "Content-Type": "multipart/form-data",
-        'Accept': "application/json",
-        'Authorization': `Bearer ${LoginData.token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${LoginData.token}`,
         },
         data: formData,
     })
         .then((response) => {
         console.log(response.data);
-        // window.location.href = '/publisher房東/BG_audit.html';  
+        window.location.href = '/publisher房東/BG_audit.html';  
         // goBack();
         // let validatatext_signup=document.getElementById('validatatext_signup');
         // validatatext_signup.innerHTML=response.data.message;

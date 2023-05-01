@@ -260,10 +260,38 @@ body.relative{
     /* calc(100% - 24px); */
 }
 @media screen and (max-width: 1200px) {
+    
 }
 @media screen and (max-width: 992px) {
+    .Housing_Profile{
+        width: 25%;
+        z-index: 0;
+    }
 }
 @media screen and (max-width: 768px) {
+    .filter{
+        display:none;
+    }
+    .Housing_Profile{
+        width: 33.3%;
+        z-index: 0;
+    }
 }
 @media screen and (max-width: 576px) {
+    .filter{
+        display:none;
+    }
+    .Housing_Profile{
+        width: 50%;
+        z-index: 0;
+    }
+}
+@media screen and (max-width: 360px) {
+    .filter{
+        display:none;
+    }
+    .Housing_Profile{
+        width: 100%;
+        z-index: 0;
+    }
 }

@@ -46,6 +46,7 @@ function addonBG_up(data,id){
         }
         let delete_btn=document.getElementById('delete_btn');
         delete_btn.onclick=function(){
+            
             axios({
                 method: 'delete',
                 url: `http://localhost:5190/api/Home/${data.rentalBlock[id].allData.rental_id}`,
