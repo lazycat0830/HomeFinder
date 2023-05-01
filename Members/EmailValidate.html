@@ -19,6 +19,16 @@
         document.getElementById("account").innerHTML = account;
         document.getElementById("authCode").innerHTML = authCode;
 
+        // 如果 URL 不包含 ".html" 后缀，则添加后缀和参数
+        if (!window.location.pathname.endsWith(".html")) {
+            const pathname = window.location.pathname + ".html";
+            const searchParams = new URLSearchParams();
+            searchParams.append("account", account);
+            searchParams.append("authcode", authCode);
+            const newUrl = window.location.origin + pathname + "?" + searchParams.toString();
+            window.location.replace(newUrl);
+        }
+
         // 构造 API 调用 URL
         const apiUrl = `http://127.0.0.1:5555/api/Auth/emailValidate?account=${account}&authcode=${authCode}`;
 
