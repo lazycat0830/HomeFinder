@@ -67,21 +67,22 @@ filter_delete.onclick=function(){
     deleteMask();
 }
 
-let data=document.querySelector("form");
+let form=document.querySelector("form");
 let allfilter_btn=document.getElementById('allfilter_btn');
 let rent1=document.getElementById('rent1');
 let rent2=document.getElementById('rent2');
-let town=document=document.getElementById('town');
+let town=document.getElementById('town');
 
 // town.addEventListener('change', () => {
 //     console.log(town.value);
 // });
-
+let filter_rent_text=document.getElementById('filter_rent_text');
 allfilter_btn.onclick=function(){
-    let formData=new FormData();
 
+    // let rent1,rent2,Conuty,townSelect;
+    
+    const formData = new FormData(form);
     console.log(County.value);
-    console.log(townSelect.value);
     console.log(rent1.value);
     console.log(rent2.value);
     console.log(genre);
@@ -90,7 +91,13 @@ allfilter_btn.onclick=function(){
     console.log(equipmentname);
 
     formData.append('county',County.value);
-    formData.append('township',townSelect.value);
+    if(County.value!=""){
+        formData.append('township',townSelect.value);
+    }else{
+        formData.append('township',"");
+    }
+    
+    
     formData.append('rent1',rent1.value);
     formData.append('rent2',rent2.value);
     formData.append('genre',genre);
@@ -99,65 +106,103 @@ allfilter_btn.onclick=function(){
     formData.append('equipmentname',equipmentname);
     formData.append('uploadtime',"");
     
-    
-    
-
-    if(LoginData!=null){
-        axios({
-            method:'post',
-            url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-            headers:{
-                'Content-Type':"multipart/form-data",
-                'Accept': "application/json",
-                Authorization: `Bearer ${LoginData.token}`,
-            },data:formData,
-        }).then(( { data } ) => {
-            if(data=='查無此資料'){
-                noDataText.style.display='block';
-                noDataText.innerHTML='查無此資料';
-            }else{
-                noDataText.style.display='none';
-                var rental_Id=0;
-                console.log(data.idList);
-                data.idList.forEach(function(){
-                    console.log(rental_Id);
-                    addonRental(data,rental_Id);
-                    rental_Id++;
-                });
-            }
-
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    if(rent1.value>rent2.value){
+        filter_rent_text.innerHTML='最低價格不能超過最高價格'
     }else{
-        axios({
-            method:'post',
-            url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
-            headers:{
-                'Content-Type':"multipart/form-data",
-                'Accept': "application/json",
-                // Authorization: `Bearer ${LoginData.token}`,
-            },data:formData,
-        }).then(( { data } ) => {
-            if(data=='查無此資料'){
-                noDataText.style.display='block';
-                noDataText.innerHTML='查無此資料';
-            }else{
-                noDataText.style.display='none';
-                var rental_Id=0;
-                console.log(data.idList);
-                data.idList.forEach(function(){
-                    console.log(rental_Id);
-                    addonRental(data,rental_Id);
-                    rental_Id++;
-                });
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+        filter_rent_text.innerHTML='';
+        if(LoginData!=null){
+            axios({
+                method:'post',
+                url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+                headers:{
+                    'Content-Type':"multipart/form-data",
+                    'Accept': "application/json",
+                    Authorization: `Bearer ${LoginData.token}`,
+                },data:formData,
+            }).then(( { data } ) => {
+                content_in.innerHTML='';
+                console.log(data);
+                filter.style.display='none';
+                deleteMask();
+                if(data=='查無此資料'){
+                    noDataText.style.display='block';
+                    noDataText.innerHTML='查無此資料';
+                }else{
+                    noDataText.style.display='none';
+                    var rental_Id=0;
+                    console.log(data.idList);
+                    data.idList.forEach(function(){
+                        console.log(rental_Id);
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                }
+    
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }else{
+            axios({
+                method:'post',
+                url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+                headers:{
+                    'Content-Type':"multipart/form-data",
+                    'Accept': "application/json",
+                    // Authorization: `Bearer ${LoginData.token}`,
+                },data:formData,
+            }).then(( { data } ) => {
+                content_in.innerHTML='';
+                console.log(data);
+                filter.style.display='none';
+                deleteMask();
+                if(data=='查無此資料'){
+                    noDataText.style.display='block';
+                    noDataText.innerHTML='查無此資料';
+                }else{
+                    noDataText.style.display='none';
+                    
+                    var rental_Id=0;
+                    console.log(data.idList);
+                    data.idList.forEach(function(){
+                        console.log(rental_Id);
+                        addonRental(data,rental_Id);
+                        rental_Id++;
+                    });
+                }
+                
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }    
     }
+    
+}
+
+let clearfilter_btn=document.getElementById('clearfilter_btn');
+clearfilter_btn.onclick=function(){
+    County.value='';
+    // townSelect.value='';
+    if(County.value==''){
+        Township.innerHTML=`
+        <span>鄉鎮市區</span>
+        <select id='townSelect'>
+            <option value="">--請選擇--</option>
+        </select>
+    `;
+    }
+    rent1.value='';
+    rent2.value='';
+    genre='';
+    pattern='';
+    type='';
+    equipmentname='';
+    filter_rent_text.innerHTML='';
+    genre_Label_btn_off();
+    pattern_Label_btn_off();
+    type_Label_btn_off();
+    equipmentname_Label_btn_off();
 }
 
 
@@ -289,72 +334,82 @@ function equipmentname_combination(){
     equipmentname_parkingspace.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_parkingspace.classList='Label_btn_on';
-        type=equipmentname_parkingspace.value;
+        equipmentname=equipmentname_parkingspace.value;
     }
     equipmentname_elevator.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_elevator.classList='Label_btn_on';
-        type=equipmentname_elevator.value;
+        equipmentname=equipmentname_elevator.value;
     }
     equipmentname_Canpartner.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_Canpartner.classList='Label_btn_on';
-        type=equipmentname_Canpartner.value;
+        equipmentname=equipmentname_Canpartner.value;
     }
     equipmentname_bed.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_bed.classList='Label_btn_on';
-        type=equipmentname_bed.value;
+        equipmentname=equipmentname_bed.value;
     }
     equipmentname_tablesandchairs.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_tablesandchairs.classList='Label_btn_on';
-        type=equipmentname_tablesandchairs.value;
+        equipmentname=equipmentname_tablesandchairs.value;
     }
     equipmentname_waterheater.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_waterheater.classList='Label_btn_on';
-        type=equipmentname_waterheater.value;
+        equipmentname=equipmentname_waterheater.value;
     }
     equipmentname_airconditioner.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_airconditioner.classList='Label_btn_on';
-        type=equipmentname_airconditioner.value;
+        equipmentname=equipmentname_airconditioner.value;
     }
     equipmentname_washingmachine.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_washingmachine.classList='Label_btn_on';
-        type=equipmentname_washingmachine.value;
+        equipmentname=equipmentname_washingmachine.value;
     }
     equipmentname_Wardrobe.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_Wardrobe.classList='Label_btn_on';
-        type=equipmentname_Wardrobe.value;
+        equipmentname=equipmentname_Wardrobe.value;
     }
     equipmentname_refrigerator.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_refrigerator.classList='Label_btn_on';
-        type=equipmentname_refrigerator.value;
+        equipmentname=equipmentname_refrigerator.value;
     }
     equipmentname_naturalgas.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_naturalgas.classList='Label_btn_on';
-        type=equipmentname_naturalgas.value;
+        equipmentname=equipmentname_naturalgas.value;
     }
     equipmentname_Thefourthstation.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_Thefourthstation.classList='Label_btn_on';
-        type=equipmentname_Thefourthstation.value;
+        equipmentname=equipmentname_Thefourthstation.value;
     }
     equipmentname_sofa.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_sofa.classList='Label_btn_on';
-        type=equipmentname_sofa.value;
+        equipmentname=equipmentname_sofa.value;
     }
     equipmentname_balcony.onclick=function(){
         equipmentname_Label_btn_off()
         equipmentname_balcony.classList='Label_btn_on';
-        type=equipmentname_balcony.value;
+        equipmentname=equipmentname_balcony.value;
+    }
+    equipmentname_TV.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_TV.classList='Label_btn_on';
+        equipmentname=equipmentname_TV.value;
+    }
+    equipmentname_network.onclick=function(){
+        equipmentname_Label_btn_off()
+        equipmentname_network.classList='Label_btn_on';
+        equipmentname=equipmentname_network.value;
     }
 
 }
@@ -374,4 +429,6 @@ function equipmentname_Label_btn_off(){
     equipmentname_Thefourthstation.classList='Label_btn_off';
     equipmentname_sofa.classList='Label_btn_off';
     equipmentname_balcony.classList='Label_btn_off';
+    equipmentname_TV.classList='Label_btn_off';
+    equipmentname_network.classList='Label_btn_off';
 }

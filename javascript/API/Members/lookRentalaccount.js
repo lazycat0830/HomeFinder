@@ -43,13 +43,8 @@ function oneAccount(data){
 
 
     console.log(data);
-    if(data.score==0){
-        score='尚未有信用分數';
-    }else{
-        score=data.score;
-    }
     oneAccountimg.setAttribute('width','100%');
-    oneAccountimg.setAttribute('src','/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp');
+    oneAccountimg.setAttribute('src',`${data.img}`);
     oneAccountName.innerHTML=`姓名：${data.name}`;
     oneAccountPhome.innerHTML=`電話：${data.phone}`;
     oneAccountEmail.innerHTML=`E-mail：${data.email}`;
@@ -116,10 +111,20 @@ function newRenterRental(data,id){
         like=``;
     }else{
         if(LoginData.members.identity==2){
-            like=`
-            <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+            console.log(data.rentalBlock[id].isCollected);
+            if(data.rentalBlock[id].isCollected){
+                like=`
+                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
+                </a>`;
+            }else{
+                like=`
+                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                 <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
-            </a>`;
+                </a>`;
+            }
+
+            
         }else{
             like=``;
         }
@@ -131,7 +136,7 @@ function newRenterRental(data,id){
     Account_onRental.innerHTML=`
     <div class="Housing_Profile_content flexcolumn relative">
             <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
-                <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
                 ${like}
             </a>
             </a>
@@ -168,25 +173,47 @@ function newRenterRental(data,id){
 }
 
 function newRenterRentalAPI(){
-    axios({
-        method: 'get',
-        url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${newRantalRenter}`,
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            // "Authorization": `Bearer ${LoginData.token}`, 
-        },
-    }).then(({data})=>{
-        console.log(data);
-        rental_Id=0;
-        data.idList.forEach(function(){
-            newRenterRental(data,rental_Id);
-            rental_Id++;
+    if(LoginData!=null){
+        axios({
+            method: 'get',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${newRantalRenter}`,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(({data})=>{
+            console.log(data);
+            rental_Id=0;
+            data.idList.forEach(function(){
+                newRenterRental(data,rental_Id);
+                rental_Id++;
+            });
+    
+        }).catch(error=>{
+            console.log(error);
         });
-
-    }).catch(error=>{
-        console.log(error);
-    });
+    }else{
+        axios({
+            method: 'get',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${newRantalRenter}`,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                // "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(({data})=>{
+            console.log(data);
+            rental_Id=0;
+            data.idList.forEach(function(){
+                newRenterRental(data,rental_Id);
+                rental_Id++;
+            });
+    
+        }).catch(error=>{
+            console.log(error);
+        });
+    }
 }
 
 

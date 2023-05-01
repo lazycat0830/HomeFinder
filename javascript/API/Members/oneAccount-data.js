@@ -11,20 +11,48 @@ let Report_text1=document.getElementById('Report_text1');
 let updataoneAccount_btn=document.getElementById('updataoneAccount_btn');
 const form = document.querySelector("form");
 
+let inputImageview1=document.getElementById('inputImageview1')
+let updata_img=document.getElementById('updata_img');
+let oneAccountimg=document.getElementById('oneAccountimg');
 let score;
+
+
 
 function oneAccount(data){
 
 
         console.log(data);
         
-        oneAccountimg.setAttribute('width','100%');
-        oneAccountimg.setAttribute('src','/image/98f1ad5373cccf33efac27876f088cb0ea46f127.jpg@760w_738h_progressive.webp');
+        // oneAccountimg.setAttribute('width','100%');
+        oneAccountimg.style.backgroundImage=`url(${data.members.img})`;
+        oneAccountimg.style.backgroundSize ='cover';
         oneAccountName.innerHTML=`姓名：${data.members.name}`;
         oneAccountPhome.innerHTML=`電話：${data.members.phone}`;
         oneAccountEmail.innerHTML=`E-mail：${data.members.email}`;
+        inputImageview1.style.backgroundImage=`url(${data.members.img})`;
+        inputImageview1.style.backgroundSize ='cover';
+        console.log(LoginData.members.identity);
+        if(LoginData.members.identity==1){
+            newRenterRentalAPI(data.members.account);
+        }else if(LoginData.members.identity==2){
+            likeRentalAPI();
+        }
 
-        newRenterRentalAPI(data.members.account);
+
+        
+        updata_img.addEventListener('change', () => {
+            const file1 = updata_img.files[0];
+            const img1 = new FileReader();
+            
+            img1.onload = (event) => {
+                inputImageview1.style.backgroundImage= 'url(' + event.target.result + ')';
+                inputImageview1.style.backgroundSize ='cover';
+                inputImageview1.innerHTML ="";
+            };
+            
+            img1.readAsDataURL(file1);
+            console.log(file1);
+        })
     }
 
     let Account_Rental=document.getElementById('Account_Rental');
@@ -35,10 +63,25 @@ function oneAccount(data){
             like=``;
         }else{
             if(LoginData.members.identity==2){
-                like=`
-                <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                console.log(data.rentalBlock[id].isCollected);
+                if(data.rentalBlock[id].isCollected){
+                    like=`
+                    <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
+                    <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
+                    </a>`;
+                }else{
+                    like=`
+                    <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
                     <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
-                </a>`;
+                    </a>`;
+                }
+                // console.log(collectData.idList);
+                
+                //     collectData.idList.forEach(function(){
+                //         console.log(rentalId);
+                //         rentalId++;
+                // });
+                
             }else{
                 like=``;
             }
@@ -50,7 +93,7 @@ function oneAccount(data){
         Account_onRental.innerHTML=`
         <div class="Housing_Profile_content flexcolumn relative">
                 <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
-                    <img width="100%" hight="100%" src="/image/${id+1}.webp"/>
+                    <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
                     ${like}
                 </a>
                 </a>
@@ -82,7 +125,70 @@ function oneAccount(data){
         sessionStorage.setItem('goitem_id', rental_Id);
     }
     
-    
+    function clicklike(likebtn,likeheart){
+        like_btn=document.getElementById(likebtn);
+        likeheart=document.getElementById(likeheart);
+        console.log(like_btn);
+        console.log(likeheart);
+        like_btn.onclick=function(){
+            console.log(likeheart.getAttribute("src"))
+            if(likeheart.getAttribute("src")=="/image/heart.png"){
+                likeheart.setAttribute('src','/image/like.png')
+                collect(likeheart);
+        
+            }else if(likeheart.getAttribute("src")=="/image/like.png"){
+                likeheart.setAttribute('src','/image/heart.png')
+                deletecollect(likeheart);
+            }
+        }
+        }
+        
+        function deletecollect(likeheart){
+            console.log(likeheart.id);
+            Id=likeheart.id.replace('likeheart_','')
+            console.log(Id);
+            console.log(LoginData);
+            
+            axios({
+                method: 'delete',
+                url: `http://localhost:5190/api/HomeAny/RemoveCollect?rental_id=${Id}`,
+                headers:{
+                    "Content-Type": "multipart/form-data",
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${LoginData.token}`, 
+                },
+            })
+                    .then(( { data } ) => {
+                        console.log(data);
+                        
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+        }
+        
+        function collect(likeheart){
+            console.log(likeheart.id);
+            Id=likeheart.id.replace('likeheart_','')
+            console.log(Id);
+            console.log(LoginData);
+            axios({
+                method: 'post',
+                url: `http://localhost:5190/api/HomeAny/AddCollect?rental_id=${Id}`,
+                headers:{
+                    "Content-Type": "multipart/form-data",
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${LoginData.token}`, 
+                },
+            })
+                    .then(( { data } ) => {
+                        console.log(data);
+                        
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+        }
     
     }
 
@@ -98,18 +204,44 @@ function oneAccount(data){
                 // "Authorization": `Bearer ${LoginData.token}`, 
             },
         }).then(({data})=>{
+            Account_Rental.innerHTML='';
             console.log(data);
             rental_Id=0;
             data.idList.forEach(function(){
                 newRenterRental(data,rental_Id);
                 rental_Id++;
             });
+            totalRenter.innerHTML=`租屋(${rental_Id})`;
     
         }).catch(error=>{
             console.log(error);
         });
     }
 
+    function likeRentalAPI(){
+        axios({
+            method: 'post',
+            url: `http://localhost:5190/api/HomeAny/AllCollect`,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${LoginData.token}`, 
+            },
+        }).then(({data})=>{
+            Account_Rental.innerHTML='';
+            console.log(data);
+            rental_Id=0;
+            data.idList.forEach(function(){
+                newRenterRental(data,rental_Id);
+                rental_Id++;
+            });
+            totalRenter.innerHTML=`收藏(${rental_Id})`;
+    
+        }).catch(error=>{
+            console.log(error);
+            totalRenter.innerHTML=`收藏(${rental_Id})`;
+        });
+    }
 
     
     updataAccount_btn.onclick=function(){
@@ -141,11 +273,7 @@ updataoneAccount_btn.addEventListener("click", (event) => {
         url: "http://localhost:5190/api/Auth/EditProfile",
         headers: {
             "Content-Type": "multipart/form-data",
-<<<<<<< HEAD
-           " Accept": "application/json",
-=======
-            "Accept": "application/json",
->>>>>>> 1b62e29620e78d4f8e0332468254a5b9ae3eb2e6
+            " Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`,
         },
         data: formData,

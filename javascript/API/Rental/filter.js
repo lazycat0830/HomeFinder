@@ -11,7 +11,7 @@ function CountChange(){
             Township.innerHTML=`
             <span>鄉鎮市區</span>
             <select id='townSelect'>
-                <option value="">-</option>
+                <option value="">--請選擇--</option>
             </select>
         `;
         }

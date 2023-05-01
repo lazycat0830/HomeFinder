@@ -27,8 +27,8 @@ let equipmentname_naturalgas1=document.getElementById('equipmentname_naturalgas1
 let equipmentname_Thefourthstation1=document.getElementById('equipmentname_Thefourthstation1');
 let equipmentname_sofa1=document.getElementById('equipmentname_sofa1');
 let equipmentname_balcony1=document.getElementById('equipmentname_balcony1');
-let genre,pattern,equipmentname,type;
-
+let genre='',pattern='',equipmentname='',type='';
+let townSelect=document.getElementById('townSelect');
 
 window.onload=function(){
     console.log(LoginData);

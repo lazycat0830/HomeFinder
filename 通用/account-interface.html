@@ -31,7 +31,7 @@
                         <div class="t1"><label>密碼：</label><input id="LoginPassword"  type="password"></div>
                         <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
 
-                        <div id="validataLogintext" class="validatatext"></div>
+                        <span id="validataLogintext" class="validatatext"></span>
                         <button id="Loginbtn" class="btn1">登入</button>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
                     </div>
@@ -119,10 +119,9 @@
         <div id="content_in" >
             <div class="Accont_content_100w flexcenter">
                 <div class="Accont_content flexrow">
-                    <div class="Accountimg">
-                        <img id="oneAccountimg">
+                    <div  id="oneAccountimg" class="Accountimg" style="height: 300px;">
                     </div>
-                    <div class="Accounttext flexcolumn">
+                    <div class="Accounttext flexcolumn" >
                         <span id="oneAccountName" class="flexbetween"></span>
                         <span id="oneAccountPhome"></span>
                         <span id="oneAccountEmail"></span>
@@ -132,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="Account_collect_title">租屋</div>
+            <div id="totalRenter" class="Account_collect_title"></div>
             <div id="Account_Rental" class="Account_collect">
                 
                 
@@ -155,9 +154,23 @@
                 <div id="update_body_content_body" class="flexcenter">
                     <div id="update_body_content_body_content" class="flexcolumn">
                         <form>
-                            <div class="update_text1"><label>姓名：</label><input id="updata_Name" type="text" name="name"></div>
-                        <div class="update_text1"><label>電話：</label><input  id="updata_phone" type="text" name="phone"></div>
-                        <div class="update_text1"><label>大頭照：</label><input id="updata_img" type="file" name="img_upload"></div>
+                        
+                            <div class="flexrow">
+                                
+                                <div class="flexcolumn relative" style="text-align: center;">
+                                    大頭照
+                                    <a id="inputImageview1" href="javascript:;" class="inputImageview1"></a>
+                                    <input id="updata_img" class="change" type="file" name="img_upload">
+                                </div>
+                                    
+                                
+                                <div class="flexcolumn"  style="margin:auto">
+                                    <div class="update_text1"><label>姓名：</label><input id="updata_Name" type="text" name="name"></div>
+                                    <div class="update_text1"><label>電話：</label><input  id="updata_phone" type="text" name="phone"></div>
+                                </div>
+                            </div>
+                        
+                        
                         <div class="flexcenter"><button id="updataoneAccount_btn" class="update_btn1">保存</button></div>
                         </form>
                     </div>

@@ -13,7 +13,7 @@ body{
 
 
 #filter-body_content{
-    width: 1000px;
+    width: 900px;
     border: 1px #000 solid;
     border-radius: 30px;
     overflow: hidden;
@@ -43,13 +43,18 @@ body{
 }
 
 .filterbtn1{
-    text-decoration: underline;
     background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 .filterbtn2{
     color: #fff;
     background-color: black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 #filter-body_content_header_content{
@@ -74,7 +79,6 @@ body{
     padding: 20px 0px;
     height: 500px;
     background-color: #fff;
-    overflow-y: scroll;
 }
 
 #filter-body_content_body_content{

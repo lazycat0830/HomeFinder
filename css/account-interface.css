@@ -20,9 +20,10 @@
 }
 
 .Accountimg{
-    width:300px;
+    width: 300px;
     overflow: hidden;
     border: solid;
+    /* height: 300px; */
     
 }
 
@@ -57,6 +58,27 @@
     cursor: pointer;
 }
 
+#updata_img{
+        opacity: 0;
+        position: absolute;
+        overflow: hidden;
+        right: 10px;
+        bottom: 10px;
+        height: 133px;
+        width: 133px;
+}
+
+.inputImageview1{
+    width: 130px;
+    height: 130px;
+    font-size: 4rem;
+    margin: 0px 10px 10px 10px;
+    border: 1px #000 solid;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    line-height: 120px;
+}
 
 .Housing_Profile{
     width: 20%;

@@ -66,16 +66,31 @@ Loginbtn.onclick = function(){
         
     })
     .then(({ data }) => {
-
-        if(data=='密碼錯誤'){
+        if(LoginAccount.value==''){
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='請輸入帳號';
+        }else if(LoginPassword.value==''){
             console.log(data);
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='請輸入密碼';
+        }else if(data=='密碼錯誤'){
+            console.log(data);
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='密碼錯誤';
         }else if(data=='尚未驗證，請去EMAIL收驗證信'){
             console.log(data);
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='尚未驗證，請去EMAIL收驗證信';
         }else if(data=='您已被停權'){
             console.log(data);
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='您已被停權';
         }else if(data=='無此會員，請去註冊'){
             console.log(data);
+            validataLogintext.style.display='block';
+            validataLogintext.innerHTML='無此會員，請去註冊';
         }else{
+            validataLogintext.style.display='none';
             console.log(data.token);
             LoginData=data;
             sessionStorage.setItem('LoginData', JSON.stringify(data));

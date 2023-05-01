@@ -384,7 +384,7 @@
                         <button id="filter_delete">X</button>
                     </div>
                 </div>
-                
+                <form>
                 <div id="filter-body_content_body">
                     
                     <div id="filter-body_content_body_content">
@@ -437,6 +437,7 @@
                                 <input id="rent2" type="text">
                             </div>
                         </div>
+                        <span id="filter_rent_text" class="validata"></span>
                         <!-- <div class="filter_title">想看房時間</div>
                         <dvi class="flexrow spacing">
                             <input type="datetime-local">
@@ -488,6 +489,8 @@
                             <li><input id="equipmentname_Thefourthstation" class="Label_btn_off"  type="button" value="第四台"></li>
                             <li><input id="equipmentname_sofa" class="Label_btn_off"  type="button" value="沙發"></li>
                             <li><input id="equipmentname_balcony" class="Label_btn_off"  type="button" value="陽台"></li>
+                            <li><input id="equipmentname_TV" class="Label_btn_off"  type="button" value="電視"></li>
+                            <li><input id="equipmentname_network" class="Label_btn_off"  type="button" value="網路"></li>
                         </ul>
                     </div>
                         <!-- <div class="filter_title">上架日期</div>
@@ -499,13 +502,13 @@
                     </div>
                 </div>
                 <div id="filter-body_content_footer">
-                    <div id="filter-body_content_footer_content" >
-                        <button class="filterbtn1" type="reset">清除</button>
-                        <button id="allfilter_btn" class="filterbtn1" >顯示結果</button>
+                    <div id="filter-body_content_footer_content" class="flexright">
+                        <input id="clearfilter_btn" class="filterbtn1" type="reset" value="清除"/>
+                        <input type="button" id="allfilter_btn" class="filterbtn2" value="顯示結果"/>
 
                     </div>
                 </div>
-            
+            </form>
             </div>
         </div>
     </div>
