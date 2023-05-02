@@ -9,6 +9,15 @@ function submit(){
     const CheckNewPassword = document.getElementById("CheckNewPassword");
     
     validatatext_signup.innerHTML=''
+    if(Password.value==''){
+        validatatext_signup.innerHTML='請填寫舊密碼';
+    }else if(NewPassword.value==''){
+        validatatext_signup.innerHTML='請填寫新密碼';
+    }else if(CheckNewPassword.value==''){
+        validatatext_signup.innerHTML='請填寫新密碼確認';
+    }else if(CheckNewPassword.value!=NewPassword.value){
+        validatatext_signup.innerHTML='新密碼不一致';
+    }else{
         axios({
         method: "post",
         url: "http://localhost:5190/api/Auth/changePassword",
@@ -25,20 +34,28 @@ function submit(){
         },
         })
         .then((response) => {
+            if(response=='舊密碼輸入錯誤'){
+                validatatext_signup.innerHTML='舊密碼輸入錯誤';
+            }else{
             Password.value='';
             NewPassword.value='';
             CheckNewPassword.value='';
             console.log(response.data);
-            // let validatatext_signup=document.getElementById('validatatext_signup');
-            // validatatext_signup.innerHTML=response.data;
             Logoutaxios();
             sessionStorage.clear();
             location.reload();
             window.location.href = '/通用/index.html';
+            }
+            
+            // let validatatext_signup=document.getElementById('validatatext_signup');
+            // validatatext_signup.innerHTML=response.data;
+            
         })
         .catch((error) => {
             console.error(error);
         });
+    }
+        
     };
 
 

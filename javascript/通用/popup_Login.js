@@ -9,6 +9,9 @@ console.log(delete_longinbtn);
 btnlogin.addEventListener("click",function(){
     createMask();
     login.style.display="block";
+    LoginAccount.value='';
+    LoginPassword.value='';
+    forget_account.value='';
 });
 
 delete_longinbtn.onclick=function(){

@@ -12,11 +12,7 @@ function addAccount(data,id) {
     }else if(data[id].identity==2){
         identity='一般使用者';
     }
-    if(data[id].score==0){
-        score='尚未有信用分數';
-    }else{
-        score=data[id].score;
-    }
+    
     if(data[id].isBlock){
         report=`<button id='lifted_${id}' style='background-color: #ff0000;'>解禁</button>`
     }else{
@@ -27,7 +23,6 @@ function addAccount(data,id) {
         <td>${id+1}</td>
         <td>${data[id].account}</td>
         <td>${identity}</td>
-        <td>${score}</td>
         <td>${data[id].rentalCount}筆</td>
         <td><button id='reporting_${id}' >${data[id].reportCount}</button></td>
         <td class="flexbetween" style="width: 56px;">

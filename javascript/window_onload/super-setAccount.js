@@ -18,7 +18,6 @@ window.onload = function() {
                         <th>編號</th>
                         <th>帳號</th>
                         <th>身分</th>
-                        <th>信用分數</th>
                         <th>房屋數</th>
                         <th>檢舉次數</th>
                         <th style="width: 56px;"></th>

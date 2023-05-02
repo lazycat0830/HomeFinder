@@ -75,9 +75,11 @@ let report_btn1=document.getElementById('report_btn1');
 let Reportvalidate=document.getElementById('Reportvalidate');
 report_btn1.addEventListener("click",function(){
     console.log(Report_reason);
-    if(Report_reason.value==''){
+    if(Report_reason.value==""){
+        console.log(Report_reason);
         Reportvalidate.innerHTML='不能沒有原因';
     }else{
+        console.log(Report_reason);
         Reportvalidate.innerHTML='';
         reason();
         deleteMask();

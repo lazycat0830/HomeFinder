@@ -291,6 +291,10 @@ footer{
     
 }
 
+#County{
+    text-align: center;
+}
+
 
 @media screen and (max-width: 1400px) {
     /* calc(100% - 24px); */

@@ -165,14 +165,19 @@ Loginbtn.onclick = function(){
                 },
             })
             .then(({ data }) => {
-                if(data=='忘記密碼解決'){
-                    forget_validatatext.innerHTML="請去信箱收取新密碼，再重新修改密碼";
+                if(data=='新密碼已寄出，請收信'){
+                    forget_validatatext.innerHTML="新密碼已寄出，請收信";
+                    setTimeout(function(){
+                        location.reload();
+                    }, 5000);
+                }
+                if(data=='帳號不存在'){
+                    forget_validatatext.innerHTML=`帳號不存在`;
                 }
                 console.log(data);
             }).catch(error => {
             // 处理请求过程中的错误
             console.error(error);
-            forget_validatatext.innerHTML=`無帳號，請去註冊`;
         });
         }
         
