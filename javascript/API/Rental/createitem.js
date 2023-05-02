@@ -104,7 +104,7 @@ function createitem(data){
     formData.append('pattern',`${pattern}`);
     formData.append('equipmentname',`${equipmentname}`);
     formData.append('publisher',`${data.members.name}`);
-    formData.append('content',`${housingcontent.value.replace(/\n/g, '<br>')}`);
+    formData.append('content',housingcontent.value.replace(/\n/g, '<br>'));
     
 
     // console.log(type);

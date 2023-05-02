@@ -317,6 +317,7 @@
     </div>
     <footer>
         <div id="noDataText" style="display: none;"></div>
+        <div class="flexcenter" style="height: 80px;"><ul id="pagination" class="flexrow"></ul></div>
     </footer>
 
 
@@ -428,12 +429,12 @@
                         <div class="amount flexrow spacing">
                             <div id="minimum_amount" class="flexcolumn">
                                 <span>最低價格</span>
-                                <input id="rent1" type="number">
+                                <input style="text-align: center;" id="rent1" type="number" value="0">
                             </div>
                             <span>-</span>
                             <div id="minimum_amount" class="flexcolumn">
                                 <span>最高價格</span>
-                                <input id="rent2" type="number">
+                                <input style="text-align: center;"  id="rent2" type="number">
                             </div>
                         </div>
                         <span id="filter_rent_text" class="validata"></span>
@@ -516,6 +517,7 @@
 
 
 </body>
+<script src="/javascript/通用/Page.js"></script>
 
 <script src="/javascript/API/Rental/filter.js"></script>
 

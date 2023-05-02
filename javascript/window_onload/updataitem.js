@@ -54,7 +54,7 @@ function updata(){
     pattern=`${UPDataRetal.pattern}`;
     type=`${UPDataRetal.type}`;
     equipmentname=`${UPDataRetal.equipmentname}`;
-    housingcontent.value=`${UPDataRetal.content.replace(/<br>/g, '\n')}}`;
+    housingcontent.value=`${UPDataRetal.content.replace(/<br>/g, '\n')}`;
     
     
 
@@ -159,7 +159,7 @@ function updataitem(){
     formData.append('updateData.genre',`${genre}`);
     formData.append('updateData.pattern',`${pattern}`);
     formData.append('updateData.equipmentname',`${equipmentname}`);
-    formData.append('updateData.content',`${housingcontent.value.replace(/\n/g, '<br>')}`);
+    formData.append('updateData.content',housingcontent.value.replace(/\n/g, '<br>'));
     
     console.log(type);
     console.log(genre);

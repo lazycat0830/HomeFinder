@@ -1,13 +1,15 @@
 let content_in=document.getElementById('content_in');
-let noDataText=document.getElementById('noDataText')
+let noDataText=document.getElementById('noDataText');
+var nowPage=sessionStorage.setItem("nowPage",1);
 
 function addonRental(data,id){
+    console.log(data);
     collectData= JSON.parse(sessionStorage.getItem('collectData'));
     var rentalId=0;
     let likesrc;
     let scoretext;
     console.log(id);
-    console.log(data);
+    console.log(data.rentalBlock[id]);
     console.log(collectData);
     
     if(LoginData==null){
@@ -39,8 +41,7 @@ function addonRental(data,id){
     }
 
     
-    let update;
-    update=data.rentalBlock[id].allData.uploadtime;
+    let update=data.rentalBlock[id].allData.uploadtime;
     
 
     let Houseimg_Profile=document.createElement('div');
@@ -161,14 +162,14 @@ function collect(likeheart){
             });
 }
 
-
 function viewDownTimeallData(){
-
+    nowPage=sessionStorage.getItem("nowPage");
+    console.log(nowPage);
     console.log(LoginData);
     if(LoginData!=null){
         axios({
             method: 'get',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnyDownTime',
+            url: `http://localhost:5190/api/HomeAny/HomeAnyDownTime?Page=${nowPage}`,
             headers:{
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -189,6 +190,12 @@ function viewDownTimeallData(){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                            addPage.innerHTML=`<a href="#" onclick="NowPage(this)">${onPage}</a>`;
+                            pagination.appendChild(addPage);
+                        }
+                        
                     }
                 })
                 .catch(error => {
@@ -196,9 +203,11 @@ function viewDownTimeallData(){
                 });
         
         }else{
+            nowPage=sessionStorage.getItem("nowPage");
+            console.log(nowPage);
         axios({
             method: 'get',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnyDownTime',
+            url: `http://localhost:5190/api/HomeAny/HomeAnyDownTime?Page=${nowPage}`,
             headers:{
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -213,11 +222,22 @@ function viewDownTimeallData(){
                         noDataText.style.display='none';
                         var rental_Id=0;
                         console.log(data.idList);
+
                         data.idList.forEach(function(){
                             console.log(rental_Id);
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                            
+                            if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
@@ -226,14 +246,15 @@ function viewDownTimeallData(){
         
         }
     }
-
+let pagination=document.getElementById('pagination');
 function viewUpTimeallData(){
 
+    nowPage=sessionStorage.getItem("nowPage");
     console.log(LoginData);
     if(LoginData!=null){
         axios({
             method: 'get',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnyUpTime',
+            url: `http://localhost:5190/api/HomeAny/HomeAnyUpTime?Page=${nowPage}`,
             headers:{
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -246,6 +267,7 @@ function viewUpTimeallData(){
                         noDataText.innerHTML='無資料';
                     }else{
                         noDataText.style.display='none';
+
                         var rental_Id=0;
                         console.log(data.idList);
                         data.idList.forEach(function(){
@@ -253,15 +275,25 @@ function viewUpTimeallData(){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                            if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
     }else{
+        nowPage=sessionStorage.getItem("nowPage");
         axios({
             method: 'get',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnyUpTime',
+            url: `http://localhost:5190/api/HomeAny/HomeAnyUpTime?Page=${nowPage}`,
             headers:{
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -274,6 +306,7 @@ function viewUpTimeallData(){
                         noDataText.innerHTML='無資料';
                     }else{
                         noDataText.style.display='none';
+
                         var rental_Id=0;
                         console.log(data.idList);
                         data.idList.forEach(function(){
@@ -281,6 +314,15 @@ function viewUpTimeallData(){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                            if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
@@ -291,6 +333,7 @@ function viewUpTimeallData(){
 }
 
 function view_genre(genre){
+    nowPage=sessionStorage.getItem("nowPage");
     const formData = new FormData();
     
     formData.append('county',"");
@@ -311,7 +354,7 @@ function view_genre(genre){
     if(LoginData!=null){
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -332,15 +375,25 @@ function view_genre(genre){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
     }else{
+        nowPage=sessionStorage.getItem("nowPage");
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -361,6 +414,15 @@ function view_genre(genre){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
@@ -370,6 +432,7 @@ function view_genre(genre){
 }
 
 function view_type(type){
+    nowPage=sessionStorage.getItem("nowPage");
     const formData = new FormData();
     
     formData.append('county',"");
@@ -390,7 +453,7 @@ function view_type(type){
     if(LoginData!=null){
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -411,15 +474,25 @@ function view_type(type){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
     }else{
+        nowPage=sessionStorage.getItem("nowPage");
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -440,6 +513,15 @@ function view_type(type){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
@@ -449,6 +531,7 @@ function view_type(type){
 }
 
 function view_pattern(pattern){
+    nowPage=sessionStorage.getItem("nowPage");
     const formData = new FormData();
     
     formData.append('county',"");
@@ -469,7 +552,7 @@ function view_pattern(pattern){
     if(LoginData!=null){
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -490,15 +573,25 @@ function view_pattern(pattern){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
     }else{
+        nowPage=sessionStorage.getItem("nowPage");
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -519,6 +612,15 @@ function view_pattern(pattern){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
@@ -528,6 +630,7 @@ function view_pattern(pattern){
 }
 
 function view_equipmentname(equipmentname){
+    nowPage=sessionStorage.getItem("nowPage");
     const formData = new FormData();
     
     formData.append('county',"");
@@ -548,7 +651,7 @@ function view_equipmentname(equipmentname){
     if(LoginData!=null){
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -569,15 +672,25 @@ function view_equipmentname(equipmentname){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {
                     console.log(error);
                 });
     }else{
+        nowPage=sessionStorage.getItem("nowPage");
         axios({
             method: 'post',
-            url: 'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+            url: `http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Accept": "application/json",
@@ -598,6 +711,15 @@ function view_equipmentname(equipmentname){
                             addonRental(data,rental_Id);
                             rental_Id++;
                         });
+                        for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                            let addPage=document.createElement('li');
+                             if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
+                            pagination.appendChild(addPage);
+                        }
                     }
                 })
                 .catch(error => {

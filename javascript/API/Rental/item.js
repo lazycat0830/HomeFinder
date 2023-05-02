@@ -73,7 +73,7 @@ function Editviewitemcontent(data,rental_id){
     if(data.allData.electricitybill==0){
         electricitybill="無";
     }else{
-        electricitybill='$'+data.allData.electricitybill+' /月';
+        electricitybill='$'+data.allData.electricitybill+'元 /度';
     }
 
     if(LoginData==null){

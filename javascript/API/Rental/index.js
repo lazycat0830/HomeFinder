@@ -72,12 +72,15 @@ let allfilter_btn=document.getElementById('allfilter_btn');
 let rent1=document.getElementById('rent1');
 let rent2=document.getElementById('rent2');
 let town=document.getElementById('town');
-
+let Page=document.getElementById('Page');
 // town.addEventListener('change', () => {
 //     console.log(town.value);
 // });
 let filter_rent_text=document.getElementById('filter_rent_text');
 allfilter_btn.onclick=function(){
+    sessionStorage.setItem("nowPage",1);
+    content_in.innerText='';
+    pagination.innerHTML='';
     let township=document.getElementById('township');
 
     
@@ -117,9 +120,10 @@ allfilter_btn.onclick=function(){
     
         filter_rent_text.innerHTML='';
         if(LoginData!=null){
+            nowPage=sessionStorage.getItem("nowPage");
             axios({
                 method:'post',
-                url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+                url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
                 headers:{
                     'Content-Type':"multipart/form-data",
                     'Accept': "application/json",
@@ -135,13 +139,23 @@ allfilter_btn.onclick=function(){
                     noDataText.innerHTML='查無此資料';
                 }else{
                     noDataText.style.display='none';
-                    var rental_Id=0;
                     console.log(data.idList);
                     data.idList.forEach(function(){
                         console.log(rental_Id);
                         addonRental(data,rental_Id);
                         rental_Id++;
                     });
+                    for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                        let addPage=document.createElement('li');
+                         if(onPage==nowPage){
+                            addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                        }else{
+                            addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                        }
+                        pagination.appendChild(addPage);
+                    }
+                        
+                    
                 }
     
             })
@@ -149,9 +163,10 @@ allfilter_btn.onclick=function(){
                 console.error(error);
             });
         }else{
+            nowPage=sessionStorage.getItem("nowPage");
             axios({
                 method:'post',
-                url:'http://localhost:5190/api/HomeAny/HomeAnySearchDown',
+                url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
                 headers:{
                     'Content-Type':"multipart/form-data",
                     'Accept': "application/json",
@@ -175,6 +190,15 @@ allfilter_btn.onclick=function(){
                         addonRental(data,rental_Id);
                         rental_Id++;
                     });
+                    for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                        let addPage=document.createElement('li');
+                         if(onPage==nowPage){
+                            addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                        }else{
+                            addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                        }
+                        pagination.appendChild(addPage);
+                    }
                 }
                 
             })

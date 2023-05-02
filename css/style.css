@@ -255,6 +255,42 @@ body.relative{
     font-weight: bolder;
 }
 
+#pagination{
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bolder;
+    list-style: none;
+    margin: auto;
+}
+
+#pagination li a{
+    text-decoration: none;
+    border-radius: 7px;
+    border: 1px #000 solid;
+    padding: 5px;
+    margin: 5px;
+    font-size: 16px;
+
+}
+
+.NowPage{
+    color: #ffffff;
+    background-color: #000000;
+}
+.otherPage{
+    color: #000;
+    background-color: #ffffff;
+}
+.otherPage:hover{
+    color: #000;
+    background-color: #cccccc;
+}
+
+footer{
+    height: auto;
+    
+}
+
 
 @media screen and (max-width: 1400px) {
     /* calc(100% - 24px); */
@@ -295,3 +331,4 @@ body.relative{
         z-index: 0;
     }
 }
+

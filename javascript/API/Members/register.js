@@ -44,6 +44,7 @@ submit.addEventListener("click", (event) => {
     }else if(!formData.get("newMember.email").includes('@')){
       validatatext_signup.innerHTML='請填寫正確的Email';
     }else{
+      validatatext_signup.innerHTML='';
       axios({
         method: "post",
         url: "http://localhost:5190/api/Auth/register",
