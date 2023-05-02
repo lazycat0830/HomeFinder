@@ -106,7 +106,7 @@ function viewonRental(data){
     check_rent.value=data.rent+'/月';
     check_floor.value=data.floor;
     check_area.value=data.area+'坪';
-    check_content.innerHTML=data.content;
+    check_content.innerHTML=data.content.replace(/<br>/g, '\n');
     check_uploadtime.value=data.uploadtime.replace('T','　');
     
     delete_checkbtn.onclick=function(){

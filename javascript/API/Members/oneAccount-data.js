@@ -288,7 +288,7 @@ updataoneAccount_btn.addEventListener("click", (event) => {
             oneAccount(LoginData);
             deleteMask();
             sessionStorage.setItem('LoginData', JSON.stringify(LoginData));
-            
+
             //修改後網頁資訊不會變!!!
 
         })

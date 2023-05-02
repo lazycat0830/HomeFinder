@@ -173,7 +173,7 @@
 #check{
     position: fixed;
     width: 100%;
-    top: 10%;
+    top: 5%;
     z-index: 99999;
     display: none;
 }
