@@ -55,6 +55,11 @@ console.log(filter_delete);
 filter_btn.addEventListener("click",function(){
     createMask();
     filter.style.display="block";
+    genre='';
+    type='';
+    pattern='';
+    equipmentname='';
+    County.value='';
     genre_combination();
     type_combination();
     pattern_combination();

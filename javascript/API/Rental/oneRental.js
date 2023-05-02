@@ -192,7 +192,11 @@ function viewDownTimeallData(){
                         });
                         for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
                             let addPage=document.createElement('li');
-                            addPage.innerHTML=`<a href="#" onclick="NowPage(this)">${onPage}</a>`;
+                            if(onPage==nowPage){
+                                addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+                            }else{
+                                addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+                            }
                             pagination.appendChild(addPage);
                         }
                         
