@@ -40,10 +40,10 @@
             .then(response => response.text())
             .then(data => {
                 if(data=='驗證碼錯誤，請重新確認或在註冊'){
-                    document.getElementById("result").innerHTML = `失敗`;
+                    document.getElementById("result").innerHTML = `驗證失敗`;
                     document.getElementById("result").style.color = `#ff0000`;
                 }else{
-                    document.getElementById("result").innerHTML = `成功`;
+                    document.getElementById("result").innerHTML = `驗證成功`;
                     document.getElementById("result").style.color = `#43ff40`;
                 }
 
