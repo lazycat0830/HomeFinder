@@ -30,11 +30,11 @@ function oneAccount(data){
         report.style.display="block";
     });
     
-    delete_report.addEventListener("click",function(){
-        deleteMask();
-        report.style.display="none";
+    // delete_report.addEventListener("click",function(){
+    //     deleteMask();
+    //     report.style.display="none";
     
-    });
+    // });
     report_btn2.addEventListener("click",function(){
         deleteMask();
         report.style.display="none";
@@ -79,9 +79,9 @@ report_btn1.addEventListener("click",function(){
         Reportvalidate.innerHTML='不能沒有原因';
     }else{
         Reportvalidate.innerHTML='';
-        // reason();
-        // deleteMask();
-        // report.style.display="none";
+        reason();
+        deleteMask();
+        report.style.display="none";
     }
 
 });

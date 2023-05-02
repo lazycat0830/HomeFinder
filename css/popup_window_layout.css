@@ -109,3 +109,10 @@ body{
     display: none;
     text-align: center;
 }
+
+#forget_validatatext{
+        font-size: 12px;
+        font-weight: bolder;
+        color: #ff0000;
+        text-align: center;
+    }

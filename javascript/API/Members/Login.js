@@ -147,29 +147,35 @@ Loginbtn.onclick = function(){
     let forget_btn=document.getElementById('forget_btn');
     let forget_account=document.getElementById('forget_account');
     forget_btn.onclick=function(){
-        console.log(forget_account.value);
-        axios({
-            method: 'post',
-            url: 'http://localhost:5190/api/Auth/forgetPasswordMail',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                // "Authorization": `Bearer ${token}`, 
-            },
-            data: { 
-                Account:forget_account.value,
-            },
-        })
-        .then(({ data }) => {
-            if(data=='忘記密碼解決'){
-                forget_validatatext.innerHTML="請去信箱收取新密碼，再重新修改密碼";
-            }
-            console.log(data);
-        }).catch(error => {
-        // 处理请求过程中的错误
-        console.error(error);
-        // forget_validatatext.innerHTML=`${error}`;
-    });
+        forget_validatatext.innerHTML=``;
+        if(forget_account.value==''){
+            forget_validatatext.innerHTML="請填寫帳號";
+        }else{
+            console.log(forget_account.value);
+            axios({
+                method: 'post',
+                url: 'http://localhost:5190/api/Auth/forgetPasswordMail',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    // "Authorization": `Bearer ${token}`, 
+                },
+                data: { 
+                    Account:forget_account.value,
+                },
+            })
+            .then(({ data }) => {
+                if(data=='忘記密碼解決'){
+                    forget_validatatext.innerHTML="請去信箱收取新密碼，再重新修改密碼";
+                }
+                console.log(data);
+            }).catch(error => {
+            // 处理请求过程中的错误
+            console.error(error);
+            forget_validatatext.innerHTML=`無帳號，請去註冊`;
+        });
+        }
+        
     }
 
 
