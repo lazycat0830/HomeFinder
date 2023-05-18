@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/gantt.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <link href="https://code.highcharts.com/css/highcharts.css" rel="stylesheet">
+    <style>
+        .content {
+            display: flex;
+        }
+        .genre {
+            width: 100%;
+        }
+    </style>
+    <title>甘特圖範例</title>
+</head>
+<body>
+    <div class="content">
+        <div class="genre">
+            <div id="ganttChart" style="width: 100%; height: 600px;"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var today = new Date(),
+                        day = 1000 * 60 * 60 * 24;
+
+                    // 設定今天的日期為00:00:00:000
+                    today.setUTCHours(0);
+                    today.setUTCMinutes(0);
+                    today.setUTCSeconds(0);
+                    today.setUTCMilliseconds(0);
+                    today = today.getTime();
+
+                    Highcharts.ganttChart('ganttChart', {
+                        series: [
+                            {
+                                name: '辦公室',
+                                data: [
+                                    {
+                                        name: '新辦公室',
+                                        id: 'new_offices',
+                                        owner: 'Peter'
+                                    },
+                                    {
+                                        name: '準備辦公樓',
+                                        id: 'prepare_building',
+                                        parent: 'new_offices',
+                                        start: today - (2 * day),
+                                        end: today + (6 * day),
+                                        completed: 0.2,
+                                        owner: 'Linda'
+                                    },
+                                    {
+                                        name: '檢查建築物',
+                                        id: 'inspect_building',
+                                        dependency: 'prepare_building',
+                                        parent: 'new_offices',
+                                        start: today + 6 * day,
+                                        end: today + 8 * day,
+                                        owner: 'Ivy'
+                                    },
+                                    {
+                                        name: '通過檢查',
+                                        id: 'passed_inspection',
+                                        dependency: 'inspect_building',
+                                        parent: 'new_offices',
+                                        start: today + 9.5 * day,
+                                        milestone: true,
+                                        owner: 'Peter'
+                                    },
+                                    {
+                                        name: '搬遷',
+                                        id: 'relocate',
+                                        dependency: 'passed_inspection',
+                                        parent: 'new_offices',
+                                        owner: 'Josh'
+                                    },
+                                    {
+                                        name: '搬遷員工',
+                                        id: 'relocate_staff',
+                                        parent: 'relocate',
+                                        start: today + 10 * day,
+                                        end: today + 11 * day,
+                                        owner: 'Mark'
+                                    },
+                                    {
+                                        name: '搬遷測試設施',
+                                        dependency: 'relocate_staff',
+                                        parent: 'relocate',
+                                        start: today + 11 * day,
+                                        end: today + 13 * day,
+                                        owner: 'Anne'
+                                    },
+                                    {
+                                        name: '搬遷餐廳',
+                                        dependency: 'relocate_staff',
+                                        parent: 'relocate',
+                                        start: today + 11 * day,
+                                        end: today + 14 * day
+                                    }
+                                ]
+                            },
+                            {
+                                name: '產品',
+                                data: [
+                                    {
+                                        name: '新產品發佈',
+                                        id: 'new_product',
+                                        owner: 'Peter'
+                                    },
+                                    {
+                                        name: '開發',
+                                        id: 'development',
+                                        parent: 'new_product',
+                                        start: today - day,
+                                        end: today + (11 * day),
+                                        completed: 0.6,
+                                        owner: 'Susan'
+                                    },
+                                    {
+                                        name: 'Beta版',
+                                        id: 'beta',
+                                        dependency: 'development',
+                                        parent: 'new_product',
+                                        start: today + 12.5 * day,
+                                        milestone: true,
+                                        owner: 'Peter'
+                                    },
+                                    {
+                                        name: '最終開發',
+                                        id: 'finalize',
+                                        dependency: 'beta',
+                                        parent: 'new_product',
+                                        start: today + 13 * day,
+                                        end: today + 17 * day
+                                    },
+                                    {
+                                        name: '發佈',
+                                        dependency: 'finalize',
+                                        parent: 'new_product',
+                                        start: today + 17.5 * day,
+                                        milestone: true,
+                                        owner: 'Peter'
+                                    }
+                                ]
+                            }
+                        ],
+                        tooltip: {
+                            pointFormatter: function () {
+                                var point = this,
+                                    format = '%e. %b',
+                                    options = point.options,
+                                    completed = options.completed,
+                                    amount = Highcharts.isObject(completed) ? completed.amount : completed,
+                                    status = ((amount || 0) * 100) + '%',
+                                    lines;
+
+                                lines = [
+                                    { value: point.name, style: 'font-weight: bold;' },
+                                    { title: '開始日期', value: Highcharts.dateFormat(format, point.start) },
+                                    { visible: !options.milestone, title: '結束日期', value: Highcharts.dateFormat(format, point.end) },
+                                    { title: '完成進度', value: status },
+                                    { title: '負責人', value: options.owner || '未指定' }
+                                ];
+
+                                return lines.reduce(function (str, line) {
+                                    var s = '',
+                                        style = Highcharts.defined(line.style) ? line.style : 'font-size: 0.8em;';
+                                    if (line.visible !== false) {
+                                        s = '<span style="' + style + '">' +
+                                            (Highcharts.defined(line.title) ? line.title + ': ' : '') +
+                                            (Highcharts.defined(line.value) ? line.value : '') +
+                                            '</span><br/>';
+                                    }
+                                    return str + s;
+                                }, '');
+                            }
+                        },
+                        title: { text: '甘特圖專案管理' },
+                        xAxis: {
+                            currentDateIndicator: true,
+                            min: today - 3 * day,
+                            max: today + 18 * day
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

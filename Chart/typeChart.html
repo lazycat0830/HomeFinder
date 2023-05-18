@@ -21,7 +21,7 @@
                             backgroundColor: [],
                             borderColor: [],
                             borderWidth: 1,
-                            label: '型態',
+                            label: '類型',
                             data: []
                         }]
                     },
@@ -40,7 +40,7 @@
                 });
     
                 // 從後端獲取數據並更新圖表
-                fetch('http://localhost:5190/api/AllData/AllDataHomegenre', {
+                fetch('http://localhost:5190/api/AllData/AllDataHometype', {
                     method: 'GET',
                 })
                 .then(response => response.json())
