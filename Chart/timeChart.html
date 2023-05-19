@@ -79,7 +79,7 @@
         );
 
         // 发送 GET 请求获取数据
-        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&da2023te=-05-28')
+        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-05-28')
             .then(response => response.json())
             .then(data => {
                 const date = data[0].bookdate;
