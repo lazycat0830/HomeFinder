@@ -68,6 +68,19 @@
                         min: null,
                         max: null
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                var label = context.dataset.label || '';
+                                var timeStart = new Date(context.parsed.x[0]).toLocaleTimeString();
+                                var timeEnd = new Date(context.parsed.x[1]).toLocaleTimeString();
+                                var renter = context.parsed.y;
+                                return label + ': ' + timeStart + ' - ' + timeEnd + '';
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -85,14 +98,16 @@
                 const date = data[0].bookdate;
 
                 // 对从后端获取的数据进行处理
-                const chartData = data.map(item => {
-                    const timeRange = item.booktime.split('-');
-                    return {
-                        x: [`${date} ${timeRange[0]}`, `${date} ${timeRange[1]}`],
-                        y: item.renter
-                    };
-                });
-
+            const chartData = data.map(item => {
+                const timeRange = item.booktime.split('-');
+                const startTime = new Date(`${date} ${timeRange[0]}`);
+                const endTime = new Date(`${date} ${timeRange[1]}`);
+                return {
+                    x: [startTime, endTime],
+                    y: item.renter
+                };
+            });
+                console.log(chartData);
                 // 更新图表数据和范围
                 myChart.data.datasets[0].data = chartData;
                 myChart.options.scales.x.min = `${date} 00:00`;
