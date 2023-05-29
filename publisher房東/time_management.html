@@ -105,6 +105,7 @@
         <div id="publishermenu" class="absolute userfunction">
             <ul>
                 
+                <a href="/publisher房東/BG_dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
                 <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
                 <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
                 <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
@@ -116,6 +117,8 @@
         </div>
         <div id="adminmenu" class="absolute userfunction">
             <ul>
+                <a href=""><li><button id="btnsign" type="button">數據分析</button></li></a>
+                <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
                 <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
                 <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
                 <hr>
@@ -130,7 +133,7 @@
                 <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
             </div>
             
-            <button id="Useravatar"><img id="avatarimg" width="40px"></button>
+            <button id="Useravatar"><img id="avatarimg" width="40px" height='100%'></button>
        
         </div>
     </div>
@@ -150,6 +153,36 @@
                             <button id="next-day">&gt;</button>
                         </div>
                         <div class="flexcenter"><input type="date" id="datepicker" style="text-align: center; width: 200px;"></div>
+                        <div class="flexcenter" >
+                            <ul id="Edittime" class="flexrow" style="list-style: none;">
+                                
+                                <!-- <li><div class="flexcolumn">
+                                    <input id="start_time2" type="time">
+                                    <input id="end_time2" type="time">
+                                    <input style="margin: 0px 20px;" id="Editbtn_time1" type="button" value="修改">
+                                </div></li>
+                                <li><div class="flexcolumn">
+                                    <input id="start_time3" type="time">
+                                    <input id="end_time3" type="time">
+                                    <input style="margin: 0px 20px;" id="Editbtn_time1" type="button" value="修改">
+                                </div></li>
+                                <li><div class="flexcolumn">
+                                    <input id="start_time4" type="time">
+                                    <input id="end_time4" type="time">
+                                    <input style="margin: 0px 20px;" id="Editbtn_time1" type="button" value="修改">
+                                </div></li>
+                                <li><div class="flexcolumn">
+                                    <input id="start_time5" type="time">
+                                    <input id="end_time5" type="time">
+                                    <input style="margin: 0px 20px;" id="Editbtn_time1" type="button" value="修改">
+                                </div></li>
+                                <li><div class="flexcolumn">
+                                    <input id="start_time6" type="time">
+                                    <input id="end_time6" type="time">
+                                    <input style="margin: 0px 20px;" id="Editbtn_time1" type="button" value="修改">
+                                </div></li> -->
+                            </ul>
+                        </div>
                     </div>
                 <!-- <div class="flexcenter selection_period_margin" >
                     <div class="day">
@@ -289,6 +322,7 @@
                     <div id="item_content" class="booked">
                         
                     </div>
+                    <div id='validataText_time' class='flexcenter notime_manageText' style="text-align: center;">無被預約資訊</div>
                 </div>
                 
 

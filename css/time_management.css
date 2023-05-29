@@ -240,4 +240,15 @@
     font-weight: bolder;
     font-size: 1.5rem;
     color: #ff0000;
+    display: none;
+}
+
+#Edittime li div{
+    padding: 0px 5px;
+}
+
+#Edittime li input{
+    text-align: center;
+    padding: 0px 0px;
+    margin: 5px 0px;
 }

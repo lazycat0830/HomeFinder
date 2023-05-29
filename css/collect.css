@@ -26,13 +26,14 @@
 
 
 .Housing_Profile span{
-    line-height: 1.7rem;
+    padding: 3px 0px;
 }
 
 .Houseimg{
     width: 100%;
-    border-radius: 10%;
+    border-radius: 5%;
     overflow: hidden;
+    height: 13.5vw;
 }
 
 .Like{
@@ -44,7 +45,6 @@
 }
 
 .Housing_Profile a {
-    line-height: 1.7rem;
     color: #000;
     text-decoration: none;
 }
@@ -55,22 +55,24 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 1vw;
+    padding: 3px 0px;
 }
 
 .text2 {
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
     text-align: justify;
 }
 
 .text3 {
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
 }
 
 .text4 {
     font-weight: bolder;
-    font-size: 18px;
+    font-size:1vw;
 }
 
 .fraction {

@@ -27,8 +27,16 @@ let equipmentname_naturalgas1=document.getElementById('equipmentname_naturalgas1
 let equipmentname_Thefourthstation1=document.getElementById('equipmentname_Thefourthstation1');
 let equipmentname_sofa1=document.getElementById('equipmentname_sofa1');
 let equipmentname_balcony1=document.getElementById('equipmentname_balcony1');
-let genre='',pattern='',equipmentname='',type='';
+
+let onfilter=document.getElementById('onfilter');
 let townSelect=document.getElementById('townSelect');
+
+let filter_view=document.getElementById('filter_view');
+let show_filter=document.getElementById('show_filter');
+let locationbtn=document.getElementById('locationbtn');
+let Viewingtimebtn=document.getElementById('Viewingtimebtn');
+let otherbtn=document.getElementById('otherbtn');
+
 
 window.onload=function(){
     
@@ -40,6 +48,7 @@ window.onload=function(){
         avatarimg.src='/image/default_avatar.jpeg';
     }
     viewDownTimeallData();
+    oncombination();
     // if(LoginData!=null){
     //     if(LoginData.members.identity==2){
     //         collectAllData(LoginData);
@@ -54,7 +63,70 @@ window.onload=function(){
     //     offallnavbtn();
     //     viewDownTimeallData();
     // }
+
+    filter_btn.onclick=function(){
+        filter_view.style.display="none";
+        divnav.style.display='none';
+        show_filter.style.display='block';
+        filter_mask.style.display='block';
+        filter_view_content.style.display='flex';
+        // filter_nav_locationbtn.classList='filter_nav_btn';
+        // filter_nav_Viewingtimebtn.classList='filter_nav_btn';
+        // filter_nav_otherbtn.classList='filter_nav_btn';
+    }
+
+    locationbtn.onclick=function(){
+        onlocationbtn();
+
+    }
+
+    Viewingtimebtn.onclick=function(){
+        onViewingtimebtn();
+    }
+
+    otherbtn.onclick=function(){
+        onotherbtn();
+    }
+    content.onclick=function(){
+        show_filter.style.display='none';
+            filter_view.style.display="block";
+            divnav.style.display='block';
+            filter_mask.style.display='none';
+            filter_view_content.style.display='none';
+            allfilter_contentClose();
+            allfilter_btnClass();
+    }
+
+    filter_nav_locationbtn.onclick=function(){
+        allfilter_navClose();
+        filter_nav_locationbtn.classList='onfilter_nav_btn';
+        allfilter_btnClass();
+        filter_locationbtn.classList='onfilter_nav';
+        allfilter_contentClose();
+        filter_location_content.style.display='block';
+
+    }
+    filter_nav_Viewingtimebtn.onclick=function(){
+        allfilter_navClose();
+        filter_nav_Viewingtimebtn.classList='onfilter_nav_btn';
+        allfilter_btnClass();
+        filter_minimumebtn.classList='onfilter_nav';
+        allfilter_contentClose();
+        filter_minimumebtn_content.style.display='block';
+        viewminimume();
+
+    }
+    filter_nav_otherbtn.onclick=function(){
+        allfilter_navClose();
+        filter_nav_otherbtn.classList='onfilter_nav_btn';
+        allfilter_btnClass();
+        filter_otherbtn.classList='onfilter_nav';
+        allfilter_contentClose();
+        filter_otherbtn_content.style.display='block';
+    }
+   
         
+    onfilterbtn();
 
     DownTimeallData.onclick=function(){
         sessionStorage.setItem("nowPage",1);
@@ -82,7 +154,7 @@ window.onload=function(){
         view_genre(genre);
     }
     genre_independentsuite1.onclick=function(){
-                sessionStorage.setItem("nowPage",1);
+        sessionStorage.setItem("nowPage",1);
         content_in.innerText='';
         pagination.innerHTML='';
         offallnavbtn();
@@ -319,6 +391,10 @@ window.onload=function(){
     
 
 }
+
+
+    
+
 
 function offallnavbtn(){
     DownTimeallData.classList="navbtn";

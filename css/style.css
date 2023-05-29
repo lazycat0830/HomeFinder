@@ -58,6 +58,10 @@ body.relative{
     border: 1px #000 inset;
     text-align: center;
 }
+.icon_modeling:hover{
+    background-color: #c0c0c0;
+}
+
 
 #Useravatar{
     height:40px;
@@ -127,14 +131,60 @@ body.relative{
     z-index: 0;
 }
 
+.Carousellastimgul{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    list-style: none;
+}
+
+.Carouselnextbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    right:7px;
+    top:40%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carousellastbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    left:7px;
+    top:40%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carouselnextbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}
+.Carousellastbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}
+
+
 .Housing_Profile_content{
     margin: 10px 10px;
 }
 
 .Houseimg{
     width: 100%;
-    border-radius: 10%;
+    border-radius: 5%;
     overflow: hidden;
+    height: 13.5vw;
 }
 
 
@@ -150,31 +200,32 @@ body.relative{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 1vw;
+    padding: 3px 0px;
 }
 
 .text2{
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
     text-align: justify;
 
 }
 
 .text3{
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
 }
 
 .text4{
     font-weight: bolder;
-    font-size:18px;
+    font-size:1vw;
 }
 
 .Housing_Profile span{
-    line-height: 1.7rem;
+    padding: 3px 0px;
 }
 
 .Housing_Profile a{
-    line-height: 1.7rem;
     color: #000;
     text-decoration: none;
 }
@@ -293,6 +344,7 @@ footer{
 
 #County{
     text-align: center;
+    font-size: 1.3rem;
 }
 
 
@@ -307,6 +359,12 @@ footer{
         width: 25%;
         z-index: 0;
     }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        height: 140px;
+    }
 }
 @media screen and (max-width: 768px) {
     .filter{
@@ -315,6 +373,12 @@ footer{
     .Housing_Profile{
         width: 33.3%;
         z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        height: 140px;
     }
 }
 @media screen and (max-width: 576px) {
@@ -325,6 +389,12 @@ footer{
         width: 50%;
         z-index: 0;
     }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        height: 140px;
+    }
 }
 @media screen and (max-width: 360px) {
     .filter{
@@ -334,5 +404,78 @@ footer{
         width: 100%;
         z-index: 0;
     }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        height: 140px;
+    }
 }
 
+.filter_nav{
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    border-radius: 50px;
+}
+.filter_nav:hover{
+    background-color: #ffffff;
+    box-shadow: 0 0 4px #000;
+}
+
+.onfilter_nav{
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    border-radius: 50px;
+    background-color: #ffffff;
+    box-shadow: 0 0 4px #000;
+}
+
+
+.filter_nav_btn{
+    font-size: 1rem;
+    padding: 5px 10px;
+    margin:0px 5px;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.filter_nav_btn:hover{
+    border-bottom:2px #000 solid ;
+    cursor: pointer;
+}
+.onfilter_nav_btn{
+    font-size: 1rem;
+    padding: 5px 10px;
+    margin:0px 5px;
+    background-color: transparent;
+    border: 0px;
+    border-bottom:2px #000 solid ;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+
+#locationbtn{
+    height:100% ;width: 25%;display: flex;align-items: center;justify-content:center;
+}
+#locationbtn:hover{
+    text-decoration: underline;
+}
+
+#Viewingtimebtn{
+    height:100% ;width: 25%;display: flex;align-items: center;justify-content:center;
+}
+#Viewingtimebtn:hover{
+    text-decoration: underline;
+}
+
+#otherbtn{
+    height:100% ;width: 25%;display: flex;align-items: center;justify-content:center;
+}
+#otherbtn:hover{
+    text-decoration: underline;
+}

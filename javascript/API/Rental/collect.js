@@ -23,7 +23,7 @@ Houseimg_Profile.innerHTML=`
 
     <div class="Housing_Profile_content flexcolumn relative">
         
-            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg flexcenter relative" href="/通用/item.html">
                 <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
                 ${like}
             </a>

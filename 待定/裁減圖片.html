@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #image1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: move;
+        }
+
+        #croppedImage {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="image1" src="/image/海上月.jpg">
+    </div>
+    <button id="saveButton">保存图像</button>
+    <div id="croppedImageContainer">
+        <img id="croppedImage">
+    </div>
+</body>
+<script>
+    let container = document.getElementById('container');
+    let image1 = document.getElementById('image1');
+    let containerRect = container.getBoundingClientRect();
+
+    image1.onmousedown = (e) => {
+        let x = e.pageX - containerRect.left;
+        let y = e.pageY - containerRect.top;
+
+        window.onmousemove = (e) => {
+            const cx = e.pageX - containerRect.left - x;
+            const cy = e.pageY - containerRect.top - y;
+            image1.style.left = cx + 'px';
+            image1.style.top = cy + 'px';
+        };
+
+        window.onmouseup = () => {
+            window.onmousemove = null;
+            window.onmouseup = null;
+        }
+    }
+
+    let saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', () => {
+        let canvas = document.createElement('canvas');
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
+        let context = canvas.getContext('2d');
+        context.drawImage(image1, 0, 0, container.offsetWidth, container.offsetHeight);
+
+        canvas.toBlob((blob) => {
+            let formData = new FormData();
+            formData.append('image', blob, 'cropped_image.png');
+
+            fetch('/save-image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                let croppedImage = document.getElementById('croppedImage');
+                croppedImage.src = URL.createObjectURL(blob);
+                document.getElementById('croppedImageContainer').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+</html>

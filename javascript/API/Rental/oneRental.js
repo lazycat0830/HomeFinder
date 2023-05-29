@@ -1,7 +1,7 @@
 let content_in=document.getElementById('content_in');
 let noDataText=document.getElementById('noDataText');
 var nowPage=sessionStorage.setItem("nowPage",1);
-
+let imgblock='';
 function addonRental(data,id){
     console.log(data);
     collectData= JSON.parse(sessionStorage.getItem('collectData'));
@@ -20,12 +20,12 @@ function addonRental(data,id){
             if(data.rentalBlock[id].isCollected){
                 like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
-                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/like.png">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width=30px   src="/image/like.png">
                 </a>`;
             }else{
                 like=`
                 <a class="Like absolute" id="likebtn_${data.rentalBlock[id].allData.rental_id}">
-                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width="30px" src="/image/heart.png">
+                <img id="likeheart_${data.rentalBlock[id].allData.rental_id}" width=30px  src="/image/heart.png">
                 </a>`;
             }
             // console.log(collectData.idList);
@@ -44,17 +44,36 @@ function addonRental(data,id){
     let update=data.rentalBlock[id].allData.uploadtime;
     
 
+   
+    
+    
+
     let Houseimg_Profile=document.createElement('div');
     Houseimg_Profile.classList='Housing_Profile';
     Houseimg_Profile.innerHTML=`
 
     <div class="Housing_Profile_content flexcolumn relative">
-        
-            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
+            <!--
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg flexcenter relative" href="/通用/item.html">
                 <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
                 ${like}
+                 <a href='' class='absolute' style='background-color:#ffffffb5;border-radius:100%;left:5px;top:25%;padding: 1px 6px;text-align:center;' ><</a>
+                 <a href='' class='absolute' style='background-color:#ffffffb5;border-radius:100%;right:5px;top:25%;padding: 1px 6px;text-align:center;' >></a>
             </a>
+            --!>
+            
+        <div class="flexcenter relative Houseimg" style="z-index: 0;" >
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" width="100%;" href="/通用/item.html">
+            <ul id="rentalul_id${data.rentalBlock[id].allData.rental_id}">
+                <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
+            </ul>
+            
             </a>
+            ${like}
+            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button">
+            <input id='nextimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
+         
+        </div>
         
         <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
         <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
@@ -63,7 +82,7 @@ function addonRental(data,id){
     </div>
 
 `;
-    
+
 content_in.appendChild(Houseimg_Profile);
 
 // // if(LoginData!=null){
@@ -72,6 +91,67 @@ content_in.appendChild(Houseimg_Profile);
     
 // //     clicklike(likebtn,likeheart);
 // // }
+
+    let Rental_ul=document.getElementById(`rentalul_id${data.rentalBlock[id].allData.rental_id}`);
+    for(var j=1;j<=data.rentalBlock[id].image.length-1;j++){
+        let addimg=document.createElement('li');
+        addimg.id=`img${j}_${data.rentalBlock[id].allData.rental_id}`;
+        addimg.style.display='none';
+        addimg.innerHTML=`
+            <img height="100%" width="100%" src="${data.rentalBlock[id].image[j]}" />
+        `;
+        console.log(Rental_ul);
+        console.log(addimg);
+        Rental_ul.appendChild(addimg);
+    }
+    
+    let lastimg_btn=document.getElementById(`lastimg_${data.rentalBlock[id].allData.rental_id}`);
+    lastimg_btn.onclick=function(){
+        let imgblock='';
+            for(var i=0;i<data.rentalBlock[id].image.length;i++){
+                console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
+                if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
+                    imgblock=`img${i}_${data.rentalBlock[id].allData.rental_id}`;
+                }
+            }
+                console.log(imgblock);
+                console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1);
+                console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`);
+                console.log(document.getElementById(imgblock).style.display=='block');
+
+                if(document.getElementById(imgblock).style.display=='block'){
+                    if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))>0){
+                        document.getElementById(imgblock).style.display='none'
+                        document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                    }
+    
+            }   
+    }
+
+    let nextimg_btn=document.getElementById(`nextimg_${data.rentalBlock[id].allData.rental_id}`);
+    nextimg_btn.onclick=function(){
+        
+        for(var i=0;i<data.rentalBlock[id].image.length;i++){
+            console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
+            if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
+                imgblock=`img${i}_${data.rentalBlock[id].allData.rental_id}`;
+            }else if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='none'){
+                console.log(imgblock);
+            }
+        }
+            console.log(imgblock);
+            console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1);
+            console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`);
+            console.log(document.getElementById(imgblock).style.display=='block');
+
+            if(document.getElementById(imgblock).style.display=='block'){
+                if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))<data.rentalBlock[id].image.length-1){
+                    document.getElementById(imgblock).style.display='none';
+                    document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                }
+            
+        } 
+    }
 
 if(LoginData==null){
     like=``;
@@ -733,3 +813,43 @@ function view_equipmentname(equipmentname){
 }
 
 
+function nextimg(Id){
+    let imgblock='';
+for(var i=1;i<=5;i++){
+    if(document.getElementById(`img${i}_${Id}`).style.display=='block'){
+        imgblock=`img${i}_${Id}`;
+    }
+}
+    console.log(imgblock);
+    console.log(parseInt(imgblock.replace('img','').replace(`_${Id}`,''))+1);
+    console.log(`img${parseInt(imgblock.replace('img','').replace(`_${Id}`,''))+1}_${Id}`);
+    console.log(document.getElementById(imgblock).style.display=='block');
+
+    if(document.getElementById(imgblock).style.display=='block'){
+        if((imgblock.replace('img','').replace(`_${Id}`,''))<5){
+            document.getElementById(imgblock).style.display='none';
+            document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${Id}`,''))+1}_${Id}`).style.display='block';
+        }
+    
+}
+}
+function lastimg(Id){
+let imgblock='';
+for(var i=1;i<=5;i++){
+    if(document.getElementById(`img${i}_${Id}`).style.display=='block'){
+        imgblock=`img${i}_${Id}`;
+    }
+}
+    console.log(imgblock);
+    console.log(parseInt(imgblock.replace('img','').replace(`_${Id}`,''))-1);
+    console.log(`img${parseInt(imgblock.replace('img','').replace(`_${Id}`,''))-1}_${Id}`);
+    console.log(document.getElementById(imgblock).style.display=='block');
+
+    if(document.getElementById(imgblock).style.display=='block'){
+        if((imgblock.replace('img','').replace(`_${Id}`,''))>1){
+            document.getElementById(imgblock).style.display='none'
+            document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${Id}`,''))-1}_${Id}`).style.display='block';
+        }
+    
+}
+}

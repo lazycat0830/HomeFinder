@@ -192,13 +192,13 @@ function genre_combination(){
     }
 }
 
+
 function genre_Label_btn_off(){
     genre_wholefloorhome.classList='Label_btn_off';
     genre_independentsuite.classList='Label_btn_off';
     genre_SubletSuite.classList='Label_btn_off';
     genre_elegantroom.classList='Label_btn_off';
 }
-
 
 
 let pattern_1room=document.getElementById('pattern_1room');

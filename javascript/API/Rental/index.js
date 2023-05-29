@@ -22,7 +22,6 @@ let deleteMask =()=>{
         mask.parentNode.removeChild(mask);
         document.documentElement.classList.remove("htmlMask");
         login.style.display="none";
-        filter.style.display="none";
         forgetpassword.style.display="none";
     }
 };
@@ -45,32 +44,32 @@ console.log(adminmenu);
 
 
 
-let filter=document.getElementById("filter");
-let filter_btn=document.getElementById("filter_btn");
-let filter_delete=document.getElementById("filter_delete")
-console.log(filter);
-console.log(filter_btn);
-console.log(filter_delete);
+// let filter=document.getElementById("filter");
+// let filter_btn=document.getElementById("filter_btn");
+// let filter_delete=document.getElementById("filter_delete")
+// console.log(filter);
+// console.log(filter_btn);
+// console.log(filter_delete);
 
-filter_btn.addEventListener("click",function(){
-    createMask();
-    filter.style.display="block";
-    genre='';
-    type='';
-    pattern='';
-    equipmentname='';
-    County.value='';
-    genre_combination();
-    type_combination();
-    pattern_combination();
-    equipmentname_combination();
-    CountChange();
+// filter_btn.addEventListener("click",function(){
+//     createMask();
+//     filter.style.display="block";
+//     genre='';
+//     type='';
+//     pattern='';
+//     equipmentname='';
+//     County.value='';
+//     genre_combination();
+//     type_combination();
+//     pattern_combination();
+//     equipmentname_combination();
+//     CountChange();
 
-});
+// });
 
-filter_delete.onclick=function(){
-    deleteMask();
-}
+// filter_delete.onclick=function(){
+//     deleteMask();
+// }
 
 let form=document.querySelector("form");
 let allfilter_btn=document.getElementById('allfilter_btn');
@@ -81,164 +80,164 @@ let Page=document.getElementById('Page');
 // town.addEventListener('change', () => {
 //     console.log(town.value);
 // });
-let filter_rent_text=document.getElementById('filter_rent_text');
-allfilter_btn.onclick=function(){
-    sessionStorage.setItem("nowPage",1);
-    content_in.innerText='';
-    pagination.innerHTML='';
-    let township=document.getElementById('township');
+// let filter_rent_text=document.getElementById('filter_rent_text');
+// allfilter_btn.onclick=function(){
+//     sessionStorage.setItem("nowPage",1);
+//     content_in.innerText='';
+//     pagination.innerHTML='';
+//     let township=document.getElementById('township');
 
     
-    if(rent1.value>rent2.value){
-        filter_rent_text.innerHTML='最低價格不能超過最高價格'
-    }else{
-        // let rent1,rent2,Conuty,townSelect;
+//     if(rent1.value>rent2.value){
+//         filter_rent_text.innerHTML='最低價格不能超過最高價格'
+//     }else{
+//         // let rent1,rent2,Conuty,townSelect;
     
-        const formData = new FormData(form);
-        console.log(County.value);
-        console.log(rent1.value);
-        console.log(rent2.value);
-        console.log(genre);
-        console.log(pattern);
-        console.log(type);
-        console.log(equipmentname);
+//         const formData = new FormData(form);
+//         console.log(County.value);
+//         console.log(rent1.value);
+//         console.log(rent2.value);
+//         console.log(genre);
+//         console.log(pattern);
+//         console.log(type);
+//         console.log(equipmentname);
 
-        formData.append('county',County.value);
-        // if(County.value!=""){
-        //     if((townSelect.value!='')||(townSelect.value!=null)){
+//         formData.append('county',County.value);
+//         // if(County.value!=""){
+//         //     if((townSelect.value!='')||(townSelect.value!=null)){
                 
-        //         formData.append('township',townSelect.value);
-        //         }else{
-        //         formData.append('township',"");
-        //         }
-        // }
+//         //         formData.append('township',townSelect.value);
+//         //         }else{
+//         //         formData.append('township',"");
+//         //         }
+//         // }
     
         
         
-        formData.append('rent1',rent1.value);
-        formData.append('rent2',rent2.value);
-        formData.append('genre',genre);
-        formData.append('pattern',pattern);
-        formData.append('type',type);
-        formData.append('equipmentname',equipmentname);
-        formData.append('uploadtime',"");
+//         formData.append('rent1',rent1.value);
+//         formData.append('rent2',rent2.value);
+//         formData.append('genre',genre);
+//         formData.append('pattern',pattern);
+//         formData.append('type',type);
+//         formData.append('equipmentname',equipmentname);
+//         formData.append('uploadtime',"");
     
-        filter_rent_text.innerHTML='';
-        if(LoginData!=null){
-            nowPage=sessionStorage.getItem("nowPage");
-            axios({
-                method:'post',
-                url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
-                headers:{
-                    'Content-Type':"multipart/form-data",
-                    'Accept': "application/json",
-                    Authorization: `Bearer ${LoginData.token}`,
-                },data:formData,
-            }).then(( { data } ) => {
-                content_in.innerHTML='';
-                console.log(data);
-                filter.style.display='none';
-                deleteMask();
-                if(data=='查無此資料'){
-                    noDataText.style.display='block';
-                    noDataText.innerHTML='查無此資料';
-                }else{
-                    noDataText.style.display='none';
-                    console.log(data.idList);
-                    data.idList.forEach(function(){
-                        console.log(rental_Id);
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
-                    for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
-                        let addPage=document.createElement('li');
-                         if(onPage==nowPage){
-                            addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
-                        }else{
-                            addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
-                        }
-                        pagination.appendChild(addPage);
-                    }
+//         filter_rent_text.innerHTML='';
+//         if(LoginData!=null){
+//             nowPage=sessionStorage.getItem("nowPage");
+//             axios({
+//                 method:'post',
+//                 url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
+//                 headers:{
+//                     'Content-Type':"multipart/form-data",
+//                     'Accept': "application/json",
+//                     Authorization: `Bearer ${LoginData.token}`,
+//                 },data:formData,
+//             }).then(( { data } ) => {
+//                 content_in.innerHTML='';
+//                 console.log(data);
+//                 filter.style.display='none';
+//                 deleteMask();
+//                 if(data=='查無此資料'){
+//                     noDataText.style.display='block';
+//                     noDataText.innerHTML='查無此資料';
+//                 }else{
+//                     noDataText.style.display='none';
+//                     console.log(data.idList);
+//                     data.idList.forEach(function(){
+//                         console.log(rental_Id);
+//                         addonRental(data,rental_Id);
+//                         rental_Id++;
+//                     });
+//                     for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+//                         let addPage=document.createElement('li');
+//                          if(onPage==nowPage){
+//                             addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+//                         }else{
+//                             addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+//                         }
+//                         pagination.appendChild(addPage);
+//                     }
                         
                     
-                }
+//                 }
     
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        }else{
-            nowPage=sessionStorage.getItem("nowPage");
-            axios({
-                method:'post',
-                url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
-                headers:{
-                    'Content-Type':"multipart/form-data",
-                    'Accept': "application/json",
-                    // Authorization: `Bearer ${LoginData.token}`,
-                },data:formData,
-            }).then(( { data } ) => {
-                content_in.innerHTML='';
-                console.log(data);
-                filter.style.display='none';
-                deleteMask();
-                if(data=='查無此資料'){
-                    noDataText.style.display='block';
-                    noDataText.innerHTML='查無此資料';
-                }else{
-                    noDataText.style.display='none';
+//             })
+//             .catch((error) => {
+//                 console.error(error);
+//             });
+//         }else{
+//             nowPage=sessionStorage.getItem("nowPage");
+//             axios({
+//                 method:'post',
+//                 url:`http://localhost:5190/api/HomeAny/HomeAnySearchDown?Page=${nowPage}`,
+//                 headers:{
+//                     'Content-Type':"multipart/form-data",
+//                     'Accept': "application/json",
+//                     // Authorization: `Bearer ${LoginData.token}`,
+//                 },data:formData,
+//             }).then(( { data } ) => {
+//                 content_in.innerHTML='';
+//                 console.log(data);
+//                 filter.style.display='none';
+//                 deleteMask();
+//                 if(data=='查無此資料'){
+//                     noDataText.style.display='block';
+//                     noDataText.innerHTML='查無此資料';
+//                 }else{
+//                     noDataText.style.display='none';
                     
-                    var rental_Id=0;
-                    console.log(data.idList);
-                    data.idList.forEach(function(){
-                        console.log(rental_Id);
-                        addonRental(data,rental_Id);
-                        rental_Id++;
-                    });
-                    for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
-                        let addPage=document.createElement('li');
-                         if(onPage==nowPage){
-                            addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
-                        }else{
-                            addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
-                        }
-                        pagination.appendChild(addPage);
-                    }
-                }
+//                     var rental_Id=0;
+//                     console.log(data.idList);
+//                     data.idList.forEach(function(){
+//                         console.log(rental_Id);
+//                         addonRental(data,rental_Id);
+//                         rental_Id++;
+//                     });
+//                     for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+//                         let addPage=document.createElement('li');
+//                          if(onPage==nowPage){
+//                             addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage(this)">${onPage}</a>`;
+//                         }else{
+//                             addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage(this)">${onPage}</a>`;
+//                         }
+//                         pagination.appendChild(addPage);
+//                     }
+//                 }
                 
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        }    
-    }
+//             })
+//             .catch((error) => {
+//                 console.error(error);
+//             });
+//         }    
+//     }
     
-}
+// }
 
-let clearfilter_btn=document.getElementById('clearfilter_btn');
-clearfilter_btn.onclick=function(){
-    County.value='';
-    // townSelect.value='';
-    if(County.value==''){
-        Township.innerHTML=`
-        <span>鄉鎮市區</span>
-        <select id='townSelect'>
-            <option value="">--請選擇--</option>
-        </select>
-    `;
-    }
-    rent1.value='';
-    rent2.value='';
-    genre='';
-    pattern='';
-    type='';
-    equipmentname='';
-    filter_rent_text.innerHTML='';
-    genre_Label_btn_off();
-    pattern_Label_btn_off();
-    type_Label_btn_off();
-    equipmentname_Label_btn_off();
-}
+// let clearfilter_btn=document.getElementById('clearfilter_btn');
+// clearfilter_btn.onclick=function(){
+//     County.value='';
+//     // townSelect.value='';
+//     if(County.value==''){
+//         Township.innerHTML=`
+//         <span>鄉鎮市區</span>
+//         <select id='townSelect'>
+//             <option value="">--請選擇--</option>
+//         </select>
+//     `;
+//     }
+//     rent1.value='';
+//     rent2.value='';
+//     genre='';
+//     pattern='';
+//     type='';
+//     equipmentname='';
+//     filter_rent_text.innerHTML='';
+//     genre_Label_btn_off();
+//     pattern_Label_btn_off();
+//     type_Label_btn_off();
+//     equipmentname_Label_btn_off();
+// }
 
 
 let genre_wholefloorhome=document.getElementById('genre_wholefloorhome');
@@ -246,35 +245,35 @@ let genre_independentsuite=document.getElementById('genre_independentsuite');
 let genre_SubletSuite=document.getElementById('genre_SubletSuite');
 let genre_elegantroom=document.getElementById('genre_elegantroom');
 
-function genre_combination(){
-    genre_wholefloorhome.onclick=function(){
-        genre_Label_btn_off()
-        genre_wholefloorhome.classList='Label_btn_on';
-        genre=genre_wholefloorhome.value;
-    }
-    genre_independentsuite.onclick=function(){
-        genre_Label_btn_off()
-        genre_independentsuite.classList='Label_btn_on';
-        genre=genre_independentsuite.value;
-    }
-    genre_SubletSuite.onclick=function(){
-        genre_Label_btn_off()
-        genre_SubletSuite.classList='Label_btn_on';
-        genre=genre_SubletSuite.value;
-    }
-    genre_elegantroom.onclick=function(){
-        genre_Label_btn_off()
-        genre_elegantroom.classList='Label_btn_on';
-        genre=genre_elegantroom.value;
-    }
-}
+// function genre_combination(){
+//     genre_wholefloorhome.onclick=function(){
+//         genre_Label_btn_off()
+//         genre_wholefloorhome.classList='Label_btn_on';
+//         genre=genre_wholefloorhome.value;
+//     }
+//     genre_independentsuite.onclick=function(){
+//         genre_Label_btn_off()
+//         genre_independentsuite.classList='Label_btn_on';
+//         genre=genre_independentsuite.value;
+//     }
+//     genre_SubletSuite.onclick=function(){
+//         genre_Label_btn_off()
+//         genre_SubletSuite.classList='Label_btn_on';
+//         genre=genre_SubletSuite.value;
+//     }
+//     genre_elegantroom.onclick=function(){
+//         genre_Label_btn_off()
+//         genre_elegantroom.classList='Label_btn_on';
+//         genre=genre_elegantroom.value;
+//     }
+// }
 
-function genre_Label_btn_off(){
-    genre_wholefloorhome.classList='Label_btn_off';
-    genre_independentsuite.classList='Label_btn_off';
-    genre_SubletSuite.classList='Label_btn_off';
-    genre_elegantroom.classList='Label_btn_off';
-}
+// function genre_Label_btn_off(){
+//     genre_wholefloorhome.classList='Label_btn_off';
+//     genre_independentsuite.classList='Label_btn_off';
+//     genre_SubletSuite.classList='Label_btn_off';
+//     genre_elegantroom.classList='Label_btn_off';
+// }
 
 
 
@@ -283,35 +282,35 @@ let pattern_2room=document.getElementById('pattern_2room');
 let pattern_3room=document.getElementById('pattern_3room');
 let pattern_4room=document.getElementById('pattern_4room');
 
-function pattern_combination(){
-    pattern_1room.onclick=function(){
-        pattern_Label_btn_off()
-        pattern_1room.classList='Label_btn_on';
-        pattern=pattern_1room.value;
-    }
-    pattern_2room.onclick=function(){
-        pattern_Label_btn_off()
-        pattern_2room.classList='Label_btn_on';
-        pattern=pattern_2room.value;
-    }
-    pattern_3room.onclick=function(){
-        pattern_Label_btn_off()
-        pattern_3room.classList='Label_btn_on';
-        pattern=pattern_3room.value;
-    }
-    pattern_4room.onclick=function(){
-        pattern_Label_btn_off()
-        pattern_4room.classList='Label_btn_on';
-        pattern=pattern_4room.value;
-    }
-}
+// function pattern_combination(){
+//     pattern_1room.onclick=function(){
+//         pattern_Label_btn_off()
+//         pattern_1room.classList='Label_btn_on';
+//         pattern=pattern_1room.value;
+//     }
+//     pattern_2room.onclick=function(){
+//         pattern_Label_btn_off()
+//         pattern_2room.classList='Label_btn_on';
+//         pattern=pattern_2room.value;
+//     }
+//     pattern_3room.onclick=function(){
+//         pattern_Label_btn_off()
+//         pattern_3room.classList='Label_btn_on';
+//         pattern=pattern_3room.value;
+//     }
+//     pattern_4room.onclick=function(){
+//         pattern_Label_btn_off()
+//         pattern_4room.classList='Label_btn_on';
+//         pattern=pattern_4room.value;
+//     }
+// }
 
-function pattern_Label_btn_off(){
-    pattern_1room.classList='Label_btn_off';
-    pattern_2room.classList='Label_btn_off';
-    pattern_3room.classList='Label_btn_off';
-    pattern_4room.classList='Label_btn_off';
-}
+// function pattern_Label_btn_off(){
+//     pattern_1room.classList='Label_btn_off';
+//     pattern_2room.classList='Label_btn_off';
+//     pattern_3room.classList='Label_btn_off';
+//     pattern_4room.classList='Label_btn_off';
+// }
 
 
 
@@ -320,35 +319,35 @@ let type_elevator_building=document.getElementById('type_elevator_building');
 let type_Tutiancuo=document.getElementById('type_Tutiancuo');
 let type_villa=document.getElementById('type_villa');
 
-function type_combination(){
-    type_apartment.onclick=function(){
-        type_Label_btn_off()
-        type_apartment.classList='Label_btn_on';
-        type=type_apartment.value;
-    }
-    type_elevator_building.onclick=function(){
-        type_Label_btn_off()
-        type_elevator_building.classList='Label_btn_on';
-        type=type_elevator_building.value;
-    }
-    type_Tutiancuo.onclick=function(){
-        type_Label_btn_off()
-        type_Tutiancuo.classList='Label_btn_on';
-        type=type_Tutiancuo.value;
-    }
-    type_villa.onclick=function(){
-        type_Label_btn_off()
-        type_villa.classList='Label_btn_on';
-        type=type_villa.value;
-    }
-}
+// function type_combination(){
+//     type_apartment.onclick=function(){
+//         type_Label_btn_off()
+//         type_apartment.classList='Label_btn_on';
+//         type=type_apartment.value;
+//     }
+//     type_elevator_building.onclick=function(){
+//         type_Label_btn_off()
+//         type_elevator_building.classList='Label_btn_on';
+//         type=type_elevator_building.value;
+//     }
+//     type_Tutiancuo.onclick=function(){
+//         type_Label_btn_off()
+//         type_Tutiancuo.classList='Label_btn_on';
+//         type=type_Tutiancuo.value;
+//     }
+//     type_villa.onclick=function(){
+//         type_Label_btn_off()
+//         type_villa.classList='Label_btn_on';
+//         type=type_villa.value;
+//     }
+// }
 
-function type_Label_btn_off(){
-    type_apartment.classList='Label_btn_off';
-    type_elevator_building.classList='Label_btn_off';
-    type_Tutiancuo.classList='Label_btn_off';
-    type_villa.classList='Label_btn_off';
-}
+// function type_Label_btn_off(){
+//     type_apartment.classList='Label_btn_off';
+//     type_elevator_building.classList='Label_btn_off';
+//     type_Tutiancuo.classList='Label_btn_off';
+//     type_villa.classList='Label_btn_off';
+// }
 
 let equipmentname_parkingspace=document.getElementById('equipmentname_parkingspace');
 let equipmentname_elevator=document.getElementById('equipmentname_elevator');
@@ -365,105 +364,105 @@ let equipmentname_Thefourthstation=document.getElementById('equipmentname_Thefou
 let equipmentname_sofa=document.getElementById('equipmentname_sofa');
 let equipmentname_balcony=document.getElementById('equipmentname_balcony');
 
-function equipmentname_combination(){
-    equipmentname_parkingspace.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_parkingspace.classList='Label_btn_on';
-        equipmentname=equipmentname_parkingspace.value;
-    }
-    equipmentname_elevator.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_elevator.classList='Label_btn_on';
-        equipmentname=equipmentname_elevator.value;
-    }
-    equipmentname_Canpartner.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_Canpartner.classList='Label_btn_on';
-        equipmentname=equipmentname_Canpartner.value;
-    }
-    equipmentname_bed.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_bed.classList='Label_btn_on';
-        equipmentname=equipmentname_bed.value;
-    }
-    equipmentname_tablesandchairs.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_tablesandchairs.classList='Label_btn_on';
-        equipmentname=equipmentname_tablesandchairs.value;
-    }
-    equipmentname_waterheater.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_waterheater.classList='Label_btn_on';
-        equipmentname=equipmentname_waterheater.value;
-    }
-    equipmentname_airconditioner.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_airconditioner.classList='Label_btn_on';
-        equipmentname=equipmentname_airconditioner.value;
-    }
-    equipmentname_washingmachine.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_washingmachine.classList='Label_btn_on';
-        equipmentname=equipmentname_washingmachine.value;
-    }
-    equipmentname_Wardrobe.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_Wardrobe.classList='Label_btn_on';
-        equipmentname=equipmentname_Wardrobe.value;
-    }
-    equipmentname_refrigerator.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_refrigerator.classList='Label_btn_on';
-        equipmentname=equipmentname_refrigerator.value;
-    }
-    equipmentname_naturalgas.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_naturalgas.classList='Label_btn_on';
-        equipmentname=equipmentname_naturalgas.value;
-    }
-    equipmentname_Thefourthstation.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_Thefourthstation.classList='Label_btn_on';
-        equipmentname=equipmentname_Thefourthstation.value;
-    }
-    equipmentname_sofa.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_sofa.classList='Label_btn_on';
-        equipmentname=equipmentname_sofa.value;
-    }
-    equipmentname_balcony.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_balcony.classList='Label_btn_on';
-        equipmentname=equipmentname_balcony.value;
-    }
-    equipmentname_TV.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_TV.classList='Label_btn_on';
-        equipmentname=equipmentname_TV.value;
-    }
-    equipmentname_network.onclick=function(){
-        equipmentname_Label_btn_off()
-        equipmentname_network.classList='Label_btn_on';
-        equipmentname=equipmentname_network.value;
-    }
+// function equipmentname_combination(){
+//     equipmentname_parkingspace.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_parkingspace.classList='Label_btn_on';
+//         equipmentname=equipmentname_parkingspace.value;
+//     }
+//     equipmentname_elevator.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_elevator.classList='Label_btn_on';
+//         equipmentname=equipmentname_elevator.value;
+//     }
+//     equipmentname_Canpartner.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_Canpartner.classList='Label_btn_on';
+//         equipmentname=equipmentname_Canpartner.value;
+//     }
+//     equipmentname_bed.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_bed.classList='Label_btn_on';
+//         equipmentname=equipmentname_bed.value;
+//     }
+//     equipmentname_tablesandchairs.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_tablesandchairs.classList='Label_btn_on';
+//         equipmentname=equipmentname_tablesandchairs.value;
+//     }
+//     equipmentname_waterheater.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_waterheater.classList='Label_btn_on';
+//         equipmentname=equipmentname_waterheater.value;
+//     }
+//     equipmentname_airconditioner.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_airconditioner.classList='Label_btn_on';
+//         equipmentname=equipmentname_airconditioner.value;
+//     }
+//     equipmentname_washingmachine.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_washingmachine.classList='Label_btn_on';
+//         equipmentname=equipmentname_washingmachine.value;
+//     }
+//     equipmentname_Wardrobe.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_Wardrobe.classList='Label_btn_on';
+//         equipmentname=equipmentname_Wardrobe.value;
+//     }
+//     equipmentname_refrigerator.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_refrigerator.classList='Label_btn_on';
+//         equipmentname=equipmentname_refrigerator.value;
+//     }
+//     equipmentname_naturalgas.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_naturalgas.classList='Label_btn_on';
+//         equipmentname=equipmentname_naturalgas.value;
+//     }
+//     equipmentname_Thefourthstation.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_Thefourthstation.classList='Label_btn_on';
+//         equipmentname=equipmentname_Thefourthstation.value;
+//     }
+//     equipmentname_sofa.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_sofa.classList='Label_btn_on';
+//         equipmentname=equipmentname_sofa.value;
+//     }
+//     equipmentname_balcony.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_balcony.classList='Label_btn_on';
+//         equipmentname=equipmentname_balcony.value;
+//     }
+//     equipmentname_TV.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_TV.classList='Label_btn_on';
+//         equipmentname=equipmentname_TV.value;
+//     }
+//     equipmentname_network.onclick=function(){
+//         equipmentname_Label_btn_off()
+//         equipmentname_network.classList='Label_btn_on';
+//         equipmentname=equipmentname_network.value;
+//     }
 
-}
+// }
 
-function equipmentname_Label_btn_off(){
-    equipmentname_parkingspace.classList='Label_btn_off';
-    equipmentname_elevator.classList='Label_btn_off';
-    equipmentname_Canpartner.classList='Label_btn_off';
-    equipmentname_bed.classList='Label_btn_off';
-    equipmentname_tablesandchairs.classList='Label_btn_off';
-    equipmentname_waterheater.classList='Label_btn_off';
-    equipmentname_airconditioner.classList='Label_btn_off';
-    equipmentname_washingmachine.classList='Label_btn_off';
-    equipmentname_Wardrobe.classList='Label_btn_off';
-    equipmentname_refrigerator.classList='Label_btn_off';
-    equipmentname_naturalgas.classList='Label_btn_off';
-    equipmentname_Thefourthstation.classList='Label_btn_off';
-    equipmentname_sofa.classList='Label_btn_off';
-    equipmentname_balcony.classList='Label_btn_off';
-    equipmentname_TV.classList='Label_btn_off';
-    equipmentname_network.classList='Label_btn_off';
-}
+// function equipmentname_Label_btn_off(){
+//     equipmentname_parkingspace.classList='Label_btn_off';
+//     equipmentname_elevator.classList='Label_btn_off';
+//     equipmentname_Canpartner.classList='Label_btn_off';
+//     equipmentname_bed.classList='Label_btn_off';
+//     equipmentname_tablesandchairs.classList='Label_btn_off';
+//     equipmentname_waterheater.classList='Label_btn_off';
+//     equipmentname_airconditioner.classList='Label_btn_off';
+//     equipmentname_washingmachine.classList='Label_btn_off';
+//     equipmentname_Wardrobe.classList='Label_btn_off';
+//     equipmentname_refrigerator.classList='Label_btn_off';
+//     equipmentname_naturalgas.classList='Label_btn_off';
+//     equipmentname_Thefourthstation.classList='Label_btn_off';
+//     equipmentname_sofa.classList='Label_btn_off';
+//     equipmentname_balcony.classList='Label_btn_off';
+//     equipmentname_TV.classList='Label_btn_off';
+//     equipmentname_network.classList='Label_btn_off';
+// }

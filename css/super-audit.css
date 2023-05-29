@@ -95,3 +95,42 @@
     font-weight: bolder;
 }
 
+
+
+
+.Carouselnextbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    right:7px;
+    top:47%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carousellastbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    left:7px;
+    top:47%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carouselnextbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}
+.Carousellastbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}

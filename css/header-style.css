@@ -43,6 +43,9 @@ body.relative{
     border: 1px #000 inset;
     overflow: hidden;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #login{

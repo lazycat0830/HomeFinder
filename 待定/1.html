@@ -7,6 +7,111 @@
   <title>Document</title>
 </head>
 <body>
-  <img src="C:\Users\black\Desktop\home200-main\wwwroot\Image\2af0cbee-537b-4f67-b024-d4acfecbfb6c.png">
+  
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  window.onload=function(){
+    
+
+    one();
+    //  two();
+    // three();
+    // four();
+    // five();
+    
+
+    
+
+    
+
+   
+    }
+    
+    function one(){
+      let formdata=new FormData();
+    formdata.append('rental_id',"b102c0f6-5bcd-458e-b95e-8033471d524b");
+    formdata.append('date','2023-05-19');
+      axios({
+        method:'post',
+        url:'http://localhost:5190/api/Time/BookOfDay',
+        header:{
+            'Content-Type':'multipart/form-data',
+            'Accept':'application/json',
+            //"Authorization": `Bearer ${LoginData.token}`, 
+        },data:formdata,
+    }).then(( { data } ) => {
+      console.log('BookOfDay',data);
+    }).catch(error=>{
+      console.log('BookOfDay',error);
+    })
+  
+    }
+    function two(){
+      axios({
+        method: 'get',
+        url: 'http://localhost:5190/api/AllData/AllDataReason',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    }).then(({data})=>{
+      console.log('AllDataReason',data);
+    }).catch(error=>{
+      console.log('AllDataReason',error);
+    })
+  
+    }
+    function three(){
+      axios({
+            method:'get',
+            url:`http://localhost:5190/api/HomeAny/b102c0f6-5bcd-458e-b95e-8033471d524b`,
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiUHVibGlzaGVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoicHVibGlzaGVyIiwiZXhwIjoxNjg0NDE2NDY5LCJpc3MiOiJNeUlzc3VlciIsImF1ZCI6Ik15QXVkaWVuY2UifQ.gUHrhuDJE62jnyEo5hQj9fvyBQqBGICRwyJLUL4BxyM`, 
+            },
+        }).then(( { data } ) => {
+            console.log('HomeAny',data);
+        })
+        .catch(error => {
+            console.log('HomeAny',error);
+        });
+  
+    }
+    function four(){
+      axios({
+        method: 'get',
+        url: 'http://localhost:5190/api/AllData/AllDataHometype',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    }).then(({data})=>{
+      console.log('AllDataHometype',data);
+    }).catch(error=>{
+      console.log('AllDataHometype',error);
+    })
+  
+    }
+    function five(){
+      axios({
+        method: 'get',
+        url: 'http://localhost:5190/api/AllData/AllDataHomegenre',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            // "Authorization": `Bearer ${LoginData.token}`, 
+        },
+    }).then(({data})=>{
+      console.log('AllDataHomegenre',data);
+    }).catch(error=>{
+      console.log('AllDataHomegenre',error);
+    })
+  
+    }
+    
+</script>
 </html>

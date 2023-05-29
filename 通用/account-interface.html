@@ -85,7 +85,8 @@
             <div id="publishermenu" class="absolute userfunction">
                 <ul>
                     
-                    <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
+                    <a href="/publisher房東/BG_dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
+                <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
                     <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
                     <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
                     <hr>
@@ -96,7 +97,9 @@
             </div>
             <div id="adminmenu" class="absolute userfunction">
                 <ul>
-                    <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
+                    <a href=""><li><button id="btnsign" type="button">數據分析</button></li></a>
+                    <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
+                <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
                     <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
                     <hr>
                     <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
@@ -110,7 +113,7 @@
                     <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
                 </div>
                 
-                <button id="Useravatar"><img id="avatarimg" width="40px"></button>
+                <button id="Useravatar"><img id="avatarimg" width="40px" height='100%'></button>
            
             </div>
         </div>
@@ -181,8 +184,13 @@
 
     </div>
 
-
+    <footer>
+        <div id="noDataText" style="display: none;"></div>
+        <div class="flexcenter" style="height: 80px;"><ul id="pagination" class="flexrow"></ul></div>
+    </footer>
+    
 </body>
+
 
 <script src="/javascript/window_onload/account-interface.js"></script>
 

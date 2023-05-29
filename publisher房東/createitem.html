@@ -12,267 +12,118 @@
     <link rel="stylesheet" href="/css/popup_window_layout.css">
 </head>
 
-<body  class="relative">
-    <div id="login" class="login_Location">
-        <div id="body_width100" class="flexcenter">
-            <div id="body_content">
-                <div id="body_content_header">
-                    <div id="body_content_header_content" class="flexbetween">
-                        <div></div>
-                        <span>登入</span>
-                        <button id="delete_longinbtn">X</button>
-                    </div>
-                </div>
-                <div id="body_content_body" class="flexcenter">
-                    <div id="body_content_body_content" class="flexcolumn">
-                        <div class="t1"><label>帳號：</label><input id="LoginAccount" type="text"></div>
-                        <div class="t1"><label>密碼：</label><input id="LoginPassword"  type="password"></div>
-                        <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
-
-                        <div id="validataLogintext" class="validatatext"></div>
-                        <button id="Loginbtn" class="btn1">登入</button>
-                        <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="forgetpassword" class="forgetpassword">
-        <div id="body_width100" class="flexcenter">
-            <div id="body_content">
-                <div id="body_content_header">
-                    <div id="body_content_header_content" class="flexbetween">
-                        <div></div>
-                        <span>忘記密碼</span>
-                        <button id="delete_forgetbtn">X</button>
-                    </div>
-                </div>
-                <div id="body_content_body" class="flexcenter">
-                    <div id="forget_body_content_body_content" class="flexcolumn">
-                        <div class="forget_text1"><label>帳號：</label><input id="forget_account" type="text"></div>
-                        <a href="#"><button id="forget_btn" class="forget_btn1">送出</button></a>
-                        
-                    </div>
-                </div>
-            </div>
-            
-    
-        </div>
-    </div>
-
-<header>
-    <div class="relative">
-        <div id="usermenu" class="absolute userfunction">
-            <ul>
-                <a href="#"><li><button id="btnlogin" type="button">登入</button></li></a>
-                <a href="/通用/signup.html"><li><button id="btnsign" type="button">註冊</button></li></a>
-            </ul>
-        </div>
-        <div id="rentermenu" class="absolute userfunction">
-            <ul>
-                
-                <a href="/renter房客/reserved.html"><li><button id="btnsign" type="button">已預約房屋</button></li></a>
-                <a href="/renter房客/collect.html"><li><button id="btnsign" type="button">已收藏</button></li></a>
-                <hr>
-                <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                <a href="#"><li><button id="rentermenubtnlogout" type="button">登出</button></li></a>
-            </ul>
-        </div>
-        <div id="publishermenu" class="absolute userfunction">
-            <ul>
-                
-                <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
-                <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
-                <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
-                <hr>
-                <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                <a href="#"><li><button id="publishermenubtnlogout" type="button">登出</button></li></a>
-            </ul>
-        </div>
-        <div id="adminmenu" class="absolute userfunction">
-            <ul>
-                <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
-                <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
-                <hr>
-                <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                <a href="#"><li><button id="adminmenubtnlogout" type="button">登出</button></li></a>
-            </ul>
-        </div>
-        <div id="header_in" class="flexbetween">
-            <a href="/通用/index.html"><img height="30px" src="/image/LOGO.png"></a>
-            <div class="back_home flexrow">
-                <a href="/通用/index.html"><i class="fa-solid fa-house"></i></a>
-                <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
-            </div>
-            
-            <button id="Useravatar"><img id="avatarimg" width="40px"></button>
-       
-        </div>
-    </div>
-	<hr>
-	<div class="collect_header">新增房屋</div>
-    </header>
+<body class="relative">
 
 <form>
     <div id="content">
         <div id="content_in">
             <div class="upload_img">
-                
+
                 <div class="title">上傳照片</div>
-                
+
                 <div class="upload_img_content">
-                    <div class="flexcolumn relative">封面(圖1)<a id="inputImageview1" href="javascript:;" class="upload_img_btn">+</a><input name="img1_1" id="inputImage1" class="change"  type="file" multiple="multiple"></div>
-                    <div class="flexcolumn relative">圖2<a id="inputImageview2" href="javascript:;" class="upload_img_btn">+</a><input name="img1_2" id="inputImage2" class="change"  type="file" multiple="multiple"></div>
-                    <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input name="img1_3" id="inputImage3" class="change"  type="file" multiple="multiple"></div>
-                    <div class="flexcolumn relative">圖4<a id="inputImageview4" href="javascript:;" class="upload_img_btn">+</a><input name="img1_4" id="inputImage4" class="change"  type="file" multiple="multiple"></div>
-                    <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input name="img1_5" id="inputImage5" class="change"  type="file" multiple="multiple"></div>
-                    
+                    <div class="flexcolumn relative">封面(圖1)<a id="inputImageview1" href="javascript:;" class="upload_img_btn">+</a><input name="img1_1" id="inputImage1" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖2<a id="inputImageview2" href="javascript:;" class="upload_img_btn">+</a><input name="img1_2" id="inputImage2" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input name="img1_3" id="inputImage3" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖4<a id="inputImageview4" href="javascript:;" class="upload_img_btn">+</a><input name="img1_4" id="inputImage4" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input name="img1_5" id="inputImage5" class="change" type="file" multiple="multiple"></div>
+
                 </div>
                 <span id="validataimg" class="validata"></span>
-            
+
             </div>
-            
-            <hr>
-            <div class="housing_label">
-                <div class="title">房屋標籤</div>
-                <div class="Label flexcolumn">
-                    <ul class="flexrow">
-                        <li class="Label_title">類型</li>
-                        <li><input id="genre_wholefloorhome" class="Label_btn_off"  type="button" value="整層住家"></li>
-                        <li><input id="genre_independentsuite" class="Label_btn_off"  type="button" value="獨立套房"></li>
-                        <li><input id="genre_SubletSuite" class="Label_btn_off"  type="button" value="分租套房"></li>
-                        <li><input id="genre_elegantroom" class="Label_btn_off"  type="button" value="雅房"></li>
-                    </ul>
-                    <span id="validatagenre" class="validata"></span>
-                </div>
-                <div class="Label flexcolumn">
-                    <ul class="flexrow">
-                        <li  class="Label_title">格局</li>
-                        <li><input id="pattern_1room" class="Label_btn_off"  type="button" value="1房"></li>
-                        <li><input id="pattern_2room" class="Label_btn_off"  type="button" value="2房"></li>
-                        <li><input id="pattern_3room" class="Label_btn_off"  type="button" value="3房"></li>
-                        <li><input id="pattern_4room" class="Label_btn_off"  type="button" value="4房以上"></li>
-                    </ul>
-                    <span id="validatapattern" class="validata"></span>
-                </div>
-                <div class="Label flexcolumn">
-                    <ul class="flexrow">
-                        <li  class="Label_title">型態</li>
-                        <li><input id="type_apartment" class="Label_btn_off"  type="button" value="公寓"></li>
-                        <li><input id="type_elevator_building" class="Label_btn_off"  type="button" value="電梯大樓"></li>
-                        <li><input id="type_Tutiancuo" class="Label_btn_off"  type="button" value="透天厝"></li>
-                        <li><input id="type_villa" class="Label_btn_off"  type="button" value="別墅"></li>
-                    </ul>
-                    <span id="validatatype" class="validata"></span>
-                </div>
-                <!-- <div class="Label flexcolumn">
-                    <ul class="flexrow">
-                        <li  class="Label_title">限制</li>
-                        <li><input id="limit_unisex" class="Label_btn_off"  type="button" value="男女皆可"></li>
-                        <li><input id="limit_onlyBoy" class="Label_btn_off"  type="button" value="限男生"></li>
-                        <li><input id="limit_onlyGirl" class="Label_btn_off"  type="button" value="限女生"></li>
-                    </ul>
-                </div> -->
-            </div>
-            <hr>
-            <div class="housing_information">
-                <div class="title">房屋資訊</div>
-                <div class="housing_information_content">
-                    <label class="housing_information_title" for="title">標題：</label>
-                    <input style="width:620px" id="title" class="housing_information_text" type="text" name="title">
-                </div>
-                <span id="validatatitle" class="validata"></span>
-                <div class="housing_information_content">
-                    <label class="housing_information_title">地址：</label>
-                    <input style="width:620px" id="address" class="housing_information_text" type="text" name="address">
-                </div>
-                <span id="validataaddress" class="validata"></span>
-                <div class="housing_information_content">
-                    <label class="housing_information_title">租金：</label>
-                    <input id="rent" class="housing_information_text" type="number" name="rent">/月
-                </div>
-                <span id="validatarent" class="validata"></span>
-                <div class="flexrow right">
-                    <div class="housing_information_content">
-                        <label class="housing_information_title">水費：</label>
-                        <input id="waterfee" class="housing_information_text" type="number" name="waterfee" value="0">
-                    </div>
-                    <div class="housing_information_content">
-                        <label class="housing_information_title" >電費：</label>
-                        <input id="electricitybill" class="housing_information_text" type="number" name="electricitybill" value="0">
-                    </div>
-                    <div class="housing_information_content">
-                        <label class="housing_information_title" >管理費：</label>
-                        <input id="adminfee" class="housing_information_text" type="number" name="adminfee" value="0">
-                    </div>
-                </div>
-                <span id="validata_waterfee_electricitybill_adminfee" class="validata"></span>
-                <div class="flexrow right">
-                    <div class="housing_information_content">
-                        <label class="housing_information_title" >樓層：</label>
-                        <input id="floor" class="housing_information_text" type="text" name="floor" placeholder="例：當前樓層/總樓層">
-                    </div>
-                    <div class="housing_information_content">
-                        <label class="housing_information_title" >坪數：</label>
-                        <input id="area" class="housing_information_text" type="number" name="area" >
-                    </div>
-                </div>
-                <span id="validata_pattern_area" class="validata"></span>
-                <div class="housing_information_content">
-                    <div style="padding-bottom: 10px;"><label class="housing_information_title">設備：</label></div>
-                    <div class="housing_information_label">
-                        <input id="refrigerator" type="checkbox" value="冰箱"><label for="refrigerator">冰箱</label>
-                        <input id="Washing_machine" type="checkbox" value="洗衣機"><label for="Washing_machine">洗衣機</label>
-                        <input id="TV" type="checkbox" value="電視"><label for="TV">電視</label>
-                        <input id="air_conditioner" type="checkbox" value="冷氣"><label for="air_conditioner">冷氣</label>
-                        <input id="Can_partner" type="checkbox" value="可開伙"><label for="Can_partner">可開伙</label>
-                        <input id="water_heater" type="checkbox" value="熱水器"><label for="water_heater">熱水器</label>
-                        <input id="bed" type="checkbox" value="床"><label for="bed">床</label>
-                        <input id="clothes" type="checkbox" value="衣櫃"><label for="clothes">衣櫃</label>
-                        <input id="fourth_unit" type="checkbox" value="第四台"><label for="fourth_unit">第四台</label>
-                        <input id="Network" type="checkbox" value="網路"><label for="Network">網路</label>
-                        <input id="natural_gas" type="checkbox" value="天然瓦斯"><label for="natural_gas">天然瓦斯</label>
-                        <input id="sofa" type="checkbox" value="沙發"><label for="sofa">沙發</label>
-                        <input id="tables_chairs" type="checkbox" value="桌椅"><label for="tables_chairs">桌椅</label>
-                        <input id="balcony" type="checkbox" value="陽台"><label for="balcony">陽台</label>
-                        <input id="Elevator" type="checkbox" value="電梯"><label for="Elevator">電梯</label>
-                        <input id="parking_space" type="checkbox" value="車位"><label for="parking_space">車位</label>
-                    </div>
-                </div>
-                <span id="validata_equipmentname" class="validata"></span>
-                <div class="housing_information_content">
-                    <label class="housing_information_title" for="content">介紹內容：</label><br>
-                    <textarea id="housingcontent" style="height: 140px; width: 685px;"></textarea>
-                </div>
-                <span id="validata_content" class="validata"></span>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="footer_in flexright">
-            <input id="reset" class="Cancel" type="reset" value="清除">
-            <input id="submit" class="Review_and_put_shelves_btn" type="button" value="審核並上架">
-        </div>
-    </footer>
+
 </form>
 </body>
+<script>
 
+view1 = document.getElementById('inputImageview1');
+const inputImageview2 = document.getElementById('inputImageview2');
+const inputImageview3 = document.getElementById('inputImageview3');
+const inputImageview4 = document.getElementById('inputImageview4');
+const inputImageview5 = document.getElementById('inputImageview5');
 
+function swapImages(view1, view2) {
+  const temp = view1.style.backgroundImage;
+  view1.style.backgroundImage = view2.style.backgroundImage;
+  view2.style.backgroundImage = temp;
+}
 
-<script src="/javascript/API/Rental/createitem.js"></script>
-<script src="/javascript/window_onload/createitem.js"></script>
+inputImage1.addEventListener('change', () => {
+  const file1 = inputImage1.files[0];
+  const img1 = new FileReader();
 
-<script src="/javascript/API/Members/function.js"></script>
-<script src="/javascript/API/Members/Logout.js"></script>
-<script src="/javascript/API/Members/Login.js"></script>
+  img1.onload = (event) => {
+    inputImageview1.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview1.style.backgroundSize = 'cover';
+    inputImageview1.innerHTML = "";
+  };
 
-<script src="/javascript/通用/insert-Rentalimg.js"></script>
-<script src="/javascript/通用/mask.js"></script>
-<script src="/javascript/通用/popup_Login.js"></script>
+  img1.readAsDataURL(file1);
+  console.log(file1);
+});
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+inputImage2.addEventListener('change', () => {
+  const file2 = inputImage2.files[0];
+  const img2 = new FileReader();
+
+  img2.onload = (event) => {
+    inputImageview2.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview2.style.backgroundSize = 'cover';
+    inputImageview2.innerHTML = "";
+    swapImages(inputImageview1, inputImageview2);
+  };
+
+  img2.readAsDataURL(file2);
+  console.log(file2);
+});
+
+inputImage3.addEventListener('change', () => {
+  const file3 = inputImage3.files[0];
+  const img3 = new FileReader();
+
+  img3.onload = (event) => {
+    inputImageview3.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview3.style.backgroundSize = 'cover';
+    inputImageview3.innerHTML = "";
+    swapImages(inputImageview1, inputImageview3);
+  };
+
+  img3.readAsDataURL(file3);
+  console.log(file3);
+});
+
+inputImage4.addEventListener('change', () => {
+  const file4 = inputImage4.files[0];
+  const img4 = new FileReader();
+
+  img4.onload = (event) => {
+    inputImageview4.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview4.style.backgroundSize = 'cover';
+    inputImageview4.innerHTML = "";
+    swapImages(inputImageview1, inputImageview4);
+  };
+
+  img4.readAsDataURL(file4);
+  console.log(file4);
+});
+
+inputImage5.addEventListener('change', () => {
+  const file5 = inputImage5.files[0];
+  const img5 = new FileReader();
+
+  img5.onload = (event) => {
+    inputImageview5.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview5.style.backgroundSize = 'cover';
+    inputImageview5.innerHTML = "";
+    swapImages(inputImageview1, inputImageview5);
+  };
+
+  img5.readAsDataURL(file5);
+  console.log(file5);
+});
+
+</script>
 
 </html>
+

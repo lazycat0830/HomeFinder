@@ -9,7 +9,7 @@ function CountChange(){
         console.log(County.value);
         if(County.value==''){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
             </select>
@@ -17,7 +17,7 @@ function CountChange(){
         }
         else if(County.value=='基隆市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="中正區">中正區</option>
@@ -30,9 +30,9 @@ function CountChange(){
             </select>
         `;
         }
-        else if(County.value=='臺北市'){
+        else if(County.value=='台北市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="松山區">松山區</option>
@@ -52,7 +52,7 @@ function CountChange(){
         }
         else if(County.value=='新北市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="萬里區">萬里區</option>
@@ -89,7 +89,7 @@ function CountChange(){
         }
         else if(County.value=='桃園縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="桃園區">桃園區</option>
@@ -110,7 +110,7 @@ function CountChange(){
         }
         else if(County.value=='新竹市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="東區">東區</option>
@@ -121,7 +121,7 @@ function CountChange(){
         }
         else if(County.value=='新竹縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="竹北市">竹北市</option>
@@ -142,7 +142,7 @@ function CountChange(){
         }
         else if(County.value=='苗栗縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="竹南鎮">竹南鎮</option>
@@ -168,7 +168,7 @@ function CountChange(){
         }
         else if(County.value=='台中市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="中區">中區</option>
@@ -205,7 +205,7 @@ function CountChange(){
         }
         else if(County.value=='彰化縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="彰化市">彰化市</option>
@@ -239,7 +239,7 @@ function CountChange(){
         }
         else if(County.value=='南投縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="南投市">南投市</option>
@@ -260,7 +260,7 @@ function CountChange(){
         }
         else if(County.value=='雲林縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="斗南鎮">斗南鎮</option>
@@ -288,7 +288,7 @@ function CountChange(){
         }
         else if(County.value=='嘉義市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="東區">東區</option>
@@ -298,7 +298,7 @@ function CountChange(){
         }
         else if(County.value=='嘉義縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="太保市">太保市</option>
@@ -324,7 +324,7 @@ function CountChange(){
         }
         else if(County.value=='台南市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="中西區">中西區</option>
@@ -369,7 +369,7 @@ function CountChange(){
         }
         else if(County.value=='高雄市'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="新興區">新興區</option>
@@ -417,7 +417,7 @@ function CountChange(){
         }
         else if(County.value=='屏東縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="屏東市">屏東市</option>
@@ -458,7 +458,7 @@ function CountChange(){
         }
         else if(County.value=='台東縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="台東市">台東市</option>
@@ -482,7 +482,7 @@ function CountChange(){
         }
         else if(County.value=='花蓮縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="花蓮市">花蓮市</option>
@@ -503,7 +503,7 @@ function CountChange(){
         }
         else if(County.value=='宜蘭縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value=""></option>
                 <option value="宜蘭市">宜蘭市</option>
@@ -523,7 +523,7 @@ function CountChange(){
         }
         else if(County.value=='澎湖縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="馬公市">馬公市</option>
@@ -537,7 +537,7 @@ function CountChange(){
         }
         else if(County.value=='金門縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="金沙鎮">金沙鎮</option>
@@ -551,7 +551,7 @@ function CountChange(){
         }
         else if(County.value=='連江縣'){
             Township.innerHTML=`
-            <span>鄉鎮市區</span>
+            <span>鄉鎮市區：</span>
             <select id='townSelect'>
                 <option value="">--請選擇--</option>
                 <option value="南竿鄉">南竿鄉</option>

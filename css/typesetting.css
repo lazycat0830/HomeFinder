@@ -4,6 +4,10 @@
     font-family: 'Microsoft JhengHei' ;
 }
 
+img {
+    object-fit: cover;
+  }
+
 .flexcolumn{
     display: flex;
     flex-direction: column;

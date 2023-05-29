@@ -27,6 +27,52 @@
     
 }
 
+
+.Carousellastimgul{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    list-style: none;
+}
+
+.Carouselnextbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    right:7px;
+    top:40%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carousellastbtn{
+    background-color:#ffffffa0;
+    border-radius:100%;
+    border: none;
+    left:7px;
+    top:40%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    z-index: 2;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.Carouselnextbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}
+.Carousellastbtn:hover{
+    background-color:#ffffff71;
+    border: none;
+}
+
+
 .Accounttext{
     margin: auto 0px auto 20px;
     
@@ -92,8 +138,9 @@
 
 .Houseimg{
     width: 100%;
-    border-radius: 10%;
+    border-radius: 5%;
     overflow: hidden;
+    height: 13.5vw;
 }
 
 .Housing_Profile a {
@@ -113,27 +160,29 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 1vw;
+    padding: 3px 0px;
 }
 
 .text2{
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
     text-align: justify;
 
 }
 
 .text3{
     font-weight: bolder;
-    font-size: 12px;
+    font-size: 0.5vw;
 }
 
 .text4{
     font-weight: bolder;
-    font-size:18px;
+    font-size:1vw;
 }
 
 .Housing_Profile span{
-    line-height: 1.7rem;
+    padding: 3px 0px;
 }
 
 
@@ -168,3 +217,28 @@
     cursor: pointer;
 }
 
+#pagination {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bolder;
+    list-style: none;
+    margin: auto;
+}
+#pagination li a {
+    text-decoration: none;
+    border-radius: 7px;
+    border: 1px #000 solid;
+    padding: 5px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.NowPage {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.otherPage {
+    color: #000;
+    background-color: #ffffff;
+}

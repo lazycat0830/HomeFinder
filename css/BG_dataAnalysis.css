@@ -1,0 +1,107 @@
+*{
+    padding: 0px;
+    font-family: 'Microsoft JhengHei' ;
+}
+
+
+
+.timecentent{
+    border: 1px #000 solid;
+    margin: 0px auto;
+}
+
+.timecentent table{
+    width: 90%;
+}
+
+
+.timecentent table tr th{
+    width: auto;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.timecentent table tr td{
+    width: auto;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.textright{
+    text-align: right;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.timecentent table tr td div{
+    padding: 5px 0px;
+}
+
+.timecentent table tr td div input{
+    width: 80%;
+    text-align: center;
+}
+
+.week{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.timecentent div{
+    font-size: 16px;
+}
+
+.annotation{
+    width: 80%;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.annotation a{
+    color: #e40000;
+    font-weight: bolder;
+}
+
+.save{
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.reset{
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    border: 1px #000 solid;
+}
+
+.ChartbuttonList{
+    padding: 5px;
+    margin: 5px;
+    background-color:#fff;
+    border:1px #000 solid;
+    color: #000;;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.onChartbuttonList{
+    padding: 5px;
+    margin: 5px;
+    background-color:#000000;
+    color: #ffffff;;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.ChartbuttonList:hover{
+    background-color:#dcdcdc;
+}
+
+#genreChart{
+    width: 100%;
+}

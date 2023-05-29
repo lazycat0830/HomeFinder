@@ -53,6 +53,7 @@
 
 .housing_information_title{
     font-size: 20px;
+    font-weight: bolder;
 }
 
 .housing_information_text{
@@ -131,6 +132,7 @@ footer{
     font-weight: bolder;
     font-size: 20px;
 }
+
 
 .save_off_the_shelf_btn{
     background-color: #E7C200;

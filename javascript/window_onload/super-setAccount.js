@@ -8,6 +8,7 @@ window.onload = function() {
         content_in.innerHTML=`
             <div class="nav">
                 <div class="nav_field flexrow">
+                    <a class="off" href="/admin管理者/super-dataAnalysis.html">數據分析</a>
                     <a class="on" href="/admin管理者/super-setAccount.html">帳號管理</a>
                     <a class="off" href="/admin管理者/super-audit.html">房屋審核</a>
                 </div>

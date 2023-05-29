@@ -4,7 +4,7 @@
 function getReservedData(LoginData){
     axios({
         method:'get',
-        url:'http://localhost:5190/api/List',
+        url:'http://localhost:5190/api/List/',
         headers:{
             "Content-Type": "application/json",
             "Accept": "application/json",
@@ -12,14 +12,15 @@ function getReservedData(LoginData){
         },
     }).then(({ data })=> {
         console.log(data);
-        console.log(data=='');
-        if(data==''){
+        console.log(data.dataList1=="");
+        if(data.dataList1==""){
             content_in.innerHTML=`<div class='flexcenter noreservedtext'>無預約資料</div>`
         }else{
+
             content_in.innerHTML=``
             var id=0;
-            data.forEach(function(){
-                viewAllReserved(data[id]);
+            data.dataList1.forEach(function(){
+                viewAllReserved(data.dataList1[id]);
                 id++;
             });
         }

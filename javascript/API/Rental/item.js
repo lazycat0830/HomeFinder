@@ -96,6 +96,11 @@ function Editviewitemcontent(data,rental_id){
     judgment_equipment(data.allData.equipmentname);
     Combinationtags(data);
     var img1,img2,img3,img4,img5;
+    
+    // if(data.allData.img1==''){
+    //     while(data.allData.img1)
+    // }
+
     if(data.allData.img1==''){
         img1='/image/noRenterImg.png';
     }else{
@@ -127,22 +132,22 @@ function Editviewitemcontent(data,rental_id){
             
             <div class="img1-8 flexcenter relative">
                 <div class="img1-8_img1_width">
-                    <img class='img1-8_img1' src="${img1}">
+                    <img id='img1-5_img1' class='img1-8_img1 width_img1' src="${img1}">
                 </div>
                 <div class="flexcolumn">
                     <div class="flexrow">
-                        <img src="${img2}">
-                        <img class="img1-8_img2" src="${img3}">
+                        <img id='img1-5_img2' class='width_img2' src="${img2}">
+                        <img id='img1-5_img3' class="img1-8_img2 width_img2" src="${img3}">
                     </div >
                     <div class="flexrow">
-                        <img src="${img4}">
-                        <img  class="img1-8_img3" src="${img5}">
+                        <img id='img1-5_img4' class='width_img2' src="${img4}">
+                        <img id='img1-5_img5' class="img1-8_img3 width_img2" src="${img5}">
                     </div>
-                    <div class="puttime">上架時間：${data_time}</div>
+                    
                 </div>
                 ${like}
             </div>
-            
+            <div class="puttime">上架時間：${data_time}</div>
             <div id="housing_information" class="flexcenter">
                 <div id="content_left flexcolumn">
                     <div class="house_title">${data.allData.title}</div>
@@ -252,22 +257,7 @@ function Editviewitemcontent(data,rental_id){
                         <span class="Choose_time flexcolumn">選擇預約時間</span>
                         <input type='date' id='changedata'>
                         <div class="Choose_time_btn flexcenter">
-                            <ul>
-                                <li>
-                                    <input type='button'  id='changetime1' class='Choose_time_btn_true' value='07:00-09:00'/>
-                                </li>
-                                <li>
-                                    <input type='button'  id='changetime2' class='Choose_time_btn_true' value='10:00-12:00' />
-                                </li>
-                                <li>
-                                    <input type='button'  id='changetime3' class='Choose_time_btn_true' value='14:00-16:00' />
-                                </li>
-                                <li>
-                                    <input type='button'  id='changetime4' class='Choose_time_btn_true' value='17:00-19:00' />
-                                </li>
-                                <li>
-                                    <input type='button'  id='changetime5' class='Choose_time_btn_true' value='20:00-22:00' />
-                                </li>
+                            <ul id='Choosetime'>
                             </ul>
                         </div>
                         <div class="Choose_time_button"><input id='reservedate' type="submit" value="我要預約"></div>
@@ -294,8 +284,14 @@ function Editviewitemcontent(data,rental_id){
             
             clicklike(likebtn,likeheart);
         }
+        if(LoginData.members.identity==1){
+            let reservedate=document.getElementById('reservedate');
+            reservedate.style.display='none';
+        }
     }
-
+    // reservedate.style.display='block';
+    
+    
     var today = new Date();
     var year = today.getFullYear(); // 年份
     var month = ('0' + (today.getMonth() + 1)).slice(-2); // 月份，补0到两位数
@@ -303,17 +299,26 @@ function Editviewitemcontent(data,rental_id){
     var dateInput = document.getElementById('changedata'); // 将myDateInput替换成你的<input type='date'/>元素的ID
     dateInput.value = year + '-' + month + '-' + day;
     
+
+    let changedata=document.getElementById('changedata');
+    console.log(changedata);
+    changedata.addEventListener('change', function(){
+    console.log(true);
+    ViewBookOfDay();
+    })
+
+    ViewBookOfDay();
     
     let Accountimg_btn=document.getElementById('Accountimg_btn');
     Accountimg_btn.onclick=function(){
         sessionStorage.setItem('newRantalRenter',data.allData.member.account);
     }
-    reserve(rental_id);
-    if(LoginData!=null){
-        if(LoginData.members.identity==2){
-            getReservedData();
-        }
-    }
+    // reserve(rental_id);
+    // if(LoginData!=null){
+    //     if(LoginData.members.identity==2){
+    //         getReservedData();
+    //     }
+    // }
 }
 
 function clicklike(likebtn,likeheart){
@@ -359,7 +364,7 @@ function clicklike(likebtn,likeheart){
     
     function collect(likeheart){
         console.log(likeheart.id);
-        Id=likeheart.id.replace('likeheart_','')
+        Id=likeheart.id.replace('likeheart_','');
         console.log(Id);
         console.log(LoginData);
         axios({
@@ -381,245 +386,9 @@ function clicklike(likebtn,likeheart){
     }
 
 
-function getReservedData(){
-    axios({
-        method: 'get',
-        url: 'http://localhost:5190/api/List/',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${LoginData.token}`, 
-        },
-    })
-    .then(({ data }) => {
-       
-        console.log(data);
-        var id=0;
-        let renservedData='';
-        data.forEach(function(){
-            console.log(data[id].bookdate);
-            console.log(data[id].bookdate==changedata.value)
-            if(data[id].bookdate==changedata.value){
-                renservedData+=data[id].booktime+',';
-                console.log(renservedData);
-            }
-            id++;
-        });
-            console.log(renservedData.includes(changetime1.value));
-            if(renservedData.includes(changetime1.value)){
-                changetime1.classList='Choose_time_btn_stop';
-                document.getElementById("changetime1").disabled = true;
-            }else{
-                changetime1.classList='Choose_time_btn_true';
-                document.getElementById("changetime1").disabled = false;
-            }
-            if(renservedData.includes(changetime2.value)){
-                changetime2.classList='Choose_time_btn_stop';
-                document.getElementById("changetime2").disabled = true;
-            }else{
-                changetime2.classList='Choose_time_btn_true';
-                document.getElementById("changetime2").disabled = false;
-            }
-            if(renservedData.includes(changetime3.value)){
-                changetime3.classList='Choose_time_btn_stop';
-                document.getElementById("changetime3").disabled = true;
-            }else{
-                changetime3.classList='Choose_time_btn_true';
-                document.getElementById("changetime3").disabled = false;
-            }
-            if(renservedData.includes(changetime4.value)){
-                changetime4.classList='Choose_time_btn_stop';
-                document.getElementById("changetime4").disabled = true;
-            }else{
-                changetime4.classList='Choose_time_btn_true';
-                document.getElementById("changetime4").disabled = false;
-            }
-            if(renservedData.includes(changetime5.value)){
-                changetime5.classList='Choose_time_btn_stop';
-                document.getElementById("changetime5").disabled = true;
-            }else{
-                changetime5.classList='Choose_time_btn_true';
-                document.getElementById("changetime5").disabled = false;
-            }
-        
-        
-
-        changedata.addEventListener('change', function(){
-            var id=0;
-            let renservedData='';
-            data.forEach(function(){
-                console.log(data[id].bookdate);
-                console.log(data[id].bookdate==changedata.value)
-                if(data[id].bookdate==changedata.value){
-                    renservedData+=data[id].booktime+',';
-                    console.log(renservedData);
-                }
-                id++;
-            });
-            console.log(renservedData.includes(changetime1.value));
-            if(renservedData.includes(changetime1.value)){
-                changetime1.classList='Choose_time_btn_stop';
-                document.getElementById("changetime1").disabled = true;
-            }else{
-                changetime1.classList='Choose_time_btn_true';
-                document.getElementById("changetime1").disabled = false;
-            }
-            if(renservedData.includes(changetime2.value)){
-                changetime2.classList='Choose_time_btn_stop';
-                document.getElementById("changetime2").disabled = true;
-            }else{
-                changetime2.classList='Choose_time_btn_true';
-                document.getElementById("changetime2").disabled = false;
-            }
-            if(renservedData.includes(changetime3.value)){
-                changetime3.classList='Choose_time_btn_stop';
-                document.getElementById("changetime3").disabled = true;
-            }else{
-                changetime3.classList='Choose_time_btn_true';
-                document.getElementById("changetime3").disabled = false;
-            }
-            if(renservedData.includes(changetime4.value)){
-                changetime4.classList='Choose_time_btn_stop';
-                document.getElementById("changetime4").disabled = true;
-            }else{
-                changetime4.classList='Choose_time_btn_true';
-                document.getElementById("changetime4").disabled = false;
-            }
-            if(renservedData.includes(changetime5.value)){
-                changetime5.classList='Choose_time_btn_stop';
-                document.getElementById("changetime5").disabled = true;
-            }else{
-                changetime5.classList='Choose_time_btn_true';
-                document.getElementById("changetime5").disabled = false;
-            }
-        })
-
-    }).catch(error => {
-
-    // 处理请求过程中的错误
-    console.error(error);
-
-});
-}
-
 
     
 
-function reserve(rental_id){
-
-    // let today1 = new Date().toISOString().split('T')[0];
-    let changedata=document.getElementById('changedata');
-    // changedata.value=today1;
-    
-    let time;
-
-    let changetime1=document.getElementById('changetime1');
-    let changetime2=document.getElementById('changetime2');
-    let changetime3=document.getElementById('changetime3');
-    let changetime4=document.getElementById('changetime4');
-    let changetime5=document.getElementById('changetime5');
-    let reservedate=document.getElementById('reservedate');
-
-    if(changetime1.className ==='Choose_time_btn_stop'){
-        changetime1.classList='Choose_time_btn_stop';
-    }else{
-        changetime1.onclick=function(){
-            cssfalse();
-            changetime1.classList='Choose_time_btn_false';
-            time=changetime1.value;
-        }
-    }
-    if(changetime2.className==='Choose_time_btn_true'){
-        changetime2.onclick=function(){
-            cssfalse();
-            changetime2.classList='Choose_time_btn_false';
-            time=changetime2.value;
-        }
-    }
-    if(changetime3.className==='Choose_time_btn_true'){
-        changetime3.onclick=function(){
-            cssfalse();
-            changetime3.classList='Choose_time_btn_false';
-            time=changetime3.value;
-        }
-    }
-    if(changetime4.className==='Choose_time_btn_true'){
-        changetime4.onclick=function(){
-            cssfalse();
-            changetime4.classList='Choose_time_btn_false';
-            time=changetime4.value;
-        }
-    }
-    if(changetime5.className==='Choose_time_btn_true'){
-        changetime5.onclick=function(){
-            cssfalse();
-            changetime5.classList='Choose_time_btn_false';
-            time=changetime5.value;
-        }
-    }
-    reservedate.onclick=function(){
-        let text =document.getElementById('text');
-        if(LoginData!=null){
-            let changedata=document.getElementById('changedata');
-            console.log(changedata.value);
-            console.log(time);
-            console.log(rental_id);
-            axios({
-                method:'post',
-                url:'http://localhost:5190/api/List/AddBooking',
-                headers:{
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Authorization": `Bearer ${LoginData.token}`, 
-                },data:{
-                    bookdate:changedata.value,
-                    booktime:time,
-                    rental_id:rental_id,
-                },
-            }).then(({ data }) => {
-                console.log(data);
-                reserveText.style.display='block';
-                text.innerHTML='預約成功';
-                createMask();
-                
-
-            }).catch(error => {
-            // 处理请求过程中的错误
-            console.error(error);
-                reserveText.style.display='block';
-                createMask();
-                text.innerHTML='預約失敗';
-            }); 
-        }else{
-            login.style.display='block';
-            createMask();
-        }
-    }
-    deleteX_btn.onclick=function(){
-        reserveText.style.display='none';
-        deleteMask();
-        location.reload();
-    }
-
-}
-
-function cssfalse(){
-    if(changetime1.className!='Choose_time_btn_stop'){
-        changetime1.classList='Choose_time_btn_true';
-    }
-    if(changetime2.className!='Choose_time_btn_stop'){
-        changetime2.classList='Choose_time_btn_true';
-    }
-    if(changetime3.className!='Choose_time_btn_stop'){
-        changetime3.classList='Choose_time_btn_true';
-    }
-    if(changetime4.className!='Choose_time_btn_stop'){
-        changetime4.classList='Choose_time_btn_true';
-    }
-    if(changetime5.className!='Choose_time_btn_stop'){
-        changetime5.classList='Choose_time_btn_true';
-    }
-}
 
 function Combinationtags(data){
     if(data.type!=null){

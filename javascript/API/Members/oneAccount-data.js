@@ -57,6 +57,7 @@ function oneAccount(data){
 
     let Account_Rental=document.getElementById('Account_Rental');
     function newRenterRental(data,id){
+        console.log(data)
         console.log(data.rentalBlock[id].allData.member.score)
         let scoretext;
         if(LoginData==null){
@@ -92,19 +93,98 @@ function oneAccount(data){
     
         Account_onRental.innerHTML=`
         <div class="Housing_Profile_content flexcolumn relative">
-                <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg" href="/通用/item.html">
-                    <img width="100%" hight="100%" src="${data.rentalBlock[id].allData.img1}"/>
-                    ${like}
-                </a>
-                </a>
-            <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-            <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
-            <span class="text3">上架日期：${data.rentalBlock[id].allData.uploadtime.replace(/T.*/,'')}</span>
-            <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
+            <!--
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" class="Houseimg flexcenter relative" href="/通用/item.html">
+                <img width="100%" hight="100%" src="${data.rentalBlock[id].image[0]}"/>
+                ${like}
+                 <a href='' class='absolute' style='background-color:#ffffffb5;border-radius:100%;left:5px;top:25%;padding: 1px 6px;text-align:center;' ><</a>
+                 <a href='' class='absolute' style='background-color:#ffffffb5;border-radius:100%;right:5px;top:25%;padding: 1px 6px;text-align:center;' >></a>
+            </a>
+            --!>
+            
+        <div class="flexcenter relative Houseimg" style="z-index: 0;" >
+            <a id="rental_id${data.rentalBlock[id].allData.rental_id}" width="100%;" href="/通用/item.html">
+            <ul id="rentalul_id${data.rentalBlock[id].allData.rental_id}">
+                <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
+            </ul>
+            
+            </a>
+            ${like}
+            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button">
+            <input id='nextimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
+         
         </div>
-        `;
+        
+        <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
+        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
+        <span class="text3">上架日期：${data.rentalBlock[id].allData.uploadtime.replace(/T.*/,'')}</span>
+        <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
+    </div>
+
+`;
         Account_Rental.appendChild(Account_onRental);
     
+        let Rental_ul=document.getElementById(`rentalul_id${data.rentalBlock[id].allData.rental_id}`);
+    for(var j=1;j<=data.rentalBlock[id].image.length-1;j++){
+        let addimg=document.createElement('li');
+        addimg.id=`img${j}_${data.rentalBlock[id].allData.rental_id}`;
+        addimg.style.display='none';
+        addimg.innerHTML=`
+            <img height="100%" width="100%" src="${data.rentalBlock[id].image[j]}" />
+        `;
+        console.log(Rental_ul);
+        console.log(addimg);
+        Rental_ul.appendChild(addimg);
+    }
+    
+    let lastimg_btn=document.getElementById(`lastimg_${data.rentalBlock[id].allData.rental_id}`);
+    lastimg_btn.onclick=function(){
+        let imgblock='';
+            for(var i=0;i<data.rentalBlock[id].image.length;i++){
+                console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
+                if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
+                    imgblock=`img${i}_${data.rentalBlock[id].allData.rental_id}`;
+                }
+            }
+                console.log(imgblock);
+                console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1);
+                console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`);
+                console.log(document.getElementById(imgblock).style.display=='block');
+
+                if(document.getElementById(imgblock).style.display=='block'){
+                    if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))>0){
+                        document.getElementById(imgblock).style.display='none'
+                        document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                    }
+    
+            }   
+    }
+
+    let nextimg_btn=document.getElementById(`nextimg_${data.rentalBlock[id].allData.rental_id}`);
+    nextimg_btn.onclick=function(){
+        
+        for(var i=0;i<data.rentalBlock[id].image.length;i++){
+            console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
+            if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
+                imgblock=`img${i}_${data.rentalBlock[id].allData.rental_id}`;
+            }else if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='none'){
+                console.log(imgblock);
+            }
+        }
+            console.log(imgblock);
+            console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1);
+            console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`);
+            console.log(document.getElementById(imgblock).style.display=='block');
+
+            if(document.getElementById(imgblock).style.display=='block'){
+                if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))<data.rentalBlock[id].image.length-1){
+                    document.getElementById(imgblock).style.display='none';
+                    document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                }
+            
+        } 
+    }
+
         if(LoginData==null){
             like=``;
         }else{
@@ -139,6 +219,7 @@ function oneAccount(data){
             }else if(likeheart.getAttribute("src")=="/image/like.png"){
                 likeheart.setAttribute('src','/image/heart.png')
                 deletecollect(likeheart);
+                location.reload();
             }
         }
         }
@@ -191,10 +272,10 @@ function oneAccount(data){
         }
     
     }
-
+    let pagination=document.getElementById('pagination');
     function newRenterRentalAPI(account){
-        
         console.log(account);
+        console.log(LoginData);
         axios({
             method: 'get',
             url: `http://localhost:5190/api/HomeAny/HomeAnySeePublisher?publisher=${account}`,
@@ -211,17 +292,19 @@ function oneAccount(data){
                 newRenterRental(data,rental_Id);
                 rental_Id++;
             });
-            totalRenter.innerHTML=`租屋(${rental_Id})`;
-    
+            totalRenter.innerHTML=`租屋`;
         }).catch(error=>{
             console.log(error);
         });
     }
-
+    
     function likeRentalAPI(){
+        nowPage=sessionStorage.getItem("nowPage");
+        console.log(nowPage);
+        console.log(LoginData);
         axios({
             method: 'post',
-            url: `http://localhost:5190/api/HomeAny/AllCollect`,
+            url: `http://localhost:5190/api/HomeAny/AllCollect?Page=${nowPage}`,
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -235,13 +318,33 @@ function oneAccount(data){
                 newRenterRental(data,rental_Id);
                 rental_Id++;
             });
-            totalRenter.innerHTML=`收藏(${rental_Id})`;
-    
+            totalRenter.innerHTML=`收藏`;
+            for(var onPage=1;onPage<=data.paging.maxPage;onPage++){
+                let addPage=document.createElement('li');
+                if(onPage==nowPage){
+                    addPage.innerHTML=`<a href="#" class="NowPage" onclick="NowPage_like(this)">${onPage}</a>`;
+                }else{
+                    addPage.innerHTML=`<a href="#" class='otherPage' onclick="NowPage_like(this)">${onPage}</a>`;
+                }
+                pagination.appendChild(addPage);
+            }
+            
         }).catch(error=>{
             console.log(error);
-            totalRenter.innerHTML=`收藏(${rental_Id})`;
+            totalRenter.innerHTML=`收藏`;
         });
+        
     }
+
+    function NowPage_like(link) {
+        var linkText = link.innerText || link.textContent;
+            nowPage=linkText;
+            console.log(nowPage);
+            sessionStorage.setItem("nowPage",nowPage);
+            pagination.innerHTML='';
+            likeRentalAPI();
+        }
+
 
     
     updataAccount_btn.onclick=function(){

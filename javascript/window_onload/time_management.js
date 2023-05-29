@@ -18,10 +18,10 @@ window.onload = function() {
         const todayString = today.toLocaleDateString();
         dateText.innerHTML = todayString;
         
-        var year = today.getFullYear(); // 年份
-        var month = ('0' + (today.getMonth() + 1)).slice(-2); // 月份，补0到两位数
-        var day = ('0' + today.getDate()).slice(-2); // 日期，补0到两位数
-        var dateInput = document.getElementById('datepicker'); // 将myDateInput替换成你的<input type='date'/>元素的ID
+        var year = today.getFullYear();
+        var month = ('0' + (today.getMonth() + 1)).slice(-2); 
+        var day = ('0' + today.getDate()).slice(-2); 
+        var dateInput = document.getElementById('datepicker'); 
         dateInput.value = year + '-' + month + '-' + day;
 
 
@@ -57,7 +57,7 @@ window.onload = function() {
             const dateString = date.toISOString().split('T')[0];
             datepicker.value = dateString;
             dateText.innerHTML = date.toLocaleDateString();
-            viewtime_management(date.toLocaleDateString());
+            // viewtime_management(date.toLocaleDateString());
         }
 
         // 初始化

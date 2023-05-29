@@ -86,7 +86,9 @@ body{
     
 }
 
-
+.Label{
+    padding: 5px 0px;
+}
 
 .Label div ul{
     list-style: none;
@@ -119,7 +121,8 @@ body{
 }
 
 .drop-down{
-    padding-right: 10px;
+    padding: 10px 0px;
+    font-size: 1.3rem;
 }
 
 .amount{
@@ -129,8 +132,9 @@ body{
 }
 
 .Label_title{
-    font-size: 20px;
+    font-size: 1.3rem;
     font-weight: bolder;
+    margin: auto 5px;
 }
 
 .spacing{
@@ -159,4 +163,50 @@ body{
 .credit_score div button:focus{
     color: #fff;
     background-color: #000000;
+}
+
+#townSelect{
+    font-size: 1.3rem;;
+}
+
+#filter_otherbtn_content{
+    display: none;
+    box-shadow: 0 0 4px #000;
+    border-radius: 25px;
+    /* position: fixed; */
+    z-index: 4;
+    /* top: 160px; */
+    right: 30px;
+    width: 400px;
+    height: 370px;
+    background-color: #fff;
+    border: 1px #000 solid;
+}
+
+#filter_minimumebtn_content{
+    display: none;
+    box-shadow: 0 0 4px #000;
+    border-radius: 25px;
+    /* position: fixed; */
+    z-index: 4;
+    /* top: 160px; */
+    left: 300px;
+    width: 350px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px #000 solid;
+}
+
+#filter_location_content{
+    display: none;
+    box-shadow: 0 0 4px #000;
+    border-radius: 25px;
+    /* position: fixed; */
+    z-index: 4;
+    /* top: 160px; */
+    /* left: 100px; */
+    width: 350px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px #000 solid;
 }

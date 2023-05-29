@@ -1,4 +1,7 @@
 function addRental(data,id) {
+    console.log(data);
+    console.log(data);
+    let allrental=data;
     let superaudit_table = document.getElementById('superaudit_table');
     let superaudit_onerental = document.createElement('tr');
     superaudit_onerental.innerHTML=`
@@ -29,7 +32,8 @@ function addRental(data,id) {
             })
             .then(({data})=>{
                 console.log(data);
-                viewonRental(data);
+                console.log(allrental.rentalBlock[id].image);
+                viewonRental(data,allrental.rentalBlock[id].image);
             })
             .catch(error => {
                 console.log(error);
@@ -88,7 +92,7 @@ function viewallRental(){
     });
 }
 
-function viewonRental(data){
+function viewonRental(data,imglist){
     console.log(data);
     let check =document.getElementById('check');
     let delete_checkbtn =document.getElementById('delete_checkbtn');
@@ -108,6 +112,71 @@ function viewonRental(data){
     check_area.value=data.area+'坪';
     check_content.innerHTML=data.content.replace(/<br>/g, '\n');
     check_uploadtime.value=data.uploadtime.replace('T','　');
+
+    let rentalul=document.getElementById('rentalul');
+    rentalul.innerHTML=`
+    <li id="img0_${data.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.titledeed}" /></li>
+    `;
+    
+    for(var j=1;j<=imglist.length;j++){
+        let addimg=document.createElement('li');
+        addimg.id=`img${j}_${data.rental_id}`;
+        addimg.style.display='none';
+        addimg.innerHTML=`
+            <img height="100%" width="100%" src="${imglist[j-1]}" />
+        `;
+        console.log(rentalul);
+        console.log(addimg);
+        rentalul.appendChild(addimg);
+    }
+    
+    let lastimg_btn=document.getElementById(`lastimg`);
+    lastimg_btn.onclick=function(){
+        let imgblock='';
+            for(var i=0;i<imglist.length+1;i++){
+                console.log(document.getElementById(`img${i}_${data.rental_id}`).style.display)
+                if(document.getElementById(`img${i}_${data.rental_id}`).style.display=='block'){
+                    imgblock=`img${i}_${data.rental_id}`;
+                }
+            }
+                console.log(imgblock);
+                console.log(parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1);
+                console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1}_${data.rental_id}`);
+                console.log(document.getElementById(imgblock).style.display=='block');
+
+                if(document.getElementById(imgblock).style.display=='block'){
+                    if((imgblock.replace('img','').replace(`_${data.rental_id}`,''))>0){
+                        document.getElementById(imgblock).style.display='none'
+                        document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1}_${data.rental_id}`).style.display='block';
+                    }
+    
+            }   
+    }
+
+    let nextimg_btn=document.getElementById(`nextimg`);
+    nextimg_btn.onclick=function(){
+        
+        for(var i=0;i<imglist.length+1;i++){
+            console.log(document.getElementById(`img${i}_${data.rental_id}`).style.display)
+            if(document.getElementById(`img${i}_${data.rental_id}`).style.display=='block'){
+                imgblock=`img${i}_${data.rental_id}`;
+            }else if(document.getElementById(`img${i}_${data.rental_id}`).style.display=='none'){
+                console.log(imgblock);
+            }
+        }
+            console.log(imgblock);
+            console.log(parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1);
+            console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1}_${data.rental_id}`);
+            console.log(document.getElementById(imgblock).style.display=='block');
+
+            if(document.getElementById(imgblock).style.display=='block'){
+                if((imgblock.replace('img','').replace(`_${data.rental_id}`,''))<imglist.length){
+                    document.getElementById(imgblock).style.display='none';
+                    document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1}_${data.rental_id}`).style.display='block';
+                }
+            
+        } 
+    }
     
     delete_checkbtn.onclick=function(){
         deleteMask();

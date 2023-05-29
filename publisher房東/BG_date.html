@@ -85,6 +85,7 @@
         <div id="publishermenu" class="absolute userfunction">
             <ul>
                 
+                <a href="/publisher房東/BG_dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
                 <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
                 <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
                 <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
@@ -96,6 +97,8 @@
         </div>
         <div id="adminmenu" class="absolute userfunction">
             <ul>
+                <a href=""><li><button id="btnsign" type="button">數據分析</button></li></a>
+                <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
                 <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
                 <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
                 <hr>
@@ -110,7 +113,7 @@
                 <a onclick="goBack()"  href="#"><i class="fa-solid fa-right-left"></i></a>
             </div>
             
-            <button id="Useravatar"><img id="avatarimg" width="40px"></button>
+            <button id="Useravatar"><img id="avatarimg" width="40px" height='100%'></button>
        
         </div>
     </div>
@@ -123,6 +126,7 @@
         <div id="content_in">
             <div class="nav flexbetween">
                 <div class="nav_field flexrow">
+                    <a class="off" href="/publisher房東/BG_dataAnalysis.html">數據分析</a>
                     <a class="off" href="/publisher房東/BG_up.html">上架</a>
                     <a class="off" href="/publisher房東/BG_down.html">下架</a>
                     <a class="off" href="/publisher房東/BG_audit.html">審核中</a>
@@ -131,6 +135,7 @@
                 <a href="/publisher房東/createitem.html"><button>新增房屋</button></a>
             </div>
             <div class="timecentent flexcenter">
+                <form class="flexcenter" style="width:100%">
                 <table>
                     <tr><td colspan="8" class="annotation">註:此處設定的時間為統一時間，如需調單一時間請去<a href="/publisher房東/time_management.html">時間管理</a>調整</td></tr>
                     <tr>
@@ -150,27 +155,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="mon1validata">
                             <div><input id="monup1" type="time"></div>
                             <div><input id="mondown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="mon2validata">
                             <div><input id="monup2" type="time"></div>
                             <div><input id="mondown2" type="time"></div>
-                        </td>
-                        <td>
+                       </td>
+                        <td id="mon3validata">
                             <div><input id="monup3" type="time"></div>
                             <div><input id="mondown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="mon4validata">
                             <div><input id="monup4" type="time"></div>
                             <div><input id="mondown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="mon5validata">
                             <div><input id="monup5" type="time"></div>
                             <div><input id="mondown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="mon6validata">
                             <div><input id="monup6" type="time"></div>
                             <div><input id="mondown6" type="time"></div>
                         </td>
@@ -182,27 +187,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="tue1validata">
                             <div><input id="tueup1" type="time"></div>
                             <div><input id="tuedown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="tue2validata">
                             <div><input id="tueup2" type="time"></div>
                             <div><input id="tuedown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="tue3validata">
                             <div><input id="tueup3" type="time"></div>
                             <div><input id="tuedown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="tue4validata">
                             <div><input id="tueup4" type="time"></div>
                             <div><input id="tuedown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="tue5validata">
                             <div><input id="tueup5" type="time"></div>
                             <div><input id="tuedown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="tue6validata">
                             <div><input id="tueup6" type="time"></div>
                             <div><input id="tuedown6" type="time"></div>
                         </td>
@@ -214,27 +219,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="wed1validata">
                             <div><input id="wedup1" type="time"></div>
                             <div><input id="weddown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="wed2validata">
                             <div><input id="wedup2" type="time"></div>
                             <div><input id="weddown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="wed3validata">
                             <div><input id="wedup3" type="time"></div>
                             <div><input id="weddown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="wed4validata">
                             <div><input id="wedup4" type="time"></div>
                             <div><input id="weddown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="wed5validata">
                             <div><input id="wedup5" type="time"></div>
                             <div><input id="weddown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="wed6validata">
                             <div><input id="wedup6" type="time"></div>
                             <div><input id="weddown6" type="time"></div>
                         </td>
@@ -246,27 +251,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="thu1validata">
                             <div><input id="thuup1" type="time"></div>
                             <div><input id="thudown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="thu2validata">
                             <div><input id="thuup2" type="time"></div>
                             <div><input id="thudown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="thu3validata">
                             <div><input id="thuup3" type="time"></div>
                             <div><input id="thudown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="thu4validata">
                             <div><input id="thuup4" type="time"></div>
                             <div><input id="thudown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="thu5validata">
                             <div><input id="thuup5" type="time"></div>
                             <div><input id="thudown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="thu6validata">
                             <div><input id="thuup6" type="time"></div>
                             <div><input id="thudown6" type="time"></div>
                         </td>
@@ -278,27 +283,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="fri1validata">
                             <div><input id="friup1" type="time"></div>
                             <div><input id="fridown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="fri2validata">
                             <div><input id="friup2" type="time"></div>
                             <div><input id="fridown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="fri3validata">
                             <div><input id="friup3" type="time"></div>
                             <div><input id="fridown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="fri4validata">
                             <div><input id="friup4" type="time"></div>
                             <div><input id="fridown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="fri5validata">
                             <div><input id="friup5" type="time"></div>
                             <div><input id="fridown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="fri6validata">
                             <div><input id="friup6" type="time"></div>
                             <div><input id="fridown6" type="time"></div>
                         </td>
@@ -310,27 +315,27 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup1" type="time"></div>
                             <div><input id="satdown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup2" type="time"></div>
                             <div><input id="satdown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup3" type="time"></div>
                             <div><input id="satdown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup4" type="time"></div>
                             <div><input id="satdown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup5" type="time"></div>
                             <div><input id="satdown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sat6validata">
                             <div><input id="satup6" type="time"></div>
                             <div><input id="satdown6" type="time"></div>
                         </td>
@@ -342,37 +347,44 @@
                             <div class="textright">開始：</div>
                             <div class="textright">結束：</div>
                         </td>
-                        <td>
+                        <td id="sun1validata">
                             <div><input id="sunup1" type="time"></div>
                             <div><input id="sundown1" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sun2validata">
                             <div><input id="sunup2" type="time"></div>
                             <div><input id="sundown2" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sun3validata">
                             <div><input id="sunup3" type="time"></div>
                             <div><input id="sundown3" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sun4validata">
                             <div><input id="sunup4" type="time"></div>
                             <div><input id="sundown4" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sun5validata">
                             <div><input id="sunup5" type="time"></div>
                             <div><input id="sundown5" type="time"></div>
                         </td>
-                        <td>
+                        <td id="sun6validata">
                             <div><input id="sunup6" type="time"></div>
                             <div><input id="sundown6" type="time"></div>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="8">
-                            <button id="save" class="save">保存</button>
+                            <div id="validataTimetext" style="display: none;text-align: center;color:#ff3434;width: 100%;font-weight: bolder;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="8">
+                            <input id="reset" class="reset" type="reset" value='清除'/>
+                            <input id="save" class="save" type="button" value='保存'/>
                         </td>
                     </tr>
                 </table>
+            </form>
             </div>
 
         </div>

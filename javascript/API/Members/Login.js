@@ -102,9 +102,9 @@ Loginbtn.onclick = function(){
     
             
             // 設定可預約時間
-            if(data.members.identity==1){
-                postBookTime(LoginData);
-            }
+            // if(data.members.identity==1){
+            //     postBookTime(LoginData);
+            // }
             
             location.reload();
         }
@@ -184,30 +184,4 @@ Loginbtn.onclick = function(){
     }
 
 
-    function postBookTime(LoginData){
-        console.log(LoginData);
-        axios({
-        method: 'post',
-        url: 'http://localhost:5190/api/Time/SetBookTime',
-        headers:{
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${LoginData.token}`, 
-        },data:{
-            mon: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00", 
-            tue: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00" ,
-            wed: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00",
-            thu: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00",
-            fri: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00",
-            sat: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00",
-            sun: "07:00-09:00;10:00-12:00;14:00-16:00;17:00-19:00;20:00-22:00",
-        }
-    })
-            .then(( { data } ) => {
-                console.log(data);
     
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }

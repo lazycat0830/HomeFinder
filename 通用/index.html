@@ -15,60 +15,244 @@
 </head>
 <body class="relative">
     <header>
+        
+
+
         <div class="relative">
             <div id="usermenu" class="absolute userfunction">
                 <ul>
-                    <a href="#"><li><button id="btnlogin" type="button">登入</button></li></a>
-                    <a href="/通用/signup.html"><li><button id="btnsign" type="button">註冊</button></li></a>
+                    <a href="#"><li><button id="btnlogin" >登入</button></li></a>
+                    <a href="/通用/signup.html"><li><button id="btnsign" >註冊</button></li></a>
                 </ul>
             </div>
             <div id="rentermenu" class="absolute userfunction">
                 <ul>
-                    <a href="/renter房客/reserved.html"><li><button id="btnsign" type="button">已預約房屋</button></li></a>
-                    <a href="/renter房客/collect.html"><li><button id="btnsign" type="button">已收藏</button></li></a>
+                    <a href="/renter房客/reserved.html"><li><button id="btnsign" >已預約房屋</button></li></a>
+                    <a href="/renter房客/collect.html"><li><button id="btnsign" >已收藏</button></li></a>
                     <hr>
-                    <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                    <a href="#"><li><button id="rentermenubtnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/account-interface.html"><li><button id="btnsign" >帳號</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" >修改密碼</button></li></a>
+                    <a href="#"><li><button id="rentermenubtnlogout" >登出</button></li></a>
                 </ul>
             </div>
             <div id="publishermenu" class="absolute userfunction">
                 <ul>
-
-                    <a href="/publisher房東/time_management.html"><li><button id="btnsign" type="button">時間管理</button></li></a>
-                    <a href="/publisher房東/BG_up.html"><li><button id="btnsign" type="button">後臺管理</button></li></a>
-                    <a href="/publisher房東/createitem.html"><li><button id="btnsign" type="button">新增房屋</button></li></a>
+                    <a href="/publisher房東/BG_dataAnalysis.html"><li><button id="btnsign" >數據分析</button></li></a>
+                <a href="/publisher房東/time_management.html"><li><button id="btnsign" >時間管理</button></li></a>
+                    <a href="/publisher房東/BG_up.html"><li><button id="btnsign" >後臺管理</button></li></a>
+                    <a href="/publisher房東/createitem.html"><li><button id="btnsign" >新增房屋</button></li></a>
                     <hr>
-                    <a href="/通用/account-interface.html"><li><button id="btnsign" type="button">帳號</button></li></a>
-                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                    <a href="#"><li><button id="publishermenubtnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/account-interface.html"><li><button id="btnsign" >帳號</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" >修改密碼</button></li></a>
+                    <a href="#"><li><button id="publishermenubtnlogout" >登出</button></li></a>
                 </ul>
             </div>
             <div id="adminmenu" class="absolute userfunction">
                 <ul>
-                    <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
-                    <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
+                    <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" >數據分析</button></li></a>
+                <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" >帳號管理</button></li></a>
+                    <a href="/admin管理者/super-audit.html"><li><button id="btnsign" >房屋審核</button></li></a>
                     <hr>
-                    <a href="/通用/EditPassword.html"><li><button id="btnsign" type="button">修改密碼</button></li></a>
-                    <a href="#"><li><button id="adminmenubtnlogout" type="button">登出</button></li></a>
+                    <a href="/通用/EditPassword.html"><li><button id="btnsign" >修改密碼</button></li></a>
+                    <a href="#"><li><button id="adminmenubtnlogout" >登出</button></li></a>
                 </ul>
             </div>
             <div id="header_in" class="flexbetween">
                 <a href="/通用/index.html"><img height="30px" src="/image/LOGO.png"></a>
-                <div class="filter">
+
+                <div id="filter_view_content" style="display:none;justify-content: center;padding:10px 0px">
+                    <input id="filter_nav_locationbtn" class="filter_nav_btn" type="button" value="縣市">
+                    <input id="filter_nav_Viewingtimebtn" class="filter_nav_btn" type="button" value="租金">
+                    <input id="filter_nav_otherbtn" class="filter_nav_btn" type="button" value="其他">
+                </div>
+
+                <div id="filter_view" class="filter">
                     <a id="filter_btn">
                         <div class="filter_text flexbetween">
-                        <span>位置</span>
-                        <span>|</span>
-                        <span>看房時間</span>
-                        <span>|</span>
-                        <span>篩選其他</span>
-                        <div class="icon_modeling"><i class="fa-solid fa-magnifying-glass"></i></div>
+                            <div id="locationbtn" >位置</div>
+                            <div id="Viewingtimebtn" >租金範圍</div>
+                            <div id="otherbtn" >其他</div>
+                        <div style="height:100% ;width: 10%;display: flex;align-items: center;justify-content:center;"><div class="icon_modeling"><i class="fa-solid fa-magnifying-glass"></i></div></div>
+                            
                     </div></a>
                 </div>
                 
-                <button id="Useravatar"><img id="avatarimg" width="40px"></button>
+                <button id="Useravatar"><img id="avatarimg" width="40px" height='100%'></button>
                 
+            </div>
+            <div id="show_filter"  style="height: 100%;display:none;">
+                <div id="onfilter" style="padding: 20px 0px;;width: 100%;display: flex;justify-content: center;">
+                    <div style="height: 100%;display: flex;flex-direction: column;" class="relative">
+                        
+                        <div style="width: 100%;display: flex;justify-content: center;padding: 10px 0px">
+                            <div style="height: 60px;border-radius: 50px;background-color: #ebebeb;margin: auto 0px;display: flex;flex-direction: row;padding-right:10px;border: 2px #000000 solid;">
+                                <div id="filter_locationbtn" class="filter_nav" style="width: 250px;">
+                                    <div class="flexcolumn">
+                                        <span style="padding: 0px 5px;text-align: center;font-weight: bolder;">縣市</span>
+                                        <span id="County_value" style="padding: 0px 5px;text-align: center;"></span>
+                                    </div>
+                                    <div class="flexcolumn">
+                                        <span style="padding:0px 5px;text-align: center;font-weight: bolder;">鄉鎮市區</span>
+                                        <span id="Township_value" style="padding:0px 5px;text-align: center;"></span>
+                                    </div>
+                                    <div style="height: 100%;margin: auto 0px;display: flex;align-items: center;padding-left:20px;">
+                                        <input id="delete_locationbtn" type="button" value="x" style="display: none;width: 20px;height: 20px;border-radius: 100%;">
+                                    </div>
+                                </div>
+                                <div id="filter_minimumebtn" class="filter_nav" style="width:150px;">
+                                    <div class="amount flexrow spacing">
+                                        <div id="minimum_amount" class="flexcolumn" style="width: 80px;">
+                                            <span>最低價格</span>
+                                            <span id="minimum_value"></span>
+                                        </div>
+                                    </div>
+                                    <div style="height: 100%;margin: auto 0px;display: flex;align-items: center;padding-left:20px;">
+                                        <input id="delete_miniamount" type="button" value="x" style="display: none;width: 20px;height: 20px;border-radius: 100%;">
+                                    </div>
+
+                                </div>
+                                <div id="filter_maximumebtn" class="filter_nav" style="width:150px">
+                                    <div class="amount flexrow spacing">
+                                        <div id="minimum_amount" class="flexcolumn" style="width: 80px;">
+                                            <span>最高價格</span>
+                                            <span id="maximume_value"></span>
+                                        </div>
+                                    </div>
+                                    <div style="height: 100%;margin: auto 0px;display: flex;align-items: center;padding-left:20px;">
+                                        <input id="delete_maxamount" type="button" value="x" style="display: none;width: 20px;height: 20px;border-radius: 100%;">
+                                    </div>
+                                </div>
+                                <div id="filter_otherbtn" class="filter_nav" style="width:350px;">
+                                    <div class="amount flexrow spacing">
+                                        <div id="minimum_amount" class="flexcolumn" style="margin: auto;">
+                                            <span>設備</span>
+                                            <span id="other_value"></span>
+                                        </div>
+                                    </div>
+                                    <div style="height: 100%;margin: auto 0px;display: flex;align-items: center;padding-left:20px;">
+                                        <input id="delete_other" type="button" value="x" style="display: none;width: 20px;height: 20px;border-radius: 100%;">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="submit_allfilter" style="height:100% ;display: flex;align-items: center;"><input type="button" style="width: 50px;height: 50%;border: 1px #000 solid;color: #fff;background-color: #000000;padding: 5px;border-radius: 20px;border: 1px #000 inset;text-align: center;cursor: pointer;" value="搜尋"/></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flexbetween absolute" style="width: 100%;top: 80px;">
+                            <div id="filter_location_content" class="absolute"  >
+                                <div class="flexcolumn" style="margin: 20px;">
+                                    <div>
+                                        <div id="Countycontent" class="drop-down flexrow">
+                                        <span style="width: 103px;text-align: right;">縣市：</span>
+                                        <select id="County">
+                                            <option value="">縣市</option>
+                                            <option value="基隆市">基隆市</option>
+                                            <option value="台北市">台北市</option>
+                                            <option value="新北市">新北市</option>
+                                            <option value="桃園縣">桃園縣</option>
+                                            <option value="新竹市">新竹市</option>
+                                            <option value="新竹縣">新竹縣</option>
+                                            <option value="苗栗縣">苗栗縣</option>
+                                            <option value="台中市">台中市</option>
+                                            <option value="彰化縣">彰化縣</option>
+                                            <option value="南投縣">南投縣</option>
+                                            <option value="雲林縣">雲林縣</option>
+                                            <option value="嘉義市">嘉義市</option>
+                                            <option value="嘉義縣">嘉義縣</option>
+                                            <option value="台南市">台南市</option>
+                                            <option value="高雄市">高雄市</option>
+                                            <option value="屏東縣">屏東縣</option>
+                                            <option value="台東縣">台東縣</option>
+                                            <option value="花蓮縣">花蓮縣</option>
+                                            <option value="宜蘭縣">宜蘭縣</option>
+                                            <option value="澎湖縣">澎湖縣</option>
+                                            <option value="金門縣">金門縣</option>
+                                            <option value="連江縣">連江縣</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="Township" class="drop-down flexrow">
+                                            <span>鄉鎮市區：</span>
+                                            <select id="townSelect" style="font-size: 1.3rem;">
+                                                <option>--請選擇--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="margin: auto;padding-top: 20px;"><input id="submit_location" style="padding:0px 5px;;font-size: 1.3rem;border-radius: 10px;background-color: #000000;color: #fff;" type="button" value="確認"></div>
+                                </div>
+                            </div>
+                    
+                            <div id="filter_minimumebtn_content" class="absolute" >
+                                <div class="flexcolumn" style="margin: 20px;">
+                                    <div class="flexcolumn" style="padding: 5px 0px;">
+                                        <div class="flexcenter" style="font-size: 1.3rem;"><span>最低價格：</span><input type="number" id="changemin" placeholder="0~99999"/></div>
+                                        <input id="minimum" style="width: 100%;" type="range" min="0" max="99999" value="0" >
+                                    </div>
+                                    <div class="flexcolumn" style="padding: 10px 0px;">
+                                        <div class="flexcenter" style="font-size: 1.3rem;"><span>最高價格：</span><input type="number" id="changemax" placeholder="最低~99999"/></div>
+                                        <input id="maximume" style="width: 100%;" type="range" max="99999" value="0">
+                                    </div>
+                                    <div style="margin: auto;padding-top: 10px;"><input id="submit_minimume" style="padding:0px 5px;;font-size: 1.3rem;border-radius: 10px;background-color: #000000;color: #fff;" type="button" value="確認"></div>
+                                </div>
+                            </div>
+                    
+                            <div id="filter_otherbtn_content" class="absolute"  >
+                                <div class="flexcolumn" style="margin: 20px;">
+                                    <div class="Label flexrow">
+                                        <div class="Label_title">類型</div>
+                                        <ul class="flexrow">
+                                            <li><input id="genre_wholefloorhome" class="Label_btn_off"  type="button" value="整層住家"></li>
+                                            <li><input id="genre_independentsuite" class="Label_btn_off"  type="button" value="獨立套房"></li>
+                                            <li><input id="genre_SubletSuite" class="Label_btn_off"  type="button" value="分租套房"></li>
+                                            <li><input id="genre_elegantroom" class="Label_btn_off"  type="button" value="雅房"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="Label flexrow">
+                                        <div class="Label_title">格局</div>
+                                        <ul class="flexrow">
+                                            <li><input id="pattern_1room" class="Label_btn_off"  type="button" value="1房"></li>
+                                            <li><input id="pattern_2room" class="Label_btn_off"  type="button" value="2房"></li>
+                                            <li><input id="pattern_3room" class="Label_btn_off"  type="button" value="3房"></li>
+                                            <li><input id="pattern_4room" class="Label_btn_off"  type="button" value="4房以上"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="Label flexrow">
+                                        <div class="Label_title">型態</div>
+                                        <ul class="flexrow">
+                                            <li><input id="type_apartment" class="Label_btn_off"  type="button" value="公寓"></li>
+                                            <li><input id="type_elevator_building" class="Label_btn_off"  type="button" value="電梯大樓"></li>
+                                            <li><input id="type_Tutiancuo" class="Label_btn_off"  type="button" value="透天厝"></li>
+                                            <li><input id="type_villa" class="Label_btn_off"  type="button" value="別墅"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="Label flexrow">
+                                        <div class="Label_title" style="width: 102px;margin: 5px;">設備</div>
+                                        <ul style="display: flex;flex-wrap: wrap;">
+                                            <li><input id="equipmentname_parkingspace" class="Label_btn_off"  type="button" value="車位"></li>
+                                            <li><input id="equipmentname_elevator" class="Label_btn_off"  type="button" value="電梯"></li>
+                                            <li><input id="equipmentname_Canpartner" class="Label_btn_off"  type="button" value="可開伙"></li>
+                                            <li><input id="equipmentname_bed" class="Label_btn_off"  type="button" value="床"></li>
+                                            <li><input id="equipmentname_tablesandchairs" class="Label_btn_off"  type="button" value="桌椅"></li>
+                                            <li><input id="equipmentname_waterheater" class="Label_btn_off"  type="button" value="熱水器"></li>
+                                            <li><input id="equipmentname_airconditioner" class="Label_btn_off"  type="button" value="冷氣"></li>
+                                            <li><input id="equipmentname_washingmachine" class="Label_btn_off"  type="button" value="洗衣機"></li>
+                                            <li><input id="equipmentname_Wardrobe" class="Label_btn_off"  type="button" value="衣櫃"></li>
+                                            <li><input id="equipmentname_refrigerator" class="Label_btn_off"  type="button" value="冰箱"></li>
+                                            <li><input id="equipmentname_naturalgas" class="Label_btn_off"  type="button" value="天然瓦斯"></li>
+                                            <li><input id="equipmentname_Thefourthstation" class="Label_btn_off"  type="button" value="第四台"></li>
+                                            <li><input id="equipmentname_sofa" class="Label_btn_off"  type="button" value="沙發"></li>
+                                            <li><input id="equipmentname_balcony" class="Label_btn_off"  type="button" value="陽台"></li>
+                                            <li><input id="equipmentname_TV" class="Label_btn_off"  type="button" value="電視"></li>
+                                            <li><input id="equipmentname_network" class="Label_btn_off"  type="button" value="網路"></li>
+                                        </ul>
+                                    </div>
+                                    <div style="margin: auto;padding-top: 10px;"><input id="submit_other" style="padding:0px 5px;;font-size: 1.3rem;border-radius: 10px;background-color: #000000;color: #fff;" type="button" value="確認"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="divnav">
                 <ul class="flexrow">
@@ -310,7 +494,8 @@
             </div>
         </div>
     </header>
-    <div id="content">
+    <div id="content" class="relative">
+        <div id="filter_mask" class="absolute" style="width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.6);display: none;"></div>
         <div id="content_in">
             
         </div>
@@ -374,144 +559,6 @@
         </div>
     </div>
 
-    <div id="filter" class="filter_Location">
-        <div id="body_width100" class="flexcenter">
-            <div id="filter-body_content">
-                <div id="filter-body_content_header">
-                    <div id="filter-body_content_header_content" class="flexbetween">
-                        <div></div>
-                        <span>篩選條件</span>
-                        <button id="filter_delete">X</button>
-                    </div>
-                </div>
-                <form>
-                <div id="filter-body_content_body">
-                    
-                    <div id="filter-body_content_body_content">
-                        <div class="filter_title">位置</div>
-                        <div class="location_drop_down flexrow spacing">
-                            <div id="Countycontent" class="drop-down flexcolumn">
-                                <span>縣市</span>
-                                <select id="County">
-                                    <option value="">縣市</option>
-                                    <option value="基隆市">基隆市</option>
-                                    <option value="台北市">台北市</option>
-                                    <option value="新北市">新北市</option>
-                                    <option value="桃園縣">桃園縣</option>
-                                    <option value="新竹市">新竹市</option>
-                                    <option value="新竹縣">新竹縣</option>
-                                    <option value="苗栗縣">苗栗縣</option>
-                                    <option value="台中市">台中市</option>
-                                    <option value="彰化縣">彰化縣</option>
-                                    <option value="南投縣">南投縣</option>
-                                    <option value="雲林縣">雲林縣</option>
-                                    <option value="嘉義市">嘉義市</option>
-                                    <option value="嘉義縣">嘉義縣</option>
-                                    <option value="台南市">台南市</option>
-                                    <option value="高雄市">高雄市</option>
-                                    <option value="屏東縣">屏東縣</option>
-                                    <option value="台東縣">台東縣</option>
-                                    <option value="花蓮縣">花蓮縣</option>
-                                    <option value="宜蘭縣">宜蘭縣</option>
-                                    <option value="澎湖縣">澎湖縣</option>
-                                    <option value="金門縣">金門縣</option>
-                                    <option value="連江縣">連江縣</option>
-                                </select>
-                            </div>
-                            <div id="Township" class="drop-down flexcolumn">
-                                <span>鄉鎮市區</span>
-                                <select id="town">
-                                    <option>--請選擇--</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="filter_title">租金範圍</div>
-                        <div class="amount flexrow spacing">
-                            <div id="minimum_amount" class="flexcolumn" style="width: 80px;">
-                                <span>最低價格</span>
-                                <input style="text-align: center;" id="rent1" type="number" >
-                            </div>
-                            <span>-</span>
-                            <div id="minimum_amount" class="flexcolumn" style="width: 80px;">
-                                <span>最高價格</span>
-                                <input style="text-align: center;"  id="rent2" type="number">
-                            </div>
-                        </div>
-                        <span id="filter_rent_text" class="validata"></span>
-                        <!-- <div class="filter_title">想看房時間</div>
-                        <dvi class="flexrow spacing">
-                            <input type="datetime-local">
-                            <span>-</span>
-                            <input type="datetime-local">
-                        </dvi> -->
-                        <div class="filter_title">房屋標籤</div>
-                    <div class="Label flexcolumn">
-                        <ul class="flexrow">
-                            <li class="Label_title">類型</li>
-                            <li><input id="genre_wholefloorhome" class="Label_btn_off"  type="button" value="整層住家"></li>
-                            <li><input id="genre_independentsuite" class="Label_btn_off"  type="button" value="獨立套房"></li>
-                            <li><input id="genre_SubletSuite" class="Label_btn_off"  type="button" value="分租套房"></li>
-                            <li><input id="genre_elegantroom" class="Label_btn_off"  type="button" value="雅房"></li>
-                        </ul>
-                    </div>
-                    <div class="Label flexcolumn">
-                        <ul class="flexrow">
-                            <li  class="Label_title">格局</li>
-                            <li><input id="pattern_1room" class="Label_btn_off"  type="button" value="1房"></li>
-                            <li><input id="pattern_2room" class="Label_btn_off"  type="button" value="2房"></li>
-                            <li><input id="pattern_3room" class="Label_btn_off"  type="button" value="3房"></li>
-                            <li><input id="pattern_4room" class="Label_btn_off"  type="button" value="4房以上"></li>
-                        </ul>
-                    </div>
-                    <div class="Label flexcolumn">
-                        <ul class="flexrow">
-                            <li  class="Label_title">型態</li>
-                            <li><input id="type_apartment" class="Label_btn_off"  type="button" value="公寓"></li>
-                            <li><input id="type_elevator_building" class="Label_btn_off"  type="button" value="電梯大樓"></li>
-                            <li><input id="type_Tutiancuo" class="Label_btn_off"  type="button" value="透天厝"></li>
-                            <li><input id="type_villa" class="Label_btn_off"  type="button" value="別墅"></li>
-                        </ul>
-                    </div>
-                    <div class="Label flexcolumn">
-                        <ul class="flexrow">
-                            <li  class="Label_title">設備</li>
-                            <li><input id="equipmentname_parkingspace" class="Label_btn_off"  type="button" value="車位"></li>
-                            <li><input id="equipmentname_elevator" class="Label_btn_off"  type="button" value="電梯"></li>
-                            <li><input id="equipmentname_Canpartner" class="Label_btn_off"  type="button" value="可開伙"></li>
-                            <li><input id="equipmentname_bed" class="Label_btn_off"  type="button" value="床"></li>
-                            <li><input id="equipmentname_tablesandchairs" class="Label_btn_off"  type="button" value="桌椅"></li>
-                            <li><input id="equipmentname_waterheater" class="Label_btn_off"  type="button" value="熱水器"></li>
-                            <li><input id="equipmentname_airconditioner" class="Label_btn_off"  type="button" value="冷氣"></li>
-                            <li><input id="equipmentname_washingmachine" class="Label_btn_off"  type="button" value="洗衣機"></li>
-                            <li><input id="equipmentname_Wardrobe" class="Label_btn_off"  type="button" value="衣櫃"></li>
-                            <li><input id="equipmentname_refrigerator" class="Label_btn_off"  type="button" value="冰箱"></li>
-                            <li><input id="equipmentname_naturalgas" class="Label_btn_off"  type="button" value="天然瓦斯"></li>
-                            <li><input id="equipmentname_Thefourthstation" class="Label_btn_off"  type="button" value="第四台"></li>
-                            <li><input id="equipmentname_sofa" class="Label_btn_off"  type="button" value="沙發"></li>
-                            <li><input id="equipmentname_balcony" class="Label_btn_off"  type="button" value="陽台"></li>
-                            <li><input id="equipmentname_TV" class="Label_btn_off"  type="button" value="電視"></li>
-                            <li><input id="equipmentname_network" class="Label_btn_off"  type="button" value="網路"></li>
-                        </ul>
-                    </div>
-                        <!-- <div class="filter_title">上架日期</div>
-                        <div class="credit_score spacing flexrow">
-                            <div><input type="button" value="遞增"></div>
-                            <div><input type="button" value="遞減"></div>
-                    </div> -->
-                    
-                    </div>
-                </div>
-                <div id="filter-body_content_footer">
-                    <div id="filter-body_content_footer_content" class="flexright">
-                        <input id="clearfilter_btn" class="filterbtn1" type="reset" value="清除"/>
-                        <input type="button" id="allfilter_btn" class="filterbtn2" value="顯示結果"/>
-
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
 
     
 
@@ -529,6 +576,7 @@
 <script src="/javascript/API/Members/Login.js"></script>
 
 
+<script src="/javascript/通用/filter_js.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
 
 <script src="/javascript/API/Rental/index.js"></script>

@@ -22,11 +22,7 @@
 
 .img1-8 div img{
     padding: 10px;
-    height: 420px ;
-}
-
-.img1-8 div div img{
-    height: 200px;
+    
 }
 
 .img1-8_img1{
@@ -41,10 +37,19 @@
 
 .img1-8_img2{
     border-top-right-radius:30px ;
-    
 }
 .img1-8_img3{
     border-bottom-right-radius:30px ;
+}
+
+.width_img1{
+    height: calc(420px - 0px) ;
+    width: calc(555px - 0px) ;
+}
+
+.width_img2{
+    height: calc(200px - 0px) ;
+    width: calc(300px - 0px) ;
 }
 
 .puttime{
@@ -198,7 +203,7 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     text-align:center;
 }
 /* .Choose_time_btn ul li{

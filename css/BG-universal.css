@@ -1,6 +1,5 @@
 *{
     padding: 0px;
-    margin: 0px;
     font-family: 'Microsoft JhengHei' ;
 }
 
@@ -10,7 +9,7 @@
 
 #content_in{
     width: 100%;
-    margin: 80px;
+    margin: 80px 80px 50px 80px;
 }
 
 
@@ -52,6 +51,7 @@
 .BG_img{
     width: 100px;
     margin:auto auto;
+    height: 75px;
 }
 
 .content_td8_divwidth{
