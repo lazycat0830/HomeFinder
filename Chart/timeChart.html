@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>使用 Chart JS 快速入門，來自 www.chartjs3.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        
+        .chartMenu p {
+            padding: 10px;
+            font-size: 20px;
+        }
+        
+        .chartCard {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            background: rgba(54, 162, 235, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chartBox {
+            width: 700px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 3px rgba(54, 162, 235, 1);
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chartCard">
+        <div class="chartBox">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script>
+        const config = {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: '預約時段',
+                    data: [],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'hour',
+                            displayFormats: {
+                                hour: 'HH:mm',
+                            },
+                        },
+                        min: null,
+                        max: null
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                var label = context.dataset.label || '';
+                                var timeStart = new Date(context.parsed.x[0]).toLocaleTimeString();
+                                var timeEnd = new Date(context.parsed.x[1]).toLocaleTimeString();
+                                var renter = context.parsed.y;
+                                return label + ': ' + timeStart + ' - ' + timeEnd + '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 渲染初始化區塊
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // 发送 GET 请求获取数据
+        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-05-28')
+            .then(response => response.json())
+            .then(data => {
+                const date = data[0].bookdate;
+
+                // 对从后端获取的数据进行处理
+            const chartData = data.map(item => {
+                const timeRange = item.booktime.split('-');
+                const startTime = new Date(`${date} ${timeRange[0]}`);
+                const endTime = new Date(`${date} ${timeRange[1]}`);
+                return {
+                    x: [startTime, endTime],
+                    y: item.renter
+                };
+            });
+                console.log(chartData);
+                // 更新图表数据和范围
+                myChart.data.datasets[0].data = chartData;
+                myChart.options.scales.x.min = `${date} 00:00`;
+                myChart.options.scales.x.max = `${date} 23:59`;
+                myChart.update();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+
+</html>

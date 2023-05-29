@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <title>Document</title>
 </head>
+<<<<<<< HEAD
 <body style="display: flex;justify-content: center;">
     <div class="content" style="display: flex;justify-content: center;">
         <div class="genre">
@@ -15,6 +16,16 @@
                 var ctx = document.getElementById('genreChart');
                 var genreChart = new Chart(ctx, {
                     type: 'doughnut',
+=======
+<body>
+    <div class="content" style="display: flex;">
+        <div class="genre">
+            <canvas id="genreChart" width="400" height="200"></canvas>
+            <script>
+                var ctx = document.getElementById('genreChart');
+                var genreChart = new Chart(ctx, {
+                    type: 'bar',
+>>>>>>> bb6e9d743616155e9171fbd7db6a1e3c359086fa
                     data: {
                         labels: [],
                         datasets: [{
@@ -26,6 +37,7 @@
                         }]
                     },
                     options: {
+<<<<<<< HEAD
                         legend: {
                             display: false // 將圖例項目設定為不顯示
                         },
@@ -37,6 +49,16 @@
                             //         precision: 0 // 刻度值的小數位數為 0
                             //     }
                             // }]
+=======
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 1, // 刻度間的間距設為 1
+                                    precision: 0 // 刻度值的小數位數為 0
+                                }
+                            }]
+>>>>>>> bb6e9d743616155e9171fbd7db6a1e3c359086fa
                         }
                     }
 
