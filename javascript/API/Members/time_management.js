@@ -56,7 +56,7 @@ deleteX_btn.onclick=function(){
 }
 
 function viewtime_management(changedate){
-    view_AjaxEdittime();
+    
     item_content.innerHTML=``;
     validataText_time.style.display='none';
     axios({
@@ -68,6 +68,7 @@ function viewtime_management(changedate){
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({ data })=> {
+        view_AjaxEdittime();
         console.log(data);
         if(data.dataList0==""){
             validataText_time.style.display='block';

@@ -208,19 +208,40 @@ function SaveTimebtn(event){
         },
     }).then(({ data })=> {
         console.log(data);
-        console.log(data.newtime.include(';'));
-        if(data.newtime.include(';')){
-            var newtime=data.newtime.split(';');
-            var newtime_id=newtime[id].split('-');
-            console.log(newtime[id]);
-                addgetTime=document.getElementById(`Timeli${id}`)
-                addgetTime.innerHTML=`
-                <div class="flexcolumn">
-                    <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
-                    <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
-                    <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
-                </div>
-                `;
+        console.log(data.newtime.includes(';'));
+        if(data.newtime!=""){
+            if(data.newtime.includes(';')){
+                var newtime=data.newtime.split(';');
+                var newtime_id=newtime[id].split('-');
+                console.log(newtime[id]);
+                    addgetTime=document.getElementById(`Timeli${id}`)
+                    addgetTime.innerHTML=`
+                    <div class="flexcolumn">
+                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
+                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
+                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
+                    </div>
+                    `;
+            }else{
+                var newtime_id=data.newtime.split('-');
+                    addgetTime=document.getElementById(`Timeli${id}`)
+                    addgetTime.innerHTML=`
+                    <div class="flexcolumn">
+                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
+                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
+                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
+                    </div>
+                    `;
+            }
+        }else{
+            addgetTime=document.getElementById(`Timeli${id}`)
+            addgetTime.innerHTML=`
+                    <div class="flexcolumn">
+                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
+                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
+                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
+                    </div>
+                    `;
         }
         
         
