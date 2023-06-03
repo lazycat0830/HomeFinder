@@ -67,7 +67,7 @@ window.onload = function() {
 };
 
 
-function view_AjaxEdittime(changedate){
+function view_AjaxEdittime(){
     
     
     var xhttp = new XMLHttpRequest();
@@ -75,7 +75,7 @@ function view_AjaxEdittime(changedate){
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("AjaxEdittime").innerHTML = this.responseText;
-            getDataTimeinput(changedate);
+            getDataTimeinput();
         }
     };
     
@@ -83,12 +83,12 @@ function view_AjaxEdittime(changedate){
     xhttp.send();
 }
 
-function getDataTimeinput(changedate){
-    console.log('BookOfDay date:',changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
+function getDataTimeinput(){
+    console.log('BookOfDay date:',date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     console.log('BookOfDay account:',LoginData.members.account);
 
     let formData=new FormData();
-    formData.append('date',changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
+    formData.append('date',date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     formData.append('account',LoginData.members.account);
 
     axios({
@@ -120,8 +120,8 @@ function getDataTimeinput(changedate){
                 <div class="flexcolumn">
                     <input id="start_time${event.target.id.replace('Editbtn_time','')}" type='time' style="font-size: 16px;text-align: center;"/>
                     <input id="end_time${event.target.id.replace('Editbtn_time','')}" type='time' style="font-size: 16px;text-align: center;"/>
-                    <input style="margin: 0px 20px;" id="Savebtn_time${event.target.id.replace('Editbtn_time','')}" onclick='SaveTimebtn(event,${changedate})' type="button"  value="完成">
-                    <input style="margin: 0px 20px;" id="Clearbtn_time${event.target.id.replace('Editbtn_time','')}" onclick='ClearTimebtn(event,${changedate})' type="button"  value="清除">
+                    <input style="margin: 0px 20px;" id="Savebtn_time${event.target.id.replace('Editbtn_time','')}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+                    <input style="margin: 0px 20px;" id="Clearbtn_time${event.target.id.replace('Editbtn_time','')}" onclick='ClearTimebtn(event)' type="button"  value="清除">
                 </div>
                 `;
                 let list_onetime=data.availableTimesArray[event.target.id.replace('Editbtn_time','')].split('-');
@@ -170,7 +170,7 @@ function postoneTime(){
     
 }
 
-function SaveTimebtn(event,changedate){
+function SaveTimebtn(event){
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
     console.log(id);
@@ -179,19 +179,22 @@ function SaveTimebtn(event,changedate){
         if(i==id){
             let start=document.getElementById(`start_time${id}`).value;
             let end=document.getElementById(`end_time${id}`).value;
-            data+=start+'-'+end+',';
-            console.log(data);
-            i++;
+            console.log(start);
+            console.log(end);
+            if(start!=''||end!=''){
+                data+=start+'-'+end+';';
+            }
         }else{
             let start=document.getElementById(`start_time${i}`).innerHTML;
             let end=document.getElementById(`end_time${i}`).innerHTML;
-            data+=start+'-'+end+',';
-            console.log(data);
+            data+=start+'-'+end+';';
         }
     }
+
+    console.log(date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     // console.log(changedate);
     // console.log(changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
-    console.log(data);
+    console.log(data.replace(/--:-----:--;/g,'').slice('0',-1));
     axios({
         method:'post',
         url:'http://localhost:5190/api/Time/SetSpecialTime',
@@ -200,11 +203,25 @@ function SaveTimebtn(event,changedate){
             "Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`,
         },data:{
-            date:changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'),
-            newtime:'',
+            date:date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'),
+            newtime:data.replace(/--:-----:--;/g,'').slice('0',-1),
         },
     }).then(({ data })=> {
         console.log(data);
+        console.log(data.newtime.include(';'));
+        if(data.newtime.include(';')){
+            var newtime=data.newtime.split(';');
+            var newtime_id=newtime[id].split('-');
+            console.log(newtime[id]);
+                addgetTime=document.getElementById(`Timeli${id}`)
+                addgetTime.innerHTML=`
+                <div class="flexcolumn">
+                    <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
+                    <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
+                    <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
+                </div>
+                `;
+        }
         
         
     }).catch(error=>{

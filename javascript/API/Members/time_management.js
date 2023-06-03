@@ -56,7 +56,7 @@ deleteX_btn.onclick=function(){
 }
 
 function viewtime_management(changedate){
-    view_AjaxEdittime(changedate);
+    view_AjaxEdittime();
     item_content.innerHTML=``;
     validataText_time.style.display='none';
     axios({
