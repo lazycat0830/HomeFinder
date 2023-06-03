@@ -36,12 +36,12 @@
     </style>
 </head>
 
-<body>
-    <div class="chartCard">
+<body style="display: flex;justify-content: center;">
+    <!-- <div class="chartCard"> -->
         <div class="chartBox">
             <canvas id="myChart"></canvas>
         </div>
-    </div>
+    <!-- </div> -->
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -92,7 +92,7 @@
         );
 
         // 发送 GET 请求获取数据
-        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-05-28')
+        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-06-12')
             .then(response => response.json())
             .then(data => {
                 const date = data[0].bookdate;

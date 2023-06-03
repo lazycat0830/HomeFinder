@@ -65,6 +65,23 @@ function view_typeCart(){
 
 }
 
+function view_timeCart(){
+    allno_on();
+    document.getElementById('four').classList='onChartbuttonList';
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("content1").innerHTML = this.responseText;
+            timeCart();
+        }
+    };
+    
+    xhttp.open("GET", "/Chart/timeChart.html", true);
+    xhttp.send();
+
+}
+
 function addressChart() {
     
     var ctx = document.getElementById('genreChart');
@@ -256,4 +273,77 @@ function allno_on(){
     document.getElementById('two').classList='ChartbuttonList';
     document.getElementById('three').classList='ChartbuttonList';
     document.getElementById('four').classList='ChartbuttonList';
+}
+
+function timeCart(){
+    
+    var ctx = document.getElementById('genreChart');
+    // 渲染初始化區塊
+    genreChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                datasets: [{
+                    label: '預約時段',
+                    data: [],
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'hour',
+                            displayFormats: {
+                                hour: 'HH:mm',
+                            },
+                        },
+                        min: null,
+                        max: null
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                var label = context.dataset.label || '';
+                                var timeStart = new Date(context.parsed.x[0]).toLocaleTimeString();
+                                var timeEnd = new Date(context.parsed.x[1]).toLocaleTimeString();
+                                var renter = context.parsed.y;
+                                return label + ': ' + timeStart + ' - ' + timeEnd + '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    );
+
+
+    // 发送 GET 请求获取数据
+    fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-06-03')
+        .then(response => response.json())
+        .then(data => {
+            const date = data[0].bookdate;
+
+            // 对从后端获取的数据进行处理
+        const chartData = data.map(item => {
+            const timeRange = item.booktime.split('-');
+            const startTime = new Date(`${date} ${timeRange[0]}`);
+            const endTime = new Date(`${date} ${timeRange[1]}`);
+            return {
+                x: [startTime, endTime],
+                y: item.renter
+            };
+        });
+            console.log(chartData);
+            // 更新图表数据和范围
+            myChart.data.datasets[0].data = chartData;
+            myChart.options.scales.x.min = `${date} 00:00`;
+            myChart.options.scales.x.max = `${date} 23:59`;
+            myChart.update();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }

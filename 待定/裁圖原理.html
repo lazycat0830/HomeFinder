@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <input type="file"/>
+    <div style="height: 300px;width: 300px;">
+        <img width="100%" height="100%" class="preview"/>
+    </div>
+    <button>生成</button>
+
+
+</body>
+</html>
+<script>
+    const inpFile=document.querySelector('input[type=file]');
+    const img=document.querySelector('.preview');
+    const btn =document.querySelector('button');
+
+    inpFile.onchange =(e)=>{
+        const file=e.target.files[0];
+        const reader =new FileReader();
+        reader.onload= e=>{
+            console.log(e.target.result);
+            img.src=e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
+    btn.onclick=function(){
+        const cutInfo={
+            x:500,
+            y:500,
+            cutWidth:300,
+            cutHeight:300,
+            width:100,
+            height:100
+        }
+        const canvas =document.createElement('canvas');
+        canvas.width=cutInfo.width;
+        canvas.height=cutInfo.height;
+        const ctx=canvas.getContext('2d');
+        ctx.drawImage(img,cutInfo.x,cutInfo.y,cutInfo.cutWidth,cutInfo.cutHeight,0,0,cutInfo.width,cutInfo.height);
+        
+        canvas.toBlob(blob=>{
+            
+            const file =new File([blob],'avatar.jpg',{
+                type:'image/jpeg'
+            })
+            console.log(file);
+        },'image/jpeg');
+        document.body.appendChild(canvas);
+    };
+
+</script>
+<!-- <script>
+    window.onload=function(){
+        let cutimg=document.getElementById('cutimg');
+        cutimg.addEventListener('mousemove',function(event){
+
+        });
+    }
+</script> -->

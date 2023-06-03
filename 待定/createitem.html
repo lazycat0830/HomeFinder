@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/createitem.css">
+    <link rel="stylesheet" href="/css/header-style.css">
+    <link rel="stylesheet" href="/css/typesetting.css">
+    <link rel="stylesheet" href="/css/popup_window_layout.css">
+</head>
+
+<body class="relative">
+
+<form>
+    <div id="content">
+        <div id="content_in">
+            <div class="upload_img">
+
+                <div class="title">上傳照片</div>
+
+                <div class="upload_img_content">
+                    <div class="flexcolumn relative">封面(圖1)<a id="inputImageview1" href="javascript:;" class="upload_img_btn">+</a><input name="img1_1" id="inputImage1" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖2<a id="inputImageview2" href="javascript:;" class="upload_img_btn">+</a><input name="img1_2" id="inputImage2" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖3<a id="inputImageview3" href="javascript:;" class="upload_img_btn">+</a><input name="img1_3" id="inputImage3" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖4<a id="inputImageview4" href="javascript:;" class="upload_img_btn">+</a><input name="img1_4" id="inputImage4" class="change" type="file" multiple="multiple"></div>
+                    <div class="flexcolumn relative">圖5<a id="inputImageview5" href="javascript:;" class="upload_img_btn">+</a><input name="img1_5" id="inputImage5" class="change" type="file" multiple="multiple"></div>
+
+                </div>
+                <span id="validataimg" class="validata"></span>
+
+            </div>
+
+</form>
+</body>
+<script>
+
+view1 = document.getElementById('inputImageview1');
+const inputImageview2 = document.getElementById('inputImageview2');
+const inputImageview3 = document.getElementById('inputImageview3');
+const inputImageview4 = document.getElementById('inputImageview4');
+const inputImageview5 = document.getElementById('inputImageview5');
+
+function swapImages(view1, view2) {
+  const temp = view1.style.backgroundImage;
+  view1.style.backgroundImage = view2.style.backgroundImage;
+  view2.style.backgroundImage = temp;
+}
+
+inputImage1.addEventListener('change', () => {
+  const file1 = inputImage1.files[0];
+  const img1 = new FileReader();
+
+  img1.onload = (event) => {
+    inputImageview1.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview1.style.backgroundSize = 'cover';
+    inputImageview1.innerHTML = "";
+  };
+
+  img1.readAsDataURL(file1);
+  console.log(file1);
+});
+
+inputImage2.addEventListener('change', () => {
+  const file2 = inputImage2.files[0];
+  const img2 = new FileReader();
+
+  img2.onload = (event) => {
+    inputImageview2.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview2.style.backgroundSize = 'cover';
+    inputImageview2.innerHTML = "";
+    swapImages(inputImageview1, inputImageview2);
+  };
+
+  img2.readAsDataURL(file2);
+  console.log(file2);
+});
+
+inputImage3.addEventListener('change', () => {
+  const file3 = inputImage3.files[0];
+  const img3 = new FileReader();
+
+  img3.onload = (event) => {
+    inputImageview3.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview3.style.backgroundSize = 'cover';
+    inputImageview3.innerHTML = "";
+    swapImages(inputImageview1, inputImageview3);
+  };
+
+  img3.readAsDataURL(file3);
+  console.log(file3);
+});
+
+inputImage4.addEventListener('change', () => {
+  const file4 = inputImage4.files[0];
+  const img4 = new FileReader();
+
+  img4.onload = (event) => {
+    inputImageview4.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview4.style.backgroundSize = 'cover';
+    inputImageview4.innerHTML = "";
+    swapImages(inputImageview1, inputImageview4);
+  };
+
+  img4.readAsDataURL(file4);
+  console.log(file4);
+});
+
+inputImage5.addEventListener('change', () => {
+  const file5 = inputImage5.files[0];
+  const img5 = new FileReader();
+
+  img5.onload = (event) => {
+    inputImageview5.style.backgroundImage = 'url(' + event.target.result + ')';
+    inputImageview5.style.backgroundSize = 'cover';
+    inputImageview5.innerHTML = "";
+    swapImages(inputImageview1, inputImageview5);
+  };
+
+  img5.readAsDataURL(file5);
+  console.log(file5);
+});
+
+</script>
+
+</html>
+

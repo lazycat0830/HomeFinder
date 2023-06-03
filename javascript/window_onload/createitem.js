@@ -2,6 +2,7 @@ window.onload = function() {
     
     console.log(LoginData);
     if(LoginData!=null){
+        console.log(LoginData.members.img);
         avatarimg.src=`${LoginData.members.img}`;
     }else{
         avatarimg.src='/image/default_avatar.jpeg';
