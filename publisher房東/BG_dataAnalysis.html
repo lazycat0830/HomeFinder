@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    
     <title>Document</title>
     <link rel="stylesheet" href="/css/BG-universal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="/css/BG_dataAnalysis.css">
     <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/header-style.css">
-    <link rel="stylesheet" href="/css/popup_window_layout.css"> 
+    <link rel="stylesheet" href="/css/popup_window_layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div id="login" class="login_Location">
@@ -138,10 +143,18 @@
                         <input id="four" class="ChartbuttonList" onclick="view_timeCart()" type="button" value="預約時間分析圖">
                     </div>
                     <div id="Chart" class="flexcolumn" >
-                        <div id="content1" style="width: 100%;justify-content: center;">
-                            
+                    <div style="display: flex;justify-content: center;align-items: center;padding: 5px 0px;">
+                        <div  id="Chart_day" style="display: none;">
+                            <button id="prev-day">&lt;</button>
+                            <input id="datepicker" style="text-align: center;" type="date"> 
+                            <button id="next-day">&gt;</button>
                         </div>
-                        <span style="width: 100%;text-align: right;">資料源：所有房東上架房屋數據</span>
+                    </div>
+                            <div id="content1" style="width: 100%;display: flex;justify-content: center;">
+                            
+                            </div>
+                    
+                        <!-- <span style="width: 100%;text-align: right;">資料源：所有房東上架房屋數據</span> -->
                     </div>
                 </div>
             </div>
@@ -149,6 +162,7 @@
     </div>
     
 </body>
+
 <script src="/javascript/window_onload/BG_dataAnalysis.js"></script>
 
 <script src="/javascript/API/Members/function.js"></script>
@@ -157,5 +171,7 @@
 
 <script src="/javascript/通用/mask.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
+
+
 
 </html>

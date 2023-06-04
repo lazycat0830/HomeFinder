@@ -67,7 +67,7 @@ window.onload = function() {
 };
 
 
-function view_AjaxEdittime(){
+function view_AjaxEdittime(booldata){
     
     
     var xhttp = new XMLHttpRequest();
@@ -75,7 +75,7 @@ function view_AjaxEdittime(){
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("AjaxEdittime").innerHTML = this.responseText;
-            getDataTimeinput();
+            getDataTimeinput(booldata);
         }
     };
     
@@ -83,7 +83,7 @@ function view_AjaxEdittime(){
     xhttp.send();
 }
 
-function getDataTimeinput(){
+function getDataTimeinput(booldata){
     console.log('BookOfDay date:',date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     console.log('BookOfDay account:',LoginData.members.account);
 
@@ -101,7 +101,7 @@ function getDataTimeinput(){
         },data:formData,
     }).then(({ data })=> {
         let Edittime=document.getElementById('Edittime');
-        for(var i=0;i<7;i++){
+        for(var i=0;i<6;i++){
             let addgetTime=document.createElement('li');
             addgetTime.id=`Timeli${i}`;
             addgetTime.innerHTML=`
@@ -122,13 +122,45 @@ function getDataTimeinput(){
                     <input id="end_time${event.target.id.replace('Editbtn_time','')}" type='time' style="font-size: 16px;text-align: center;"/>
                     <input style="margin: 0px 20px;" id="Savebtn_time${event.target.id.replace('Editbtn_time','')}" onclick='SaveTimebtn(event)' type="button"  value="完成">
                     <input style="margin: 0px 20px;" id="Clearbtn_time${event.target.id.replace('Editbtn_time','')}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+                    <input style="margin: 0px 20px;" id="noEditTimebtn_time${event.target.id.replace('Editbtn_time','')}"  type="button"  value="取消">
                 </div>
                 `;
-                let list_onetime=data.availableTimesArray[event.target.id.replace('Editbtn_time','')].split('-');
-                let start_time=document.getElementById(`start_time${event.target.id.replace('Editbtn_time','')}`);
-                let end_time=document.getElementById(`end_time${event.target.id.replace('Editbtn_time','')}`);
-                start_time.value=list_onetime[0];
-                end_time.value=list_onetime[1];
+                if(data.availableTimesArray[event.target.id.replace('Editbtn_time','')]!=undefined){
+                    let list_onetime=data.availableTimesArray[event.target.id.replace('Editbtn_time','')].split('-');
+                    let start_time=document.getElementById(`start_time${event.target.id.replace('Editbtn_time','')}`);
+                    let end_time=document.getElementById(`end_time${event.target.id.replace('Editbtn_time','')}`);
+                    start_time.value=list_onetime[0];
+                    end_time.value=list_onetime[1];
+                    
+                    let noEditTimebtn_time=document.getElementById(`noEditTimebtn_time${event.target.id.replace('Editbtn_time','')}`);
+                        noEditTimebtn_time.onclick=function(){
+                            addgetTime.innerHTML=`
+                        <div class="flexcolumn">
+                            <label id="start_time${event.target.id.replace('Editbtn_time','')}" style="font-size: 16px;text-align: center;">${list_onetime[0]}</label>
+                            <label id="end_time${event.target.id.replace('Editbtn_time','')}" style="font-size: 16px;text-align: center;">${list_onetime[1]}</label>
+                            <input style="margin: 0px 20px;" id="Editbtn_time${event.target.id.replace('Editbtn_time','')}" type="button"  value="修改">
+                        </div>
+                        `;
+                        for(var j=0;j<6;j++){
+                            
+                                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
+                                console.log(edit_timebtn);
+                                edit_timebtn.disabled=false;
+                            
+                        }
+                        }
+                        for(var j=0;j<6;j++){
+                            if(j!=event.target.id.replace('Editbtn_time','')){
+                                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
+                                console.log(edit_timebtn);
+                                edit_timebtn.disabled=true;
+                            }
+                        }
+                }
+                
+                
+
+
             }
         }
         console.log(data.availableTimesArray);
@@ -144,20 +176,21 @@ function getDataTimeinput(){
             }
             id++;
         });
-        
-
-
-    //     if(monlist!=""){
-    //         monlist.forEach(function(){
-    //        console.log(monlist[i]);
-    //        let monlist_onetime=monlist[i].split('-');
-    //        console.log(monlist_onetime);
-    //        let monup=document.getElementById(`monup${i+1}`);
-    //        monup.value=monlist_onetime[0];
-    //        let mondown=document.getElementById(`mondown${i+1}`);
-    //        mondown.value=monlist_onetime[1];
-    //        i++;
-    //    });
+        if(booldata){
+            for(var j=0;j<6;j++){
+                    let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
+                    console.log(edit_timebtn);
+                    edit_timebtn.disabled=true;
+                    document.getElementById('validataText_Ajaxtime').style.display='block';
+            }
+        }else{
+            for(var j=0;j<6;j++){
+                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
+                console.log(edit_timebtn);
+                edit_timebtn.disabled=false;
+                document.getElementById('validataText_Ajaxtime').style.display='none';
+        }
+        }
 
     }).catch(error=>{
         console.log(error);
@@ -165,12 +198,8 @@ function getDataTimeinput(){
 }
 
 
-function postoneTime(){
-    
-    
-}
-
 function SaveTimebtn(event){
+    window.onload();
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
     console.log(id);
@@ -181,7 +210,7 @@ function SaveTimebtn(event){
             let end=document.getElementById(`end_time${id}`).value;
             console.log(start);
             console.log(end);
-            if(start!=''||end!=''){
+            if(start!=''&&end!=''){
                 data+=start+'-'+end+';';
             }
         }else{
@@ -243,9 +272,21 @@ function SaveTimebtn(event){
                     </div>
                     `;
         }
-        
+        for(var j=0;j<6;j++){
+            if(j!=id){
+                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
+                console.log(edit_timebtn);
+                edit_timebtn.disabled=false;
+            }
+        }
         
     }).catch(error=>{
         console.log(error);
     })
+}
+
+function ClearTimebtn(event){
+    var id=event.target.id.replace('Clearbtn_time','');
+    document.getElementById(`start_time${id}`).value="";
+    document.getElementById(`end_time${id}`).value="";
 }

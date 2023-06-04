@@ -68,7 +68,8 @@ function viewtime_management(changedate){
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({ data })=> {
-        view_AjaxEdittime();
+        let booldata=false;
+        
         console.log(data);
         if(data.dataList0==""){
             validataText_time.style.display='block';
@@ -88,15 +89,20 @@ function viewtime_management(changedate){
                 
                 if(data.dataList1[i].bookdate==changedate){
                     validatatext=false;
+                    booldata=false;
                     console.log(bookdateTime);
                     console.log(bookdateTime.includes(data.dataList1[i].booktime));
                     if(bookdateTime.includes(data.dataList1[i].booktime)){
                         validatatext=true;
+                        booldata=true;
                         addtime_management(data.dataList1[i]);
+                        
                     }
+
                 }
                 i++;
             });
+
             if(validatatext){
                 validataText_time.style.display='none';
             }else{
@@ -105,7 +111,7 @@ function viewtime_management(changedate){
            
         
         }
-
+        view_AjaxEdittime(booldata);
     }).catch(error=>{
         console.error(error);
     });

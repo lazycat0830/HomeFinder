@@ -105,3 +105,25 @@
 #genreChart{
     width: 100%;
 }
+
+
+
+#prev-day{
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    background-color: #fff;
+    font-weight: bolder;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+#next-day{
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    background-color: #fff;
+    font-weight: bolder;
+    margin: 0px 10px;
+    cursor: pointer;
+}

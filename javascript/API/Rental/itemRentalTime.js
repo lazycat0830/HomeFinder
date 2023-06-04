@@ -185,6 +185,7 @@ function onclick_reservedate(availableTimesArray){
     deleteX_btn.onclick=function(){
         reserveText.style.display='none';
         deleteMask();
+        text.innerHTML='';
         location.reload();
     }
 }

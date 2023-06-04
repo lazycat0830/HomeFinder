@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>使用 Chart JS 快速入門，來自 www.chartjs3.com</title>
@@ -39,14 +41,15 @@
 <body style="display: flex;justify-content: center;">
     <!-- <div class="chartCard"> -->
         <div class="chartBox">
-            <canvas id="myChart"></canvas>
+            <canvas id="genreChart"></canvas>
         </div>
     <!-- </div> -->
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    
     <script>
-        const config = {
+        var ctx = document.getElementById('genreChart');
+    // 渲染初始化區塊
+    var genreChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 datasets: [{
@@ -84,39 +87,38 @@
                 }
             }
         }
+    );
 
-        // 渲染初始化區塊
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
 
-        // 发送 GET 请求获取数据
-        fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-06-12')
-            .then(response => response.json())
-            .then(data => {
-                const date = data[0].bookdate;
+    // 发送 GET 请求获取数据
+    // fetch('http://localhost:5190/api/AllData/DataFromBooked?account=publisher&date=2023-06-10',{
+    //     method:'GET',
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //         const date = data[0].bookdate;
 
-                // 对从后端获取的数据进行处理
-            const chartData = data.map(item => {
-                const timeRange = item.booktime.split('-');
-                const startTime = new Date(`${date} ${timeRange[0]}`);
-                const endTime = new Date(`${date} ${timeRange[1]}`);
-                return {
-                    x: [startTime, endTime],
-                    y: item.renter
-                };
-            });
-                console.log(chartData);
-                // 更新图表数据和范围
-                myChart.data.datasets[0].data = chartData;
-                myChart.options.scales.x.min = `${date} 00:00`;
-                myChart.options.scales.x.max = `${date} 23:59`;
-                myChart.update();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    //         // 对从后端获取的数据进行处理
+    //     const chartData = data.map(item => {
+    //         const timeRange = item.booktime.split('-');
+    //         const startTime = new Date(`${date} ${timeRange[0]}`);
+    //         const endTime = new Date(`${date} ${timeRange[1]}`);
+    //         return {
+    //             x: [startTime, endTime],
+    //             y: item.renter
+    //         };
+    //     });
+    //         console.log(chartData);
+    //         // 更新图表数据和范围
+    //         genreChart.data.datasets[0].data = chartData;
+    //         genreChart.options.scales.x.min = `${date} 00:00`;
+    //         genreChart.options.scales.x.max = `${date} 23:59`;
+    //         genreChart.update();
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
     </script>
 </body>
 
