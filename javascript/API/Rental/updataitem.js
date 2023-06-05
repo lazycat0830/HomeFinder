@@ -6,7 +6,7 @@ function addonBG_up(data,id){
     let upRental_onerental = document.createElement('tr');
     upRental_onerental.innerHTML=`
             <td>${id+1}</td>
-            <td><div class="flexcenter BG_img"><img src="${data.rentalBlock[id].allData.img1}" width="100%"></div></td>
+            <td><a onclick="onclickitem('${data.rentalBlock[id].allData.rental_id}')" class="flexcenter BG_img" style='cursor: pointer;'><img src="${data.rentalBlock[id].allData.img1}" width="100%"></a></td>
             <td>${data.rentalBlock[id].allData.title}</td>
             <td>${data.rentalBlock[id].allData.rent}</td>
             <td>${data.rentalBlock[id].allData.address}</td>

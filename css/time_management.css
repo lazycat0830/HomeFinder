@@ -159,6 +159,7 @@
 .item_content_img{
     width: 230px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .text1{
@@ -251,4 +252,41 @@
     text-align: center;
     padding: 0px 0px;
     margin: 5px 0px;
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+@media screen and (max-width: 1024px) {
+    .booked {
+        margin: 20px 120px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .booked {
+        margin: 20px 0px;
+    }
+    .title {
+        margin: 0px 0px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .text1{
+        font-size: 20px;
+    }
+    .text2{
+        font-size: 22px;
+    }
+    .text5{
+        font-size: 15px;
+    }
+    .booked {
+        margin: 0px 0px;
+    }
+    .cancel_appointment_btn{
+        white-space: nowrap;
+    }
+}
+@media screen and (max-width: 360px) {
+
 }

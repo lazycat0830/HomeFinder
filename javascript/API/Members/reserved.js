@@ -13,12 +13,12 @@ function viewAllReserved(data){
         
     // }
     item_content.innerHTML=`
-                <div class="item_content_img"><img width="100%" src="${data.img1}"></div>
+                <a onclick="onclickitem('${data.rental_id}')" class="item_content_img"><img width="100%" src="${data.img1}"></a>
                 <div class="flexcolumn" style='width:500px'>
-                    <span class="text1">${data.title}</span>
+                    <a onclick="onclickitem('${data.rental_id}')" class="text1">${data.title}</a>
                     <span class="text2">${data.bookdate} ${data.booktime}</span>
                     <span class="text5">${data.address}</span>
-                    <div class="flexbetween"><span class="text3">出租者：${data.publisher}</span></div>
+                    <a onclick="onclickAccount('${data.publisher}')" class="text3">出租者：${data.publisher}</a>
                 </div>
                 <div class="flexcolumn">
                     <a href='https://www.google.com/maps/search/?api=1&query=${data.address}' class="flexcenter" style="padding-bottom: 20px;"><img height="60px" src="/image/圖片2.png"></a>

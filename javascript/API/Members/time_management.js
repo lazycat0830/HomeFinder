@@ -16,12 +16,12 @@ function addtime_management(data){
         item_data.classList='flexbetween item_content';
         item_data.innerHTML=`
     
-        <div class="item_content_img"><img width="100%" src="${data.img1}"></div>
+        <a onclick="onclickitem('${data.rental_id}')" class="item_content_img"><img width="100%" src="${data.img1}"></a>
         <div class="flexcolumn" style='width:500px'>
             <span class="text1">${data.title}</span>
             <span class="text2">${data.bookdate} ${data.booktime}</span>
             <span class="text5">${data.address}</span>
-            <span class="text3">預約者：${data.renter}</span>
+            <a onclick="onclickAccount('${data.renter}')" class="text3" style="cursor: pointer;">預約者：${data.renter}</a>
         </div>
         <div class="flexcolumn">
             <a href='https://www.google.com/maps/search/?api=1&query=${data.address}' class="flexcenter" style="padding-bottom: 20px;"><img height="60px" src="/image/圖片2.png"></a>

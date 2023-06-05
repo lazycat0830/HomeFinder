@@ -130,8 +130,22 @@ function Editviewitemcontent(data,rental_id){
     let data_time=data.allData.uploadtime.replace(/\..*/g, "").replace("T", " | ");
     let content_in=document.getElementById('content_in');
     content_in.innerHTML=`
-            
-            <div class="img1-8 flexcenter relative">
+            <div id='View_oneimg'>
+                <div class="flexcenter relative Houseimg" style="z-index: 0;height: auto;" >
+                    <div id="rental_id${data.allData.rental_id}"style='width:100%;' href="/通用/item.html">
+                    <ul id="rentalul_id${data.allData.rental_id}">
+                        <li id="img0_${data.allData.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.image[0]}" /></li>
+                    </ul>
+                    
+                    </div>
+                    ${like}
+                    <input id='lastimg_${data.allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button" >
+                    <input id='nextimg_${data.allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
+                
+                </div>  
+            </div>
+
+            <div id='View_allimg' class="img1-8 flexcenter relative">
                 <div class="img1-8_img1_width">
                     <img id='img1-5_img1' class='img1-8_img1 width_img1' src="${img1}">
                 </div>
@@ -150,7 +164,7 @@ function Editviewitemcontent(data,rental_id){
             </div>
             <div class="puttime">上架時間：${data_time}</div>
             <div id="housing_information" class="flexcenter">
-                <div id="content_left flexcolumn">
+                <div id="content_left" class="flexcolumn">
                     <div class="house_title">${data.allData.title}</div>
                     <div class="house_type">
                         ${Combination}
@@ -295,7 +309,71 @@ function Editviewitemcontent(data,rental_id){
         }
     }
     // reservedate.style.display='block';
+    let Rental_ul=document.getElementById(`rentalul_id${data.allData.rental_id}`);
+    for(var j=1;j<=data.image.length-1;j++){
+        let addimg=document.createElement('li');
+        addimg.id=`img${j}_${data.allData.rental_id}`;
+        addimg.style.display='none';
+        addimg.innerHTML=`
+            <img height="100%" width="100%" src="${data.image[j]}" />
+        `;
+        console.log(Rental_ul);
+        console.log(addimg);
+        Rental_ul.appendChild(addimg);
+    }
+
     
+    
+    let lastimg_btn=document.getElementById(`lastimg_${data.allData.rental_id}`);
+    lastimg_btn.onclick=function(){
+        let imgblock='';
+        nextimg_btn.style.display='block';
+            for(var i=0;i<data.image.length;i++){
+                console.log(document.getElementById(`img${i}_${data.allData.rental_id}`).style.display)
+                if(document.getElementById(`img${i}_${data.allData.rental_id}`).style.display=='block'){
+                    imgblock=`img${i}_${data.allData.rental_id}`;
+                }
+                
+            }
+                console.log(imgblock);
+                console.log(parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1);
+                console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1}_${data.allData.rental_id}`);
+                console.log(document.getElementById(imgblock).style.display=='block');
+
+                if(document.getElementById(imgblock).style.display=='block'){
+                    if((imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))>0){
+                        document.getElementById(imgblock).style.display='none'
+                        document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1}_${data.allData.rental_id}`).style.display='block';
+                    }
+    
+            }   
+    }
+
+    let nextimg_btn=document.getElementById(`nextimg_${data.allData.rental_id}`);
+    nextimg_btn.onclick=function(){
+        lastimg_btn.style.display='block';
+        for(var i=0;i<data.image.length;i++){
+            console.log(document.getElementById(`img${i}_${data.allData.rental_id}`).style.display)
+            if(document.getElementById(`img${i}_${data.allData.rental_id}`).style.display=='block'){
+                imgblock=`img${i}_${data.allData.rental_id}`;
+            }else if(document.getElementById(`img${i}_${data.allData.rental_id}`).style.display=='none'){
+                console.log(imgblock);
+            }
+            
+        }
+            console.log(imgblock);
+            console.log(parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1);
+            console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1}_${data.allData.rental_id}`);
+            console.log(document.getElementById(imgblock).style.display=='block');
+
+            if(document.getElementById(imgblock).style.display=='block'){
+                if((imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))<data.image.length-1){
+                    document.getElementById(imgblock).style.display='none';
+                    document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1}_${data.allData.rental_id}`).style.display='block';
+                }
+            
+        } 
+    }
     
     var today = new Date();
     var year = today.getFullYear(); // 年份

@@ -21,10 +21,10 @@
 
 .Accountimg{
     width: 300px;
-    overflow: hidden;
     border: solid;
     /* height: 300px; */
-    
+    height: 300px;
+    background-size: cover;
 }
 
 
@@ -79,8 +79,9 @@
 }
 
 .Accounttext span{
-    font-size: 1.5rem;
+    font-size:3vw;;
     padding: 10px 0px;
+    white-space: nowrap;
 }
 
 .fraction{
@@ -140,7 +141,7 @@
     width: 100%;
     border-radius: 5%;
     overflow: hidden;
-    height: 13.5vw;
+    height: 100%;
 }
 
 .Housing_Profile a {
@@ -151,6 +152,7 @@
 .price {
     color: #ff0000;
     font-weight: bolder;
+    font-size: 1.3rem;
 }
 
 
@@ -162,6 +164,7 @@
     text-overflow: ellipsis;
     font-size: 1rem;
     padding: 3px 0px;
+    cursor: pointer;
 }
 .text2:hover{
     color: #ffa435;
@@ -222,6 +225,7 @@
     text-decoration: underline;
     font-size: 1rem;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 #pagination {
@@ -248,4 +252,117 @@
 .otherPage {
     color: #000;
     background-color: #ffffff;
+}
+
+@media screen and (max-width: 1400px) {
+    /* calc(100% - 24px); */
+}
+@media screen and (max-width: 1024px) {
+    .filter_centent_width{
+        width: 80%;
+    }
+    .filter_width{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 992px) {
+    .filter_centent_width{
+        width: 80%;
+    }
+    .Housing_Profile{
+        width: 25%;
+        z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        }
+    .text1{
+        font-size: 1rem;
+    }
+    .filter_width{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 859px) {
+    .filter_centent_width{
+        width: 65%;
+    }
+    .Housing_Profile{
+        width: 33.3%;
+        z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        
+    }
+    .filter_width{
+        width: 65%;
+    }
+    #other_value{
+        width: 90px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .filter_centent_width{
+        width: 65%;
+    }
+    .Housing_Profile{
+        width: 33.3%;
+        z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+        
+    }
+    .filter_width{
+        width: 65%;
+    }
+    #other_value{
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    #filter_view{
+        display:none;
+    }
+    
+}
+
+@media screen and (max-width: 576px) {
+    
+    .Housing_Profile{
+        width: 50%;
+        z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+    }
+    .Accountimg{
+        height: 240px;
+        width: 240px;
+    }
+    
+}
+@media screen and (max-width: 360px) {
+    .filter{
+        display:none;
+    }
+    .Housing_Profile{
+        width: 100%;
+        z-index: 0;
+    }
+    .Houseimg{
+        width: 100%;
+        border-radius: 5%;
+        overflow: hidden;
+    }
 }
