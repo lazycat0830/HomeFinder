@@ -105,8 +105,9 @@ save.onclick=function(){
     sat=sat.replace(/-;/g,'').slice(0, -1);
     sun=sunup1.value+'-'+sundown1.value+';'+sunup2.value+'-'+sundown2.value+';'+sunup3.value+'-'+sundown3.value+';'+sunup4.value+'-'+sundown4.value+';'+sunup5.value+'-'+sundown5.value+';'+sunup6.value+'-'+sundown6.value+';'
     sun=sun.replace(/-;/g,'').slice(0, -1);
+    
     postBookTime(LoginData);
-    location.reload();
+   
 }
 
 let reset=document.getElementById('reset');
@@ -150,7 +151,7 @@ function postBookTime(LoginData){
 })
         .then(( { data } ) => {
             console.log(data);
-
+            location.reload();
         })
         .catch(error => {
             console.log(error);
