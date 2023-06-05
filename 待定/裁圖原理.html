@@ -11,11 +11,12 @@
     
     <input type="file"/>
     <div style="height: 300px;width: 300px;">
-        <img width="100%" height="100%" class="preview"/>
+        <img id="img1" width="100%" height="100%" class="preview"/>
     </div>
     <button>生成</button>
 
-
+    <canvas id="canvas"></canvas>
+    
 </body>
 </html>
 <script>
@@ -31,6 +32,7 @@
             img.src=e.target.result;
         }
         reader.readAsDataURL(file);
+        canvasimg();
     }
 
     btn.onclick=function(){
@@ -59,11 +61,101 @@
     };
 
 </script>
-<!-- <script>
-    window.onload=function(){
-        let cutimg=document.getElementById('cutimg');
-        cutimg.addEventListener('mousemove',function(event){
-
-        });
+<script>
+    function canvasimg(){
+        const canvas =document.getElementById('canvas');
+  
+    class imgCrop{
+      constructor(canvasWrap,imgSrc){
+        this.canvasWrap=canvasWrap;
+        this.ctx=canvasWrap.getContext("2d");
+        this.imgSrc =imgSrc;
+  
+        this.imgLoad();
+        this.canvasWrap.addEventListener('mousemove',this.mouseMoveHandle.bind(this));
+        this.canvasWrap.addEventListener('mousedown',this.mouseDownHandle.bind(this));
+        this.canvasWrap.addEventListener('mouseup',this.mouseUpHandle.bind(this));
+        this.canvasWrap.addEventListener('mouseleave',this.mouseLeave.bind(this));
+      }
+      imgLoad(){
+        const img=new Image();
+        img.src=this.imgSrc;
+        img.onload=()=>{
+          this.sourceWidth=this.canvasWrap.width=img.width;
+          this.sourceHeight=this.canvasWrap.height=img.height;
+          this.imgObj =img;
+          this.x = this.sourceWidth * 0.25;
+          this.y = this.sourceHeight * 0.25;
+          this.width = this.sourceWidth * 0.5;
+          this.height = this.sourceHeight * 0.5;
+          this.drawImg();
+        }
+      }
+      drawImg(){
+        this.ctx.drawImage(this.imgObj,0,0,this.sourceWidth,this.sourceHeight);
+  
+        this.ctx.fillStyle='rgba(0,0,0,.5)';
+        this.ctx.fillRect(0,0,this.sourceWidth,this.sourceHeight);
+  
+        this.drawCrop();
+      }
+      drawCrop(){
+        this.ctx.clearRect(this.x,this.y,this.width,this.height);
+        this.ctx.drawImage(this.imgObj,this.x,this.y,this.width,this.height,this.x,this.y,this.width,this.height);
+        this.ctx.fillStyle='#fff';
+        this.ctx.fillRect(this.x+this.width-3,this.y+this.height-3,6,6);
+  
+      }
+      mouseMoveHandle(e){
+        const {offsetX,offsetY}=e;
+        let moveX =offsetX -this.downDffset?.[0];
+        let moveY=offsetY-this.downDffset?.[1];
+  
+  
+        if(offsetX>=this.x&&offsetX <= (this.x + this.width-10)&&
+          offsetY>=this.y&&offsetY <= (this.y + this.height-10)){
+            console.log('move');
+            this.canvasWrap.style.cursor='move';
+            if(this.isDown){
+              if(moveX>0&&this.x+moveX<this.sourceWidth-this.width)this.x+=moveX;
+              if(moveY>0&&this.y+moveY<this.sourceWidth-this.width)this.y+=moveY;
+              if(moveX<0&&this.x+moveX>0) this.x+=moveX;
+              if(moveY<0&&this.y+moveY>0) this.y+=moveY;
+              this.drawImg();
+              this.downDffset=[offsetX,offsetY];
+            }
+          }else if(offsetX>=(this.x + this.width-10)&&offsetX<=(this.x+this.width+10)&&
+          offsetY>=(this.y+this.height-10)&&offsetY<=(this.y +this.height+10)){
+            console.log('resize');
+            this.canvasWrap.style.cursor='nwse-resize';
+            if(this.isDown){
+              if(moveX>0 &&this.x<this.sourceWidth-this.width) this.width+=moveX;
+              if(moveY>0 &&this.y<this.sourceHeight-this.height) this.height+=moveY;
+              if(moveX<0&&this.width+moveX>=20) this.width+=moveX;
+              if(moveY<0&&this.height+moveY>=20) this.height+=moveY;
+              this.drawImg();
+              this.downDffset=[offsetX,offsetY];
+            }
+          }else{
+            console.log('default');
+            this.canvasWrap.style.cursor='default';
+          }
+      }
+      mouseDownHandle(e){
+        const{offsetX,offsetY} =e;
+        this.isDown=true;
+        this.downDffset ={offsetX,offsetY};
+      }
+  
+      mouseUpHandle(e){
+        this.isDown=false;
+  
+      }
+      mouseLeave(){
+        this.isDown=false;
+      }
+  
     }
-</script> -->
+    new imgCrop(canvas,document.getElementById('img1').src);
+    }
+  </script>

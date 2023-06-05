@@ -58,7 +58,7 @@ function addonRental(data,id){
         <div class="flexcenter relative Houseimg" style="z-index: 0;height: auto;" >
             <a id="rental_id${data.rentalBlock[id].allData.rental_id}" width="100%;" href="/通用/item.html">
             <ul id="rentalul_id${data.rentalBlock[id].allData.rental_id}">
-                <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
+                <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;" class='pic'><img  height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
             </ul>
             
             </a>
@@ -90,8 +90,9 @@ content_in.appendChild(Houseimg_Profile);
         let addimg=document.createElement('li');
         addimg.id=`img${j}_${data.rentalBlock[id].allData.rental_id}`;
         addimg.style.display='none';
+        addimg.classList='pic';
         addimg.innerHTML=`
-            <img height="100%" width="100%" src="${data.rentalBlock[id].image[j]}" />
+            <img  height="100%" width="100%" src="${data.rentalBlock[id].image[j]}" />
         `;
         console.log(Rental_ul);
         console.log(addimg);

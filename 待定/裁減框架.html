@@ -4,120 +4,145 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Cropper</title>
-  <style>
-    #imageContainer {
-      position: relative;
-      width: 400px;
-      height: 400px;
-      overflow: hidden;
-    }
-
-    #croppingArea {
-      position: absolute;
-      border: 2px dashed #000;
-      pointer-events: none;
-    }
-  </style>
+  <title>Document</title>
 </head>
 <body>
-  <input type="file" id="imageInput">
-  <div id="imageContainer"></div>
-  
-  <script>
-    var imageInput = document.getElementById('imageInput');
-    var imageContainer = document.getElementById('imageContainer');
+    <canvas id="canvas"></canvas>
+    <button id="uplaod">截圖</button>
+    <canvas id="preview" ></canvas>
 
-    var image = new Image();
-    var startX, startY, startLeft, startTop;
-    var isDragging = false;
-    var croppingArea = null;
+    
+</body>
+<script>
+  // const canvasWrap = document.getElementById('canvas');
+  // const previewWrap = document.getElementById('preview');
 
-    image.onload = function() {
-      var containerWidth = imageContainer.offsetWidth;
-      var containerHeight = imageContainer.offsetHeight;
-      var scale = Math.min(containerWidth / image.width, containerHeight / image.height);
-      var scaledWidth = image.width * scale;
-      var scaledHeight = image.height * scale;
-      var offsetX = (containerWidth - scaledWidth) / 2;
-      var offsetY = (containerHeight - scaledHeight) / 2;
+  class imgCrop {
+    constructor(canvasWrap,previewWrap,uploadWrap,imgSrc) {
+      this.canvasWrap=canvasWrap;
+      this.previewWrap=previewWrap;
+      this.uploadWrap=uploadWrap;
+      this.ctx=canvasWrap.getContext("2d");
+      this.previewCtx=previewWrap.getContext('2d');
+      this.imgSrc =imgSrc;
 
-      imageContainer.innerHTML = '';
-      imageContainer.appendChild(image);
-
-      image.style.width = scaledWidth + 'px';
-      image.style.height = scaledHeight + 'px';
-      image.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px)';
-
-      enableImageCropper();
-    };
-
-    imageInput.addEventListener('change', function(event) {
-      var file = event.target.files[0];
-      var reader = new FileReader();
-
-      reader.onload = function(e) {
-        image.src = e.target.result;
-      };
-
-      reader.readAsDataURL(file);
-    });
-
-    function enableImageCropper() {
-      image.addEventListener('mousedown', startDragging);
-      image.addEventListener('mousemove', drag);
-      image.addEventListener('mouseup', stopDragging);
-      image.addEventListener('mouseleave', stopDragging);
-
-      image.addEventListener('wheel', handleZoom);
+      this.imgLoad();
+      this.canvasWrap.addEventListener('mousemove',this.mouseMoveHandle.bind(this));
+      this.canvasWrap.addEventListener('mousedown',this.mouseDownHandle.bind(this));
+      this.canvasWrap.addEventListener('mouseup',this.mouseUpHandle.bind(this));
+      this.canvasWrap.addEventListener('mouseleave',this.mouseLeave.bind(this));
+      this.uploadWrap.addEventListener('click',this.uploadHandle.bind(this));
     }
-
-    function startDragging(event) {
-      event.preventDefault();
-      isDragging = true;
-      startX = event.clientX || event.touches[0].clientX;
-      startY = event.clientY || event.touches[0].clientY;
-      startLeft = parseInt(image.style.left) || 0;
-      startTop = parseInt(image.style.top) || 0;
-    }
-
-    function drag(event) {
-      if (!isDragging) return;
-      event.preventDefault();
-
-      var clientX = event.clientX || event.touches[0].clientX;
-      var clientY = event.clientY || event.touches[0].clientY;
-      var deltaX = clientX - startX;
-      var deltaY = clientY - startY;
-
-      image.style.left = startLeft + deltaX + 'px';
-      image.style.top = startTop + deltaY + 'px';
-    }
-
-    function stopDragging() {
-      isDragging = false;
-    }
-
-    function handleZoom(event) {
-      event.preventDefault();
-      var delta = event.deltaY || event.wheelDelta;
-      var zoom = delta > 0 ? 0 : 1;
-
-      if (zoom === 0) {
-        disableImageCropper();
-      } else {
-        enableImageCropper();
+    imgLoad(){
+      const img=new Image();
+      img.src=this.imgSrc;
+      img.onload=()=>{
+        this.sourceWidth=this.canvasWrap.width=img.width;
+        this.sourceHeight=this.canvasWrap.height=img.height;
+        this.imgObj =img;
+        this.x = this.sourceWidth * 0.25;
+        this.y = this.sourceHeight * 0.25;
+        this.width = this.sourceWidth * 0.5;
+        this.height = this.sourceHeight * 0.5;
+        this.drawImg();
       }
     }
+    drawImg(){
+      this.ctx.drawImage(this.imgObj,0,0,this.sourceWidth,this.sourceHeight);
 
-    function disableImageCropper() {
-      image.removeEventListener('mousedown', startDragging);
-      image.removeEventListener('mousemove', drag);
-      image.removeEventListener('mouseup', stopDragging);
-      image.removeEventListener('mouseleave', stopDragging);
+      this.ctx.fillStyle='rgba(0,0,0,.5)';
+      this.ctx.fillRect(0,0,this.sourceWidth,this.sourceHeight);
 
-      image.removeEventListener('wheel', handleZoom);
+      this.drawCrop();
     }
-  </script>
-</body>
+    drawCrop(){
+      this.ctx.clearRect(this.x,this.y,this.width,this.height);
+      this.ctx.drawImage(this.imgObj,this.x,this.y,this.width,this.height,this.x,this.y,this.width,this.height);
+      this.ctx.fillStyle='#fff';
+      this.ctx.fillRect(this.x+this.width-3,this.y+this.height-3,6,6);
+
+    }
+    mouseMoveHandle(e){
+      const {offsetX,offsetY}=e;
+      let moveX =offsetX -this.downDffset?.[0];
+      let moveY=offsetY-this.downDffset?.[1];
+
+      if(offsetX>=this.x&&offsetX <= (this.x + this.width-10)&&
+        offsetY>=this.y&&offsetY <= (this.y + this.height-10)){
+          this.canvasWrap.style.cursor='move';
+          if(this.isDown){
+            if(moveX>0&&this.x+moveX<this.sourceWidth-this.width)this.x+=moveX;
+            if(moveY>0&&this.y+moveY<this.sourceWidth-this.width)this.y+=moveY;
+            if(moveX<0&&this.x+moveX>0) this.x+=moveX;
+            if(moveY<0&&this.y+moveY>0) this.y+=moveY;
+            this.drawImg();
+            this.downDffset=[offsetX,offsetY];
+          }
+        }else if(offsetX>=(this.x + this.width-10)&&offsetX<=(this.x+this.width+10)&&
+        offsetY>=(this.y+this.height-10)&&offsetY<=(this.y +this.height+10)){
+          this.canvasWrap.style.cursor='nwse-resize';
+          if(this.isDown){
+            if(moveX>0 &&this.x<this.sourceWidth-this.width) this.width+=moveX;
+            if(moveY>0 &&this.y<this.sourceHeight-this.height) this.height+=moveY;
+            if(moveX<0&&this.width+moveX>=20) this.width+=moveX;
+            if(moveY<0&&this.height+moveY>=20) this.height+=moveY;
+            this.drawImg();
+            this.downDffset=[offsetX,offsetY];
+          }
+        }else{
+          this.canvasWrap.style.cursor='default';
+        }
+    }
+    mouseDownHandle(e){
+      const{offsetX,offsetY} =e;
+      this.isDown=true;
+      this.downDffset ={offsetX,offsetY};
+    }
+
+    mouseUpHandle(e){
+      this.isDown=false;
+
+    }
+    mouseLeave(){
+      this.isDown=false;
+    }
+
+    uploadHandle(){
+      this.previewWrap.width=this.width;
+      this.previewWrap.height=this.height;
+      this.previewCtx.drawImage(this.imgObj,this.x,this.y,this.width,this.height,0,0,this.width,this.height);
+      
+      this.download();
+    }
+    download(){
+      const url =this.previewWrap.toDataURL('image/jpg');
+      let arr=url.split(',');
+      let mime =arr[0].match(/:(.*?);/)[1];
+      let bstr =atob(arr[1]);
+      let n=bstr.length;
+      let uBarr =new Uint8Array(n);
+      while(n--){
+        uBarr[n]=bstr.charCodeAt(n);
+      }
+      let file = new File([uBarr], 'filename', { type: mime });
+      const aDom=document.createElement('a');
+      aDom.download=file.name;
+      // let href =URL.createObjectURL(file);
+      // aDom.href=href;
+      // document.body.appendChild(aDom);
+      // aDom.click();
+      // document.body.removeChild(aDom);
+      // URL.revokeObjectURL(href);
+
+      console.log(file);
+    }
+  }
+
+  const canvas = document.getElementById('canvas');
+  const preview = document.getElementById('preview');
+  const upload = document.getElementById('uplaod');
+
+  new imgCrop(canvas, preview, upload, '/image/海上月.jpg');
+
+</script>
 </html>
