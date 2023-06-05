@@ -43,8 +43,10 @@ function ViewBookOfDay(){
         if(data.availableTimesArray==""){
             Choosetime.innerHTML=`<li style='width:100%;font-size:16px;color: #f00;'>無預約時間</li>`
         }else{
-            data.availableTimesArray.forEach(function(){
-                addRentalTime(data.availableTimesArray[rental_Id],rental_Id);
+            var canTime=data.availableTimesArray[0].split(',');
+            canTime.forEach(function(){
+                
+                addRentalTime(canTime[rental_Id],rental_Id);
     
                 let changetime=document.getElementById(`changetime${rental_Id}`);
                 changetime.onclick=function(){

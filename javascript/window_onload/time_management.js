@@ -5,15 +5,11 @@ window.onload = function() {
     }else{
         avatarimg.src='/image/default_avatar.jpeg';
     }
-
         const dateText = document.getElementById('date');
         const datepicker = document.getElementById('datepicker');
         const prevDayBtn = document.getElementById('prev-day');
         const nextDayBtn = document.getElementById('next-day');
-
-
         var today = new Date();
-
         let selectedDate = today;
         const todayString = today.toLocaleDateString();
         dateText.innerHTML = todayString;
@@ -23,22 +19,17 @@ window.onload = function() {
         var day = ('0' + today.getDate()).slice(-2); 
         var dateInput = document.getElementById('datepicker'); 
         dateInput.value = year + '-' + month + '-' + day;
-
-
         datepicker.addEventListener('change', () => {
         selectedDate = new Date(datepicker.value);
         dateText.innerHTML = selectedDate.toLocaleDateString();
         viewtime_management(dateText.innerHTML);
         });
-
-
         prevDayBtn.addEventListener('click', () => {
         selectedDate.setDate(selectedDate.getDate() - 1);
         dateText.innerHTML = selectedDate.toLocaleDateString();
         viewtime_management(dateText.innerHTML);
         updateDatePicker(selectedDate);
         });
-
         nextDayBtn.addEventListener('click', () => {
         selectedDate.setDate(selectedDate.getDate() + 1);
         dateText.innerHTML = selectedDate.toLocaleDateString();
@@ -46,20 +37,16 @@ window.onload = function() {
         updateDatePicker(selectedDate);
         });
         
-
         viewtime_management(dateText.innerHTML);
-
         handleLogoutData(LoginData);
         console.log(LoginData);
         LoginData = JSON.parse(sessionStorage.getItem('LoginData'));   
-
         function updateDatePicker(date) {
             const dateString = date.toISOString().split('T')[0];
             datepicker.value = dateString;
             dateText.innerHTML = date.toLocaleDateString();
             // viewtime_management(date.toLocaleDateString());
         }
-
         // 初始化
         updateDatePicker(selectedDate);
         
@@ -67,28 +54,28 @@ window.onload = function() {
 };
 
 
-function view_AjaxEdittime(booldata){
-    
-    
+function view_AjaxEdittime(changedate){
+
+
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("AjaxEdittime").innerHTML = this.responseText;
-            getDataTimeinput(booldata);
+            getDataTimeinput(changedate);
         }
     };
-    
+
     xhttp.open("GET", "/publisher房東/Ajaxtime.html", true);
     xhttp.send();
 }
 
-function getDataTimeinput(booldata){
-    console.log('BookOfDay date:',date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
+function getDataTimeinput(changedate){
+    console.log('BookOfDay date:',changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     console.log('BookOfDay account:',LoginData.members.account);
 
     let formData=new FormData();
-    formData.append('date',date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
+    formData.append('date',changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     formData.append('account',LoginData.members.account);
 
     axios({
@@ -108,89 +95,60 @@ function getDataTimeinput(booldata){
             <div class="flexcolumn">
                 <label id="start_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
                 <label id="end_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
-                <input style="margin: 0px 20px;" id="Editbtn_time${i}" type="button"  value="修改">
+                <input style="margin: 0px 20px;" id="Editbtn_time${i}" onclick='EditTimebtn(event)' type="button"  value="修改">
             </div>
             `;
         Edittime.appendChild(addgetTime);
 
-            let EditTimebtn=document.getElementById(`Editbtn_time${i}`);
-            EditTimebtn.onclick=function(event){
-                console.log(event.target);
-                addgetTime.innerHTML=`
-                <div class="flexcolumn">
-                    <input id="start_time${event.target.id.replace('Editbtn_time','')}" type='time' style="font-size: 16px;text-align: center;"/>
-                    <input id="end_time${event.target.id.replace('Editbtn_time','')}" type='time' style="font-size: 16px;text-align: center;"/>
-                    <input style="margin: 0px 20px;" id="Savebtn_time${event.target.id.replace('Editbtn_time','')}" onclick='SaveTimebtn(event)' type="button"  value="完成">
-                    <input style="margin: 0px 20px;" id="Clearbtn_time${event.target.id.replace('Editbtn_time','')}" onclick='ClearTimebtn(event)' type="button"  value="清除">
-                    <input style="margin: 0px 20px;" id="noEditTimebtn_time${event.target.id.replace('Editbtn_time','')}"  type="button"  value="取消">
-                </div>
-                `;
-                if(data.availableTimesArray[event.target.id.replace('Editbtn_time','')]!=undefined){
-                    let list_onetime=data.availableTimesArray[event.target.id.replace('Editbtn_time','')].split('-');
-                    let start_time=document.getElementById(`start_time${event.target.id.replace('Editbtn_time','')}`);
-                    let end_time=document.getElementById(`end_time${event.target.id.replace('Editbtn_time','')}`);
-                    start_time.value=list_onetime[0];
-                    end_time.value=list_onetime[1];
-                    
-                    let noEditTimebtn_time=document.getElementById(`noEditTimebtn_time${event.target.id.replace('Editbtn_time','')}`);
-                        noEditTimebtn_time.onclick=function(){
-                            addgetTime.innerHTML=`
-                        <div class="flexcolumn">
-                            <label id="start_time${event.target.id.replace('Editbtn_time','')}" style="font-size: 16px;text-align: center;">${list_onetime[0]}</label>
-                            <label id="end_time${event.target.id.replace('Editbtn_time','')}" style="font-size: 16px;text-align: center;">${list_onetime[1]}</label>
-                            <input style="margin: 0px 20px;" id="Editbtn_time${event.target.id.replace('Editbtn_time','')}" type="button"  value="修改">
-                        </div>
-                        `;
-                        for(var j=0;j<6;j++){
-                            
-                                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
-                                console.log(edit_timebtn);
-                                edit_timebtn.disabled=false;
-                            
-                        }
-                        }
-                        for(var j=0;j<6;j++){
-                            if(j!=event.target.id.replace('Editbtn_time','')){
-                                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
-                                console.log(edit_timebtn);
-                                edit_timebtn.disabled=true;
-                            }
-                        }
-                }
-                
-                
-
-
-            }
+            // let EditTimebtn=document.getElementById(`Editbtn_time${i}`);
+            // EditTimebtn.onclick=function(event){
+            //     console.log(event.target);
+            //     var id=event.target.id.replace('Editbtn_time','');
+            //     addgetTime.innerHTML=`
+            //     <div class="flexcolumn">
+            //         <input id="start_time${id}" type='time' style="font-size: 16px;text-align: center;"/>
+            //         <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;"/>
+            //         <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+            //         <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+            //     </div>
+            //     `;
+            //     console.log(data.availableTimesArray[0]);
+            //     let allTime=data.availableTimesArray[0].split(',')
+            //     let list_onetime=allTime[id].split('-');
+            //     let start_time=document.getElementById(`start_time${id}`);
+            //     let end_time=document.getElementById(`end_time${id}`);
+            //     start_time.value=list_onetime[0];
+            //     end_time.value=list_onetime[1];
+            // }
         }
-        console.log(data.availableTimesArray);
+        console.log(data.availableTimesArray[0].split(','));
         var id=0;
-        data.availableTimesArray.forEach(function(){
-            if(data.availableTimesArray[id]!=""){
-                let list_onetime=data.availableTimesArray[id].split('-');
+        let AllTime=data.availableTimesArray[0].split(',');
+        AllTime.forEach(function(){
+            if(data.availableTimesArray[0]!=""){
+                let list_onetime=AllTime[id].split('-');
                 let start_time=document.getElementById(`start_time${id}`);
                 let end_time=document.getElementById(`end_time${id}`);
                 start_time.innerHTML=list_onetime[0];
                 end_time.innerHTML=list_onetime[1];
-                
+
             }
             id++;
         });
-        if(booldata){
-            for(var j=0;j<6;j++){
-                    let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
-                    console.log(edit_timebtn);
-                    edit_timebtn.disabled=true;
-                    document.getElementById('validataText_Ajaxtime').style.display='block';
-            }
-        }else{
-            for(var j=0;j<6;j++){
-                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
-                console.log(edit_timebtn);
-                edit_timebtn.disabled=false;
-                document.getElementById('validataText_Ajaxtime').style.display='none';
-        }
-        }
+
+
+
+    //     if(monlist!=""){
+    //         monlist.forEach(function(){
+    //        console.log(monlist[i]);
+    //        let monlist_onetime=monlist[i].split('-');
+    //        console.log(monlist_onetime);
+    //        let monup=document.getElementById(`monup${i+1}`);
+    //        monup.value=monlist_onetime[0];
+    //        let mondown=document.getElementById(`mondown${i+1}`);
+    //        mondown.value=monlist_onetime[1];
+    //        i++;
+    //    });
 
     }).catch(error=>{
         console.log(error);
@@ -198,8 +156,37 @@ function getDataTimeinput(booldata){
 }
 
 
+function EditTimebtn(event){
+    var id=event.target.id.replace('Editbtn_time','');
+    var start_time=document.getElementById(`start_time${id}`).innerHTML;
+    var end_time=document.getElementById(`end_time${id}`).innerHTML;
+    console.log(start_time,end_time);
+    let Timeli=document.getElementById(`Timeli${id}`);
+    if(start_time=='--:--'&&end_time=='--:--'){
+        Timeli.innerHTML=`
+        <div class="flexcolumn">
+            <input id="start_time${id}" type='time' style="font-size: 16px;text-align: center;" />
+            <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" />
+            <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+            <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+        </div>
+        `;
+    }else{
+        Timeli.innerHTML=`
+        <div class="flexcolumn">
+            <input id="start_time${id}" type='time' style="font-size: 16px;text-align: center;" value='${start_time}'/>
+            <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" value='${end_time}'/>
+            <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+            <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+        </div>
+        `;
+    }
+    
+                
+
+}
+
 function SaveTimebtn(event){
-    window.onload();
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
     console.log(id);
@@ -208,22 +195,22 @@ function SaveTimebtn(event){
         if(i==id){
             let start=document.getElementById(`start_time${id}`).value;
             let end=document.getElementById(`end_time${id}`).value;
-            console.log(start);
-            console.log(end);
             if(start!=''&&end!=''){
-                data+=start+'-'+end+';';
+                data+=start+'-'+end+',';
             }
+            console.log(data);
+            i++;
         }else{
             let start=document.getElementById(`start_time${i}`).innerHTML;
             let end=document.getElementById(`end_time${i}`).innerHTML;
-            data+=start+'-'+end+';';
+            data+=start+'-'+end+',';
+            console.log(data);
         }
     }
-
-    console.log(date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     // console.log(changedate);
     // console.log(changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
-    console.log(data.replace(/--:-----:--;/g,'').slice('0',-1));
+    console.log(document.getElementById('datepicker').value);
+    console.log(data.replace(/--:-----:--,/g,"").slice('0',-1));
     axios({
         method:'post',
         url:'http://localhost:5190/api/Time/SetSpecialTime',
@@ -232,54 +219,40 @@ function SaveTimebtn(event){
             "Accept": "application/json",
             "Authorization": `Bearer ${LoginData.token}`,
         },data:{
-            date:date.innerHTML.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'),
-            newtime:data.replace(/--:-----:--;/g,'').slice('0',-1),
+            date:document.getElementById('datepicker').value,
+            newtime:data.replace(/--:-----:--,/g,"").slice('0',-1),
         },
     }).then(({ data })=> {
+        document.getElementById('Edittime').innerHTML='';
         console.log(data);
-        console.log(data.newtime.includes(';'));
-        if(data.newtime!=""){
-            if(data.newtime.includes(';')){
-                var newtime=data.newtime.split(';');
-                var newtime_id=newtime[id].split('-');
-                console.log(newtime[id]);
-                    addgetTime=document.getElementById(`Timeli${id}`)
-                    addgetTime.innerHTML=`
-                    <div class="flexcolumn">
-                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
-                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
-                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
-                    </div>
-                    `;
-            }else{
-                var newtime_id=data.newtime.split('-');
-                    addgetTime=document.getElementById(`Timeli${id}`)
-                    addgetTime.innerHTML=`
-                    <div class="flexcolumn">
-                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[0]}</label>
-                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">${newtime_id[1]}</label>
-                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
-                    </div>
-                    `;
-            }
-        }else{
-            addgetTime=document.getElementById(`Timeli${id}`)
-            addgetTime.innerHTML=`
-                    <div class="flexcolumn">
-                        <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
-                        <label id="end_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
-                        <input style="margin: 0px 20px;" id="Editbtn_time${id}" type="button"  value="修改">
-                    </div>
-                    `;
-        }
+        var newTime=data.newtime.split(',');
+        var startTime,endTime;
+        console.log(newTime);
         for(var j=0;j<6;j++){
-            if(j!=id){
-                let edit_timebtn=document.getElementById(`Editbtn_time${j}`)
-                console.log(edit_timebtn);
-                edit_timebtn.disabled=false;
+            if(j<newTime.length){
+                console.log(newTime[j]);
+                onenewTime=newTime[j].split('-');
+                startTime=onenewTime[0];
+                endTime=onenewTime[1];
+            
+            }else{
+                console.log(j);
+                startTime='--:--';
+                endTime='--:--';
             }
-        }
+            let appendli= document.createElement('li');
+                appendli.id=`Timeli${j}`;
+                appendli.innerHTML=`
+                    <div class="flexcolumn">
+                        <label id="start_time${j}" style="font-size: 16px;text-align: center;">${startTime}</label>
+                        <label id="end_time${j}" style="font-size: 16px;text-align: center;">${endTime}</label>
+                        <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改">
+                    </div>
+                `;
+            document.getElementById('Edittime').appendChild(appendli);
+        };
         
+
     }).catch(error=>{
         console.log(error);
     })

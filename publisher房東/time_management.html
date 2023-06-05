@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/css/popup_window_layout.css">
 </head>
 <body  class="relative">
-
     <div id="delete_confirm" class="delete_confirm">
         <div id="body_width100" class="flexcenter">
             <div id="body_content">
@@ -34,7 +33,6 @@
     
         </div>
     </div>
-
     <div id="login" class="login_Location">
         <div id="body_width100" class="flexcenter">
             <div id="body_content">
@@ -50,7 +48,6 @@
                         <div class="t1"><label>帳號：</label><input id="LoginAccount" type="text"></div>
                         <div class="t1"><label>密碼：</label><input id="LoginPassword"  type="password"></div>
                         <div class="flexright t2"><button id="forgetpassword_btn">忘記密碼</button></div>
-
                         <div id="validataLogintext" class="validatatext"></div>
                         <button id="Loginbtn" class="btn1">登入</button>
                         <a href="/通用/signup.html"><button class="btn2">註冊</button></a>
@@ -59,7 +56,6 @@
             </div>
         </div>
     </div>
-
     <div id="forgetpassword" class="forgetpassword">
         <div id="body_width100" class="flexcenter">
             <div id="body_content">
@@ -82,7 +78,6 @@
     
         </div>
     </div>
-
 <header>
     <div class="relative">
         <div id="usermenu" class="absolute userfunction">
@@ -117,8 +112,8 @@
         </div>
         <div id="adminmenu" class="absolute userfunction">
             <ul>
-                <!-- <a href=""><li><button id="btnsign" type="button">數據分析</button></li></a> -->
-                <!-- <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a> -->
+                <a href=""><li><button id="btnsign" type="button">數據分析</button></li></a>
+                <a href="/admin管理者/super-dataAnalysis.html"><li><button id="btnsign" type="button">數據分析</button></li></a>
                 <a href="/admin管理者/super-setAccount.html"><li><button id="btnsign" type="button">帳號管理</button></li></a>
                 <a href="/admin管理者/super-audit.html"><li><button id="btnsign" type="button">房屋審核</button></li></a>
                 <hr>
@@ -140,8 +135,6 @@
 	<hr>
 	<div class="collect_header">時間管理</div>
     </header>
-
-
     <div id="content">
         <div id="content_in">
             <div class="selection_period flexcolumn">
@@ -153,9 +146,13 @@
                             <button id="next-day">&gt;</button>
                         </div>
                         <div class="flexcenter"><input type="date" id="datepicker" style="text-align: center; width: 200px;"></div>
+                        <!-- <div class="flexcenter" >
+                            <ul id="Edittime" class="flexrow" style="list-style: none;">
+                                
+                                </ul>
+                        </div> -->
                         <div id="AjaxEdittime" class="flexcenter" >
                         </div>
-                        <span id='validataText_Ajaxtime' style="width: 100%;text-align: center;font-size: 1rem;color: #ff0000;font-weight: bolder;">已有被預約資訊不可修改時間，請先取消預約才可修改，謝謝!</span>
                     </div>
                 <hr>
                 <div class="Show_reserved_properties">
@@ -166,7 +163,6 @@
                     <div id='validataText_time' class='flexcenter notime_manageText' style="text-align: center;">無被預約資訊</div>
                 </div>
                 
-
             </div>
         </div>
     </div>
@@ -174,21 +170,12 @@
 <!-- <script src="/javascript/loggedin.js"></script> -->
 <script src="/javascript/API/Members/time_management.js"></script>
 <script src="/javascript/window_onload/time_management.js"></script>
-
 <script src="/javascript/API/Members/function.js"></script>
 <script src="/javascript/API/Members/Logout.js"></script>
 <script src="/javascript/API/Members/Login.js"></script>
-
 <script src="/javascript/通用/mask.js"></script>
 <script src="/javascript/通用/popup_Login.js"></script>
 <script src="/javascript/通用/deleteBook-API.js"></script>
-
 <!-- <script src="/javascript/API/Members/register.js"></script> -->
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
-<script src="/javascript/通用/index-lookRentalaccount.js"></script>
-<script src="/javascript/通用/onclickitem.js"></script>
-
 </html>

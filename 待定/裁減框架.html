@@ -1,148 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-    <canvas id="canvas"></canvas>
-    <button id="uplaod">截圖</button>
-    <canvas id="preview" ></canvas>
+  <canvas id="canvas"></canvas>
+  <button id="uplaod">截圖</button>
+  <canvas id="preview"></canvas>
 
-    
-</body>
-<script>
-  // const canvasWrap = document.getElementById('canvas');
-  // const previewWrap = document.getElementById('preview');
+  <script>
+    class imgCrop {
+      constructor(canvasWrap, previewWrap, uploadWrap, imgSrc) {
+        this.canvasWrap = canvasWrap;
+        this.previewWrap = previewWrap;
+        this.uploadWrap = uploadWrap;
+        this.ctx = canvasWrap.getContext("2d");
+        this.previewCtx = previewWrap.getContext('2d');
+        this.imgSrc = imgSrc;
 
-  class imgCrop {
-    constructor(canvasWrap,previewWrap,uploadWrap,imgSrc) {
-      this.canvasWrap=canvasWrap;
-      this.previewWrap=previewWrap;
-      this.uploadWrap=uploadWrap;
-      this.ctx=canvasWrap.getContext("2d");
-      this.previewCtx=previewWrap.getContext('2d');
-      this.imgSrc =imgSrc;
-
-      this.imgLoad();
-      this.canvasWrap.addEventListener('mousemove',this.mouseMoveHandle.bind(this));
-      this.canvasWrap.addEventListener('mousedown',this.mouseDownHandle.bind(this));
-      this.canvasWrap.addEventListener('mouseup',this.mouseUpHandle.bind(this));
-      this.canvasWrap.addEventListener('mouseleave',this.mouseLeave.bind(this));
-      this.uploadWrap.addEventListener('click',this.uploadHandle.bind(this));
-    }
-    imgLoad(){
-      const img=new Image();
-      img.src=this.imgSrc;
-      img.onload=()=>{
-        this.sourceWidth=this.canvasWrap.width=img.width;
-        this.sourceHeight=this.canvasWrap.height=img.height;
-        this.imgObj =img;
-        this.x = this.sourceWidth * 0.25;
-        this.y = this.sourceHeight * 0.25;
-        this.width = this.sourceWidth * 0.5;
-        this.height = this.sourceHeight * 0.5;
-        this.drawImg();
+        this.imgLoad();
+        this.canvasWrap.addEventListener('mousemove', this.mouseMoveHandle.bind(this));
+        this.canvasWrap.addEventListener('mousedown', this.mouseDownHandle.bind(this));
+        this.canvasWrap.addEventListener('mouseup', this.mouseUpHandle.bind(this));
+        this.canvasWrap.addEventListener('mouseleave', this.mouseLeave.bind(this));
+        this.uploadWrap.addEventListener('click', this.uploadHandle.bind(this));
       }
-    }
-    drawImg(){
-      this.ctx.drawImage(this.imgObj,0,0,this.sourceWidth,this.sourceHeight);
-
-      this.ctx.fillStyle='rgba(0,0,0,.5)';
-      this.ctx.fillRect(0,0,this.sourceWidth,this.sourceHeight);
-
-      this.drawCrop();
-    }
-    drawCrop(){
-      this.ctx.clearRect(this.x,this.y,this.width,this.height);
-      this.ctx.drawImage(this.imgObj,this.x,this.y,this.width,this.height,this.x,this.y,this.width,this.height);
-      this.ctx.fillStyle='#fff';
-      this.ctx.fillRect(this.x+this.width-3,this.y+this.height-3,6,6);
-
-    }
-    mouseMoveHandle(e){
-      const {offsetX,offsetY}=e;
-      let moveX =offsetX -this.downDffset?.[0];
-      let moveY=offsetY-this.downDffset?.[1];
-
-      if(offsetX>=this.x&&offsetX <= (this.x + this.width-10)&&
-        offsetY>=this.y&&offsetY <= (this.y + this.height-10)){
-          this.canvasWrap.style.cursor='move';
-          if(this.isDown){
-            if(moveX>0&&this.x+moveX<this.sourceWidth-this.width)this.x+=moveX;
-            if(moveY>0&&this.y+moveY<this.sourceWidth-this.width)this.y+=moveY;
-            if(moveX<0&&this.x+moveX>0) this.x+=moveX;
-            if(moveY<0&&this.y+moveY>0) this.y+=moveY;
-            this.drawImg();
-            this.downDffset=[offsetX,offsetY];
-          }
-        }else if(offsetX>=(this.x + this.width-10)&&offsetX<=(this.x+this.width+10)&&
-        offsetY>=(this.y+this.height-10)&&offsetY<=(this.y +this.height+10)){
-          this.canvasWrap.style.cursor='nwse-resize';
-          if(this.isDown){
-            if(moveX>0 &&this.x<this.sourceWidth-this.width) this.width+=moveX;
-            if(moveY>0 &&this.y<this.sourceHeight-this.height) this.height+=moveY;
-            if(moveX<0&&this.width+moveX>=20) this.width+=moveX;
-            if(moveY<0&&this.height+moveY>=20) this.height+=moveY;
-            this.drawImg();
-            this.downDffset=[offsetX,offsetY];
-          }
-        }else{
-          this.canvasWrap.style.cursor='default';
+      imgLoad() {
+        const img = new Image();
+        img.src = this.imgSrc;
+        img.onload = () => {
+          this.sourceWidth = this.canvasWrap.width = 300;
+          this.sourceHeight = this.canvasWrap.height = 300;
+          this.imgObj = img;
+          this.x = this.sourceWidth * 0.25;
+          this.y = this.sourceHeight * 0.25;
+          this.width = this.sourceWidth * 0.5;
+          this.height = this.sourceHeight * 0.5;
+          this.drawImg();
         }
-    }
-    mouseDownHandle(e){
-      const{offsetX,offsetY} =e;
-      this.isDown=true;
-      this.downDffset ={offsetX,offsetY};
-    }
-
-    mouseUpHandle(e){
-      this.isDown=false;
-
-    }
-    mouseLeave(){
-      this.isDown=false;
-    }
-
-    uploadHandle(){
-      this.previewWrap.width=this.width;
-      this.previewWrap.height=this.height;
-      this.previewCtx.drawImage(this.imgObj,this.x,this.y,this.width,this.height,0,0,this.width,this.height);
-      
-      this.download();
-    }
-    download(){
-      const url =this.previewWrap.toDataURL('image/jpg');
-      let arr=url.split(',');
-      let mime =arr[0].match(/:(.*?);/)[1];
-      let bstr =atob(arr[1]);
-      let n=bstr.length;
-      let uBarr =new Uint8Array(n);
-      while(n--){
-        uBarr[n]=bstr.charCodeAt(n);
       }
-      let file = new File([uBarr], 'filename', { type: mime });
-      const aDom=document.createElement('a');
-      aDom.download=file.name;
-      // let href =URL.createObjectURL(file);
-      // aDom.href=href;
-      // document.body.appendChild(aDom);
-      // aDom.click();
-      // document.body.removeChild(aDom);
-      // URL.revokeObjectURL(href);
+      drawImg() {
+        this.ctx.drawImage(this.imgObj, 0, 0, this.sourceWidth, this.sourceHeight);
 
-      console.log(file);
+        this.ctx.fillStyle = 'rgba(0,0,0,.5)';
+        this.ctx.fillRect(0, 0, this.sourceWidth, this.sourceHeight);
+
+        this.drawCrop();
+      }
+      drawCrop() {
+        this.ctx.clearRect(0, 0, this.sourceWidth, this.sourceHeight);
+        this.ctx.drawImage(this.imgObj, 0, 0, this.sourceWidth, this.sourceHeight);
+        this.ctx.fillStyle = 'rgba(0,0,0,.5)';
+        this.ctx.fillRect(0, 0, this.sourceWidth, this.sourceHeight);
+
+        this.ctx.clearRect(this.x, this.y, this.width, this.height);
+        this.ctx.drawImage(this.imgObj, this.x, this.y, this.width, this.height, this.x, this.y, this.width, this.height);
+        this.ctx.fillStyle = '#fff';
+        this.ctx.fillRect(this.x + this.width - 3, this.y + this.height - 3, 6, 6);
+      }
+      mouseMoveHandle(e) {
+        const { offsetX, offsetY } = e;
+        let moveX = offsetX - this.downDffset?.[0];
+        let moveY = offsetY - this.downDffset?.[1];
+
+        if (offsetX >= this.x && offsetX <= (this.x + this.width - 10) &&
+          offsetY >= this.y && offsetY <= (this.y + this.height - 10)) {
+          this.canvasWrap.style.cursor = 'move';
+          if (this.isDown) {
+            if (moveX > 0 && this.x + moveX < this.sourceWidth - this.width) this.x += moveX;
+            if (moveY > 0 && this.y + moveY < this.sourceWidth - this.width) this.y += moveY;
+            if (moveX < 0 && this.x + moveX > 0) this.x += moveX;
+            if (moveY < 0 && this.y + moveY > 0) this.y += moveY;
+            this.drawImg();
+            this.downDffset = [offsetX, offsetY];
+          }
+        } else if (offsetX >= (this.x + this.width - 10) && offsetX <= (this.x + this.width + 10) &&
+          offsetY >= (this.y + this.height - 10) && offsetY <= (this.y + this.height + 10)) {
+          this.canvasWrap.style.cursor = 'nwse-resize';
+          if (this.isDown) {
+            if (moveX > 0 && this.x < this.sourceWidth - this.width) this.width += moveX;
+            if (moveY > 0 && this.y < this.sourceHeight - this.height) this.height += moveY;
+            if (moveX < 0 && this.width + moveX >= 20) this.width += moveX;
+            if (moveY < 0 && this.height + moveY >= 20) this.height += moveY;
+            this.drawImg();
+            this.downDffset = [offsetX, offsetY];
+          }
+        } else {
+          this.canvasWrap.style.cursor = 'default';
+        }
+      }
+      mouseDownHandle(e) {
+        const { offsetX, offsetY } = e;
+        this.isDown = true;
+        this.downDffset = { offsetX, offsetY };
+      }
+
+      mouseUpHandle(e) {
+        this.isDown = false;
+
+      }
+      mouseLeave() {
+        this.isDown = false;
+      }
+
+      uploadHandle() {
+        this.previewWrap.width = this.width;
+        this.previewWrap.height = this.height;
+        this.previewCtx.drawImage(this.imgObj, this.x, this.y, this.width, this.height, 0, 0, this.width, this.height);
+
+        this.download();
+      }
+      download() {
+        const url = this.previewWrap.toDataURL('image/jpg');
+        let arr = url.split(',');
+        let mime = arr[0].match(/:(.*?);/)[1];
+        let bstr = atob(arr[1]);
+        let n = bstr.length;
+        let uBarr = new Uint8Array(n);
+        while (n--) {
+          uBarr[n] = bstr.charCodeAt(n);
+        }
+        let file = new File([uBarr], 'filename', { type: mime });
+        const aDom = document.createElement('a');
+        aDom.download = file.name;
+        console.log(file);
+      }
     }
-  }
 
-  const canvas = document.getElementById('canvas');
-  const preview = document.getElementById('preview');
-  const upload = document.getElementById('uplaod');
+    const canvas = document.getElementById('canvas');
+    const preview = document.getElementById('preview');
+    const upload = document.getElementById('uplaod');
 
-  new imgCrop(canvas, preview, upload, '/image/海上月.jpg');
+    new imgCrop(canvas, preview, upload, '/image/海上月.jpg');
+  </script>
+</body>
 
-</script>
 </html>
