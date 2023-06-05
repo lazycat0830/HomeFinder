@@ -54,7 +54,7 @@ window.onload = function() {
 };
 
 
-function view_AjaxEdittime(changedate){
+function view_AjaxEdittime(changedate,validatatext){
 
 
     var xhttp = new XMLHttpRequest();
@@ -62,7 +62,7 @@ function view_AjaxEdittime(changedate){
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("AjaxEdittime").innerHTML = this.responseText;
-            getDataTimeinput(changedate);
+            getDataTimeinput(changedate,validatatext);
         }
     };
 
@@ -70,7 +70,7 @@ function view_AjaxEdittime(changedate){
     xhttp.send();
 }
 
-function getDataTimeinput(changedate){
+function getDataTimeinput(changedate,validatatext){
     console.log('BookOfDay date:',changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     console.log('BookOfDay account:',LoginData.members.account);
 
@@ -95,7 +95,7 @@ function getDataTimeinput(changedate){
             <div class="flexcolumn">
                 <label id="start_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
                 <label id="end_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
-                <input style="margin: 0px 20px;" id="Editbtn_time${i}" onclick='EditTimebtn(event)' type="button"  value="修改">
+                <input style="margin: 0px 20px;" id="Editbtn_time${i}" onclick='EditTimebtn(event)' type="button"  value="修改" >
             </div>
             `;
         Edittime.appendChild(addgetTime);
@@ -134,6 +134,12 @@ function getDataTimeinput(changedate){
 
             }
             id++;
+
+            if(validatatext){
+                disabledtrue_btn();
+            }else{
+                disabledfalse_btn();
+            }
         });
 
 
@@ -252,7 +258,7 @@ function SaveTimebtn(event){
                     <div class="flexcolumn">
                         <label id="start_time${j}" style="font-size: 16px;text-align: center;">${startTime}</label>
                         <label id="end_time${j}" style="font-size: 16px;text-align: center;">${endTime}</label>
-                        <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改">
+                        <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改" >
                     </div>
                 `;
             document.getElementById('Edittime').appendChild(appendli);
@@ -264,24 +270,27 @@ function SaveTimebtn(event){
     })
 }
 
+let clearbtn_start,clearbtn_end;
 function ClearTimebtn(event){
     var id=event.target.id.replace('Clearbtn_time','');
+    clearbtn_start=document.getElementById(`start_time${id}`).value;
+    clearbtn_end=document.getElementById(`end_time${id}`).value;
     document.getElementById(`start_time${id}`).value="";
     document.getElementById(`end_time${id}`).value="";
 }
 
 function NoTimebtn(event){
     var id=event.target.id.replace('NoTimebtn_time','');
-    var start_time=document.getElementById(`start_time${id}`).value;
-    var end_time=document.getElementById(`end_time${id}`).value;
+    var start_time=clearbtn_start;
+    var end_time=clearbtn_end;
     console.log(start_time,end_time);
     let Timeli=document.getElementById(`Timeli${id}`);
-    if(start_time==''&&end_time==''){
+    if(start_time==undefined&&end_time==undefined){
         Timeli.innerHTML=`
         <div class="flexcolumn">
             <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
             <label id="end_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
-            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改">
+            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改" >
         </div>
         `;
     }else{
@@ -289,8 +298,22 @@ function NoTimebtn(event){
         <div class="flexcolumn">
             <label id="start_time${id}" style="font-size: 16px;text-align: center;">${start_time}</label>
             <label id="end_time${id}" style="font-size: 16px;text-align: center;">${end_time}</label>
-            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改">
+            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改" >
         </div>
         `;
+    }
+}
+
+function disabledtrue_btn(){
+    for(var i=0;i<6;i++){
+        let Editbtn_disabled=document.getElementById(`Editbtn_time${i}`);
+        Editbtn_disabled.disabled=true;
+    }
+}
+
+function disabledfalse_btn(){
+    for(var i=0;i<6;i++){
+        let Editbtn=document.getElementById(`Editbtn_time${i}`);
+        Editbtn.disabled=false;
     }
 }

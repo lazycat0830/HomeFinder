@@ -65,7 +65,8 @@ function viewtime_management(changedate){
             "Authorization": `Bearer ${LoginData.token}`,
         },
     }).then(({ data })=> {
-        view_AjaxEdittime(changedate);
+        
+        
         console.log(data);
         if(data.dataList0==""){
             validataText_time.style.display='block';
@@ -87,20 +88,25 @@ function viewtime_management(changedate){
                     validatatext=false;
                     console.log(bookdateTime);
                     console.log(bookdateTime.includes(data.dataList1[i].booktime));
+                    
                     if(bookdateTime.includes(data.dataList1[i].booktime)){
                         validatatext=true;
                         addtime_management(data.dataList1[i]);
+                        
                     }
+                    
                 }
                 i++;
             });
             if(validatatext){
                 validataText_time.style.display='none';
+                
             }else{
                 validataText_time.style.display='block';
+                
             }
            
-        
+            view_AjaxEdittime(changedate,validatatext);
         }
     }).catch(error=>{
         console.error(error);
