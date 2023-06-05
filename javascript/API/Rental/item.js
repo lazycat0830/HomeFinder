@@ -13,6 +13,7 @@ let equipment_img_tablesandchairs;
 let equipment_img_balcony;
 let equipment_img_elevator;
 let equipment_img_parkingspace;
+let equipment_img_food;
 let styleclass_1,styleclass_2,styleclass_3,styleclass_4,styleclass_5,styleclass_6,styleclass_7,styleclass_8,styleclass_9,styleclass_10,styleclass_11,styleclass_12,styleclass_13,styleclass_14,styleclass_15;
 let Combination="";
 let reserveText=document.getElementById('reserveText');
@@ -179,7 +180,7 @@ function Editviewitemcontent(data,rental_id){
                         <div class="equipment">
                             <span class='title'>設備與服務</span>
                             <div class="equipment_label">
-                                <ul>
+                                <ul style='width:535px;'>
                                     <li>
                                         <div><img height=50px src="${equipment_img_refrigerator}"></div>
                                         <div style='${styleclass_1}'>冰箱</div>
@@ -239,6 +240,10 @@ function Editviewitemcontent(data,rental_id){
                                     <li>
                                         <div><img height=50px src="${equipment_img_parkingspace}"></div>
                                         <div style='${styleclass_15}'>車位</div>
+                                    </li>
+                                    <li>
+                                        <div><img height=50px src="${equipment_img_food}"></div>
+                                        <div style='${styleclass_15}'>可開伙</div>
                                     </li>
                                 </ul>
                             </div>
@@ -420,15 +425,15 @@ function judgment_equipment(equipmentname){
         styleclass_1="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('洗衣機')){
-        equipment_img_washingmachine='/image/equipmentname_img/have/洗衣機.svg';
+        equipment_img_washingmachine='/image/equipmentname_img/have/洗衣機.png';
     }else{
-        equipment_img_washingmachine='/image/equipmentname_img/nohave/洗衣機.svg';
+        equipment_img_washingmachine='/image/equipmentname_img/nohave/洗衣機.png';
         styleclass_2="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('電視')){
-        equipment_img_TV='/image/equipmentname_img/have/電視.svg';
+        equipment_img_TV='/image/equipmentname_img/have/電視.png';
     }else{
-        equipment_img_TV='/image/equipmentname_img/nohave/電視.svg';
+        equipment_img_TV='/image/equipmentname_img/nohave/電視.png';
         styleclass_3="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('冷氣')){
@@ -444,9 +449,9 @@ function judgment_equipment(equipmentname){
         styleclass_5="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('床')){
-        equipment_img_bed='/image/equipmentname_img/have/床.svg';
+        equipment_img_bed='/image/equipmentname_img/have/床.png';
     }else{
-        equipment_img_bed='/image/equipmentname_img/nohave/床.svg';
+        equipment_img_bed='/image/equipmentname_img/nohave/床.png';
         styleclass_6="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('衣櫃')){
@@ -456,15 +461,15 @@ function judgment_equipment(equipmentname){
         styleclass_7="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('第四台')){
-        equipment_img_Fourth='/image/equipmentname_img/have/第四台.png';
+        equipment_img_Fourth='/image/equipmentname_img/have/第四台.jpg';
     }else{
-        equipment_img_Fourth='/image/equipmentname_img/nohave/第四台.png';
+        equipment_img_Fourth='/image/equipmentname_img/nohave/第四台.jpg';
         styleclass_8="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('網路')){
-        equipment_img_network='/image/equipmentname_img/have/網路.svg';
+        equipment_img_network='/image/equipmentname_img/have/網路.png';
     }else{
-        equipment_img_network='/image/equipmentname_img/nohave/網路.svg';
+        equipment_img_network='/image/equipmentname_img/nohave/網路.png';
         styleclass_9="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('天然瓦斯')){
@@ -474,9 +479,9 @@ function judgment_equipment(equipmentname){
         styleclass_10="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('沙發')){
-        equipment_img_sofa='/image/equipmentname_img/have/沙發.svg';
+        equipment_img_sofa='/image/equipmentname_img/have/沙發.png';
     }else{
-        equipment_img_sofa='/image/equipmentname_img/nohave/沙發.svg';
+        equipment_img_sofa='/image/equipmentname_img/nohave/沙發.png';
         styleclass_11="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('桌椅')){
@@ -492,15 +497,21 @@ function judgment_equipment(equipmentname){
         styleclass_13="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('電梯')){
-        equipment_img_elevator='/image/equipmentname_img/have/電梯.svg';
+        equipment_img_elevator='/image/equipmentname_img/have/電梯.png';
     }else{
-        equipment_img_elevator='/image/equipmentname_img/nohave/電梯.svg';
+        equipment_img_elevator='/image/equipmentname_img/nohave/電梯.png';
         styleclass_14="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('車位')){
-        equipment_img_parkingspace='/image/equipmentname_img/have/車位.png';
+        equipment_img_parkingspace='/image/equipmentname_img/have/車位.jpg';
     }else{
-        equipment_img_parkingspace='/image/equipmentname_img/nohave/車位.png';
+        equipment_img_parkingspace='/image/equipmentname_img/nohave/車位.jpg';
+        styleclass_15="text-decoration: line-through;color:#919191;"
+    }
+    if(equipmentname.includes('可開伙')){
+        equipment_img_food='/image/equipmentname_img/have/可開火.png';
+    }else{
+        equipment_img_food='/image/equipmentname_img/nohave/可開火.png';
         styleclass_15="text-decoration: line-through;color:#919191;"
     }
 }

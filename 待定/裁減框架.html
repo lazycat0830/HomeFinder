@@ -1,71 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Cropper</title>
+  <style>
+    #imageContainer {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    #croppingArea {
+      position: absolute;
+      border: 2px dashed #000;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-    <div style="position: relative;height: 400px;width: 400px;background-color: aquamarine;">
+  <input type="file" id="imageInput">
+  <div id="imageContainer"></div>
+  
+  <script>
+    var imageInput = document.getElementById('imageInput');
+    var imageContainer = document.getElementById('imageContainer');
 
-        <div style="position: absolute;height:400px;width:400px;margin: auto auto;">
-            <div id="topborder" style="border-top: 4px #000 solid;width: 50px;"></div>
-            <div >
-              <div  id="topborder" style="border-top: 4px #000 solid;width: 50px;"></div>
-              <div  id="myDiv" style="background-color: rgb(0, 55, 27);height:50px;width:50px;"></div>
-            </div>
-            <div id="bottomborder" style="border-bottom: 4px #000 solid;width: 50px;"></div>
-        </div>
-    </div>
+    var image = new Image();
+    var startX, startY, startLeft, startTop;
+    var isDragging = false;
+    var croppingArea = null;
+
+    image.onload = function() {
+      var containerWidth = imageContainer.offsetWidth;
+      var containerHeight = imageContainer.offsetHeight;
+      var scale = Math.min(containerWidth / image.width, containerHeight / image.height);
+      var scaledWidth = image.width * scale;
+      var scaledHeight = image.height * scale;
+      var offsetX = (containerWidth - scaledWidth) / 2;
+      var offsetY = (containerHeight - scaledHeight) / 2;
+
+      imageContainer.innerHTML = '';
+      imageContainer.appendChild(image);
+
+      image.style.width = scaledWidth + 'px';
+      image.style.height = scaledHeight + 'px';
+      image.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px)';
+
+      enableImageCropper();
+    };
+
+    imageInput.addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        image.src = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    function enableImageCropper() {
+      image.addEventListener('mousedown', startDragging);
+      image.addEventListener('mousemove', drag);
+      image.addEventListener('mouseup', stopDragging);
+      image.addEventListener('mouseleave', stopDragging);
+
+      image.addEventListener('wheel', handleZoom);
+    }
+
+    function startDragging(event) {
+      event.preventDefault();
+      isDragging = true;
+      startX = event.clientX || event.touches[0].clientX;
+      startY = event.clientY || event.touches[0].clientY;
+      startLeft = parseInt(image.style.left) || 0;
+      startTop = parseInt(image.style.top) || 0;
+    }
+
+    function drag(event) {
+      if (!isDragging) return;
+      event.preventDefault();
+
+      var clientX = event.clientX || event.touches[0].clientX;
+      var clientY = event.clientY || event.touches[0].clientY;
+      var deltaX = clientX - startX;
+      var deltaY = clientY - startY;
+
+      image.style.left = startLeft + deltaX + 'px';
+      image.style.top = startTop + deltaY + 'px';
+    }
+
+    function stopDragging() {
+      isDragging = false;
+    }
+
+    function handleZoom(event) {
+      event.preventDefault();
+      var delta = event.deltaY || event.wheelDelta;
+      var zoom = delta > 0 ? 0 : 1;
+
+      if (zoom === 0) {
+        disableImageCropper();
+      } else {
+        enableImageCropper();
+      }
+    }
+
+    function disableImageCropper() {
+      image.removeEventListener('mousedown', startDragging);
+      image.removeEventListener('mousemove', drag);
+      image.removeEventListener('mouseup', stopDragging);
+      image.removeEventListener('mouseleave', stopDragging);
+
+      image.removeEventListener('wheel', handleZoom);
+    }
+  </script>
 </body>
 </html>
-<script>
-
-var divElement = document.getElementById("myDiv");
-var topborder= document.getElementById("topborder");
-var bottomborder= document.getElementById("bottomborder");
-
-var startX, startY, startWidth, startHeight;
-
-
-topborder.addEventListener("mousedown", function(event) {
-
-  // startX = event.clientX;
-  startY = event.clientY;
-  // startWidth = parseInt(document.defaultView.getComputedStyle(divElement).width, 10);
-  startHeight = parseInt(document.defaultView.getComputedStyle(divElement).height, 10);
-
-
-  document.addEventListener("mousemove", resizeDiv);
-  
-
-  document.addEventListener("mouseup", stopResizeDiv);
-});
-
-bottomborder.addEventListener("mousedown", function(event) {
-  startY = event.clientY;
-  startHeight = parseInt(document.defaultView.getComputedStyle(divElement).height, 10);
-  document.addEventListener("mousemove", resizeDiv);
-  document.addEventListener("mouseup", stopResizeDiv);
-});
-
-
-function resizeDiv(event) {
-
-  // var offsetX = event.clientX - startX;
-  var offsetY = event.clientY - startY;
-
-  // divElement.style.width = startWidth + offsetX + "px";
-  divElement.style.height = startHeight + offsetY + "px";
-}
-
-
-function stopResizeDiv() {
-
-  document.removeEventListener("mousemove", resizeDiv);
-  
-
-  document.removeEventListener("mouseup", stopResizeDiv);
-}
-</script>

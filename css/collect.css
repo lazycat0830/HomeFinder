@@ -50,19 +50,28 @@
 }
 
 
-.text1 {
+
+.text1{
     font-weight: bolder;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 1vw;
+    font-size: 1rem;
     padding: 3px 0px;
 }
+.text2:hover{
+    color: #ffa435;
+}
 
-.text2 {
+.text2{
     font-weight: bolder;
     font-size: 0.5vw;
     text-align: justify;
+    cursor: pointer;
+}
+.text1:hover{
+    color: #ffa435;
+    
 }
 
 .text3 {

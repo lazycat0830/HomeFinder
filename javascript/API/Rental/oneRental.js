@@ -62,7 +62,7 @@ function addonRental(data,id){
             </a>
             --!>
             
-        <div class="flexcenter relative Houseimg" style="z-index: 0;" >
+        <div class="flexcenter relative Houseimg" style="z-index: 0;height: auto;" >
             <a id="rental_id${data.rentalBlock[id].allData.rental_id}" width="100%;" href="/通用/item.html">
             <ul id="rentalul_id${data.rentalBlock[id].allData.rental_id}">
                 <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
@@ -70,13 +70,13 @@ function addonRental(data,id){
             
             </a>
             ${like}
-            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button">
+            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button" >
             <input id='nextimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
          
         </div>
         
-        <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <span class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</span>
+        <a class="text1" onclick="onclickitem('${data.rentalBlock[id].allData.rental_id}')">${data.rentalBlock[id].allData.title}</a>
+        <a class="text2 flexbetween" onclick="onclickAccount('${data.rentalBlock[id].allData.publisher}')">出租者：${data.rentalBlock[id].allData.publisher}</a>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>
@@ -104,15 +104,19 @@ content_in.appendChild(Houseimg_Profile);
         console.log(addimg);
         Rental_ul.appendChild(addimg);
     }
+
+    
     
     let lastimg_btn=document.getElementById(`lastimg_${data.rentalBlock[id].allData.rental_id}`);
     lastimg_btn.onclick=function(){
         let imgblock='';
+        nextimg_btn.style.display='block';
             for(var i=0;i<data.rentalBlock[id].image.length;i++){
                 console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
                 if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
                     imgblock=`img${i}_${data.rentalBlock[id].allData.rental_id}`;
                 }
+                
             }
                 console.log(imgblock);
                 console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1);
@@ -130,7 +134,7 @@ content_in.appendChild(Houseimg_Profile);
 
     let nextimg_btn=document.getElementById(`nextimg_${data.rentalBlock[id].allData.rental_id}`);
     nextimg_btn.onclick=function(){
-        
+        lastimg_btn.style.display='block';
         for(var i=0;i<data.rentalBlock[id].image.length;i++){
             console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
             if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
@@ -138,6 +142,7 @@ content_in.appendChild(Houseimg_Profile);
             }else if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='none'){
                 console.log(imgblock);
             }
+            
         }
             console.log(imgblock);
             console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1);
@@ -152,6 +157,7 @@ content_in.appendChild(Houseimg_Profile);
             
         } 
     }
+    
 
 if(LoginData==null){
     like=``;

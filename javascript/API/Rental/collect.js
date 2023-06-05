@@ -29,8 +29,8 @@ Houseimg_Profile.innerHTML=`
             </a>
             </a>
         
-        <a class="text1" href="/通用/item.html">${data.rentalBlock[id].allData.title}</a>
-        <a class="text2 flexbetween" href="/通用/account-interface.html">出租者：${data.rentalBlock[id].allData.publisher}</a>
+        <a class="text1" onclick="onclickitem('${data.rentalBlock[id].allData.rental_id}')">${data.rentalBlock[id].allData.title}</a>
+        <a class="text2 flexbetween" onclick="onclickAccount('${data.rentalBlock[id].allData.publisher}')">出租者：${data.rentalBlock[id].allData.publisher}</a>
         <span class="text3">上架日期：${update.replace(/T.*/, "")}</span>
         <span class="text4">價格：<span class="price">${data.rentalBlock[id].allData.rent}<span class="unit">元/月</span></span></span>
     </div>
