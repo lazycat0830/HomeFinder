@@ -96,22 +96,19 @@ function addressChart() {
                 backgroundColor: [],
                 borderColor: [],
                 borderWidth: 1,
-                label: '類型',
+                label: '地址',
                 data: []
             }]
         },
         options: {
-            legend: {
-                display: false
-            },
-            scaleOverride: {
-                // 禁用y轴刻度
-                scaleSteps: 0,
-                scaleStepWidth: 1,
-                scaleStartValue: 0
+            plugins: {
+                legend: {
+                    display: false
+                }
             }
         }
     });
+    
 
         // 從後端獲取數據並更新圖表
         fetch('http://localhost:5190/api/AllData/AllDataHomeaddress', {
@@ -157,14 +154,10 @@ function genreChart() {
             }]
         },
         options: {
-            legend: {
-                display: false
-            },
-            scaleOverride: {
-                // 禁用y轴刻度
-                scaleSteps: 0,
-                scaleStepWidth: 1,
-                scaleStartValue: 0
+            plugins: {
+                legend: {
+                    display: false
+                }
             }
         }
     });
@@ -212,15 +205,11 @@ function typeCart() {
                 data: []
             }]
         },
-        options:  {
-            legend:  {
-                display: false
-            },
-            scaleOverride: {
-                // 禁用y轴刻度
-                scaleSteps: 0,
-                scaleStepWidth: 1,
-                scaleStartValue: 0
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
             }
         }
     });
@@ -294,12 +283,12 @@ function timeCart(){
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                 label = context.dataset.label || '';
-                                 timeStart = new Date(context.parsed.x[0]).toLocaleTimeString();
-                                 timeEnd = new Date(context.parsed.x[1]).toLocaleTimeString();
-                                 renter = context.parsed.y;
-                                 starttimeString = context.dataset.data[context.dataIndex].starttimeString;
-                                 endtimeString = context.dataset.data[context.dataIndex].endtimeString;
+                                label = context.dataset.label || '';
+                                timeStart = new Date(context.parsed.x[0]).toLocaleTimeString();
+                                timeEnd = new Date(context.parsed.x[1]).toLocaleTimeString();
+                                renter = context.parsed.y;
+                                starttimeString = context.dataset.data[context.dataIndex].starttimeString;
+                                endtimeString = context.dataset.data[context.dataIndex].endtimeString;
                                 return label + ': ' + starttimeString + ' - ' + endtimeString ;
                             }
                         }

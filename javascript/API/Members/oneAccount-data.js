@@ -402,8 +402,11 @@ updataoneAccount_btn.addEventListener("click", (event) => {
             console.log(LoginData);
             oneAccount(LoginData);
             deleteMask();
-            sessionStorage.setItem('LoginData', JSON.stringify(LoginData));
-
+            
+            var data=JSON.parse(sessionStorage.getItem('LoginData'));
+            console.log(data);
+            sessionStorage.setItem('LoginData',JSON.stringify(data));
+            
             //修改後網頁資訊不會變!!!
 
         })
