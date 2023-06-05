@@ -126,11 +126,11 @@ function onclick_reservedate(availableTimesArray){
     reservedate.onclick=function(){
         let time;
 
-        if(time==null){
-            reserveText.style.display='block';
-            createMask();
-            text.innerHTML='預約失敗';
-        }
+        // if(time==null){
+        //     reserveText.style.display='block';
+        //     createMask();
+        //     text.innerHTML='預約失敗';
+        // }
 
         for(var i=0;i<availableTimesArray.length;i++){
             let changetime=document.getElementById(`changetime${i}`);
@@ -163,7 +163,7 @@ function onclick_reservedate(availableTimesArray){
                     text.innerHTML='超過預約期間，不可預約';
                 }else{
                     console.log(data);
-                    text.innerHTML='預約成功';
+                    text.innerHTML='預約成功，請等待房東確認';
                     
                 }
                 reserveText.style.display='block';

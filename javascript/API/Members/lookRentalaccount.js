@@ -158,8 +158,8 @@ function newRenterRental(data,id){
             
             </a>
             ${like}
-            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button">
-            <input id='nextimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
+            <input id='lastimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carousellastbtn' style="display: none;"  value="<" type="button">
+            <input id='nextimg_${data.rentalBlock[id].allData.rental_id}' class='absolute Carouselnextbtn'  value=">" type="button">
          
         </div>
         
@@ -186,7 +186,15 @@ function newRenterRental(data,id){
     }
     
     let lastimg_btn=document.getElementById(`lastimg_${data.rentalBlock[id].allData.rental_id}`);
+    let nextimg_btn=document.getElementById(`nextimg_${data.rentalBlock[id].allData.rental_id}`);
+
+    if(data.rentalBlock[id].image.length==1){
+        lastimg_btn.style.display="none";
+        nextimg_btn.style.display="none";
+    }
+
     lastimg_btn.onclick=function(){
+        nextimg_btn.style.display="block";
         let imgblock='';
             for(var i=0;i<data.rentalBlock[id].image.length;i++){
                 console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
@@ -198,19 +206,22 @@ function newRenterRental(data,id){
                 console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1);
                 console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`);
                 console.log(document.getElementById(imgblock).style.display=='block');
-
+                if((parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1)==0){
+                    lastimg_btn.style.display="none";
+                }
                 if(document.getElementById(imgblock).style.display=='block'){
                     if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))>0){
                         document.getElementById(imgblock).style.display='none'
                         document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))-1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                        
                     }
     
             }   
     }
 
-    let nextimg_btn=document.getElementById(`nextimg_${data.rentalBlock[id].allData.rental_id}`);
+    
     nextimg_btn.onclick=function(){
-        
+        lastimg_btn.style.display="block";
         for(var i=0;i<data.rentalBlock[id].image.length;i++){
             console.log(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display)
             if(document.getElementById(`img${i}_${data.rentalBlock[id].allData.rental_id}`).style.display=='block'){
@@ -223,11 +234,14 @@ function newRenterRental(data,id){
             console.log(parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1);
             console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`);
             console.log(document.getElementById(imgblock).style.display=='block');
-
+            if((parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1)==data.rentalBlock[id].image.length-1){
+                nextimg_btn.style.display="none";
+            }
             if(document.getElementById(imgblock).style.display=='block'){
                 if((imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))<data.rentalBlock[id].image.length-1){
                     document.getElementById(imgblock).style.display='none';
                     document.getElementById(`img${parseInt(imgblock.replace('img','').replace(`_${data.rentalBlock[id].allData.rental_id}`,''))+1}_${data.rentalBlock[id].allData.rental_id}`).style.display='block';
+                    
                 }
             
         } 

@@ -138,8 +138,8 @@ function Editviewitemcontent(data,rental_id){
                     </ul>
                     
                     </div>
-                    ${like}
-                    <input id='lastimg_${data.allData.rental_id}' class='absolute Carousellastbtn'  value="<" type="button" >
+                    <!--${like}-->
+                    <input id='lastimg_${data.allData.rental_id}' class='absolute Carousellastbtn' style="display: none;"  value="<" type="button" >
                     <input id='nextimg_${data.allData.rental_id}' class='absolute Carouselnextbtn' value=">" type="button">
                 
                 </div>  
@@ -300,7 +300,8 @@ function Editviewitemcontent(data,rental_id){
         if(LoginData.members.identity==2){
             likebtn=`likebtn_${data.allData.rental_id}`;
             likeheart=`likeheart_${data.allData.rental_id}`;
-            
+            console.log(likebtn);
+            console.log(likeheart);
             clicklike(likebtn,likeheart);
         }
         if(LoginData.members.identity==1){
@@ -322,9 +323,15 @@ function Editviewitemcontent(data,rental_id){
         Rental_ul.appendChild(addimg);
     }
 
-    
-    
     let lastimg_btn=document.getElementById(`lastimg_${data.allData.rental_id}`);
+    let nextimg_btn=document.getElementById(`nextimg_${data.allData.rental_id}`);
+
+    if(data.image.length==1){
+        lastimg_btn.style.display="none";
+        nextimg_btn.style.display="none";
+    }
+    
+    
     lastimg_btn.onclick=function(){
         let imgblock='';
         nextimg_btn.style.display='block';
@@ -339,7 +346,9 @@ function Editviewitemcontent(data,rental_id){
                 console.log(parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1);
                 console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1}_${data.allData.rental_id}`);
                 console.log(document.getElementById(imgblock).style.display=='block');
-
+                if((parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))-1)==0){
+                    lastimg_btn.style.display="none";
+                }
                 if(document.getElementById(imgblock).style.display=='block'){
                     if((imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))>0){
                         document.getElementById(imgblock).style.display='none'
@@ -349,7 +358,7 @@ function Editviewitemcontent(data,rental_id){
             }   
     }
 
-    let nextimg_btn=document.getElementById(`nextimg_${data.allData.rental_id}`);
+    
     nextimg_btn.onclick=function(){
         lastimg_btn.style.display='block';
         for(var i=0;i<data.image.length;i++){
@@ -365,7 +374,9 @@ function Editviewitemcontent(data,rental_id){
             console.log(parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1);
             console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1}_${data.allData.rental_id}`);
             console.log(document.getElementById(imgblock).style.display=='block');
-
+            if((parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1)==data.rentalBlock[id].image.length-1){
+                nextimg_btn.style.display="none";
+            }
             if(document.getElementById(imgblock).style.display=='block'){
                 if((imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))<data.image.length-1){
                     document.getElementById(imgblock).style.display='none';
@@ -411,12 +422,12 @@ function clicklike(likebtn,likeheart){
     console.log(likeheart);
     like_btn.onclick=function(){
         console.log(likeheart.getAttribute("src"))
-        if(likeheart.getAttribute("src")=="/image/heart.png"){
-            likeheart.setAttribute('src','/image/like.png')
+        if(likeheart.src=="/image/heart.png"){
+            likeheart.src='/image/like.png';
             collect(likeheart);
     
-        }else if(likeheart.getAttribute("src")=="/image/like.png"){
-            likeheart.setAttribute('src','/image/heart.png')
+        }else if(likeheart.src=="/image/like.png"){
+            likeheart.src='/image/heart.png';
             deletecollect(likeheart);
         }
     }

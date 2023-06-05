@@ -129,8 +129,16 @@ function viewonRental(data,imglist){
         console.log(addimg);
         rentalul.appendChild(addimg);
     }
+
     
     let lastimg_btn=document.getElementById(`lastimg`);
+    let nextimg_btn=document.getElementById(`nextimg`);
+
+    if(data.image.length==1){
+        lastimg_btn.style.display="none";
+        nextimg_btn.style.display="none";
+    }
+
     lastimg_btn.onclick=function(){
         let imgblock='';
             for(var i=0;i<imglist.length+1;i++){
@@ -143,7 +151,9 @@ function viewonRental(data,imglist){
                 console.log(parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1);
                 console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1}_${data.rental_id}`);
                 console.log(document.getElementById(imgblock).style.display=='block');
-
+                if((parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))-1)==0){
+                    lastimg_btn.style.display="none";
+                }
                 if(document.getElementById(imgblock).style.display=='block'){
                     if((imgblock.replace('img','').replace(`_${data.rental_id}`,''))>0){
                         document.getElementById(imgblock).style.display='none'
@@ -153,7 +163,7 @@ function viewonRental(data,imglist){
             }   
     }
 
-    let nextimg_btn=document.getElementById(`nextimg`);
+   
     nextimg_btn.onclick=function(){
         
         for(var i=0;i<imglist.length+1;i++){
@@ -168,7 +178,9 @@ function viewonRental(data,imglist){
             console.log(parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1);
             console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1}_${data.rental_id}`);
             console.log(document.getElementById(imgblock).style.display=='block');
-
+            if((parseInt(imgblock.replace('img','').replace(`_${data.rental_id}`,''))+1)==data.rentalBlock[id].image.length-1){
+                nextimg_btn.style.display="none";
+            }
             if(document.getElementById(imgblock).style.display=='block'){
                 if((imgblock.replace('img','').replace(`_${data.rental_id}`,''))<imglist.length){
                     document.getElementById(imgblock).style.display='none';
