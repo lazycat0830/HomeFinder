@@ -164,142 +164,1047 @@ let nowend;
 
 
 function booltime(){
-    for(var i=1;i<=6;i++){
-        let monup=document.getElementById(`monup${i}`);
-        let mondown=document.getElementById(`mondown${i}`);
-        let validata=document.getElementById(`mon${i}validata`);
-        let valinum=0;
-        
+  boolmon();
+  booltue();
+  boolwed();
+  boolthu();
 
-        monup.addEventListener('change',function(){
-            let truenum=0;
-            let trueallnum=0;
-            nowstart=monup.value;
-            nowend=mondown.value;
-            // console.log('nowstart',nowstart);
-            // console.log('nowend',nowend);
-            // console.log(monup.value);
-            // console.log(mondown.min);
-            // mondown.min=monup.value;
-            // mondown.max=monup.value+1;
-            // console.log(mondown.min);
-            // console.log(mondown.max);
-            
-            console.log('nowstart',nowstart);
-            console.log('nowend',nowend);
-            for(var b=1;b<=6;b++){
-              console.log(monup,mondown);
-              if((monup.id.replace('monup',"")==b)||(mondown.id.replace('mondown',"")==b)){
-                console.log('跳過當前對比');
-              }else{
-                
-                let otherstart=document.getElementById(`${week[0]}up${b}`).value;
-                let otherend=document.getElementById(`${week[0]}down${b}`).value;
-                console.log('otherup',otherstart);
-                console.log('otherdown',otherend);
-                console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
-                console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
-                console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
-                if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
-                    console.log('otherend',otherend);
-                    console.log('otherstart',otherstart);
-                    trueallnum++;
-                    
-                    if (nowstart === otherstart || nowend === otherend) {
-                      console.log('已有重複時間');
-                      
-                    } else {
-                      if (((nowstart > otherstart) && (nowstart < otherend))) {
-                        console.log('開始衝突');
-
-                      } else {
-                        console.log('沒有時間衝突');
-                        truenum++;
-                      }
-                    }
-                  }
-              }
-              
-          }
-
-          console.log(trueallnum);
-          console.log(truenum);
-          if(valinum){
-            
-          }
-          if(trueallnum==truenum){
-            monup.style.backgroundColor='transparent';
-            monup.style.color='#000';
-            validataTimetext.style.display='none';
-            validataTimetext.innerHTML='';
-          }else{
-            monup.style.backgroundColor='#ff5858';
-            monup.style.color='#fff';
-            validataTimetext.style.display='block';
-            validataTimetext.innerHTML='時間產生衝突';
-          }
-
-        })
-        mondown.addEventListener('change',function(){
-            let truenum=0;
-            let trueallnum=0;
-            nowstart=monup;
-            nowend=mondown;
-            
-            console.log('nowstart',nowstart);
-            console.log('nowend',nowend);
-                for(var b=1;b<=6;b++){
-                    if((monup.id.replace('monup',"")==b)||(mondown.id.replace('mondown',"")==b)){
-                      console.log('跳過當前對比');
-                    }else{
-                      
-                      let otherstart=document.getElementById(`${week[0]}up${b}`).value;
-                      let otherend=document.getElementById(`${week[0]}down${b}`).value;
-                      console.log('otherup',document.getElementById(`${week[0]}up${b}`));
-                      console.log('otherdown',document.getElementById(`${week[0]}down${b}`));
-                      
-  
-                      if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
-                          console.log(otherend);
-                          console.log(otherstart);
-                          trueallnum++;
-                          
-                          if (nowstart === otherstart || nowend === otherend) {
-                            console.log('已有重複時間');
-                          } else {
-                              if (nowend > otherstart && nowend < otherend) {
-                              console.log('結束時間衝突');
-                              
-                            } else if (nowstart > otherstart && nowstart < otherend) {
-                              console.log('開始時間衝突');
-                              
-                            } else {
-                              console.log('沒有時間衝突');
-                              truenum++;
-                            }
-                          }
-                        }
-                    }
-                    
-                }
-                console.log(trueallnum);
-                console.log(truenum);
-
-                if(trueallnum==truenum){
-                  mondown.style.backgroundColor='transparent';
-                  mondown.style.color='#000';
-                  validataTimetext.style.display='none';
-                  validataTimetext.innerHTML='';
-                }else{
-                  mondown.style.backgroundColor='#ff5858';
-                  mondown.style.color='#fff';
-                  validataTimetext.style.display='block';
-                  validataTimetext.innerHTML='時間產生衝突';
-                }
-            
-            
-        })
-    }
 }
 
 
+function boolmon(){
+  for(var i=1;i<=6;i++){
+    let monup=document.getElementById(`monup${i}`);
+    let mondown=document.getElementById(`mondown${i}`);
+    let validata=document.getElementById(`mon${i}validata`);
+    let valinum=0;
+    
+
+    monup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=monup.value;
+        nowend=mondown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(monup.value);
+        // console.log(mondown.min);
+        // mondown.min=monup.value;
+        // mondown.max=monup.value+1;
+        // console.log(mondown.min);
+        // console.log(mondown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(monup,mondown);
+          if((monup.id.replace('monup',"")==b)||(mondown.id.replace('mondown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[0]}up${b}`).value;
+            let otherend=document.getElementById(`${week[0]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        monup.style.backgroundColor='transparent';
+        monup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        monup.style.backgroundColor='#ff5858';
+        monup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    mondown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=monup;
+        nowend=mondown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((monup.id.replace('monup',"")==b)||(mondown.id.replace('mondown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[0]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[0]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[0]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[0]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              mondown.style.backgroundColor='transparent';
+              mondown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              mondown.style.backgroundColor='#ff5858';
+              mondown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function booltue(){
+  for(var i=1;i<=6;i++){
+    let tueup=document.getElementById(`tueup${i}`);
+    let tuedown=document.getElementById(`tuedown${i}`);
+    let validata=document.getElementById(`tue${i}validata`);
+    let valinum=0;
+    
+
+    tueup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=tueup.value;
+        nowend=tuedown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(tueup.value);
+        // console.log(tuedown.min);
+        // tuedown.min=tueup.value;
+        // tuedown.max=tueup.value+1;
+        // console.log(tuedown.min);
+        // console.log(tuedown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(tueup,tuedown);
+          if((tueup.id.replace('tueup',"")==b)||(tuedown.id.replace('tuedown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[1]}up${b}`).value;
+            let otherend=document.getElementById(`${week[1]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        tueup.style.backgroundColor='transparent';
+        tueup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        tueup.style.backgroundColor='#ff5858';
+        tueup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    tuedown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=tueup;
+        nowend=tuedown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((tueup.id.replace('tueup',"")==b)||(tuedown.id.replace('tuedown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[1]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[1]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[1]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[1]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              tuedown.style.backgroundColor='transparent';
+              tuedown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              tuedown.style.backgroundColor='#ff5858';
+              tuedown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function boolwed(){
+  for(var i=1;i<=6;i++){
+    let wedup=document.getElementById(`wedup${i}`);
+    let weddown=document.getElementById(`weddown${i}`);
+    let validata=document.getElementById(`wed${i}validata`);
+    let valinum=0;
+    
+
+    wedup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=wedup.value;
+        nowend=weddown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(wedup.value);
+        // console.log(weddown.min);
+        // weddown.min=wedup.value;
+        // weddown.max=wedup.value+1;
+        // console.log(weddown.min);
+        // console.log(weddown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(wedup,weddown);
+          if((wedup.id.replace('wedup',"")==b)||(weddown.id.replace('weddown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[2]}up${b}`).value;
+            let otherend=document.getElementById(`${week[2]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        wedup.style.backgroundColor='transparent';
+        wedup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        wedup.style.backgroundColor='#ff5858';
+        wedup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    weddown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=wedup;
+        nowend=weddown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((wedup.id.replace('wedup',"")==b)||(weddown.id.replace('weddown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[2]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[2]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[2]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[2]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              weddown.style.backgroundColor='transparent';
+              weddown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              weddown.style.backgroundColor='#ff5858';
+              weddown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function boolthu(){
+  for(var i=1;i<=6;i++){
+    let thuup=document.getElementById(`thuup${i}`);
+    let thudown=document.getElementById(`thudown${i}`);
+    let validata=document.getElementById(`thu${i}validata`);
+    let valinum=0;
+    
+
+    thuup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=thuup.value;
+        nowend=thudown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(thuup.value);
+        // console.log(thudown.min);
+        // thudown.min=thuup.value;
+        // thudown.max=thuup.value+1;
+        // console.log(thudown.min);
+        // console.log(thudown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(thuup,thudown);
+          if((thuup.id.replace('thuup',"")==b)||(thudown.id.replace('thudown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[3]}up${b}`).value;
+            let otherend=document.getElementById(`${week[3]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        thuup.style.backgroundColor='transparent';
+        thuup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        thuup.style.backgroundColor='#ff5858';
+        thuup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    thudown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=thuup;
+        nowend=thudown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((thuup.id.replace('thuup',"")==b)||(thudown.id.replace('thudown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[3]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[3]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[3]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[3]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              thudown.style.backgroundColor='transparent';
+              thudown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              thudown.style.backgroundColor='#ff5858';
+              thudown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function boolfri(){
+  for(var i=1;i<=6;i++){
+    let friup=document.getElementById(`friup${i}`);
+    let fridown=document.getElementById(`fridown${i}`);
+    let validata=document.getElementById(`fri${i}validata`);
+    let valinum=0;
+    
+
+    friup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=friup.value;
+        nowend=fridown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(friup.value);
+        // console.log(fridown.min);
+        // fridown.min=friup.value;
+        // fridown.max=friup.value+1;
+        // console.log(fridown.min);
+        // console.log(fridown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(friup,fridown);
+          if((friup.id.replace('friup',"")==b)||(fridown.id.replace('fridown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[4]}up${b}`).value;
+            let otherend=document.getElementById(`${week[4]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        friup.style.backgroundColor='transparent';
+        friup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        friup.style.backgroundColor='#ff5858';
+        friup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    fridown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=friup;
+        nowend=fridown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((friup.id.replace('friup',"")==b)||(fridown.id.replace('fridown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[4]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[4]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[4]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[4]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              fridown.style.backgroundColor='transparent';
+              fridown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              fridown.style.backgroundColor='#ff5858';
+              fridown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function boolsat(){
+  for(var i=1;i<=6;i++){
+    let satup=document.getElementById(`satup${i}`);
+    let satdown=document.getElementById(`satdown${i}`);
+    let validata=document.getElementById(`sat${i}validata`);
+    let valinum=0;
+    
+
+    satup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=satup.value;
+        nowend=satdown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(satup.value);
+        // console.log(satdown.min);
+        // satdown.min=satup.value;
+        // satdown.max=satup.value+1;
+        // console.log(satdown.min);
+        // console.log(satdown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(satup,satdown);
+          if((satup.id.replace('satup',"")==b)||(satdown.id.replace('satdown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[5]}up${b}`).value;
+            let otherend=document.getElementById(`${week[5]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        satup.style.backgroundColor='transparent';
+        satup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+      }else{
+        satup.style.backgroundColor='#ff5858';
+        satup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    satdown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=satup;
+        nowend=satdown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((satup.id.replace('satup',"")==b)||(satdown.id.replace('satdown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[5]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[5]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[5]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[5]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              satdown.style.backgroundColor='transparent';
+              satdown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              satdown.style.backgroundColor='#ff5858';
+              satdown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
+
+function boolsun(){
+  for(var i=1;i<=6;i++){
+    let sunup=document.getElementById(`sunup${i}`);
+    let sundown=document.getElementById(`sundown${i}`);
+    let validata=document.getElementById(`sun${i}validata`);
+    let valinum=0;
+    
+
+    sunup.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=sunup.value;
+        nowend=sundown.value;
+        // console.log('nowstart',nowstart);
+        // console.log('nowend',nowend);
+        // console.log(sunup.value);
+        // console.log(sundown.min);
+        // sundown.min=sunup.value;
+        // sundown.max=sunup.value+1;
+        // console.log(sundown.min);
+        // console.log(sundown.max);
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+        for(var b=1;b<=6;b++){
+          console.log(sunup,sundown);
+          if((sunup.id.replace('sunup',"")==b)||(sundown.id.replace('sundown',"")==b)){
+            console.log('跳過當前對比');
+          }else{
+            
+            let otherstart=document.getElementById(`${week[6]}up${b}`).value;
+            let otherend=document.getElementById(`${week[6]}down${b}`).value;
+            console.log('otherup',otherstart);
+            console.log('otherdown',otherend);
+            console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+            console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+            console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
+            if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                console.log('otherend',otherend);
+                console.log('otherstart',otherstart);
+                trueallnum++;
+                
+                if (nowstart === otherstart || nowend === otherend) {
+                  console.log('已有重複時間');
+                  
+                } else {
+                  if (((nowstart > otherstart) && (nowstart < otherend))) {
+                    console.log('開始衝突');
+
+                  } else {
+                    console.log('沒有時間衝突');
+                    truenum++;
+                  }
+                }
+              }
+          }
+          
+      }
+
+      console.log(trueallnum);
+      console.log(truenum);
+      if(valinum){
+        
+      }
+      if(trueallnum==truenum){
+        sunup.style.backgroundColor='transparent';
+        sunup.style.color='#000';
+        validataTimetext.style.display='none';
+        validataTimetext.innerHTML='';
+        document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+        
+      }else{
+        sunup.style.backgroundColor='#ff5858';
+        sunup.style.color='#fff';
+        validataTimetext.style.display='block';
+        validataTimetext.innerHTML='時間產生衝突';
+        document.getElementById('save').disabled=true;
+        document.getElementById('save').style.backgroundColor='#c8c8c8';
+      }
+
+    })
+    sundown.addEventListener('change',function(){
+        let truenum=0;
+        let trueallnum=0;
+        nowstart=sunup;
+        nowend=sundown;
+        
+        console.log('nowstart',nowstart);
+        console.log('nowend',nowend);
+            for(var b=1;b<=6;b++){
+                if((sunup.id.replace('sunup',"")==b)||(sundown.id.replace('sundown',"")==b)){
+                  console.log('跳過當前對比');
+                }else{
+                  
+                  let otherstart=document.getElementById(`${week[6]}up${b}`).value;
+                  let otherend=document.getElementById(`${week[6]}down${b}`).value;
+                  console.log('otherup',document.getElementById(`${week[6]}up${b}`));
+                  console.log('otherdown',document.getElementById(`${week[6]}down${b}`));
+                  
+
+                  if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
+                      console.log(otherend);
+                      console.log(otherstart);
+                      trueallnum++;
+                      
+                      if (nowstart === otherstart || nowend === otherend) {
+                        console.log('已有重複時間');
+                      } else {
+                          if (nowend > otherstart && nowend < otherend) {
+                          console.log('結束時間衝突');
+                          
+                        } else if (nowstart > otherstart && nowstart < otherend) {
+                          console.log('開始時間衝突');
+                          
+                        } else {
+                          console.log('沒有時間衝突');
+                          truenum++;
+                        }
+                      }
+                    }
+                }
+                
+            }
+            console.log(trueallnum);
+            console.log(truenum);
+
+            if(trueallnum==truenum){
+              sundown.style.backgroundColor='transparent';
+              sundown.style.color='#000';
+              validataTimetext.style.display='none';
+              validataTimetext.innerHTML='';
+              document.getElementById('save').disabled=false;
+        document.getElementById('save').style.backgroundColor='#000';
+            }else{
+              sundown.style.backgroundColor='#ff5858';
+              sundown.style.color='#fff';
+              validataTimetext.style.display='block';
+              validataTimetext.innerHTML='時間產生衝突';
+              
+              document.getElementById('save').disabled=true;
+              document.getElementById('save').style.backgroundColor='#c8c8c8';
+            }
+        
+        
+    })
+}
+}
