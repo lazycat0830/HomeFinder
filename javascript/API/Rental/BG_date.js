@@ -175,8 +175,8 @@ function booltime(){
             let trueallnum=0;
             nowstart=monup.value;
             nowend=mondown.value;
-            console.log(nowstart);
-            console.log(nowend);
+            // console.log('nowstart',nowstart);
+            // console.log('nowend',nowend);
             // console.log(monup.value);
             // console.log(mondown.min);
             // mondown.min=monup.value;
@@ -187,29 +187,29 @@ function booltime(){
             console.log('nowstart',nowstart);
             console.log('nowend',nowend);
             for(var b=1;b<=6;b++){
+              console.log(monup,mondown);
               if((monup.id.replace('monup',"")==b)||(mondown.id.replace('mondown',"")==b)){
                 console.log('跳過當前對比');
               }else{
                 
                 let otherstart=document.getElementById(`${week[0]}up${b}`).value;
                 let otherend=document.getElementById(`${week[0]}down${b}`).value;
-                console.log('otherup',document.getElementById(`${week[0]}up${b}`));
-                console.log('otherdown',document.getElementById(`${week[0]}down${b}`));
+                console.log('otherup',otherstart);
+                console.log('otherdown',otherend);
+                console.log('otherend不為空',otherend !== '' && otherend !== undefined && otherend !== null)
+                console.log('otherstart',otherstart !== '' && otherstart !== undefined && otherstart !== null)
+                console.log((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null));
                 if ((otherend !== '' && otherend !== undefined && otherend !== null) || (otherstart !== '' && otherstart !== undefined && otherstart !== null)) {
-                    console.log(otherend);
-                    console.log(otherstart);
+                    console.log('otherend',otherend);
+                    console.log('otherstart',otherstart);
                     trueallnum++;
                     
                     if (nowstart === otherstart || nowend === otherend) {
                       console.log('已有重複時間');
                       
                     } else {
-                      if (((nowstart > otherstart) && (nowstart > otherend))) {
-                        console.log('開始結束時間都衝突');
-                        
-                      }else if (nowstart > otherstart && nowstart < otherend) {
-                        console.log('開始時間衝突');
-                        
+                      if (((nowstart > otherstart) && (nowstart < otherend))) {
+                        console.log('開始衝突');
 
                       } else {
                         console.log('沒有時間衝突');
@@ -266,10 +266,7 @@ function booltime(){
                           if (nowstart === otherstart || nowend === otherend) {
                             console.log('已有重複時間');
                           } else {
-                            if (((nowend > otherstart) && (nowend > otherend)) && ((nowstart > otherstart) && (nowstart > otherend))) {
-                              console.log('開始結束時間都衝突');
-                              
-                            } else if (nowend > otherstart && nowend < otherend) {
+                              if (nowend > otherstart && nowend < otherend) {
                               console.log('結束時間衝突');
                               
                             } else if (nowstart > otherstart && nowstart < otherend) {
