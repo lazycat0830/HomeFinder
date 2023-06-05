@@ -169,6 +169,7 @@ function EditTimebtn(event){
             <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" />
             <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
             <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+            <input style="margin: 0px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
         </div>
         `;
     }else{
@@ -178,6 +179,7 @@ function EditTimebtn(event){
             <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" value='${end_time}'/>
             <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
             <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+            <input style="margin: 0px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
         </div>
         `;
     }
@@ -229,7 +231,11 @@ function SaveTimebtn(event){
         var startTime,endTime;
         console.log(newTime);
         for(var j=0;j<6;j++){
-            if(j<newTime.length){
+            if(newTime==""){
+                console.log(newTime);
+                startTime='--:--';
+                endTime='--:--';
+            }else if(j<newTime.length){
                 console.log(newTime[j]);
                 onenewTime=newTime[j].split('-');
                 startTime=onenewTime[0];
@@ -262,4 +268,29 @@ function ClearTimebtn(event){
     var id=event.target.id.replace('Clearbtn_time','');
     document.getElementById(`start_time${id}`).value="";
     document.getElementById(`end_time${id}`).value="";
+}
+
+function NoTimebtn(event){
+    var id=event.target.id.replace('NoTimebtn_time','');
+    var start_time=document.getElementById(`start_time${id}`).value;
+    var end_time=document.getElementById(`end_time${id}`).value;
+    console.log(start_time,end_time);
+    let Timeli=document.getElementById(`Timeli${id}`);
+    if(start_time==''&&end_time==''){
+        Timeli.innerHTML=`
+        <div class="flexcolumn">
+            <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
+            <label id="end_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
+            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改">
+        </div>
+        `;
+    }else{
+        Timeli.innerHTML=`
+        <div class="flexcolumn">
+            <label id="start_time${id}" style="font-size: 16px;text-align: center;">${start_time}</label>
+            <label id="end_time${id}" style="font-size: 16px;text-align: center;">${end_time}</label>
+            <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改">
+        </div>
+        `;
+    }
 }
