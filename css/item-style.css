@@ -392,13 +392,24 @@ a{
         display: none;
     }
     #content_right{
-        display: none;
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        border-bottom: 1px #333 solid;
+        border-top: 1px #333 solid;
     }
     #content_left{
         width:auto;
     }
     #View_oneimg{
         display: block;
+    }
+    #housing_information{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .publisher_Information{
+        width: 100%;
     }
 }
 @media screen and (max-width: 576px) {
