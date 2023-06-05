@@ -2,10 +2,10 @@ let LoginData= JSON.parse(sessionStorage.getItem('LoginData'));
 let collectData= JSON.parse(sessionStorage.getItem('collectData'));
 let avatarimg=document.getElementById('avatarimg');
 
-function handleLoginData(data) {
-    LoginData = data;
+// function handleLoginData(data) {
+//     LoginData = data;
     
-}
+// }
 
 let accountinput =document.getElementById('LoginAccount');
 let passwordinput =document.getElementById('LoginPassword');

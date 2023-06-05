@@ -399,13 +399,14 @@ updataoneAccount_btn.addEventListener("click", (event) => {
             LoginData.members.phone=updata_phone.value;
             LoginData.members.img=response.data.replace('修改成功,','');
             avatarimg.src=response.data.replace('修改成功,','');
-            console.log(LoginData);
-            oneAccount(LoginData);
-            deleteMask();
-            
+            sessionStorage.setItem('LoginData',JSON.stringify(LoginData));
             var data=JSON.parse(sessionStorage.getItem('LoginData'));
             console.log(data);
-            sessionStorage.setItem('LoginData',JSON.stringify(data));
+            
+
+            oneAccount(data);
+            deleteMask();
+            
             
             //修改後網頁資訊不會變!!!
 

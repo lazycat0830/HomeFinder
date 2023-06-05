@@ -195,6 +195,7 @@ function EditTimebtn(event){
 }
 
 function SaveTimebtn(event){
+    clearbtn_start='',clearbtn_end='';
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
     console.log(id);
@@ -285,7 +286,7 @@ function NoTimebtn(event){
     var end_time=clearbtn_end;
     console.log(start_time,end_time);
     let Timeli=document.getElementById(`Timeli${id}`);
-    if(start_time==undefined&&end_time==undefined){
+    if((start_time==undefined&&end_time==undefined)||(start_time==""&&end_time=="")){
         Timeli.innerHTML=`
         <div class="flexcolumn">
             <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
