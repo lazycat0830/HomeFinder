@@ -19,7 +19,7 @@ function createitem_validatatext(){
     let validata_content=document.getElementById('validata_content');
     console.log(inputImage1.value);
     
-    if(img1file==""){
+    if(img1file==null){
         validataimg.innerHTML='※封面(圖1)為必填';
     }else{
         validataimg.innerHTML='';

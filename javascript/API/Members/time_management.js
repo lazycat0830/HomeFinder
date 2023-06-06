@@ -106,8 +106,9 @@ function viewtime_management(changedate){
                 
             }
            
-            view_AjaxEdittime(changedate,validatatext);
+           
         }
+        view_AjaxEdittime(changedate,validatatext);
     }).catch(error=>{
         console.error(error);
     });
