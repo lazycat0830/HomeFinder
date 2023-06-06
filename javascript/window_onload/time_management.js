@@ -137,9 +137,10 @@ function getDataTimeinput(changedate,validatatext){
 
             if(validatatext){
                 disabledtrue_btn();
-                
+                document.getElementById('AjaxEdittime_Validata').style.display='block';
             }else{
                 disabledfalse_btn();
+                document.getElementById('AjaxEdittime_Validata').style.display='none';
             }
         });
 
@@ -162,9 +163,11 @@ function getDataTimeinput(changedate,validatatext){
     })
 }
 
-
+let clearbtn_start,clearbtn_end;
 function EditTimebtn(event){
     var id=event.target.id.replace('Editbtn_time','');
+    
+
     var start_time=document.getElementById(`start_time${id}`).innerHTML;
     var end_time=document.getElementById(`end_time${id}`).innerHTML;
     console.log(start_time,end_time);
@@ -190,7 +193,8 @@ function EditTimebtn(event){
         </div>
         `;
     }
-    
+    clearbtn_start=document.getElementById(`start_time${id}`).value;
+    clearbtn_end=document.getElementById(`end_time${id}`).value;
                 
 
 }
@@ -276,11 +280,9 @@ function SaveTimebtn(event){
     })
 }
 
-let clearbtn_start,clearbtn_end;
+
 function ClearTimebtn(event){
     var id=event.target.id.replace('Clearbtn_time','');
-    clearbtn_start=document.getElementById(`start_time${id}`).value;
-    clearbtn_end=document.getElementById(`end_time${id}`).value;
     document.getElementById(`start_time${id}`).value="";
     document.getElementById(`end_time${id}`).value="";
 }
@@ -288,8 +290,7 @@ function ClearTimebtn(event){
 function NoTimebtn(event){
 
     var id=event.target.id.replace('NoTimebtn_time','');
-    clearbtn_start=document.getElementById(`start_time${id}`).value;
-    clearbtn_end=document.getElementById(`end_time${id}`).value;
+    
     console.log(clearbtn_start,clearbtn_end);
     var start_time=clearbtn_start;
     var end_time=clearbtn_end;
