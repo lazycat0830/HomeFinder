@@ -36,7 +36,8 @@ function ViewBookOfDay(){
         
         if(LoginData!=null){
             if(LoginData.members.identity==2){
-                getReservedData(data.availableTimesArray[0]);
+                console.log(data);
+                getReservedData(data.availableTimesArray);
             }
         }
         console.log(data.availableTimesArray==null);
@@ -96,15 +97,16 @@ function getReservedData(availableTimesArray){
                 console.log(data.dataList1[id].bookdate);
                 console.log(data.dataList1[id].bookdate==changedata.value)
                 if(data.dataList1[id].bookdate==changedata.value){
-                    renservedData+=data.dataList1[id].booktime+',';
+                    renservedData+=data.dataList1[id].booktime+';';
                     console.log(renservedData);
                 }
                 id++;
             });
-            console.log(availableTimesArray.length);
+            console.log(data.dataList1);
+            console.log(availableTimesArray);
             for(var i=0;i<availableTimesArray.length;i++){
                 let changetime=document.getElementById(`changetime${i}`);
-
+                console.log(changetime.value);
                 console.log(renservedData.includes(changetime.value));
                 if(renservedData.includes(changetime.value)){
                     changetime.classList='Choose_time_btn_stop';
