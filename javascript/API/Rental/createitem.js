@@ -19,7 +19,7 @@ function createitem_validatatext(){
     let validata_content=document.getElementById('validata_content');
     console.log(inputImage1.value);
     
-    if(inputImage1.value==""){
+    if(img1file==""){
         validataimg.innerHTML='※封面(圖1)為必填';
     }else{
         validataimg.innerHTML='';
@@ -95,13 +95,12 @@ function createitem(data){
     createitem_validatatext();
 
     equipmentname = equipmentname.slice(0, -1);
-
     const formData = new FormData(form);
-    formData.append('img1_1',`${img1file}`)
-    formData.append('img1_2',`${img2file}`)
-    formData.append('img1_3',`${img3file}`)
-    formData.append('img1_4',`${img4file}`)
-    formData.append('img1_5',`${img5file}`)
+    formData.append('img1_1',img1file)
+    formData.append('img1_2',img2file)
+    formData.append('img1_3',img3file)
+    formData.append('img1_4',img4file)
+    formData.append('img1_5',img5file)
     formData.append('type',`${type}`);
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
@@ -452,3 +451,4 @@ parking_space.onclick=function(){
 }
 
 }
+

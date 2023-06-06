@@ -176,11 +176,15 @@ footer{
 
 #catoneimg{
     position: absolute;
-    z-index: 10;
+    z-index: 99999;
     top: 150px;
     width: 100%;
+}
+
+#catimgbody{
+    
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 #body_content_header{

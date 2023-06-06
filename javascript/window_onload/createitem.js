@@ -50,8 +50,9 @@ function AjaxImgCut(src,num){
     xhttp.open("GET", "/通用/CutImg.html", true);
     xhttp.send();
 }
-
+let file_CutImg;
 function viewAjaxCutImg(src,num){
+    createMask();
     document.getElementById('catoneimg').style.display='block';
 
     const image=document.getElementById('view_image');
@@ -62,24 +63,28 @@ function viewAjaxCutImg(src,num){
 
         });
 
-        document.getElementById('cropImageBtn').addEventListener('click',function(){
-            var croppedImage = cropper.getCroppedCanvas().toDataURL('image/png');
-            const file =new File([croppedImage],'image/png',{
-                type:'image/png'
-            })
-            console.log(croppedImage);
-            console.log(file);
-            putfile(file,num,croppedImage);
-            // document.getElementById('output').src =croppedImage;
+        document.getElementById('cropImageBtn').addEventListener('click', function() {
+            var croppedCanvas = cropper.getCroppedCanvas();
+            croppedCanvas.toBlob(function(blob) {
+                file_CutImg = new File([blob], `image${num}.png`, {
+                    type: 'image/png'
+                });
+                console.log(file_CutImg);
+                var croppedImage=URL.createObjectURL(file_CutImg);
+                putfile(file_CutImg,num,croppedImage);
+            }, 'image/png');
         });
+
 }
 let img1file,img2file,img3file,img4file,img5file;
 
 function putfile(file,num,src){
     document.getElementById('catoneimg').style.display='none';
+    deleteMask();
     console.log(num);
     if(num==1){
         img1file=file;
+        console.log(img1file);
         inputImageview1.style.backgroundImage= 'url(' + src + ')';
         inputImageview1.style.backgroundSize ='cover';
         inputImageview1.innerHTML ="";
@@ -107,3 +112,7 @@ function putfile(file,num,src){
     
 }
 
+document.getElementById('delete_CutImgbtn').onclick=function(){
+    document.getElementById('catoneimg').style.display='none';
+    deleteMask();
+}

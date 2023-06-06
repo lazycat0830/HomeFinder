@@ -17,6 +17,7 @@ inputImage1.addEventListener('change', () => {
     
     img1.onload = (event) => {
         AjaxImgCut(event.target.result,1);
+        
     };
     
     img1.readAsDataURL(file1);
