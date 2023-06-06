@@ -552,7 +552,7 @@ function judgment_equipment(equipmentname){
     if(equipmentname.includes('第四台')){
         equipment_img_Fourth='/image/equipmentname_img/have/第四台.jpg';
     }else{
-        equipment_img_Fourth='/image/equipmentname_img/nohave/第四台.jpg';
+        equipment_img_Fourth='/image/equipmentname_img/nohave/第四台.png';
         styleclass_8="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('網路')){
@@ -594,7 +594,7 @@ function judgment_equipment(equipmentname){
     if(equipmentname.includes('車位')){
         equipment_img_parkingspace='/image/equipmentname_img/have/車位.jpg';
     }else{
-        equipment_img_parkingspace='/image/equipmentname_img/nohave/車位.jpg';
+        equipment_img_parkingspace='/image/equipmentname_img/nohave/車位.png';
         styleclass_15="text-decoration: line-through;color:#919191;"
     }
     if(equipmentname.includes('可開伙')){

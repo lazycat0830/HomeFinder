@@ -58,7 +58,7 @@ function addonRental(data,id){
         <div class="flexcenter relative Houseimg" style="z-index: 0;height: auto;" >
             <a id="rental_id${data.rentalBlock[id].allData.rental_id}" width="100%;" href="/通用/item.html">
             <ul id="rentalul_id${data.rentalBlock[id].allData.rental_id}">
-                <li id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;" class='pic'><img  height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
+                <li class="pic" id="img0_${data.rentalBlock[id].allData.rental_id}" style="display: block;" class='pic'><img  height="100%" width="100%" src="${data.rentalBlock[id].image[0]}" /></li>
             </ul>
             
             </a>
