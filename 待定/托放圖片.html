@@ -5,51 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/cropperjs/dist/cropper.min.css">
+    <style>
+        img{
+            display: block;
+            width: 300px;
+            height: 300px;
+            max-width: 100%;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+        }
+        #output{
+            margin: 0px;
+        }
+    </style>
 </head>
 <body>
-    <div id="dropArea" style="height: 50px;width: 100%;">将图像拖放到此区域</div>
+    <div class="container">
+        <div>
+            <img src="/image/海上月.jpg" id="image">
+            <button id="cropImageBtn"></button>
+        </div>
+        <img src="" id="output">
+    </div>
 
+
+    <script src="/node_modules/cropperjs/dist/cropper.min.js"> </script>
+    <script >
+        const image=document.getElementById('image');
+        const cropper=new Cropper(image,{
+            aspectRatio:1,
+            viewMode:0,
+
+        });
+
+        document.getElementById('cropImageBtn').addEventListener('click',function(){
+            var croppedImage = cropper.getCroppedCanvas().toDataURL('image/png');
+            const file =new File([croppedImage],'image/png',{
+                type:'image/png'
+            })
+            console.log(croppedImage);
+            console.log(file);
+
+            document.getElementById('output').src =croppedImage;
+        });
+    </script>
 </body>
-<script>
-        var dropArea = document.getElementById('inputImageview1');
-
-    // 阻止浏览器默认的拖放行为
-    dropArea.addEventListener('dragover', function(event) {
-    event.preventDefault();
-    });
-
-    // 处理图像拖放
-    dropArea.addEventListener('drop', function(event) {
-    event.preventDefault();
-
-    // 获取拖放的图像文件
-    var files = event.dataTransfer.files;
-    
-    // 确保只处理一个文件
-    if (files.length > 0) {
-        var file = files[0];
-
-        // 检查文件类型是否为图像
-        if (file.type.startsWith('image/')) {
-        // 创建一个新的图像元素
-        var imageElement = new Image();
-        
-        // 读取图像文件并设置其源URL
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            dropArea.src = e.target.result;
-            
-            // 将图像添加到网页中的指定位置
-            // dropArea.appendChild(imageElement);
-        };
-        reader.readAsDataURL(file);
-        console.log(file);
-        document.getElementById('inputImage1').value=file;
-        } else {
-        alert('请拖放图像文件！');
-        }
-    }
-    });
-
-</script>
 </html>

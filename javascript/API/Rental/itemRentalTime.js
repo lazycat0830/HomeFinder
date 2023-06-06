@@ -36,14 +36,14 @@ function ViewBookOfDay(){
         
         if(LoginData!=null){
             if(LoginData.members.identity==2){
-                getReservedData(data.availableTimesArray);
+                getReservedData(data.availableTimesArray[0]);
             }
         }
         console.log(data.availableTimesArray==null);
         if(data.availableTimesArray==""){
             Choosetime.innerHTML=`<li style='width:100%;font-size:16px;color: #f00;'>無預約時間</li>`
         }else{
-            var canTime=data.availableTimesArray[0].split(',');
+            var canTime=data.availableTimesArray;
             canTime.forEach(function(){
                 
                 addRentalTime(canTime[rental_Id],rental_Id);
@@ -52,6 +52,7 @@ function ViewBookOfDay(){
                 changetime.onclick=function(){
                     if(changetime.className=='Choose_time_btn_true'){
                         for(var i=0;i<data.availableTimesArray.length;i++){
+                            console.log(i);
                             let changetime=document.getElementById(`changetime${i}`);
                             if(changetime.classList!='Choose_time_btn_stop'){
                                 changetime.classList='Choose_time_btn_true';
@@ -86,7 +87,7 @@ function getReservedData(availableTimesArray){
     })
     .then(({ data }) => {
 
-        
+            console.log(data);
             var id=0;
             let renservedData='';
             console.log(changedata.value);

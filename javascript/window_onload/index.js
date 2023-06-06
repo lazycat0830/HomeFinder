@@ -87,9 +87,9 @@ window.onload=function(){
     otherbtn.onclick=function(){
         onotherbtn();
     }
-    content.onclick=function(){
+    document.getElementById('filter_mask').onclick=function(){
         show_filter.style.display='none';
-            filter_view.style.display="block";
+            filter_view.style.display="block"; 
             divnav.style.display='block';
             filter_mask.style.display='none';
             filter_view_content.style.display='none';

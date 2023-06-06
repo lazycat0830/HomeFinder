@@ -121,12 +121,12 @@ function getDataTimeinput(changedate,validatatext){
             //     end_time.value=list_onetime[1];
             // }
         }
-        console.log(data.availableTimesArray[0].split(','));
+        console.log(data.availableTimesArray);
         var id=0;
-        let AllTime=data.availableTimesArray[0].split(',');
-        AllTime.forEach(function(){
-            if(data.availableTimesArray[0]!=""){
-                let list_onetime=AllTime[id].split('-');
+        
+        data.availableTimesArray.forEach(function(){
+            if(data.availableTimesArray[id]!=""){
+                let list_onetime=data.availableTimesArray[id].split('-');
                 let start_time=document.getElementById(`start_time${id}`);
                 let end_time=document.getElementById(`end_time${id}`);
                 start_time.innerHTML=list_onetime[0];
@@ -205,21 +205,21 @@ function SaveTimebtn(event){
             let start=document.getElementById(`start_time${id}`).value;
             let end=document.getElementById(`end_time${id}`).value;
             if(start!=''&&end!=''){
-                data+=start+'-'+end+',';
+                data+=start+'-'+end+';';
             }
             console.log(data);
             i++;
         }else{
             let start=document.getElementById(`start_time${i}`).innerHTML;
             let end=document.getElementById(`end_time${i}`).innerHTML;
-            data+=start+'-'+end+',';
+            data+=start+'-'+end+';';
             console.log(data);
         }
     }
     // console.log(changedate);
     // console.log(changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1'));
     console.log(document.getElementById('datepicker').value);
-    console.log(data.replace(/--:-----:--,/g,"").slice('0',-1));
+    console.log(data.replace(/--:-----:--;/g,"").slice('0',-1));
     axios({
         method:'post',
         url:'http://localhost:5190/api/Time/SetSpecialTime',
@@ -229,41 +229,45 @@ function SaveTimebtn(event){
             "Authorization": `Bearer ${LoginData.token}`,
         },data:{
             date:document.getElementById('datepicker').value,
-            newtime:data.replace(/--:-----:--,/g,"").slice('0',-1),
+            newtime:data.replace(/--:-----:--;/g,"").slice('0',-1),
         },
     }).then(({ data })=> {
         document.getElementById('Edittime').innerHTML='';
         console.log(data);
-        var newTime=data.newtime.split(',');
         var startTime,endTime;
-        console.log(newTime);
-        for(var j=0;j<6;j++){
-            if(newTime==""){
-                console.log(newTime);
-                startTime='--:--';
-                endTime='--:--';
-            }else if(j<newTime.length){
-                console.log(newTime[j]);
-                onenewTime=newTime[j].split('-');
-                startTime=onenewTime[0];
-                endTime=onenewTime[1];
+        if(data=='此時段有被預約，若要修改請先至預約總表取消預約'){
             
-            }else{
-                console.log(j);
-                startTime='--:--';
-                endTime='--:--';
-            }
-            let appendli= document.createElement('li');
-                appendli.id=`Timeli${j}`;
-                appendli.innerHTML=`
-                    <div class="flexcolumn">
-                        <label id="start_time${j}" style="font-size: 16px;text-align: center;">${startTime}</label>
-                        <label id="end_time${j}" style="font-size: 16px;text-align: center;">${endTime}</label>
-                        <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改" >
-                    </div>
-                `;
-            document.getElementById('Edittime').appendChild(appendli);
-        };
+        }else{
+            var newtime=data.newtime.split(';');
+            for(var j=0;j<6;j++){
+                if(data.newtime==""){
+                    console.log(newtime);
+                    startTime='--:--';
+                    endTime='--:--';
+                }else if(j<newtime.length){
+                    console.log(newtime[j]);
+                    var onenewTime=newtime[j].split('-');
+                    startTime=onenewTime[0];
+                    endTime=onenewTime[1];
+                
+                }else{
+                    console.log(j);
+                    startTime='--:--';
+                    endTime='--:--';
+                }
+                let appendli= document.createElement('li');
+                    appendli.id=`Timeli${j}`;
+                    appendli.innerHTML=`
+                        <div class="flexcolumn">
+                            <label id="start_time${j}" style="font-size: 16px;text-align: center;">${startTime}</label>
+                            <label id="end_time${j}" style="font-size: 16px;text-align: center;">${endTime}</label>
+                            <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改" >
+                        </div>
+                    `;
+                document.getElementById('Edittime').appendChild(appendli);
+            };
+        }
+        
         
 
     }).catch(error=>{
@@ -281,7 +285,11 @@ function ClearTimebtn(event){
 }
 
 function NoTimebtn(event){
+
     var id=event.target.id.replace('NoTimebtn_time','');
+    clearbtn_start=document.getElementById(`start_time${id}`).value;
+    clearbtn_end=document.getElementById(`end_time${id}`).value;
+    console.log(clearbtn_start,clearbtn_end);
     var start_time=clearbtn_start;
     var end_time=clearbtn_end;
     console.log(start_time,end_time);

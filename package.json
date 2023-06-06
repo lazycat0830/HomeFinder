@@ -1,0 +1,6 @@
+{
+  "description": "",
+  "dependencies": {
+    "cropperjs": "^1.5.13"
+  }
+}

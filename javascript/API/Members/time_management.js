@@ -74,7 +74,7 @@ function viewtime_management(changedate){
             var i=0,id=0;
             let bookdateTime='';
             data.dataList1.forEach(function(){
-                bookdateTime+=data.dataList1[id].booktime+',';
+                bookdateTime+=data.dataList1[id].booktime+';';
                 id++;
             });
             changedate=changedate.replace(/\//g, '-').replace(/\b(\d)\b/g, '0$1');
