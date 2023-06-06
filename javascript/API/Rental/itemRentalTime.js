@@ -103,18 +103,26 @@ function getReservedData(availableTimesArray){
                 id++;
             });
             console.log(data.dataList1);
-            console.log(availableTimesArray);
-            for(var i=0;i<availableTimesArray.length;i++){
-                let changetime=document.getElementById(`changetime${i}`);
-                console.log(changetime.value);
-                console.log(renservedData.includes(changetime.value));
-                if(renservedData.includes(changetime.value)){
-                    changetime.classList='Choose_time_btn_stop';
-                    changetime.disabled = true;
-                }else{
-                    changetime.classList='Choose_time_btn_true';
-                    changetime.disabled = false;
+            console.log(availableTimesArray[0]);
+            if(availableTimesArray[0]!=''){
+                document.getElementById('reservedate').disabled = false;
+                document.getElementById('reservedate').style.cursor='pointer';
+                
+                for(var i=0;i<availableTimesArray.length;i++){
+                    let changetime=document.getElementById(`changetime${i}`);
+                    console.log(changetime.value);
+                    console.log(renservedData.includes(changetime.value));
+                    if(renservedData.includes(changetime.value)){
+                        changetime.classList='Choose_time_btn_stop';
+                        changetime.disabled = true;
+                    }else{
+                        changetime.classList='Choose_time_btn_true';
+                        changetime.disabled = false;
+                    }
                 }
+            }else{
+                document.getElementById('reservedate').disabled = true;
+                document.getElementById('reservedate').style.cursor='not-allowed';
             }
         
 
