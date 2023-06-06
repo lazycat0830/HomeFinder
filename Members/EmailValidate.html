@@ -4,13 +4,14 @@
     <title>Email validation result</title>
 </head>
 <body>
-    <h1>Email validation result</h1>
-    <p>Account: <span id="account"></span></p>
-    <p>AuthCode: <span id="authCode"></span></p>
+    <h1 style="display: none;">Email validation result</h1>
+    <p style="display: none;">Account: <span id="account"></span></p>
+    <p style="display: none;">AuthCode: <span id="authCode"></span></p>
     <div id="result" style="width: 100%; text-align: center;font-weight: bolder;font-size: 3rem;">
-        
+    
 
     </div>
+
 
     <script>
         // 获取 URL 参数
@@ -43,10 +44,10 @@
                     document.getElementById("result").innerHTML = `驗證失敗`;
                     document.getElementById("result").style.color = `#ff0000`;
                 }else{
-                    document.getElementById("result").innerHTML = `驗證成功`;
+                    document.getElementById("result").innerHTML = `驗證成功等待5秒後回首頁`;
                     document.getElementById("result").style.color = `#43ff40`;
                 }
-
+                var id=5;
                 setTimeout(function(){
                 window.location.href = '/通用/index.html';
                 }, 5000); // 延迟时间为5秒，即5000毫秒

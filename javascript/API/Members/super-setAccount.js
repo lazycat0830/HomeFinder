@@ -69,7 +69,7 @@ function addAccount(data,id) {
         console.log(reporting_btn);
         
         reporting_btn.onclick=function(){
-
+            createMask();
         var reportingonAccountRows = document.querySelectorAll("tr.reportingonAccount");
         for (var i = 0; i < reportingonAccountRows.length; i++) {
         reportingonAccountRows[i].parentNode.removeChild(reportingonAccountRows[i]);
@@ -168,6 +168,7 @@ function addAccount(data,id) {
     
     delete_reporting.onclick=function(){
         reporting_look.style.display='none';
+        deleteMask();
     }
 
 

@@ -201,7 +201,6 @@ function EditTimebtn(event){
 }
 
 function SaveTimebtn(event){
-    
     clearbtn_start='',clearbtn_end='';
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
@@ -215,7 +214,6 @@ function SaveTimebtn(event){
                 data+=start+'-'+end+';';
             }
             console.log(data);
-            i++;
         }else{
             let start=document.getElementById(`start_time${i}`).innerHTML;
             let end=document.getElementById(`end_time${i}`).innerHTML;

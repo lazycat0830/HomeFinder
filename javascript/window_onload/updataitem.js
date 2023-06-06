@@ -3,7 +3,7 @@ let genre;
 let pattern;
 let type;
 let equipmentname = '';
-
+let titledeed;
 
 window.onload = function() {
     if(LoginData!=null){
@@ -56,7 +56,11 @@ function updata(){
     equipmentname=`${UPDataRetal.equipmentname}`;
     housingcontent.value=`${UPDataRetal.content.replace(/<br>/g, '\n')}`;
     
-    
+    if(UPDataRetal.titledeed==''){
+        titledeed=UPDataRetal.titledeed;
+    }else{
+        titledeed=document.getElementById('updateData.titledeed_1').value;
+    }
 
     judgment_label();
     judgment_equipmentname();
@@ -160,6 +164,7 @@ function updataitem(){
     formData.append('updateData.pattern',`${pattern}`);
     formData.append('updateData.equipmentname',`${equipmentname}`);
     formData.append('updateData.content',housingcontent.value.replace(/\n/g, '<br>'));
+    formData.append('updateData.titledeed_1',titledeed);
     
     console.log(type);
     console.log(genre);
