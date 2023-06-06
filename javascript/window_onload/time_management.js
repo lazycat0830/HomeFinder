@@ -165,6 +165,7 @@ function getDataTimeinput(changedate,validatatext){
 
 let clearbtn_start,clearbtn_end;
 function EditTimebtn(event){
+    disabledtrue_btn();
     var id=event.target.id.replace('Editbtn_time','');
     
 
@@ -200,6 +201,7 @@ function EditTimebtn(event){
 }
 
 function SaveTimebtn(event){
+    
     clearbtn_start='',clearbtn_end='';
     console.log(event.target.id);
     var id=event.target.id.replace('Savebtn_time','');
@@ -271,6 +273,7 @@ function SaveTimebtn(event){
                     `;
                 document.getElementById('Edittime').appendChild(appendli);
             };
+            disabledfalse_btn();
         }
         
         
@@ -278,6 +281,7 @@ function SaveTimebtn(event){
     }).catch(error=>{
         console.log(error);
     })
+    
 }
 
 
@@ -313,6 +317,7 @@ function NoTimebtn(event){
         </div>
         `;
     }
+    disabledfalse_btn();
 }
 
 function disabledtrue_btn(){
