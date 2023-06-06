@@ -68,7 +68,7 @@ function viewtime_management(changedate){
         
         
         console.log(data);
-        if(data.dataList0==""){
+        if(data.dataList1==""){
             validataText_time.style.display='block';
         }else{
             var i=0,id=0;

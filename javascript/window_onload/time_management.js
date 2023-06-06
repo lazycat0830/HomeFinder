@@ -137,6 +137,7 @@ function getDataTimeinput(changedate,validatatext){
 
             if(validatatext){
                 disabledtrue_btn();
+                
             }else{
                 disabledfalse_btn();
             }
