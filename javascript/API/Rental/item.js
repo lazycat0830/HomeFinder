@@ -374,7 +374,7 @@ function Editviewitemcontent(data,rental_id){
             console.log(parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1);
             console.log(`img${parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1}_${data.allData.rental_id}`);
             console.log(document.getElementById(imgblock).style.display=='block');
-            if((parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1)==data.rentalBlock[id].image.length-1){
+            if((parseInt(imgblock.replace('img','').replace(`_${data.allData.rental_id}`,''))+1)==data.image.length-1){
                 nextimg_btn.style.display="none";
             }
             if(document.getElementById(imgblock).style.display=='block'){

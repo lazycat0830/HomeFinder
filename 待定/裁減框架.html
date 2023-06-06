@@ -37,6 +37,9 @@
           this.sourceWidth = this.canvasWrap.width = 300;
           this.sourceHeight = this.canvasWrap.height = 300;
           this.imgObj = img;
+          // this.imgObj.width = '100%';
+          // this.imgObj.height = '100%';
+          // this.imgObj.style=''
           this.x = this.sourceWidth * 0.25;
           this.y = this.sourceHeight * 0.25;
           this.width = this.sourceWidth * 0.5;
@@ -53,16 +56,47 @@
         this.drawCrop();
       }
       drawCrop() {
-        this.ctx.clearRect(0, 0, this.sourceWidth, this.sourceHeight);
-        this.ctx.drawImage(this.imgObj, 0, 0, this.sourceWidth, this.sourceHeight);
-        this.ctx.fillStyle = 'rgba(0,0,0,.5)';
-        this.ctx.fillRect(0, 0, this.sourceWidth, this.sourceHeight);
-
-        this.ctx.clearRect(this.x, this.y, this.width, this.height);
-        this.ctx.drawImage(this.imgObj, this.x, this.y, this.width, this.height, this.x, this.y, this.width, this.height);
-        this.ctx.fillStyle = '#fff';
-        this.ctx.fillRect(this.x + this.width - 3, this.y + this.height - 3, 6, 6);
-      }
+  
+ 
+  this.ctx.clearRect(0, 0, this.sourceWidth, this.sourceHeight);
+    this.ctx.drawImage(this.imgObj, 0, 0, this.sourceWidth, this.sourceHeight);
+    
+   
+  this.ctx.fillStyle = 'rgba(0,0,0,.5)';
+    
+   
+  this.ctx.fillRect(0, 0, this.sourceWidth, this.sourceHeight);
+  
+    
+  
+   
+  
+  
+  this.ctx.clearRect(this.x, this.y, this.width, this.height);
+    
+   
+  this.ctx.drawImage(this.imgObj, this.x, this.y, this.width, this.height, this.x, this.y, this.width, this.height);
+  
+    
+  
+   
+  // Update the preview canvas size
+    this.previewWrap.width = this.width;
+    
+   
+  this.previewWrap.height = this.height;
+    
+   
+  this.previewCtx.clearRect(0, 0, this.width, this.height);
+    
+   
+  this.previewCtx.drawImage(this.imgObj, this.x, this.y, this.width, this.height, 0, 0, this.width, this.height);
+  
+    this.ctx.fillStyle = '#fff';
+    
+   
+  this.ctx.fillRect(this.x + this.width - 3, this.y + this.height - 3, 6, 6);
+  }
       mouseMoveHandle(e) {
         const { offsetX, offsetY } = e;
         let moveX = offsetX - this.downDffset?.[0];
