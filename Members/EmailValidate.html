@@ -40,17 +40,30 @@
         fetch(apiUrl)
             .then(response => response.text())
             .then(data => {
-                if(data=='驗證碼錯誤，請重新確認或在註冊'){
+                
+                
+                var count = 5;
+                countdown();
+                function countdown() {
+                if (count === 0) {
+                    window.location.href = '/通用/index.html';
+                } else {
+                    console.log(count);
+                    if(data=='驗證碼錯誤，請重新確認或在註冊'){
                     document.getElementById("result").innerHTML = `驗證失敗`;
                     document.getElementById("result").style.color = `#ff0000`;
-                }else{
-                    document.getElementById("result").innerHTML = `驗證成功等待5秒後回首頁`;
-                    document.getElementById("result").style.color = `#43ff40`;
+                    }else{
+                        document.getElementById("result").innerHTML = `驗證成功等待${count}秒後回首頁`;
+                        document.getElementById("result").style.color = `#43ff40`;
+                    }
+                    count--;
+                    setTimeout(countdown, 1000);
                 }
-                var id=5;
-                setTimeout(function(){
-                window.location.href = '/通用/index.html';
-                }, 5000); // 延迟时间为5秒，即5000毫秒
+                }
+
+                setTimeout(countdown, 5000);
+
+                
             })
             .catch(error => {
                 document.getElementById("result").innerHTML = "API request failed.";
