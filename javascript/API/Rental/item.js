@@ -304,7 +304,7 @@ function Editviewitemcontent(data,rental_id){
             console.log(likeheart);
             clicklike(likebtn,likeheart);
         }
-        if(LoginData.members.identity==1){
+        if((LoginData.members.identity==1)||(LoginData.members.identity==0)){
             let reservedate=document.getElementById('reservedate');
             reservedate.style.display='none';
         }

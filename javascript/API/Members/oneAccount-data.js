@@ -298,13 +298,22 @@ function oneAccount(data){
                 // "Authorization": `Bearer ${LoginData.token}`, 
             },
         }).then(({data})=>{
-            Account_Rental.innerHTML='';
-            console.log(data);
-            rental_Id=0;
-            data.idList.forEach(function(){
-                newRenterRental(data,rental_Id);
-                rental_Id++;
+            
+            if(data!='此房東無上架房屋'){
+                Account_Rental.innerHTML='';
+                console.log(data);
+                rental_Id=0;
+                data.idList.forEach(function(){
+                    newRenterRental(data,rental_Id);
+                    rental_Id++;
             });
+            }else{
+                Account_Rental.innerHTML='暫無房屋';
+                Account_Rental.style.fontSize='3rem';
+                Account_Rental.style.color='red';
+                Account_Rental.style.fontWeight='bolder';
+                Account_Rental.style.justifyContent='center';
+            }
             totalRenter.innerHTML=`租屋`;
         }).catch(error=>{
             console.log(error);

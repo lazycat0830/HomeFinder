@@ -135,6 +135,14 @@ function getReservedData(availableTimesArray){
 
 
 function onclick_reservedate(availableTimesArray){
+    if(availableTimesArray[0]!=''){
+        document.getElementById('reservedate').disabled = false;
+        document.getElementById('reservedate').style.cursor='pointer';
+    }else{
+        document.getElementById('reservedate').disabled = true;
+        document.getElementById('reservedate').style.cursor='not-allowed';
+    }
+
     let text =document.getElementById('text');
     reservedate.onclick=function(){
         let time;
