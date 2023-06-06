@@ -92,13 +92,16 @@ function createitem(data){
     
     submit.addEventListener("click", (event) => {
     event.preventDefault();
-
     createitem_validatatext();
 
     equipmentname = equipmentname.slice(0, -1);
 
     const formData = new FormData(form);
-
+    formData.append('img1_1',`${img1file}`)
+    formData.append('img1_2',`${img2file}`)
+    formData.append('img1_3',`${img3file}`)
+    formData.append('img1_4',`${img4file}`)
+    formData.append('img1_5',`${img5file}`)
     formData.append('type',`${type}`);
     formData.append('genre',`${genre}`);
     formData.append('pattern',`${pattern}`);
@@ -113,11 +116,11 @@ function createitem(data){
     // console.log(equipmentname);
     // console.log(data.members.name);
     // console.log(type);
-    // console.log(formData.get("img1_1"));
-    // console.log(formData.get("img1_2"));
-    // console.log(formData.get("img1_3"));
-    // console.log(formData.get("img1_4"));
-    // console.log(formData.get("img1_5"));
+    console.log(formData.get("img1_1"));
+    console.log(formData.get("img1_2"));
+    console.log(formData.get("img1_3"));
+    console.log(formData.get("img1_4"));
+    console.log(formData.get("img1_5"));
     // console.log(formData.get("type"));
     // console.log(formData.get("floor"));
     // console.log(formData.get("genre"));

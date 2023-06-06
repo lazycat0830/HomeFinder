@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/typesetting.css">
     <link rel="stylesheet" href="/css/popup_window_layout.css">
+
+    <link rel="stylesheet" href="/node_modules/cropperjs/dist/cropper.min.css">
 </head>
 <body  class="relative">
     <div id="login" class="login_Location">
@@ -57,13 +59,18 @@
     
         </div>
     </div>
-    <div id="catoneimg" >
+    <div id="catoneimg"  style="display: none;">
         <div id="catimgbody">
             <div id="body_content_header">
                 <div id="body_content_header_content" class="flexbetween">
                     <div></div>
                     <span>裁切</span>
                     <button id="delete_longinbtn">X</button>
+                </div>
+            </div>
+            <div id="body_content_body" class="flexcenter" >
+                <div id="cutimg_body_content_body_content" class="flexcolumn">
+                    
                 </div>
             </div>
         </div>
@@ -247,10 +254,10 @@
                         <input id="parking_space" type="checkbox" value="車位"><label for="parking_space">車位</label>
                     </div>
                 </div>
+                <span id="validata_equipmentname" class="validata"></span>
                 <div class="housing_information_content">
                     <label class="housing_information_title">房契：</label><input type="file" name="titledeed_1"/>
                 </div>
-                <span id="validata_equipmentname" class="validata"></span>
                 <div class="housing_information_content">
                     <label class="housing_information_title" for="content">介紹內容：</label><br>
                     <textarea id="housingcontent" style="height: 140px; width: 685px;"></textarea>
@@ -279,4 +286,6 @@
 <script src="/javascript/通用/popup_Login.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="/node_modules/cropperjs/dist/cropper.min.js"> </script>
 </html>

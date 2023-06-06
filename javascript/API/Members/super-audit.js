@@ -115,7 +115,7 @@ function viewonRental(data,imglist){
 
     let rentalul=document.getElementById('rentalul');
     rentalul.innerHTML=`
-    <li id="img0_${data.rental_id}" style="display: block;"><img height="100%" width="100%" src="${data.titledeed}" /></li>
+    <li  id="img0_${data.rental_id}" style="display: block;width: 100%;height:100%"><img height="100%" width="100%" src="${data.titledeed}" /></li>
     `;
     
     for(var j=1;j<=imglist.length;j++){

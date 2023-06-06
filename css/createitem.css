@@ -177,5 +177,19 @@ footer{
 #catoneimg{
     position: absolute;
     z-index: 10;
-    
+    top: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#body_content_header{
+    background-color: #fff;
+    width: 100%;
+    border-bottom: 2px #000 solid;
+}
+
+#cutimg_body_content_body_content{
+    height: 300px;
+    width: 500px;
 }

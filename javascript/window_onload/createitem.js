@@ -35,3 +35,75 @@ window.onload = function() {
     }
 
 };
+
+
+function AjaxImgCut(src,num){
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("cutimg_body_content_body_content").innerHTML = this.responseText;
+            viewAjaxCutImg(src,num);
+        }
+    };
+    
+    xhttp.open("GET", "/通用/CutImg.html", true);
+    xhttp.send();
+}
+
+function viewAjaxCutImg(src,num){
+    document.getElementById('catoneimg').style.display='block';
+
+    const image=document.getElementById('view_image');
+    image.src=src;
+        const cropper=new Cropper(image,{
+            aspectRatio:1,
+            viewMode:0,
+
+        });
+
+        document.getElementById('cropImageBtn').addEventListener('click',function(){
+            var croppedImage = cropper.getCroppedCanvas().toDataURL('image/png');
+            const file =new File([croppedImage],'image/png',{
+                type:'image/png'
+            })
+            console.log(croppedImage);
+            console.log(file);
+            putfile(file,num,croppedImage);
+            // document.getElementById('output').src =croppedImage;
+        });
+}
+let img1file,img2file,img3file,img4file,img5file;
+
+function putfile(file,num,src){
+    document.getElementById('catoneimg').style.display='none';
+    console.log(num);
+    if(num==1){
+        img1file=file;
+        inputImageview1.style.backgroundImage= 'url(' + src + ')';
+        inputImageview1.style.backgroundSize ='cover';
+        inputImageview1.innerHTML ="";
+    }else if(num==2){
+        img2file=file;
+        inputImageview2.style.backgroundImage= 'url(' + src + ')';
+        inputImageview2.style.backgroundSize ='cover';
+        inputImageview2.innerHTML ="";
+    }else if(num==3){
+        img3file=file;
+        inputImageview3.style.backgroundImage= 'url(' + src + ')';
+        inputImageview3.style.backgroundSize ='cover';
+        inputImageview3.innerHTML ="";
+    }else if(num==4){
+        img4file=file;
+        inputImageview4.style.backgroundImage= 'url(' + src + ')';
+        inputImageview4.style.backgroundSize ='cover';
+        inputImageview4.innerHTML ="";
+    }else if(num==5){
+        img5file=file;
+        inputImageview5.style.backgroundImage= 'url(' + src + ')';
+        inputImageview5.style.backgroundSize ='cover';
+        inputImageview5.innerHTML ="";
+    }
+    
+}
+

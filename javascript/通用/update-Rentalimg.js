@@ -19,12 +19,13 @@ inputImage1.addEventListener('change', () => {
         inputImageview1.style.backgroundImage= 'url(' + event.target.result + ')';
         inputImageview1.style.backgroundSize ='cover';
         inputImageview1.innerHTML ="";
+        
     };
     
     img1.readAsDataURL(file1);
     console.log(file1);
     });   
-
+    
     inputImage2.addEventListener('change', () => {
         const file2 = inputImage2.files[0];
         const img2 = new FileReader();

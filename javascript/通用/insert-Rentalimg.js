@@ -1,13 +1,13 @@
-const inputImage1 = document.getElementById('inputImage1');
-const inputImage2 = document.getElementById('inputImage2');
-const inputImage3 = document.getElementById('inputImage3');
-const inputImage4 = document.getElementById('inputImage4');
-const inputImage5 = document.getElementById('inputImage5');
-const inputImageview1 = document.getElementById('inputImageview1');
-const inputImageview2 = document.getElementById('inputImageview2');
-const inputImageview3 = document.getElementById('inputImageview3');
-const inputImageview4 = document.getElementById('inputImageview4');
-const inputImageview5 = document.getElementById('inputImageview5');
+let inputImage1 = document.getElementById('inputImage1');
+let inputImage2 = document.getElementById('inputImage2');
+let inputImage3 = document.getElementById('inputImage3');
+let inputImage4 = document.getElementById('inputImage4');
+let inputImage5 = document.getElementById('inputImage5');
+let inputImageview1 = document.getElementById('inputImageview1');
+let inputImageview2 = document.getElementById('inputImageview2');
+let inputImageview3 = document.getElementById('inputImageview3');
+let inputImageview4 = document.getElementById('inputImageview4');
+let inputImageview5 = document.getElementById('inputImageview5');
 
 
 
@@ -16,9 +16,7 @@ inputImage1.addEventListener('change', () => {
     const img1 = new FileReader();
     
     img1.onload = (event) => {
-        inputImageview1.style.backgroundImage= 'url(' + event.target.result + ')';
-        inputImageview1.style.backgroundSize ='cover';
-        inputImageview1.innerHTML ="";
+        AjaxImgCut(event.target.result,1);
     };
     
     img1.readAsDataURL(file1);
@@ -30,9 +28,7 @@ inputImage1.addEventListener('change', () => {
         const img2 = new FileReader();
         
         img2.onload = (event) => {
-            inputImageview2.style.backgroundImage= 'url(' + event.target.result + ')';
-            inputImageview2.style.backgroundSize ='cover';
-            inputImageview2.innerHTML ="";
+            AjaxImgCut(event.target.result,2);
         };
         
         img2.readAsDataURL(file2);
@@ -44,9 +40,7 @@ inputImage1.addEventListener('change', () => {
         const img3 = new FileReader();
         
         img3.onload = (event) => {
-            inputImageview3.style.backgroundImage= 'url(' + event.target.result + ')';
-            inputImageview3.style.backgroundSize ='cover';
-            inputImageview3.innerHTML ="";
+            AjaxImgCut(event.target.result,3);
 
         };
         
@@ -59,9 +53,7 @@ inputImage1.addEventListener('change', () => {
         const img4 = new FileReader();
         
         img4.onload = (event) => {
-            inputImageview4.style.backgroundImage= 'url(' + event.target.result + ')';
-            inputImageview4.style.backgroundSize ='cover';
-            inputImageview4.innerHTML ="";
+            AjaxImgCut(event.target.result,4);
         };
         
         img4.readAsDataURL(file4);
@@ -73,9 +65,7 @@ inputImage1.addEventListener('change', () => {
         const img5 = new FileReader();
         
         img5.onload = (event) => {
-            inputImageview5.style.backgroundImage= 'url(' + event.target.result + ')';
-            inputImageview5.style.backgroundSize ='cover';
-            inputImageview5.innerHTML ="";
+            AjaxImgCut(event.target.result,5);
         };
         
         img5.readAsDataURL(file5);
