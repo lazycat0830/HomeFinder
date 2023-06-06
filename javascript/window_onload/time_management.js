@@ -93,8 +93,8 @@ function getDataTimeinput(changedate,validatatext){
             addgetTime.id=`Timeli${i}`;
             addgetTime.innerHTML=`
             <div class="flexcolumn">
-                <label id="start_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
-                <label id="end_time${i}" style="font-size: 16px;text-align: center;">--:--</label>
+                <label id="start_time${i}" style="margin:3px 0px;font-size: 16px;text-align: center;">--:--</label>
+                <label id="end_time${i}" style="margin:3px 0px;font-size: 16px;text-align: center;">--:--</label>
                 <input style="margin: 0px 20px;" id="Editbtn_time${i}" onclick='EditTimebtn(event)' type="button"  value="修改" >
             </div>
             `;
@@ -178,9 +178,9 @@ function EditTimebtn(event){
         <div class="flexcolumn">
             <input id="start_time${id}" type='time' style="font-size: 16px;text-align: center;" />
             <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" />
-            <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
-            <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
-            <input style="margin: 0px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
+            <input style="margin: 3px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+            <input style="margin: 3px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+            <input style="margin: 3px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
         </div>
         `;
     }else{
@@ -188,9 +188,9 @@ function EditTimebtn(event){
         <div class="flexcolumn">
             <input id="start_time${id}" type='time' style="font-size: 16px;text-align: center;" value='${start_time}'/>
             <input id="end_time${id}" type='time' style="font-size: 16px;text-align: center;" value='${end_time}'/>
-            <input style="margin: 0px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
-            <input style="margin: 0px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
-            <input style="margin: 0px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
+            <input style="margin: 3px 20px;" id="Savebtn_time${id}" onclick='SaveTimebtn(event)' type="button"  value="完成">
+            <input style="margin: 3px 20px;" id="Clearbtn_time${id}" onclick='ClearTimebtn(event)' type="button"  value="清除">
+            <input style="margin: 3px 20px;" id="NoTimebtn_time${id}" onclick='NoTimebtn(event)' type="button"  value="取消">
         </div>
         `;
     }
@@ -264,8 +264,8 @@ function SaveTimebtn(event){
                     appendli.id=`Timeli${j}`;
                     appendli.innerHTML=`
                         <div class="flexcolumn">
-                            <label id="start_time${j}" style="font-size: 16px;text-align: center;">${startTime}</label>
-                            <label id="end_time${j}" style="font-size: 16px;text-align: center;">${endTime}</label>
+                            <label id="start_time${j}" style="margin:3px 0px;font-size: 16px;text-align: center;">${startTime}</label>
+                            <label id="end_time${j}" style="margin:3px 0px;font-size: 16px;text-align: center;">${endTime}</label>
                             <input style="margin: 0px 20px;" id="Editbtn_time${j}" onclick='EditTimebtn(event)' type="button" value="修改" >
                         </div>
                     `;
@@ -301,16 +301,16 @@ function NoTimebtn(event){
     if((start_time==undefined&&end_time==undefined)||(start_time==""&&end_time=="")){
         Timeli.innerHTML=`
         <div class="flexcolumn">
-            <label id="start_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
-            <label id="end_time${id}" style="font-size: 16px;text-align: center;">--:--</label>
+            <label id="start_time${id}" style="margin:3px 0px;font-size: 16px;text-align: center;">--:--</label>
+            <label id="end_time${id}" style="margin:3px 0px;font-size: 16px;text-align: center;">--:--</label>
             <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改" >
         </div>
         `;
     }else{
         Timeli.innerHTML=`
         <div class="flexcolumn">
-            <label id="start_time${id}" style="font-size: 16px;text-align: center;">${start_time}</label>
-            <label id="end_time${id}" style="font-size: 16px;text-align: center;">${end_time}</label>
+            <label id="start_time${id}" style="margin:3px 0px;font-size: 16px;text-align: center;">${start_time}</label>
+            <label id="end_time${id}" style="margin:3px 0px;font-size: 16px;text-align: center;">${end_time}</label>
             <input style="margin: 0px 20px;" id="Editbtn_time${id}" onclick='EditTimebtn(event)' type="button" value="修改" >
         </div>
         `;
@@ -331,3 +331,4 @@ function disabledfalse_btn(){
         Editbtn.disabled=false;
     }
 }
+
