@@ -84,7 +84,7 @@ img {
 }
 
 #Review{
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 30%;
     z-index: 99999;

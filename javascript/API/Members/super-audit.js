@@ -49,6 +49,7 @@ function addRental(data,id) {
             review(data.rentalBlock[id].allData.rental_id,check,reasontext);
         }
         review_false.onclick=function(){
+            createMask();
             let Review=document.getElementById('Review');
             Review.style.display='block';
             let Review_btn=document.getElementById('Review_btn');
@@ -59,6 +60,7 @@ function addRental(data,id) {
                 review(data.rentalBlock[id].allData.rental_id,check,reasontext);
                 reason.value='';
                 Review.style.display='none';
+                deleteMask();
             }
             
         }
@@ -213,4 +215,5 @@ let delete_Review =document.getElementById('delete_Review');
 delete_Review.onclick=function(){
     Review.style.display='none';
     reason.value='';
+    deleteMask();
 }
